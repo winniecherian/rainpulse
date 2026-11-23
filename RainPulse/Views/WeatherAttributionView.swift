@@ -24,6 +24,10 @@ struct WeatherAttributionView: View {
                 }
                 Link("Other data sources", destination: attribution.legalPageURL)
                     .font(.caption2)
+            } else if showsAppleWeather {
+                Link("\u{F8FF} Weather · Other data sources",
+                     destination: URL(string: "https://weatherkit.apple.com/legal-attribution.html")!)
+                    .font(.caption2)
             }
             if showsOpenMeteo {
                 Link("Weather data by Open-Meteo.com", destination: URL(string: "https://open-meteo.com/")!)

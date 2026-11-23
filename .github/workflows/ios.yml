@@ -117,6 +117,13 @@ jobs:
             -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
             CURRENT_PROJECT_VERSION=${{ github.run_number }} 2>&1 | tee archive.log | grep -E "error:|ARCHIVE (SUCCEEDED|FAILED)"
 
+      - name: Show signed entitlements
+        if: env.ASC_KEY_ID != '' && (github.event_name == 'workflow_dispatch' && inputs.upload)
+        run: |
+          APP="$RUNNER_TEMP/RainPulse.xcarchive/Products/Applications/RainPulse.app"
+          echo "== App =="; codesign -d --entitlements :- "$APP" 2>/dev/null | plutil -p - || true
+          echo "== Widget =="; codesign -d --entitlements :- "$APP/PlugIns/RainPulseWidget.appex" 2>/dev/null | plutil -p - || true
+
       - name: Upload to TestFlight
         if: env.ASC_KEY_ID != '' && (github.event_name == 'workflow_dispatch' && inputs.upload)
         run: |

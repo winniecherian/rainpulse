@@ -73,6 +73,12 @@ struct SettingsScreen: View {
                     }
                 }
 
+                Section("Data status") {
+                    LabeledContent("Apple Weather", value: DataSourceStatus.text(.appleWeather))
+                    LabeledContent("Open-Meteo", value: DataSourceStatus.text(.openMeteo))
+                }
+                .font(.footnote)
+
                 Section("About") {
                     Link("Privacy Policy", destination: AppConfig.privacyURL)
                     Link("Terms of Use", destination: AppConfig.termsURL)

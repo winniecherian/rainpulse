@@ -115,7 +115,16 @@ actor ForecastService {
         }
 
         let result: Forecast
-        if var apple = try? await WeatherKitSource.fetch(latitude: latitude, longitude: longitude) {
+        var appleResult: Forecast?
+        do {
+            appleResult = try await withTimeout(seconds: 12) {
+                try await WeatherKitSource.fetch(latitude: latitude, longitude: longitude)
+            }
+            DataSourceStatus.record(.appleWeather, ok: true)
+        } catch {
+            DataSourceStatus.record(.appleWeather, ok: false, error: error)
+        }
+        if var apple = appleResult {
             // Apple Weather is the main source (included with the developer membership).
             // Open-Meteo fills the gaps: 15-minute rain where Apple has no minute data
             // (e.g. India), and days beyond Apple's 10-day range.
@@ -128,7 +137,13 @@ actor ForecastService {
             }
             result = apple
         } else {
-            result = try await openMeteo(latitude: latitude, longitude: longitude, days: days)
+            do {
+                result = try await openMeteo(latitude: latitude, longitude: longitude, days: days)
+                DataSourceStatus.record(.openMeteo, ok: true)
+            } catch {
+                DataSourceStatus.record(.openMeteo, ok: false, error: error)
+                throw error
+            }
         }
         cache[key] = result
         return result
@@ -329,5 +344,45 @@ extension Forecast {
         }
         return Forecast(current: Current(time: now, temperature: warm, weatherCode: 2, precipitation: 0),
                         nowcast: steps, hourly: hours, daily: days, utcOffsetSeconds: 0, fetchedAt: now)
+    }
+}
+
+// MARK: - Timeout helper
+
+struct TimeoutError: LocalizedError {
+    var errorDescription: String? { "Timed out" }
+}
+
+func withTimeout<T: Sendable>(seconds: Double, _ work: @escaping @Sendable () async throws -> T) async throws -> T {
+    try await withThrowingTaskGroup(of: T.self) { group in
+        group.addTask { try await work() }
+        group.addTask {
+            try await Task.sleep(nanoseconds: UInt64(seconds * 1_000_000_000))
+            throw TimeoutError()
+        }
+        guard let first = try await group.next() else { throw TimeoutError() }
+        group.cancelAll()
+        return first
+    }
+}
+
+// MARK: - Data source status (shown in Settings for troubleshooting)
+
+enum DataSourceStatus {
+    enum Source: String { case appleWeather, openMeteo }
+
+    static func record(_ source: Source, ok: Bool, error: Error? = nil) {
+        let text: String
+        if ok {
+            text = "OK · " + Date().formatted(date: .omitted, time: .shortened)
+        } else {
+            let ns = error.map { $0 as NSError }
+            text = "Failed · " + (ns.map { "\($0.domain) \($0.code): \($0.localizedDescription)" } ?? "unknown")
+        }
+        SharedStore.defaults.set(text, forKey: "status." + source.rawValue)
+    }
+
+    static func text(_ source: Source) -> String {
+        SharedStore.defaults.string(forKey: "status." + source.rawValue) ?? "Not used yet"
     }
 }

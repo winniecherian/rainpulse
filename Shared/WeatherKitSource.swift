@@ -109,7 +109,10 @@ actor TimeZoneLookup {
     func zone(for location: CLLocation) async -> TimeZone {
         let key = String(format: "%.1f,%.1f", location.coordinate.latitude, location.coordinate.longitude)
         if let tz = cache[key] { return tz }
-        let tz = (try? await CLGeocoder().reverseGeocodeLocation(location).first?.timeZone) ?? .current
+        let found = try? await withTimeout(seconds: 4) {
+            try await CLGeocoder().reverseGeocodeLocation(location).first?.timeZone
+        }
+        let tz = (found ?? nil) ?? .current
         cache[key] = tz
         return tz
     }
