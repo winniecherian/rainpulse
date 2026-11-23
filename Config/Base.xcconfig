@@ -1,0 +1,25 @@
+// RainPulse build settings — shared by the app and the widget.
+// 1) Change BUNDLE_ID_BASE to your own reverse-domain ID (must match App Store Connect).
+// 2) Set DEVELOPMENT_TEAM to your 10-character Apple Team ID.
+// 3) Put API keys in Config/Secrets.xcconfig (not committed) or as Xcode Cloud
+//    environment variables (ci_scripts/ci_post_clone.sh writes the file for you).
+
+BUNDLE_ID_BASE = com.neuralorbitx.rainpulse
+DEVELOPMENT_TEAM =
+APP_GROUP_ID = group.$(BUNDLE_ID_BASE)
+
+MARKETING_VERSION = 1.0
+CURRENT_PROJECT_VERSION = 1
+IPHONEOS_DEPLOYMENT_TARGET = 17.0
+SWIFT_VERSION = 5.0
+TARGETED_DEVICE_FAMILY = 1
+
+// API keys (overridden by Secrets.xcconfig)
+OWM_API_KEY =
+TOMORROW_API_KEY =
+OPEN_METEO_API_KEY =
+
+// "//" starts a comment in xcconfig files, hence the $() trick.
+PRIVACY_POLICY_URL = https:/$()/example.com/rainpulse/privacy
+
+#include? "Secrets.xcconfig"

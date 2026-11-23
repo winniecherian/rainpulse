@@ -1,0 +1,158 @@
+import WidgetKit
+import SwiftUI
+import Charts
+
+@main
+struct RainPulseWidgetBundle: WidgetBundle {
+    var body: some Widget {
+        RainNowWidget()
+    }
+}
+
+struct RainEntry: TimelineEntry {
+    let date: Date
+    let placeName: String
+    let forecast: Forecast?
+    let tier: Tier
+}
+
+struct RainProvider: TimelineProvider {
+    func placeholder(in context: Context) -> RainEntry {
+        RainEntry(date: Date(), placeName: String(localized: "My Location"), forecast: nil, tier: .essential)
+    }
+
+    func getSnapshot(in context: Context, completion: @escaping (RainEntry) -> Void) {
+        Task { completion(await makeEntry()) }
+    }
+
+    func getTimeline(in context: Context, completion: @escaping (Timeline<RainEntry>) -> Void) {
+        Task {
+            let entry = await makeEntry()
+            // Refresh roughly every 20 minutes (WidgetKit may stretch this).
+            let next = Date().addingTimeInterval(20 * 60)
+            completion(Timeline(entries: [entry], policy: .after(next)))
+        }
+    }
+
+    private func makeEntry() async -> RainEntry {
+        let tier = SharedStore.tier
+        guard let place = SharedStore.lastLocation ?? SharedStore.loadPlaces().first else {
+            return RainEntry(date: Date(), placeName: String(localized: "Open RainPulse"), forecast: nil, tier: tier)
+        }
+        let forecast = try? await ForecastService.shared.forecast(latitude: place.latitude,
+                                                                   longitude: place.longitude,
+                                                                   days: 1, maxAge: 600)
+        return RainEntry(date: Date(), placeName: place.name, forecast: forecast, tier: tier)
+    }
+}
+
+struct RainNowWidget: Widget {
+    let kind = "RainPulseWidget"
+
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: RainProvider()) { entry in
+            RainWidgetView(entry: entry)
+                .containerBackground(for: .widget) {
+                    LinearGradient(colors: [Color(.systemBackground), .blue.opacity(0.18)],
+                                   startPoint: .top, endPoint: .bottom)
+                }
+        }
+        .configurationDisplayName("Rain Now")
+        .description("Current weather and rain for the next 2 hours.")
+        .supportedFamilies([.systemSmall, .systemMedium, .accessoryRectangular, .accessoryInline])
+    }
+}
+
+struct RainWidgetView: View {
+    @Environment(\.widgetFamily) private var family
+    let entry: RainEntry
+
+    var body: some View {
+        switch family {
+        case .accessoryInline: inline
+        case .accessoryRectangular: rectangular
+        case .systemMedium: medium
+        default: small
+        }
+    }
+
+    private var summary: String {
+        entry.forecast?.nowcastSummary(from: entry.date) ?? String(localized: "Open the app to load")
+    }
+
+    private var small: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(entry.placeName).font(.caption.weight(.semibold)).lineLimit(1)
+            if let f = entry.forecast {
+                HStack(alignment: .firstTextBaseline) {
+                    Text(Fmt.temperature(f.current.temperature))
+                        .font(.system(size: 38, weight: .light, design: .rounded))
+                    Image(systemName: WeatherCode.symbol(f.current.weatherCode))
+                        .symbolRenderingMode(.multicolor)
+                        .font(.title3)
+                }
+            }
+            Spacer(minLength: 0)
+            Text(summary)
+                .font(.caption2.weight(.medium))
+                .foregroundStyle(entry.forecast?.isRainingNow == true ? Color.blue : Color.secondary)
+                .lineLimit(2)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var medium: some View {
+        HStack(spacing: 14) {
+            small.frame(maxWidth: 120)
+            if entry.tier >= .essential, let f = entry.forecast {
+                RainBars(steps: f.upcomingSteps(hours: 2, from: entry.date))
+            } else {
+                VStack(spacing: 6) {
+                    Image(systemName: "lock.fill").foregroundStyle(.secondary)
+                    Text("2-hour rain chart with Essential")
+                        .font(.caption2).multilineTextAlignment(.center).foregroundStyle(.secondary)
+                }
+                .frame(maxWidth: .infinity)
+            }
+        }
+    }
+
+    private var rectangular: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            HStack {
+                Image(systemName: "drop.fill")
+                Text(entry.placeName).lineLimit(1)
+            }
+            .font(.caption.weight(.semibold))
+            Text(summary).font(.caption).lineLimit(2)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private var inline: some View {
+        Label(summary, systemImage: "drop.fill")
+    }
+}
+
+struct RainBars: View {
+    let steps: [Forecast.Step]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("Next 2 hours").font(.caption2.weight(.semibold)).foregroundStyle(.secondary)
+            Chart(steps) { step in
+                BarMark(x: .value("Time", step.time, unit: .minute),
+                        y: .value("Rain", step.precipitation * 4))
+                    .foregroundStyle(Color.blue.gradient)
+                    .cornerRadius(2)
+            }
+            .chartYScale(domain: 0...max(2.5, (steps.map(\.precipitation).max() ?? 0) * 4))
+            .chartYAxis(.hidden)
+            .chartXAxis {
+                AxisMarks(values: .stride(by: .minute, count: 60)) { _ in
+                    AxisValueLabel(format: .dateTime.hour().minute())
+                }
+            }
+        }
+    }
+}

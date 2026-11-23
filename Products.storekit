@@ -1,0 +1,126 @@
+{
+  "identifier": "5B1E7C3A",
+  "nonRenewingSubscriptions": [],
+  "products": [],
+  "settings": {
+    "_applicationInternalID": "",
+    "_developerTeamID": "",
+    "_failTransactionsEnabled": false,
+    "_locale": "en_US",
+    "_storefront": "USA",
+    "_storeKitErrors": []
+  },
+  "subscriptionGroups": [
+    {
+      "id": "21A0B1C2",
+      "localizations": [],
+      "name": "RainPulse Premium",
+      "subscriptions": [
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "39.99",
+          "familyShareable": true,
+          "groupNumber": 1,
+          "internalID": "31000001",
+          "introductoryOffer": {
+            "internalID": "310000019",
+            "paymentMode": "free",
+            "subscriptionPeriod": "P2W"
+          },
+          "localizations": [
+            {
+              "description": "Everything in Essential plus 48-hour radar and extra map layers",
+              "displayName": "Pro Yearly",
+              "locale": "en_US"
+            }
+          ],
+          "productID": "rainpulse.pro.yearly",
+          "recurringSubscriptionPeriod": "P1Y",
+          "referenceName": "Pro Yearly",
+          "subscriptionGroupID": "21A0B1C2",
+          "type": "RecurringSubscription"
+        },
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "7.99",
+          "familyShareable": true,
+          "groupNumber": 1,
+          "internalID": "31000002",
+          "introductoryOffer": {
+            "internalID": "310000029",
+            "paymentMode": "free",
+            "subscriptionPeriod": "P2W"
+          },
+          "localizations": [
+            {
+              "description": "Everything in Essential plus 48-hour radar and extra map layers",
+              "displayName": "Pro Monthly",
+              "locale": "en_US"
+            }
+          ],
+          "productID": "rainpulse.pro.monthly",
+          "recurringSubscriptionPeriod": "P1M",
+          "referenceName": "Pro Monthly",
+          "subscriptionGroupID": "21A0B1C2",
+          "type": "RecurringSubscription"
+        },
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "19.99",
+          "familyShareable": true,
+          "groupNumber": 2,
+          "internalID": "31000003",
+          "introductoryOffer": {
+            "internalID": "310000039",
+            "paymentMode": "free",
+            "subscriptionPeriod": "P2W"
+          },
+          "localizations": [
+            {
+              "description": "2-hour rain forecast, alerts, 14-day forecast",
+              "displayName": "Essential Yearly",
+              "locale": "en_US"
+            }
+          ],
+          "productID": "rainpulse.essential.yearly",
+          "recurringSubscriptionPeriod": "P1Y",
+          "referenceName": "Essential Yearly",
+          "subscriptionGroupID": "21A0B1C2",
+          "type": "RecurringSubscription"
+        },
+        {
+          "adHocOffers": [],
+          "codeOffers": [],
+          "displayPrice": "4.99",
+          "familyShareable": true,
+          "groupNumber": 2,
+          "internalID": "31000004",
+          "introductoryOffer": {
+            "internalID": "310000049",
+            "paymentMode": "free",
+            "subscriptionPeriod": "P2W"
+          },
+          "localizations": [
+            {
+              "description": "2-hour rain forecast, alerts, 14-day forecast",
+              "displayName": "Essential Monthly",
+              "locale": "en_US"
+            }
+          ],
+          "productID": "rainpulse.essential.monthly",
+          "recurringSubscriptionPeriod": "P1M",
+          "referenceName": "Essential Monthly",
+          "subscriptionGroupID": "21A0B1C2",
+          "type": "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version": {
+    "major": 4,
+    "minor": 0
+  }
+}
