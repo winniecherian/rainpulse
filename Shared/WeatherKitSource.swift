@@ -16,7 +16,16 @@ enum WeatherKitSource {
             time: current.date,
             temperature: current.temperature.converted(to: .celsius).value,
             weatherCode: wmoCode(current.condition),
-            precipitation: mmPerHour(current.precipitationIntensity) / 4
+            precipitation: mmPerHour(current.precipitationIntensity) / 4,
+            feelsLike: current.apparentTemperature.converted(to: .celsius).value,
+            humidity: current.humidity * 100,
+            uvIndex: current.uvIndex.value,
+            windSpeed: current.wind.speed.converted(to: .kilometersPerHour).value,
+            windGust: current.wind.gust?.converted(to: .kilometersPerHour).value,
+            windDirection: current.wind.direction.converted(to: .degrees).value,
+            pressure: current.pressure.converted(to: .hectopascals).value,
+            visibility: current.visibility.converted(to: .kilometers).value,
+            dewPoint: current.dewPoint.converted(to: .celsius).value
         )
 
         let hours = hourly.forecast.map { h in

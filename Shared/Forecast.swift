@@ -7,6 +7,16 @@ struct Forecast: Codable {
         let temperature: Double
         let weatherCode: Int
         let precipitation: Double
+        // Details (optional so older cached forecasts still decode)
+        var feelsLike: Double? = nil
+        var humidity: Double? = nil        // %
+        var uvIndex: Int? = nil
+        var windSpeed: Double? = nil       // km/h
+        var windGust: Double? = nil        // km/h
+        var windDirection: Double? = nil   // degrees
+        var pressure: Double? = nil        // hPa
+        var visibility: Double? = nil      // km
+        var dewPoint: Double? = nil        // °C
     }
 
     /// One 15-minute precipitation step (mm per 15 min).
@@ -193,7 +203,7 @@ actor ForecastService {
         var items: [URLQueryItem] = [
             .init(name: "latitude", value: String(format: "%.4f", latitude)),
             .init(name: "longitude", value: String(format: "%.4f", longitude)),
-            .init(name: "current", value: "temperature_2m,weather_code,precipitation"),
+            .init(name: "current", value: "temperature_2m,weather_code,precipitation,apparent_temperature,relative_humidity_2m,uv_index,wind_speed_10m,wind_gusts_10m,wind_direction_10m,pressure_msl,visibility,dew_point_2m"),
             .init(name: "minutely_15", value: "precipitation"),
             .init(name: "forecast_minutely_15", value: "12"),
             .init(name: "hourly", value: "temperature_2m,precipitation_probability,precipitation,weather_code"),
@@ -231,6 +241,15 @@ actor ForecastService {
             let temperature_2m: Double?
             let weather_code: Int?
             let precipitation: Double?
+            let apparent_temperature: Double?
+            let relative_humidity_2m: Double?
+            let uv_index: Double?
+            let wind_speed_10m: Double?
+            let wind_gusts_10m: Double?
+            let wind_direction_10m: Double?
+            let pressure_msl: Double?
+            let visibility: Double?
+            let dew_point_2m: Double?
         }
         struct RawMinutely: Decodable {
             let time: [Int]
@@ -267,7 +286,16 @@ actor ForecastService {
             time: raw.current.map { date($0.time) } ?? Date(),
             temperature: raw.current?.temperature_2m ?? 0,
             weatherCode: raw.current?.weather_code ?? 0,
-            precipitation: raw.current?.precipitation ?? 0
+            precipitation: raw.current?.precipitation ?? 0,
+            feelsLike: raw.current?.apparent_temperature,
+            humidity: raw.current?.relative_humidity_2m,
+            uvIndex: raw.current?.uv_index.map { Int($0.rounded()) },
+            windSpeed: raw.current?.wind_speed_10m,
+            windGust: raw.current?.wind_gusts_10m,
+            windDirection: raw.current?.wind_direction_10m,
+            pressure: raw.current?.pressure_msl,
+            visibility: raw.current?.visibility.map { $0 / 1000 },
+            dewPoint: raw.current?.dew_point_2m
         )
 
         var steps: [Forecast.Step] = []
@@ -376,7 +404,7 @@ extension Forecast {
                 precipitationSum: [6.2, 3.1, 0, 0, 0, 0.4, 4.8, 12.5, 0.2, 0, 0, 0, 2.2, 0.5][i],
                 precipitationProbabilityMax: [80, 65, 10, 5, 0, 20, 70, 90, 15, 5, 0, 10, 55, 20][i])
         }
-        return Forecast(current: Current(time: now, temperature: warm, weatherCode: 2, precipitation: 0),
+        return Forecast(current: Current(time: now, temperature: warm, weatherCode: 2, precipitation: 0, feelsLike: warm + 2, humidity: 78, uvIndex: 6, windSpeed: 14, windGust: 26, windDirection: 220, pressure: 1009, visibility: 10, dewPoint: warm - 4),
                         nowcast: steps, hourly: hours, daily: days, utcOffsetSeconds: 0, fetchedAt: now)
     }
 }

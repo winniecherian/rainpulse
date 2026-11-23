@@ -92,6 +92,10 @@
 			isa = PBXBuildFile;
 			fileRef = AFE8D4616B856A33797AA5DA;
 		};
+		95DB2F31B6813A1AE89CFC26 = {
+			isa = PBXBuildFile;
+			fileRef = D7E9143D539BBCCA7C731603;
+		};
 		A958707FB4814381E3A8CA07 = {
 			isa = PBXBuildFile;
 			fileRef = D7DD1C1D506F49C6325EAB12;
@@ -103,6 +107,10 @@
 		B209404D25B76C4843C0BF9A = {
 			isa = PBXBuildFile;
 			fileRef = 7C974DEFB78E2E8EFA784A09;
+		};
+		BA22A8F238C017C800B3B67C = {
+			isa = PBXBuildFile;
+			fileRef = D7E9143D539BBCCA7C731603;
 		};
 		BA68CF9678F6374FA03D3E32 = {
 			isa = PBXBuildFile;
@@ -119,6 +127,10 @@
 		C53C4C1C96E50FB276DB5FB2 = {
 			isa = PBXBuildFile;
 			fileRef = 3EB0B57579FE0A2711B447A1;
+		};
+		C5CFAB9CB5AE5FD8690FA7D8 = {
+			isa = PBXBuildFile;
+			fileRef = B085DAEC81C66C26DB67F57C;
 		};
 		D43D7529BF308FCECD330112 = {
 			isa = PBXBuildFile;
@@ -308,6 +320,12 @@
 			path = WeatherFormatting.swift;
 			sourceTree = "<group>";
 		};
+		B085DAEC81C66C26DB67F57C = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = RadarRecolor.swift;
+			sourceTree = "<group>";
+		};
 		BC8E5C19023A841BEA82717F = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.plist.xml;
@@ -354,6 +372,12 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = SettingsScreen.swift;
+			sourceTree = "<group>";
+		};
+		D7E9143D539BBCCA7C731603 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = AirQuality.swift;
 			sourceTree = "<group>";
 		};
 		DA3248EAC5B6D716CC729833 = {
@@ -507,6 +531,7 @@
 		C64F91A36BC1DFFBFBF7BCE4 = {
 			isa = PBXGroup;
 			children = (
+				D7E9143D539BBCCA7C731603,
 				61F9B2A9C2A56ED00AC4F5CD,
 				3AAA4A0606300572843478F6,
 				65173FC8C77756FA1C649590,
@@ -548,6 +573,7 @@
 			children = (
 				E5F32CA7B839112ACC2D73E9,
 				60704820272D9DA1B6EA7D0B,
+				B085DAEC81C66C26DB67F57C,
 				7C974DEFB78E2E8EFA784A09,
 			);
 			path = Radar;
@@ -695,6 +721,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95DB2F31B6813A1AE89CFC26,
 				B0E9005BD998205C5E70ECB5,
 				17E9CCB262BA93C82B617065,
 				6781453130FA77FEF97CEB70,
@@ -708,6 +735,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA22A8F238C017C800B3B67C,
 				69F0D76384B5C53CDBAB2C71,
 				6F4281E4C4C85E30AA430688,
 				2B91BEAD96D81B737781EA9B,
@@ -716,6 +744,7 @@
 				4493F2DCD2BFEAA97D1925CD,
 				BB8F0F6D099840A6E27E45FE,
 				8AC97777BC909CFF1302BEF1,
+				C5CFAB9CB5AE5FD8690FA7D8,
 				B209404D25B76C4843C0BF9A,
 				5EA743B5B8FAB3A376A52E73,
 				1C635455E7FA5965A7C43672,

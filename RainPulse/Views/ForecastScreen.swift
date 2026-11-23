@@ -16,6 +16,7 @@ struct ForecastScreen: View {
     @State private var dayIndex = 0
     @State private var insight: String?
     @State private var loadingInsight = false
+    @State private var airQuality: AirQuality?
 
     private var selectedPlace: Place? {
         if let id = selectedID, let place = places.places.first(where: { $0.id == id }) { return place }
@@ -36,6 +37,7 @@ struct ForecastScreen: View {
                         if store.tier == .free { trialBanner }
                         rainCard(forecast, place: place)
                         insightCard(forecast, place: place)
+                        DetailsCard(current: forecast.current, airQuality: airQuality)
                         hourlyCard(forecast)
                         dailyCard(forecast)
                         WeatherAttributionView(showsAppleWeather: forecast.usesAppleWeather,
@@ -111,6 +113,7 @@ struct ForecastScreen: View {
             errorText = nil
             dayIndex = 0
             insight = nil
+            airQuality = await AirQualityService.shared.airQuality(latitude: place.latitude, longitude: place.longitude)
             if store.tier == .pro { await loadInsight(f, place: place) }
         } catch {
             errorText = error.localizedDescription
@@ -380,5 +383,90 @@ struct Card<Content: View>: View {
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+    }
+}
+
+
+/// Windy-style "conditions now" grid.
+struct DetailsCard: View {
+    let current: Forecast.Current
+    let airQuality: AirQuality?
+
+    private struct Item: Identifiable {
+        let id = UUID()
+        let title: String, value: String, symbol: String, note: String?
+    }
+
+    private static func measure<U: Dimension>(_ v: Double, _ unit: U, digits: Int = 0) -> String {
+        Measurement(value: v, unit: unit).formatted(.measurement(width: .abbreviated, usage: .general,
+                                                                 numberFormatStyle: .number.precision(.fractionLength(digits))))
+    }
+
+    private static func compass(_ deg: Double) -> String {
+        let dirs = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
+        return dirs[Int(((deg.truncatingRemainder(dividingBy: 360)) + 22.5) / 45) % 8]
+    }
+
+    private static func uvLabel(_ uv: Int) -> String {
+        switch uv {
+        case ..<3: return String(localized: "Low")
+        case ..<6: return String(localized: "Moderate")
+        case ..<8: return String(localized: "High")
+        case ..<11: return String(localized: "Very high")
+        default: return String(localized: "Extreme")
+        }
+    }
+
+    private var items: [Item] {
+        var list: [Item] = []
+        if let v = current.feelsLike {
+            list.append(.init(title: String(localized: "Feels like"), value: Fmt.temperature(v), symbol: "thermometer.sun", note: nil))
+        }
+        if let v = current.humidity {
+            list.append(.init(title: String(localized: "Humidity"), value: "\(Int(v.rounded()))%", symbol: "humidity", note: nil))
+        }
+        if let v = current.uvIndex {
+            list.append(.init(title: String(localized: "UV index"), value: "\(v)", symbol: "sun.max", note: Self.uvLabel(v)))
+        }
+        if let v = current.windSpeed {
+            let dir = current.windDirection.map { " " + Self.compass($0) } ?? ""
+            list.append(.init(title: String(localized: "Wind"), value: Self.measure(v, UnitSpeed.kilometersPerHour) + dir, symbol: "wind",
+                              note: current.windGust.map { String(localized: "Gusts \(Self.measure($0, UnitSpeed.kilometersPerHour))") }))
+        }
+        if let v = current.pressure {
+            list.append(.init(title: String(localized: "Pressure"), value: Self.measure(v, UnitPressure.hectopascals), symbol: "gauge.with.dots.needle.67percent", note: nil))
+        }
+        if let v = current.visibility {
+            list.append(.init(title: String(localized: "Visibility"), value: Self.measure(v, UnitLength.kilometers, digits: v < 10 ? 1 : 0), symbol: "eye", note: nil))
+        }
+        if let v = current.dewPoint {
+            list.append(.init(title: String(localized: "Dew point"), value: Fmt.temperature(v), symbol: "drop.degreesign", note: nil))
+        }
+        if let aq = airQuality {
+            list.append(.init(title: String(localized: "Air quality"), value: "\(aq.usAQI) AQI", symbol: "aqi.medium", note: aq.category))
+        }
+        return list
+    }
+
+    var body: some View {
+        if !items.isEmpty {
+            Card(title: String(localized: "Conditions now"), systemImage: "gauge.with.needle") {
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                    ForEach(items) { item in
+                        VStack(alignment: .leading, spacing: 4) {
+                            Label(item.title, systemImage: item.symbol)
+                                .font(.caption).foregroundStyle(.secondary)
+                            Text(item.value).font(.title3.weight(.semibold)).lineLimit(1).minimumScaleFactor(0.7)
+                            if let note = item.note {
+                                Text(note).font(.caption2).foregroundStyle(.secondary).lineLimit(1)
+                            }
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(10)
+                        .background(Color(.tertiarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    }
+                }
+            }
+        }
     }
 }

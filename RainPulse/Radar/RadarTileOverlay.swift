@@ -83,7 +83,13 @@ final class RadarTileOverlay: MKTileOverlay {
                 }
                 guard (200..<300).contains(http.statusCode) else { completion(nil); return }
             }
-            completion(data)
+            guard let data else { completion(nil); return }
+            // OpenWeather 1.0 rain tiles are nearly transparent; make them readable.
+            if self?.layer == .radar, url.host == "tile.openweathermap.org" {
+                completion(RadarRecolor.recolor(data) ?? data)
+            } else {
+                completion(data)
+            }
         }
         task.resume()
     }

@@ -56,6 +56,7 @@ final class RainPulseUITests: XCTestCase {
         sleep(2)
         snap(app, "02-Forecast")
         app.swipeUp()
+        XCTAssertTrue(app.staticTexts["Humidity"].waitForExistence(timeout: 5), "Conditions card should show")
         sleep(1)
         snap(app, "03-Forecast-Daily")
 

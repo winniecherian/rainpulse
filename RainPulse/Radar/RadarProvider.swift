@@ -40,7 +40,7 @@ enum RadarSource: String, CaseIterable, Identifiable {
 
 /// Map layers. Radar is for everyone; the others are Pro.
 enum MapLayer: String, CaseIterable, Identifiable {
-    case radar, clouds, wind, temperature
+    case radar, clouds, wind, temperature, pressure
     var id: String { rawValue }
 
     var displayName: String {
@@ -49,6 +49,7 @@ enum MapLayer: String, CaseIterable, Identifiable {
         case .clouds: return String(localized: "Clouds")
         case .wind: return String(localized: "Wind")
         case .temperature: return String(localized: "Temperature")
+        case .pressure: return String(localized: "Pressure")
         }
     }
 
@@ -58,6 +59,7 @@ enum MapLayer: String, CaseIterable, Identifiable {
         case .clouds: return "cloud"
         case .wind: return "wind"
         case .temperature: return "thermometer.medium"
+        case .pressure: return "gauge.with.dots.needle.67percent"
         }
     }
 
@@ -68,6 +70,7 @@ enum MapLayer: String, CaseIterable, Identifiable {
         case .clouds: return "clouds_new"
         case .wind: return "wind_new"
         case .temperature: return "temp_new"
+        case .pressure: return "pressure_new"
         }
     }
 
@@ -77,6 +80,7 @@ enum MapLayer: String, CaseIterable, Identifiable {
         case .clouds: return "cloudCover"
         case .wind: return "windSpeed"
         case .temperature: return "temperature"
+        case .pressure: return "pressureSurfaceLevel"
         }
     }
 }
