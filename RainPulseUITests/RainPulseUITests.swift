@@ -14,6 +14,16 @@ final class RainPulseUITests: XCTestCase {
         return app
     }
 
+    /// Dismisses simulator popups (e.g. "Enable Dictation?") that can cover the app.
+    private func dismissSystemPopups(_ app: XCUIApplication) {
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        for label in ["Not Now", "Don’t Allow", "Don't Allow", "Cancel"] {
+            for source in [app, springboard] where source.buttons[label].exists {
+                source.buttons[label].tap()
+            }
+        }
+    }
+
     private func snap(_ app: XCUIApplication, _ name: String) {
         let shot = XCTAttachment(screenshot: app.screenshot())
         shot.name = name
@@ -54,12 +64,17 @@ final class RainPulseUITests: XCTestCase {
         if search.waitForExistence(timeout: 5) {
             search.tap()
             search.typeText("Sydney")
+            dismissSystemPopups(app)
             let result = app.cells.staticTexts.matching(NSPredicate(format: "label CONTAINS[c] 'Sydney'")).firstMatch
             if result.waitForExistence(timeout: 15) {
                 result.tap()
+                dismissSystemPopups(app)
                 XCTAssertTrue(app.staticTexts["Sydney"].waitForExistence(timeout: 15), "Sydney should be added")
             }
+            dismissSystemPopups(app)
+            if app.buttons["Cancel"].exists { app.buttons["Cancel"].tap() }
         }
+        dismissSystemPopups(app)
 
         // Settings
         tabs.buttons["Settings"].tap()

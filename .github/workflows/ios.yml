@@ -61,6 +61,9 @@ jobs:
         if: failure()
         run: grep -E "error:" build.log | sort -u | head -60 || true
 
+      - name: Check live forecast API from CI
+        run: curl -s -m 30 -o /dev/null -w "Open-Meteo HTTP %{http_code} in %{time_total}s\n" "https://api.open-meteo.com/v1/forecast?latitude=51.5&longitude=-0.12&current=temperature_2m" || true
+
       - name: UI tests on iPhone simulator (self-test + screenshots)
         id: uitests
         run: |

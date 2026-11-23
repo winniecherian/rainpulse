@@ -90,7 +90,8 @@ actor ForecastService {
     private var cache: [String: Forecast] = [:]
     private let session: URLSession = {
         let config = URLSessionConfiguration.default
-        config.timeoutIntervalForRequest = 15
+        config.timeoutIntervalForRequest = 30
+        config.waitsForConnectivity = true
         return URLSession(configuration: config)
     }()
 
@@ -98,6 +99,9 @@ actor ForecastService {
         let key = String(format: "%.3f,%.3f,%d", latitude, longitude, days)
         if let cached = cache[key], Date().timeIntervalSince(cached.fetchedAt) < maxAge {
             return cached
+        }
+        if AppConfig.isUITest {
+            return Forecast.sample(latitude: latitude)
         }
 
         let commercialKey = AppConfig.openMeteoAPIKey
@@ -121,8 +125,19 @@ actor ForecastService {
         components.queryItems = items
         guard let url = components.url else { throw ForecastError.badResponse }
 
-        let (data, response) = try await session.data(from: url)
-        guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
+        var attempt = 0
+        var result: (Data, URLResponse)?
+        while result == nil {
+            do {
+                result = try await session.data(from: url)
+            } catch {
+                attempt += 1
+                if attempt >= 2 { throw error }
+                try await Task.sleep(nanoseconds: 1_500_000_000)
+            }
+        }
+        guard let (data, response) = result,
+              let http = response as? HTTPURLResponse, http.statusCode == 200 else {
             throw ForecastError.badResponse
         }
         let forecast = try Self.decode(data)
@@ -218,5 +233,37 @@ actor ForecastService {
 extension Array {
     subscript(safe index: Int) -> Element? {
         indices.contains(index) ? self[index] : nil
+    }
+}
+
+// MARK: - Sample data (UI tests and App Store screenshots)
+
+extension Forecast {
+    /// Deterministic forecast with a shower arriving in ~25 minutes.
+    static func sample(latitude: Double, now: Date = Date()) -> Forecast {
+        let base = floor(now.timeIntervalSince1970 / 900) * 900
+        let warm = 31 - abs(latitude) * 0.35
+        let rain: [Double] = [0, 0, 0.15, 0.6, 1.4, 2.1, 1.6, 0.9, 0.4, 0.1, 0, 0]
+        let steps = rain.enumerated().map { i, mm in
+            Step(time: Date(timeIntervalSince1970: base + Double(i) * 900), precipitation: mm)
+        }
+        let hourBase = floor(now.timeIntervalSince1970 / 3600) * 3600
+        let codes = [2, 61, 63, 80, 3, 2, 1, 1, 0, 0, 1, 2]
+        let hours = (0..<48).map { i -> Hour in
+            let t = hourBase + Double(i) * 3600
+            let daily = sin(Double(i) / 24 * 2 * .pi - 1.2)
+            return Hour(time: Date(timeIntervalSince1970: t), temperature: warm + daily * 4,
+                        precipitationProbability: [10, 70, 85, 60, 30, 15][i % 6],
+                        precipitation: i < 4 ? [0.3, 2.4, 1.1, 0.2][i] : 0, weatherCode: codes[i % codes.count])
+        }
+        let dayCodes = [63, 80, 2, 1, 0, 3, 61, 95, 2, 1, 0, 1, 80, 2]
+        let days = (0..<14).map { i in
+            Day(time: Date(timeIntervalSince1970: hourBase + Double(i) * 86400), weatherCode: dayCodes[i],
+                maxTemperature: warm + 3 + Double(i % 4), minTemperature: warm - 5 + Double(i % 3),
+                precipitationSum: [6.2, 3.1, 0, 0, 0, 0.4, 4.8, 12.5, 0.2, 0, 0, 0, 2.2, 0.5][i],
+                precipitationProbabilityMax: [80, 65, 10, 5, 0, 20, 70, 90, 15, 5, 0, 10, 55, 20][i])
+        }
+        return Forecast(current: Current(time: now, temperature: warm, weatherCode: 2, precipitation: 0),
+                        nowcast: steps, hourly: hours, daily: days, utcOffsetSeconds: 0, fetchedAt: now)
     }
 }
