@@ -86,16 +86,15 @@ jobs:
           ls shots | head -30
           xcrun xcresulttool get test-results summary --path "$RUNNER_TEMP/tests.xcresult" > shots/summary.json || true
           grep -E "Test Case|error:" test.log > shots/test-results.txt || true
+          # Publish ONLY the exported screenshots, from a clean temp repo
+          # (never the workspace, which holds Secrets.xcconfig).
+          rm -rf /tmp/pub && mkdir /tmp/pub && cp -r shots/. /tmp/pub/
+          cd /tmp/pub
+          git init -q -b screenshots
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
-          git fetch origin screenshots || true
-          rm -rf /tmp/pub && mkdir /tmp/pub && cp -r shots/. /tmp/pub/
-          git checkout --orphan screenshots-tmp
-          git rm -rf . >/dev/null
-          cp -r /tmp/pub/. .
-          git add -A && git commit -m "Screenshots for ${GITHUB_SHA::7}" >/dev/null
-          git push -f origin HEAD:screenshots
-          git checkout -f "$GITHUB_SHA"
+          git add -A && git commit -qm "Screenshots for ${GITHUB_SHA::7}"
+          git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" screenshots
 
       - name: Install App Store Connect key
         if: env.ASC_KEY_ID != '' && (github.event_name == 'workflow_dispatch' && inputs.upload)
