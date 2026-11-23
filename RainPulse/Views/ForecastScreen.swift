@@ -434,7 +434,7 @@ struct DetailsCard: View {
                               note: current.windGust.map { String(localized: "Gusts \(Self.measure($0, UnitSpeed.kilometersPerHour))") }))
         }
         if let v = current.pressure {
-            list.append(.init(title: String(localized: "Pressure"), value: Self.measure(v, UnitPressure.hectopascals), symbol: "gauge.with.dots.needle.67percent", note: nil))
+            list.append(.init(title: String(localized: "Pressure"), value: "\(Int(v.rounded())) hPa", symbol: "gauge.with.dots.needle.67percent", note: nil))
         }
         if let v = current.visibility {
             list.append(.init(title: String(localized: "Visibility"), value: Self.measure(v, UnitLength.kilometers, digits: v < 10 ? 1 : 0), symbol: "eye", note: nil))
