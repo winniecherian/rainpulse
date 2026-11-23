@@ -22,7 +22,7 @@ struct SettingsScreen: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section { PlanCard(tier: store.tier) { showPaywall = true } }
+                Section { CurrentPlanCard(tier: store.tier) { showPaywall = true } }
                     .listRowInsets(EdgeInsets())
                     .listRowBackground(Color.clear)
 
@@ -143,7 +143,7 @@ struct SettingsScreen: View {
 
 
 /// RainViewer-style plan card at the top of Settings.
-struct PlanCard: View {
+struct CurrentPlanCard: View {
     let tier: Tier
     let upgrade: () -> Void
 
