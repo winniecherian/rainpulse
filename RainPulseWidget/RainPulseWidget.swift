@@ -28,8 +28,9 @@ struct RainProvider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<RainEntry>) -> Void) {
         Task {
             let entry = await makeEntry()
-            // Refresh roughly every 20 minutes (WidgetKit may stretch this).
-            let next = Date().addingTimeInterval(20 * 60)
+            // Paid users refresh every 20 min, free users every 45 min, to keep API costs low.
+            let minutes: Double = entry.tier >= .essential ? 20 : 45
+            let next = Date().addingTimeInterval(minutes * 60)
             completion(Timeline(entries: [entry], policy: .after(next)))
         }
     }
@@ -41,7 +42,7 @@ struct RainProvider: TimelineProvider {
         }
         let forecast = try? await ForecastService.shared.forecast(latitude: place.latitude,
                                                                    longitude: place.longitude,
-                                                                   days: 1, maxAge: 600)
+                                                                   days: 1, maxAge: 900)
         return RainEntry(date: Date(), placeName: place.name, forecast: forecast, tier: tier)
     }
 }

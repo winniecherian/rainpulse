@@ -95,7 +95,7 @@ actor ForecastService {
         return URLSession(configuration: config)
     }()
 
-    func forecast(latitude: Double, longitude: Double, days: Int, maxAge: TimeInterval = 600) async throws -> Forecast {
+    func forecast(latitude: Double, longitude: Double, days: Int, maxAge: TimeInterval = 900) async throws -> Forecast {
         let key = String(format: "%.3f,%.3f,%d", latitude, longitude, days)
         if let cached = cache[key], Date().timeIntervalSince(cached.fetchedAt) < maxAge {
             return cached
