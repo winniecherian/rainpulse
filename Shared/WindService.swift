@@ -68,8 +68,10 @@ actor WindService {
         let key = "\(Int(latMin)),\(Int(latMax)),\(Int(lonMin)),\(Int(lonMax)),\(stride)"
         if let (date, field) = cache[key], Date().timeIntervalSince(date) < 3 * 3600 { return field }
 
-        let field = await erddap(latMin: latMin, latMax: latMax, lonMin: lonMin, lonMax: lonMax, stride: stride)
-            ?? (await openMeteo(latMin: latMin, latMax: latMax, lonMin: lonMin, lonMax: lonMax))
+        var field = await erddap(latMin: latMin, latMax: latMax, lonMin: lonMin, lonMax: lonMax, stride: stride)
+        if field == nil {
+            field = await openMeteo(latMin: latMin, latMax: latMax, lonMin: lonMin, lonMax: lonMax)
+        }
         if let field {
             if cache.count > 12 { cache.removeAll() }
             cache[key] = (Date(), field)
