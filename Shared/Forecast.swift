@@ -136,10 +136,10 @@ actor ForecastService {
                 try await Task.sleep(nanoseconds: 1_500_000_000)
             }
         }
-        guard let (data, response) = result,
-              let http = response as? HTTPURLResponse, http.statusCode == 200 else {
+        guard let result, let http = result.1 as? HTTPURLResponse, http.statusCode == 200 else {
             throw ForecastError.badResponse
         }
+        let data = result.0
         let forecast = try Self.decode(data)
         cache[key] = forecast
         return forecast
