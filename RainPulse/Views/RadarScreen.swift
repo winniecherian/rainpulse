@@ -29,6 +29,11 @@ struct RadarScreen: View {
     @AppStorage("radar.past") private var pastRaw = PastRange.m30.rawValue
     @AppStorage("radar.showFuture") private var showFuture = true
     @AppStorage("map.style") private var mapStyle = 0
+    @AppStorage("map.windFlow") private var windFlow = false
+    @AppStorage("map.cyclones") private var showCyclones = true
+    @State private var cyclones: [Cyclone] = []
+    @State private var focus: CLLocationCoordinate2D?
+    @State private var focusToken = 0
 
     @State private var layer: MapLayer = .radar
     @State private var frames: [RadarFrame] = []
@@ -66,12 +71,19 @@ struct RadarScreen: View {
                          places: places.places,
                          recenterToken: recenterToken,
                          onAuthFailure: { if source == .owmGlobalPrecip { fellBackToCurrent = true } },
-                         mapStyle: mapStyle)
+                         mapStyle: mapStyle,
+                         showWindFlow: windFlow && store.tier.hasExtraLayers,
+                         cyclones: showCyclones ? cyclones : [],
+                         focus: focus,
+                         focusToken: focusToken)
                 .ignoresSafeArea(edges: .top)
 
             VStack(spacing: 0) {
                 topBar
                 Spacer()
+                if showCyclones, let storm = nearestStorm {
+                    cycloneChip(storm).padding(.bottom, 8)
+                }
                 if store.tier == .free && layer == .radar {
                     upgradeChip.padding(.bottom, 8)
                 }
@@ -93,7 +105,8 @@ struct RadarScreen: View {
             let every = speed >= 2 ? 1 : (speed >= 1 ? 2 : 4)
             if tick % every == 0 { index = (index + 1) % frames.count }
         }
-        .onReceive(refreshTimer) { _ in rebuildFrames() }
+        .onReceive(refreshTimer) { _ in rebuildFrames(); Task { await loadCyclones() } }
+        .task { await loadCyclones() }
     }
 
     // MARK: - Top bar
@@ -130,9 +143,20 @@ struct RadarScreen: View {
                                   systemImage: item.symbol)
                         }
                     }
+                    Divider()
+                    Button {
+                        if store.tier.hasExtraLayers { windFlow.toggle() } else { showPaywall = true }
+                    } label: {
+                        Label(String(localized: "Wind flow") + (store.tier.hasExtraLayers ? "" : " (Pro)"),
+                              systemImage: windFlow && store.tier.hasExtraLayers ? "checkmark" : "wind.circle")
+                    }
+                    Button { showCyclones.toggle() } label: {
+                        Label("Cyclones", systemImage: showCyclones ? "checkmark" : "hurricane")
+                    }
                 } label: {
                     mapButton(systemImage: "square.3.layers.3d")
                 }
+                .accessibilityLabel("Map layers")
                 Button {
                     location.request()
                     recenterToken += 1
@@ -143,6 +167,47 @@ struct RadarScreen: View {
         }
         .padding(.horizontal)
         .padding(.top, 8)
+    }
+
+    /// Closest active storm within 2,000 km of the user (or the first saved place).
+    private var nearestStorm: Cyclone? {
+        guard let here = location.location?.coordinate ?? places.places.first?.coordinate else { return cyclones.first }
+        return cyclones.map { ($0, $0.distanceKm(to: here)) }
+            .filter { $0.1 < 2000 }
+            .min { $0.1 < $1.1 }?.0
+    }
+
+    private func cycloneChip(_ storm: Cyclone) -> some View {
+        Button {
+            focus = storm.position.cl
+            focusToken += 1
+        } label: {
+            HStack(spacing: 6) {
+                Image(systemName: "hurricane")
+                if let here = location.location?.coordinate {
+                    Text("\(storm.name) · \(Int(storm.maxWindKmh.rounded())) km/h · \(Int(storm.distanceKm(to: here).rounded())) km away")
+                } else {
+                    Text("\(storm.name) · \(Int(storm.maxWindKmh.rounded())) km/h")
+                }
+            }
+            .font(.footnote.weight(.semibold))
+            .padding(.horizontal, 14)
+            .padding(.vertical, 8)
+            .background(storm.alertLevel == "Red" ? Color.red : (storm.alertLevel == "Orange" ? Color.orange : Color.teal), in: Capsule())
+            .foregroundStyle(.white)
+        }
+        .accessibilityLabel("Cyclone \(storm.name)")
+    }
+
+    private func loadCyclones() async {
+        cyclones = await CycloneService.shared.activeCyclones(sampleNear: location.location?.coordinate ?? places.places.first?.coordinate)
+    }
+
+    private var attributionText: String {
+        var parts = [provider.source.attribution]
+        if windFlow && store.tier.hasExtraLayers { parts.append("Wind © NOAA GFS") }
+        if showCyclones && !cyclones.isEmpty { parts.append("Cyclones © GDACS") }
+        return parts.joined(separator: " · ")
     }
 
     private var shareText: String {
@@ -244,7 +309,7 @@ struct RadarScreen: View {
                     .font(.caption2)
                 Text(freshnessText).font(.caption2).foregroundStyle(.secondary)
                 Spacer()
-                Text(provider.source.attribution).font(.caption2).foregroundStyle(.secondary)
+                Text(attributionText).font(.caption2).foregroundStyle(.secondary).lineLimit(1).minimumScaleFactor(0.7)
             }
         }
         .padding(14)

@@ -17,6 +17,10 @@ struct RadarMapView: UIViewRepresentable {
     var span: Double = 6
     /// 0 = standard (muted), 1 = hybrid, 2 = satellite
     var mapStyle: Int = 0
+    var showWindFlow: Bool = false
+    var cyclones: [Cyclone] = []
+    var focus: CLLocationCoordinate2D? = nil
+    var focusToken: Int = 0
 
     func makeCoordinator() -> Coordinator { Coordinator() }
 
@@ -34,6 +38,11 @@ struct RadarMapView: UIViewRepresentable {
                                                                 longitudeDelta: center == nil ? 120 : span)),
                       animated: false)
         context.coordinator.didCenter = center != nil
+        let wind = WindFlowView(frame: map.bounds)
+        wind.mapView = map
+        wind.isHidden = true
+        map.addSubview(wind)
+        context.coordinator.windView = wind
         return map
     }
 
@@ -51,6 +60,13 @@ struct RadarMapView: UIViewRepresentable {
         private var lastRecenterToken = 0
         var didCenter = false
         var mapStyle = 0
+        var windView: WindFlowView?
+        private var windTask: Task<Void, Never>?
+        private var showWind = false
+        private var cycloneOverlays: [MKOverlay] = []
+        private var cycloneAnnotations: [CycloneAnnotation] = []
+        private var cycloneKey = ""
+        private var lastFocusToken = 0
 
         static func configuration(for style: Int) -> MKMapConfiguration {
             switch style {
@@ -94,10 +110,53 @@ struct RadarMapView: UIViewRepresentable {
                 lastRecenterToken = view.recenterToken
             }
 
+            // Focus on a point (e.g. a cyclone) on demand.
+            if let focus = view.focus, view.focusToken != lastFocusToken {
+                map.setRegion(MKCoordinateRegion(center: focus, span: MKCoordinateSpan(latitudeDelta: 14, longitudeDelta: 14)),
+                              animated: true)
+                lastFocusToken = view.focusToken
+            }
+
+            // Wind flow animation.
+            if view.showWindFlow != showWind {
+                showWind = view.showWindFlow
+                if showWind { windView?.start(); refreshWind(map) } else { windTask?.cancel(); windView?.stop() }
+            }
+
+            // Cyclone tracks, cones and markers.
+            let cKey = view.cyclones.map { "\($0.id)\($0.position.lat)\($0.position.lon)\($0.segments.count)" }.joined()
+            if cKey != cycloneKey {
+                map.removeOverlays(cycloneOverlays)
+                map.removeAnnotations(cycloneAnnotations)
+                cycloneOverlays = []
+                cycloneAnnotations = []
+                for storm in view.cyclones {
+                    for ring in storm.cone where ring.count > 2 {
+                        let poly = ConePolygon(coordinates: ring.map(\.cl), count: ring.count)
+                        cycloneOverlays.append(poly)
+                    }
+                    for seg in storm.segments where seg.points.count > 1 {
+                        let line = TrackPolyline(coordinates: seg.points.map(\.cl), count: seg.points.count)
+                        line.isForecast = seg.isForecast
+                        line.category = seg.category
+                        cycloneOverlays.append(line)
+                    }
+                    let pin = CycloneAnnotation()
+                    pin.coordinate = storm.position.cl
+                    pin.title = storm.name
+                    pin.subtitle = "\(storm.categoryLabel) · \(Int(storm.maxWindKmh.rounded())) km/h"
+                    pin.alertLevel = storm.alertLevel
+                    cycloneAnnotations.append(pin)
+                }
+                map.addOverlays(cycloneOverlays, level: .aboveLabels)
+                map.addAnnotations(cycloneAnnotations)
+                cycloneKey = cKey
+            }
+
             // Saved places as pins.
             let aKey = view.places.map { "\($0.id)\($0.latitude)\($0.longitude)" }.joined()
             if aKey != annotationKey {
-                map.removeAnnotations(map.annotations.filter { !($0 is MKUserLocation) })
+                map.removeAnnotations(map.annotations.filter { !($0 is MKUserLocation) && !($0 is CycloneAnnotation) })
                 map.addAnnotations(view.places.map { place in
                     let pin = MKPointAnnotation()
                     pin.coordinate = place.coordinate
@@ -117,7 +176,43 @@ struct RadarMapView: UIViewRepresentable {
             }
         }
 
+        private func refreshWind(_ map: MKMapView) {
+            guard showWind else { return }
+            windTask?.cancel()
+            let region = map.region
+            windTask = Task { [weak self] in
+                let field = await WindService.shared.field(for: region)
+                guard !Task.isCancelled else { return }
+                await MainActor.run { self?.windView?.field = field }
+            }
+        }
+
+        func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+            if showWind { windView?.setPaused(true) }
+        }
+
+        func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+            guard showWind else { return }
+            windView?.setPaused(false)
+            refreshWind(mapView)
+        }
+
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            if let cone = overlay as? ConePolygon {
+                let r = MKPolygonRenderer(polygon: cone)
+                r.fillColor = UIColor.white.withAlphaComponent(0.18)
+                r.strokeColor = UIColor.white.withAlphaComponent(0.7)
+                r.lineWidth = 1
+                r.lineDashPattern = [4, 4]
+                return r
+            }
+            if let line = overlay as? TrackPolyline {
+                let r = MKPolylineRenderer(polyline: line)
+                r.strokeColor = Self.trackColor(line.category)
+                r.lineWidth = line.isForecast ? 3 : 4
+                if line.isForecast { r.lineDashPattern = [6, 5] }
+                return r
+            }
             guard let tile = overlay as? RadarTileOverlay else { return MKOverlayRenderer(overlay: overlay) }
             let renderer = MKTileOverlayRenderer(tileOverlay: tile)
             renderers[ObjectIdentifier(tile)] = renderer
@@ -127,8 +222,33 @@ struct RadarMapView: UIViewRepresentable {
             return renderer
         }
 
+        static func trackColor(_ category: String) -> UIColor {
+            switch category.uppercased() {
+            case "TD": return .systemTeal
+            case "TS": return .systemYellow
+            case "CAT1": return .systemOrange
+            case "CAT2": return UIColor(red: 1, green: 0.45, blue: 0.1, alpha: 1)
+            case "CAT3": return .systemRed
+            case "CAT4": return .systemPink
+            case "CAT5": return .systemPurple
+            default: return .white
+            }
+        }
+
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
             guard !(annotation is MKUserLocation) else { return nil }
+            if let storm = annotation as? CycloneAnnotation {
+                let id = "cyclone"
+                let v = (mapView.dequeueReusableAnnotationView(withIdentifier: id) as? MKMarkerAnnotationView)
+                    ?? MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: id)
+                v.annotation = annotation
+                v.glyphImage = UIImage(systemName: "hurricane")
+                v.markerTintColor = storm.alertLevel == "Red" ? .systemRed : (storm.alertLevel == "Orange" ? .systemOrange : .systemGreen)
+                v.titleVisibility = .visible
+                v.canShowCallout = true
+                v.displayPriority = .required
+                return v
+            }
             let id = "place"
             let view = (mapView.dequeueReusableAnnotationView(withIdentifier: id) as? MKMarkerAnnotationView)
                 ?? MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: id)
@@ -139,4 +259,13 @@ struct RadarMapView: UIViewRepresentable {
             return view
         }
     }
+}
+
+final class ConePolygon: MKPolygon {}
+final class TrackPolyline: MKPolyline {
+    var isForecast = false
+    var category = ""
+}
+final class CycloneAnnotation: MKPointAnnotation {
+    var alertLevel = "Green"
 }

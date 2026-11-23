@@ -48,11 +48,24 @@ final class RainPulseUITests: XCTestCase {
         sleep(6)
         snap(app, "01-Radar")
 
+        // Cyclone chip focuses the storm; then turn on wind flow (Pro).
+        let chip = app.buttons["Cyclone SAMPLE"]
+        XCTAssertTrue(chip.waitForExistence(timeout: 10), "Cyclone chip should show on radar")
+        chip.tap()
+        sleep(3)
+        app.buttons["Map layers"].tap()
+        let windItem = app.buttons["Wind flow"]
+        XCTAssertTrue(windItem.waitForExistence(timeout: 5), "Wind flow option in layer menu")
+        windItem.tap()
+        sleep(5)
+        snap(app, "01b-WindFlow-Cyclone")
+
         // Forecast
         tabs.buttons["Forecast"].tap()
         let nextTwo = app.staticTexts["Next 2 hours"]
         XCTAssertTrue(nextTwo.waitForExistence(timeout: 30), "Forecast should load from Open-Meteo")
         XCTAssertFalse(app.buttons["Unlock with Essential"].exists, "Pro should not see the lock")
+        XCTAssertTrue(app.staticTexts["Cyclone SAMPLE"].waitForExistence(timeout: 10), "Cyclone card should show")
         sleep(2)
         snap(app, "02-Forecast")
         app.swipeUp()

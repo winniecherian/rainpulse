@@ -39,6 +39,33 @@ enum RainAlertService {
                 latitude: place.latitude, longitude: place.longitude, days: 1, maxAge: 300) else { continue }
             await evaluate(forecast, for: place)
         }
+        await checkCyclones(near: targets)
+    }
+
+    private static let cycloneNotifiedKey = "alerts.cyclonesNotified"
+
+    /// One alert per storm when its forecast track comes within 500 km of a watched place.
+    /// Safety feature: available on every plan.
+    private static func checkCyclones(near targets: [Place]) async {
+        guard !targets.isEmpty else { return }
+        let storms = await CycloneService.shared.activeCyclones()
+        var notified = Set(SharedStore.defaults.stringArray(forKey: cycloneNotifiedKey) ?? [])
+        for storm in storms {
+            for place in targets where !notified.contains("\(storm.id)-\(place.id)") {
+                let approach = storm.closestApproachKm(to: place.coordinate)
+                guard approach < 500 else { continue }
+                let now = Int(storm.distanceKm(to: place.coordinate).rounded())
+                let content = UNMutableNotificationContent()
+                content.title = String(localized: "Cyclone \(storm.name) near \(place.name)")
+                content.body = String(localized: "\(storm.categoryLabel), winds up to \(Int(storm.maxWindKmh.rounded())) km/h, \(now) km away. Follow official warnings from your weather service.")
+                content.sound = .default
+                content.threadIdentifier = "cyclone-\(storm.id)"
+                let req = UNNotificationRequest(identifier: "cyclone-\(storm.id)-\(place.id)", content: content, trigger: nil)
+                try? await UNUserNotificationCenter.current().add(req)
+                notified.insert("\(storm.id)-\(place.id)")
+            }
+        }
+        SharedStore.defaults.set(Array(notified.suffix(200)), forKey: cycloneNotifiedKey)
     }
 
     private static func evaluate(_ forecast: Forecast, for place: Place) async {

@@ -17,6 +17,7 @@ struct ForecastScreen: View {
     @State private var insight: String?
     @State private var loadingInsight = false
     @State private var airQuality: AirQuality?
+    @State private var nearbyStorms: [Cyclone] = []
 
     private var selectedPlace: Place? {
         if let id = selectedID, let place = places.places.first(where: { $0.id == id }) { return place }
@@ -35,6 +36,9 @@ struct ForecastScreen: View {
                     if let forecast, let place = selectedPlace {
                         titleBlock(place)
                         if store.tier == .free { trialBanner }
+                        ForEach(nearbyStorms) { storm in
+                            CycloneCard(storm: storm, place: place)
+                        }
                         rainCard(forecast, place: place)
                         insightCard(forecast, place: place)
                         DetailsCard(current: forecast.current, airQuality: airQuality)
@@ -114,6 +118,8 @@ struct ForecastScreen: View {
             dayIndex = 0
             insight = nil
             airQuality = await AirQualityService.shared.airQuality(latitude: place.latitude, longitude: place.longitude)
+            nearbyStorms = await CycloneService.shared.activeCyclones(sampleNear: place.coordinate)
+                .filter { $0.closestApproachKm(to: place.coordinate) < 1500 }
             if store.tier == .pro { await loadInsight(f, place: place) }
         } catch {
             errorText = error.localizedDescription
@@ -468,5 +474,48 @@ struct DetailsCard: View {
                 }
             }
         }
+    }
+}
+
+
+/// Shown on the forecast when an active cyclone's track passes within 1,500 km.
+struct CycloneCard: View {
+    let storm: Cyclone
+    let place: Place
+
+    private var tint: Color {
+        storm.alertLevel == "Red" ? .red : (storm.alertLevel == "Orange" ? .orange : .teal)
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 10) {
+                Image(systemName: "hurricane").font(.title2).foregroundStyle(tint)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Cyclone \(storm.name)").font(.headline)
+                    Text("\(storm.categoryLabel) · winds up to \(Int(storm.maxWindKmh.rounded())) km/h")
+                        .font(.subheadline).foregroundStyle(.secondary)
+                }
+                Spacer()
+            }
+            let now = Int(storm.distanceKm(to: place.coordinate).rounded())
+            let closest = Int(storm.closestApproachKm(to: place.coordinate).rounded())
+            Text(closest < now - 50
+                 ? "\(now) km from \(place.name) now; forecast track passes about \(closest) km away."
+                 : "\(now) km from \(place.name).")
+                .font(.subheadline)
+            Text("Always follow official warnings from your national weather service.")
+                .font(.caption).foregroundStyle(.secondary)
+            HStack {
+                if let url = storm.reportURL {
+                    Link("Details", destination: url).font(.footnote.weight(.semibold))
+                }
+                Spacer()
+                Text("Source: GDACS / \(storm.source)").font(.caption2).foregroundStyle(.secondary)
+            }
+        }
+        .padding()
+        .background(tint.opacity(0.12), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(tint.opacity(0.5), lineWidth: 1))
     }
 }
