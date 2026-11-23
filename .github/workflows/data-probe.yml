@@ -8,38 +8,26 @@ jobs:
     steps:
       - run: |
           set +e
-          echo "=== GDACS current TC list ==="
-          curl -s -m 40 "https://www.gdacs.org/gdacsapi/api/events/geteventlist/SEARCH?eventlist=TC&fromdate=$(date -u -d '-14 days' +%F)&todate=$(date -u +%F)&alertlevel=green;orange;red" -o tc.json -w "HTTP %{http_code} %{size_download}B %{time_total}s\n"
+          curl -s -m 40 "https://www.gdacs.org/gdacsapi/api/polygons/getgeometry?eventtype=TC&eventid=1001351&episodeid=13" -o geo.json -w "geo HTTP %{http_code} %{size_download}B\n"
           python3 - <<'PY'
           import json
-          d = json.load(open("tc.json"))
-          feats = d.get("features", [])
-          print(len(feats), "features; first keys:", list(feats[0]["properties"].keys()) if feats else None)
-          for f in feats[:6]:
-              p = f["properties"]
-              print(p.get("name"), p.get("alertlevel"), p.get("iscurrent"), p.get("fromdate"), p.get("todate"), p.get("eventid"), p.get("episodeid"), f["geometry"])
-              print("  severity:", p.get("severitydata"), " url:", p.get("url"))
-          if feats:
-              open("first.txt","w").write(feats[0]["properties"]["url"]["geometry"])
-          PY
-          echo "=== GDACS geometry of first ==="
-          [ -f first.txt ] && curl -s -m 40 "$(cat first.txt)" -o geo.json -w "HTTP %{http_code} %{size_download}B\n" && python3 - <<'PY'
-          import json, collections
           d = json.load(open("geo.json"))
-          c = collections.Counter()
-          for f in d.get("features", []):
-              p = f["properties"]
-              c[(f["geometry"]["type"], p.get("Class") or p.get("class") or p.get("polygonlabel") or p.get("type"))] += 1
-          print(c.most_common(20))
-          for f in d["features"][:4]:
-              print({k: v for k, v in f["properties"].items()}, f["geometry"]["type"], str(f["geometry"]["coordinates"])[:120])
-          pts = [f for f in d["features"] if f["geometry"]["type"] == "Point"]
-          for f in pts[:3]:
-              print("POINT", f["properties"], f["geometry"]["coordinates"])
+          skip = {"url","htmldescription","icon","iconoverall","iconeventlink","iconitemlink","affectedcountries","description","name","glide","eventtype","eventid","episodeid","istemporary","iscurrent","source","sourceid","fromdate","todate","datemodified","iso3","country","countryonland","severitydata","alertscore","episodealertscore","eventname"}
+          for f in d["features"]:
+              p = {k: v for k, v in f["properties"].items() if k not in skip}
+              g = f["geometry"]
+              print(g["type"], p, str(g["coordinates"])[:90] if g["type"] != "Polygon" else len(g["coordinates"][0]))
           PY
-          echo "=== ERDDAP GFS wind ==="
-          for base in https://coastwatch.pfeg.noaa.gov/erddap/griddap/NCEP_Global_Best https://upwell.pfeg.noaa.gov/erddap/griddap/ncep_global https://pae-paha.pacioos.hawaii.edu/erddap/griddap/ncep_global; do
+          echo "=== details ==="
+          curl -s -m 40 "https://www.gdacs.org/gdacsapi/api/events/geteventdata?eventtype=TC&eventid=1001351" | head -c 1500; echo
+          echo "=== ERDDAP GFS wind (follow redirects) ==="
+          for base in https://coastwatch.pfeg.noaa.gov/erddap/griddap/NCEP_Global_Best https://upwell.pfeg.noaa.gov/erddap/griddap/ncep_global; do
             echo "-- $base"
-            curl -s -m 60 "$base.json?ugrd10m%5B(last)%5D%5B(5):4:(25)%5D%5B(70):4:(95)%5D,vgrd10m%5B(last)%5D%5B(5):4:(25)%5D%5B(70):4:(95)%5D" -o w.json -w "HTTP %{http_code} %{size_download}B %{time_total}s\n"
-            head -c 700 w.json; echo
+            curl -sL -m 60 "$base.json?ugrd10m%5B(last)%5D%5B(5):4:(25)%5D%5B(70):4:(95)%5D,vgrd10m%5B(last)%5D%5B(5):4:(25)%5D%5B(70):4:(95)%5D" -o w.json -w "HTTP %{http_code} %{size_download}B %{time_total}s final=%{url_effective}\n"
+            head -c 900 w.json; echo
           done
+          echo "=== Open-Meteo multi-location wind (100 points) ==="
+          lats=$(python3 -c "print(','.join(str(5+2*i) for i in range(10) for j in range(10)))")
+          lons=$(python3 -c "print(','.join(str(70+2.5*j) for i in range(10) for j in range(10)))")
+          curl -s -m 60 "https://api.open-meteo.com/v1/forecast?latitude=$lats&longitude=$lons&current=wind_speed_10m,wind_direction_10m" -o om.json -w "OM HTTP %{http_code} %{size_download}B %{time_total}s\n"
+          head -c 300 om.json; echo
