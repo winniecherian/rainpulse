@@ -51,3 +51,10 @@ jobs:
           print("2.0 radar:", coloured(f"https://maps.openweathermap.org/maps/2.0/radar/5/{x}/{y}?appid={key}"))
           print("2.0 PR0:", coloured(f"https://maps.openweathermap.org/maps/2.0/weather/PR0/5/{x}/{y}?appid={key}"))
           PY
+      - uses: actions/checkout@v4
+      - name: Recolour preview
+        run: python3 tools/recolor_preview.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: radar-preview
+          path: preview/
