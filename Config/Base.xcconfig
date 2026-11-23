@@ -5,7 +5,7 @@
 //    environment variables (ci_scripts/ci_post_clone.sh writes the file for you).
 
 BUNDLE_ID_BASE = com.neuralorbitx.rainpulse
-DEVELOPMENT_TEAM =
+DEVELOPMENT_TEAM = D62ZJ949AT
 APP_GROUP_ID = group.$(BUNDLE_ID_BASE)
 
 MARKETING_VERSION = 1.0
