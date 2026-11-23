@@ -90,6 +90,40 @@ struct Forecast: Codable {
     }
 }
 
+// MARK: - Rain headline (RainViewer-style "Rain · ends at 12:30 am")
+
+extension Forecast {
+    /// Short title for the rain card.
+    func rainHeadline(from now: Date = Date()) -> String {
+        if isRainingNow {
+            let rainyCodes: Set<Int> = [51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82, 95, 96, 99]
+            return rainyCodes.contains(current.weatherCode) ? WeatherCode.description(current.weatherCode)
+                                                             : String(localized: "Rain")
+        }
+        if rainStart(within: 180, from: now) != nil { return String(localized: "Rain on the way") }
+        return String(localized: "No rain nearby")
+    }
+
+    /// One-line detail with start or end time, in the place's local time.
+    func rainDetail(from now: Date = Date()) -> String {
+        let steps = upcomingSteps(hours: 3, from: now)
+        if isRainingNow {
+            if let stop = steps.first(where: { $0.precipitation < 0.1 && $0.time > now }) {
+                let mins = Int(stop.time.timeIntervalSince(now) / 60)
+                let at = Fmt.time(stop.time, in: timeZone)
+                return mins > 60 ? String(localized: "Will last more than 1 hour, expected to end at \(at).")
+                                 : String(localized: "Expected to end at \(at).")
+            }
+            return String(localized: "Will last more than 3 hours.")
+        }
+        if let start = steps.first(where: { $0.precipitation >= 0.1 }) {
+            let peak = steps.filter { $0.time >= start.time }.map(\.precipitation).max() ?? start.precipitation
+            return String(localized: "\(Fmt.intensity(peak)) rain expected from \(Fmt.time(start.time, in: timeZone)).")
+        }
+        return String(localized: "No rain expected in the next 3 hours.")
+    }
+}
+
 // MARK: - Service
 
 enum ForecastError: Error { case badResponse, decoding }

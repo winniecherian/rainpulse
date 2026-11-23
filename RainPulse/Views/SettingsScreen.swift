@@ -1,5 +1,6 @@
 import SwiftUI
 import UIKit
+import StoreKit
 
 struct SettingsScreen: View {
     @EnvironmentObject private var store: StoreManager
@@ -9,6 +10,10 @@ struct SettingsScreen: View {
     @AppStorage(AlertSettings.thresholdKey, store: AppConfig.sharedDefaults) private var threshold = 0.1
     @AppStorage("radar.opacity") private var opacity = 0.75
     @AppStorage("radar.source") private var sourceRaw = RadarSource.owmGlobalPrecip.rawValue
+    @AppStorage("map.style") private var mapStyle = 0
+    @AppStorage("radar.speed") private var speed = 1.0
+    @AppStorage("radar.showFuture") private var showFuture = true
+    @Environment(\.requestReview) private var requestReview
 
     @State private var showPaywall = false
     @State private var showManage = false
@@ -17,6 +22,10 @@ struct SettingsScreen: View {
     var body: some View {
         NavigationStack {
             Form {
+                Section { PlanCard(tier: store.tier) { showPaywall = true } }
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.clear)
+
                 Section("Subscription") {
                     HStack {
                         Text("Plan")
@@ -68,8 +77,30 @@ struct SettingsScreen: View {
                         Text("Radar opacity")
                         Slider(value: $opacity, in: 0.3...1)
                     }
+                    Picker("Map style", selection: $mapStyle) {
+                        Text("Standard").tag(0)
+                        Text("Hybrid").tag(1)
+                        Text("Satellite").tag(2)
+                    }
+                    Picker("Playback speed", selection: $speed) {
+                        Text("0.5x").tag(0.5)
+                        Text("1x").tag(1.0)
+                        Text("2x").tag(2.0)
+                    }
+                    Toggle("Show rain forecast in animation", isOn: $showFuture)
                     Picker("Radar data", selection: $sourceRaw) {
                         ForEach(RadarSource.allCases) { Text($0.displayName).tag($0.rawValue) }
+                    }
+                }
+
+                Section("Help & Feedback") {
+                    Button {
+                        requestReview()
+                    } label: {
+                        Label("Rate RainPulse", systemImage: "star")
+                    }
+                    Link(destination: URL(string: "mailto:support@neuralorbitx.com?subject=RainPulse%20feedback")!) {
+                        Label("Send feedback", systemImage: "envelope")
                     }
                 }
 
@@ -107,5 +138,55 @@ struct SettingsScreen: View {
                 Text("Turn on notifications for RainPulse in Settings to get rain alerts.")
             }
         }
+    }
+}
+
+
+/// RainViewer-style plan card at the top of Settings.
+struct PlanCard: View {
+    let tier: Tier
+    let upgrade: () -> Void
+
+    private var bullets: [String] {
+        switch tier {
+        case .free: return [String(localized: "2-hour rain forecast animation"),
+                            String(localized: "Minute-by-minute rain chart"),
+                            String(localized: "14-day forecast and alerts for 20 places")]
+        case .essential: return [String(localized: "6-hour radar history"),
+                                 String(localized: "Clouds, wind and temperature layers"),
+                                 String(localized: "AI insights")]
+        case .pro: return [String(localized: "Everything in RainPulse is unlocked")]
+        }
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Text("Your plan").font(.subheadline).foregroundStyle(.white.opacity(0.85))
+                Spacer()
+                Text(tier.displayName)
+                    .font(.caption.bold())
+                    .padding(.horizontal, 10).padding(.vertical, 4)
+                    .background(.white.opacity(0.25), in: Capsule())
+                    .foregroundStyle(.white)
+            }
+            Text(tier == .pro ? String(localized: "You have Pro") :
+                 (tier == .free ? String(localized: "Get Essential") : String(localized: "Try Pro")))
+                .font(.title2.bold()).foregroundStyle(.white)
+            ForEach(bullets, id: \.self) { b in
+                Label(b, systemImage: "checkmark").font(.subheadline).foregroundStyle(.white)
+            }
+            if tier != .pro {
+                Button(action: upgrade) {
+                    Text("Upgrade").font(.headline).frame(maxWidth: .infinity).padding(.vertical, 10)
+                        .background(.white, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(Color.accentColor)
+            }
+        }
+        .padding()
+        .background(LinearGradient(colors: [Color.accentColor, .indigo], startPoint: .topLeading, endPoint: .bottomTrailing),
+                    in: RoundedRectangle(cornerRadius: 20, style: .continuous))
     }
 }

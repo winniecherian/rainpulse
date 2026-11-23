@@ -92,13 +92,15 @@ struct RadarProvider {
     /// Builds the animation frames a tier is entitled to.
     /// Frame count is capped (~18) to keep tile usage — and your data bill — predictable.
     func frames(for tier: Tier, layer: MapLayer, now: Date = Date()) -> [RadarFrame] {
+        frames(past: tier.radarPast, future: tier.radarFuture, layer: layer, now: now)
+    }
+
+    func frames(past: TimeInterval, future: TimeInterval, layer: MapLayer, now: Date = Date()) -> [RadarFrame] {
         guard source.supportsTime, layer == .radar else {
             return [RadarFrame(date: now, isForecast: false)]
         }
         // Newest radar image is usually ~10 minutes old.
         let anchor = (floor((now.timeIntervalSince1970 - 600) / 600) * 600)
-        let past = tier.radarPast
-        let future = tier.radarFuture
         let total = past + future
         let niceSteps: [TimeInterval] = [600, 1200, 1800, 3600, 7200, 10800]
         let step = niceSteps.first { total / $0 <= 18 } ?? 10800

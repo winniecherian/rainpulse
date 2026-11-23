@@ -13,19 +13,25 @@ struct RadarMapView: UIViewRepresentable {
     let places: [Place]
     var recenterToken: Int = 0
     var onAuthFailure: () -> Void = {}
+    var interactive: Bool = true
+    var span: Double = 6
+    /// 0 = standard (muted), 1 = hybrid, 2 = satellite
+    var mapStyle: Int = 0
 
     func makeCoordinator() -> Coordinator { Coordinator() }
 
     func makeUIView(context: Context) -> MKMapView {
         let map = MKMapView()
         map.delegate = context.coordinator
-        map.showsUserLocation = true
-        map.showsCompass = true
+        map.showsUserLocation = interactive
+        map.showsCompass = interactive
+        map.isUserInteractionEnabled = interactive
         map.pointOfInterestFilter = .excludingAll
-        map.preferredConfiguration = MKStandardMapConfiguration(emphasisStyle: .muted)
+        map.preferredConfiguration = Coordinator.configuration(for: mapStyle)
+        context.coordinator.mapStyle = mapStyle
         map.setRegion(MKCoordinateRegion(center: center ?? CLLocationCoordinate2D(latitude: 20, longitude: 0),
-                                         span: MKCoordinateSpan(latitudeDelta: center == nil ? 120 : 6,
-                                                                longitudeDelta: center == nil ? 120 : 6)),
+                                         span: MKCoordinateSpan(latitudeDelta: center == nil ? 120 : span,
+                                                                longitudeDelta: center == nil ? 120 : span)),
                       animated: false)
         context.coordinator.didCenter = center != nil
         return map
@@ -44,10 +50,23 @@ struct RadarMapView: UIViewRepresentable {
         private var opacity = 0.75
         private var lastRecenterToken = 0
         var didCenter = false
+        var mapStyle = 0
+
+        static func configuration(for style: Int) -> MKMapConfiguration {
+            switch style {
+            case 1: return MKHybridMapConfiguration()
+            case 2: return MKImageryMapConfiguration()
+            default: return MKStandardMapConfiguration(emphasisStyle: .muted)
+            }
+        }
 
         func sync(map: MKMapView, view: RadarMapView) {
             currentIndex = view.currentIndex
             opacity = view.opacity
+            if view.mapStyle != mapStyle {
+                mapStyle = view.mapStyle
+                map.preferredConfiguration = Self.configuration(for: mapStyle)
+            }
 
             // Rebuild overlays only when source/layer/frames change.
             let key = "\(view.provider.source.rawValue)|\(view.layer.rawValue)|" +
@@ -69,7 +88,7 @@ struct RadarMapView: UIViewRepresentable {
             // Center once when location becomes available, or on demand.
             if let center = view.center, !didCenter || view.recenterToken != lastRecenterToken {
                 map.setRegion(MKCoordinateRegion(center: center,
-                                                 span: MKCoordinateSpan(latitudeDelta: 6, longitudeDelta: 6)),
+                                                 span: MKCoordinateSpan(latitudeDelta: view.span, longitudeDelta: view.span)),
                               animated: didCenter)
                 didCenter = true
                 lastRecenterToken = view.recenterToken

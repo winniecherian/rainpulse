@@ -1,6 +1,23 @@
 import SwiftUI
 import MapKit
 
+/// Playback ranges a user can pick, gated by plan.
+enum PastRange: Int, CaseIterable, Identifiable {
+    case m30 = 1800, h1 = 3600, h2 = 7200, h6 = 21600, h24 = 86400, h48 = 172800
+    var id: Int { rawValue }
+    var label: String {
+        switch self {
+        case .m30: return "30m"
+        case .h1: return "1h"
+        case .h2: return "2h"
+        case .h6: return "6h"
+        case .h24: return "24h"
+        case .h48: return "48h"
+        }
+    }
+    func allowed(for tier: Tier) -> Bool { TimeInterval(rawValue) <= tier.radarPast }
+}
+
 struct RadarScreen: View {
     @EnvironmentObject private var store: StoreManager
     @EnvironmentObject private var places: PlacesModel
@@ -8,16 +25,23 @@ struct RadarScreen: View {
 
     @AppStorage("radar.source") private var sourceRaw = RadarSource.owmGlobalPrecip.rawValue
     @AppStorage("radar.opacity") private var opacity = 0.75
+    @AppStorage("radar.speed") private var speed = 1.0
+    @AppStorage("radar.past") private var pastRaw = PastRange.m30.rawValue
+    @AppStorage("radar.showFuture") private var showFuture = true
+    @AppStorage("map.style") private var mapStyle = 0
 
     @State private var layer: MapLayer = .radar
     @State private var frames: [RadarFrame] = []
     @State private var index = 0
     @State private var isPlaying = false
+    @State private var tick = 0
     @State private var showPaywall = false
+    @State private var showLegend = false
     @State private var fellBackToCurrent = false
     @State private var recenterToken = 0
+    @State private var controlsExpanded = true
 
-    private let playTimer = Timer.publish(every: 0.6, on: .main, in: .common).autoconnect()
+    private let playTimer = Timer.publish(every: 0.3, on: .main, in: .common).autoconnect()
     private let refreshTimer = Timer.publish(every: 300, on: .main, in: .common).autoconnect()
 
     private var source: RadarSource {
@@ -25,6 +49,11 @@ struct RadarScreen: View {
         return (fellBackToCurrent && chosen == .owmGlobalPrecip) ? .owmCurrent : chosen
     }
     private var provider: RadarProvider { RadarProvider(source: source) }
+
+    private var pastRange: PastRange {
+        let chosen = PastRange(rawValue: pastRaw) ?? .m30
+        return chosen.allowed(for: store.tier) ? chosen : .m30
+    }
 
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -36,7 +65,8 @@ struct RadarScreen: View {
                          center: location.location?.coordinate,
                          places: places.places,
                          recenterToken: recenterToken,
-                         onAuthFailure: { if source == .owmGlobalPrecip { fellBackToCurrent = true } })
+                         onAuthFailure: { if source == .owmGlobalPrecip { fellBackToCurrent = true } },
+                         mapStyle: mapStyle)
                 .ignoresSafeArea(edges: .top)
 
             VStack(spacing: 0) {
@@ -49,38 +79,52 @@ struct RadarScreen: View {
             }
         }
         .sheet(isPresented: $showPaywall) { PaywallView() }
+        .sheet(isPresented: $showLegend) { LegendSheet().presentationDetents([.height(320)]) }
         .onAppear(perform: rebuildFrames)
         .onChange(of: store.tier) { _, _ in rebuildFrames() }
         .onChange(of: sourceRaw) { _, _ in fellBackToCurrent = false; rebuildFrames() }
         .onChange(of: fellBackToCurrent) { _, _ in rebuildFrames() }
         .onChange(of: layer) { _, _ in rebuildFrames() }
+        .onChange(of: pastRaw) { _, _ in rebuildFrames() }
+        .onChange(of: showFuture) { _, _ in rebuildFrames() }
         .onReceive(playTimer) { _ in
             guard isPlaying, frames.count > 1 else { return }
-            index = (index + 1) % frames.count
+            tick += 1
+            let every = speed >= 2 ? 1 : (speed >= 1 ? 2 : 4)
+            if tick % every == 0 { index = (index + 1) % frames.count }
         }
         .onReceive(refreshTimer) { _ in rebuildFrames() }
     }
 
-    // MARK: - Pieces
+    // MARK: - Top bar
 
     private var topBar: some View {
         HStack(alignment: .top) {
+            Button { showLegend = true } label: {
+                LinearGradient(colors: [.cyan, .blue, .green, .yellow, .orange, .red, .purple],
+                               startPoint: .top, endPoint: .bottom)
+                    .frame(width: 10, height: 30)
+                    .clipShape(Capsule())
+                    .frame(width: 44, height: 44)
+                    .background(.regularMaterial, in: Circle())
+            }
+            .accessibilityLabel("Radar legend")
+
             if AppConfig.owmAPIKey.isEmpty && source != .tomorrow {
-                Label("Add your OpenWeather API key to show radar", systemImage: "key.fill")
+                Label("Radar key missing", systemImage: "key.fill")
                     .font(.caption)
                     .padding(8)
                     .background(.ultraThinMaterial, in: Capsule())
             }
             Spacer()
             VStack(spacing: 8) {
+                ShareLink(item: shareText) {
+                    mapButton(systemImage: "square.and.arrow.up")
+                }
                 Menu {
                     ForEach(MapLayer.allCases) { item in
                         Button {
-                            if item != .radar && !store.tier.hasExtraLayers {
-                                showPaywall = true
-                            } else {
-                                layer = item
-                            }
+                            if item != .radar && !store.tier.hasExtraLayers { showPaywall = true } else { layer = item }
                         } label: {
                             Label(item.displayName + (item != .radar && !store.tier.hasExtraLayers ? " (Pro)" : ""),
                                   systemImage: item.symbol)
@@ -101,6 +145,11 @@ struct RadarScreen: View {
         .padding(.top, 8)
     }
 
+    private var shareText: String {
+        let place = location.placeName ?? String(localized: "my area")
+        return String(localized: "Live rain radar for \(place) — RainPulse: Live Rain Radar")
+    }
+
     private func mapButton(systemImage: String) -> some View {
         Image(systemName: systemImage)
             .font(.system(size: 17, weight: .semibold))
@@ -119,12 +168,36 @@ struct RadarScreen: View {
         }
     }
 
+    // MARK: - Timeline & playback controls
+
     private var timeline: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 10) {
+            if controlsExpanded && frames.count > 1 {
+                HStack(spacing: 8) {
+                    controlChip(systemImage: "gauge.with.dots.needle.33percent",
+                                text: speed == 0.5 ? "0.5x" : (speed >= 2 ? "2x" : "1x")) {
+                        speed = speed == 0.5 ? 1 : (speed == 1 ? 2 : 0.5)
+                    }
+                    Menu {
+                        ForEach(PastRange.allCases) { range in
+                            Button {
+                                if range.allowed(for: store.tier) { pastRaw = range.rawValue } else { showPaywall = true }
+                            } label: {
+                                Text(range.label + (range.allowed(for: store.tier) ? "" : " 🔒"))
+                            }
+                        }
+                    } label: {
+                        chipLabel(systemImage: "clock.arrow.circlepath", text: pastRange.label)
+                    }
+                    controlChip(systemImage: "clock.badge.checkmark",
+                                text: showFuture ? "+" + futureLabel : "Off") {
+                        showFuture.toggle()
+                    }
+                }
+            }
+
             HStack {
-                Button {
-                    isPlaying.toggle()
-                } label: {
+                Button { isPlaying.toggle() } label: {
                     Image(systemName: isPlaying ? "pause.fill" : "play.fill")
                         .font(.title3)
                         .frame(width: 44, height: 44)
@@ -132,25 +205,44 @@ struct RadarScreen: View {
                 .disabled(frames.count < 2)
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(frameLabel).font(.headline.monospacedDigit())
+                    HStack(spacing: 6) {
+                        Text(frameLabel).font(.headline.monospacedDigit())
+                        if isAtNow {
+                            Text("LIVE")
+                                .font(.caption2.bold())
+                                .padding(.horizontal, 5).padding(.vertical, 2)
+                                .background(.red, in: RoundedRectangle(cornerRadius: 4))
+                                .foregroundStyle(.white)
+                        }
+                    }
                     Text(frameSubLabel).font(.caption).foregroundStyle(.secondary)
                 }
                 Spacer()
-                if fellBackToCurrent {
-                    Text("Live only").font(.caption2.weight(.semibold))
-                        .padding(.horizontal, 6).padding(.vertical, 3)
-                        .background(.orange.opacity(0.2), in: Capsule())
+                Button { withAnimation { controlsExpanded.toggle() } } label: {
+                    Image(systemName: controlsExpanded ? "chevron.down" : "chevron.up")
+                        .frame(width: 32, height: 32)
                 }
+                .opacity(frames.count > 1 ? 1 : 0)
             }
 
             if frames.count > 1 {
                 Slider(value: Binding(get: { Double(index) },
                                       set: { index = Int($0.rounded()); isPlaying = false }),
                        in: 0...Double(frames.count - 1), step: 1)
+                HStack {
+                    Text("−" + pastRange.label).font(.caption2).foregroundStyle(.secondary)
+                    Spacer()
+                    if showFuture {
+                        Text("+" + futureLabel).font(.caption2).foregroundStyle(.secondary)
+                    }
+                }
             }
 
             HStack {
-                RainLegend()
+                Image(systemName: freshnessIsStale ? "exclamationmark.triangle.fill" : "checkmark.circle.fill")
+                    .foregroundStyle(freshnessIsStale ? .orange : .green)
+                    .font(.caption2)
+                Text(freshnessText).font(.caption2).foregroundStyle(.secondary)
                 Spacer()
                 Text(provider.source.attribution).font(.caption2).foregroundStyle(.secondary)
             }
@@ -161,7 +253,26 @@ struct RadarScreen: View {
         .padding(.bottom, 8)
     }
 
+    private func chipLabel(systemImage: String, text: String) -> some View {
+        Label(text, systemImage: systemImage)
+            .font(.subheadline.weight(.semibold))
+            .padding(.horizontal, 12)
+            .padding(.vertical, 7)
+            .background(Color.primary.opacity(0.08), in: Capsule())
+    }
+
+    private func controlChip(systemImage: String, text: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) { chipLabel(systemImage: systemImage, text: text) }
+            .buttonStyle(.plain)
+    }
+
+    private var futureLabel: String {
+        let mins = Int(store.tier.radarFuture / 60)
+        return mins >= 60 ? "\(mins / 60)h" : "\(mins)m"
+    }
+
     private var currentFrame: RadarFrame? { frames.indices.contains(index) ? frames[index] : nil }
+    private var isAtNow: Bool { frames.count <= 1 || index == RadarProvider.nowIndex(in: frames) }
 
     private var frameLabel: String {
         guard let frame = currentFrame, frames.count > 1 else { return String(localized: "Live") }
@@ -169,11 +280,28 @@ struct RadarScreen: View {
     }
 
     private var frameSubLabel: String {
-        guard let frame = currentFrame, frames.count > 1 else { return layer.displayName }
+        guard let frame = currentFrame, frames.count > 1 else {
+            return fellBackToCurrent ? String(localized: "Current radar only") : layer.displayName
+        }
         let mins = Int((frame.date.timeIntervalSince(frames[RadarProvider.nowIndex(in: frames)].date)) / 60)
         if mins == 0 { return String(localized: "Now") }
         let rel = mins > 0 ? "+\(Self.duration(mins))" : "−\(Self.duration(-mins))"
         return frame.isForecast ? String(localized: "Forecast \(rel)") : String(localized: "Past \(rel)")
+    }
+
+    /// How old the newest radar image is.
+    private var radarAgeMinutes: Int {
+        guard source.supportsTime, frames.count > 1 else { return 0 }
+        let newest = frames[RadarProvider.nowIndex(in: frames)].date
+        return max(0, Int(Date().timeIntervalSince(newest) / 60))
+    }
+    private var freshnessIsStale: Bool { radarAgeMinutes > 30 }
+    private var freshnessText: String {
+        if fellBackToCurrent { return String(localized: "Current radar · animation unavailable") }
+        let age = radarAgeMinutes
+        if age <= 1 { return String(localized: "Radar updated just now") }
+        return freshnessIsStale ? String(localized: "Radar updated \(age) min ago · delayed")
+                                : String(localized: "Radar updated \(age) min ago")
     }
 
     private static func duration(_ minutes: Int) -> String {
@@ -181,11 +309,39 @@ struct RadarScreen: View {
     }
 
     private func rebuildFrames() {
-        let newFrames = provider.frames(for: store.tier, layer: layer)
+        let future = showFuture ? store.tier.radarFuture : 0
+        let newFrames = provider.frames(past: TimeInterval(pastRange.rawValue), future: future, layer: layer)
         let wasPlaying = isPlaying
         frames = newFrames
         index = RadarProvider.nowIndex(in: newFrames)
         isPlaying = wasPlaying && newFrames.count > 1
+    }
+}
+
+/// Rain intensity scale.
+struct LegendSheet: View {
+    private let rows: [(Color, String, String)] = [
+        (.cyan, "Light", "< 2.5 mm/h"),
+        (.blue, "Moderate", "2.5 – 7.6 mm/h"),
+        (.green, "Heavy", "7.6 – 16 mm/h"),
+        (.yellow, "Very heavy", "16 – 50 mm/h"),
+        (.red, "Extreme", "> 50 mm/h"),
+        (.purple, "Hail / storm core", "")
+    ]
+
+    var body: some View {
+        NavigationStack {
+            List(rows, id: \.1) { row in
+                HStack {
+                    RoundedRectangle(cornerRadius: 4).fill(row.0).frame(width: 28, height: 16)
+                    Text(row.1)
+                    Spacer()
+                    Text(row.2).foregroundStyle(.secondary).font(.footnote)
+                }
+            }
+            .navigationTitle("Rain intensity")
+            .navigationBarTitleDisplayMode(.inline)
+        }
     }
 }
 
