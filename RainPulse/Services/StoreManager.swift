@@ -78,6 +78,11 @@ final class StoreManager: ObservableObject {
     }
 
     func refreshEntitlements() async {
+        if let forced = AppConfig.uiTestTier {
+            tier = forced
+            SharedStore.tier = forced
+            return
+        }
         var best: Tier = .free
         for await entitlement in Transaction.currentEntitlements {
             guard case .verified(let transaction) = entitlement,

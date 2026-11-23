@@ -27,6 +27,10 @@
 			isa = PBXBuildFile;
 			fileRef = 65173FC8C77756FA1C649590;
 		};
+		4138546C5B7123C01C25A071 = {
+			isa = PBXBuildFile;
+			fileRef = 6FEC92B1ED66485E1830F27A;
+		};
 		4493F2DCD2BFEAA97D1925CD = {
 			isa = PBXBuildFile;
 			fileRef = DA3248EAC5B6D716CC729833;
@@ -123,6 +127,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A2F7AE35CA1A19D04789AEDC = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46F86FAA6BBF9AC94A7E4595;
+			proxyType = 1;
+			remoteGlobalIDString = A32F0A336DCDA35685488ACF;
+			remoteInfo = RainPulse;
+		};
 		B28E676909E20F5DC0F75350 = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 46F86FAA6BBF9AC94A7E4595;
@@ -195,6 +206,13 @@
 			path = PaywallView.swift;
 			sourceTree = "<group>";
 		};
+		56EECD7DCD09E1E0229225DC = {
+			isa = PBXFileReference;
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			path = RainPulseUITests.xctest;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		5FE624264C1FD96DD5AAFF64 = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.xcconfig;
@@ -217,6 +235,12 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = Models.swift;
+			sourceTree = "<group>";
+		};
+		6FEC92B1ED66485E1830F27A = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = RainPulseUITests.swift;
 			sourceTree = "<group>";
 		};
 		76815C417A840F6DB6E0AD1A = {
@@ -350,6 +374,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6DF2FEFD93B89D05505E68BF = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		92DB5A4704CA61C2121EBB30 = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -384,6 +415,14 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		72AF68774ECB156F97644CE9 = {
+			isa = PBXGroup;
+			children = (
+				6FEC92B1ED66485E1830F27A,
+			);
+			path = RainPulseUITests;
+			sourceTree = "<group>";
+		};
 		76790F2836732965D4F7CF8E = {
 			isa = PBXGroup;
 			children = (
@@ -397,6 +436,7 @@
 			children = (
 				76815C417A840F6DB6E0AD1A,
 				F6EF9B153B2AD2D095D8623B,
+				56EECD7DCD09E1E0229225DC,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -422,6 +462,7 @@
 				C64F91A36BC1DFFBFBF7BCE4,
 				DB091868A0DA53B05A14655F,
 				FE7E8835FCF847CB9ED9A649,
+				72AF68774ECB156F97644CE9,
 				708844DF4706134F211FB87D,
 				208E27C3258478B88C3535B9,
 				8241ED42B56CC1DA7F726566,
@@ -525,6 +566,24 @@
 			productReference = 76815C417A840F6DB6E0AD1A;
 			productType = "com.apple.product-type.application";
 		};
+		CAC76ABB5AA82B61B93C98DF = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB41172D582A5F39BD12B08C;
+			buildPhases = (
+				52A55347EDC39F1347E3C030,
+				6DF2FEFD93B89D05505E68BF,
+				34DE728E3D936384ADE8D90B,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46A93FD6E6EACD312C30331C,
+			);
+			name = RainPulseUITests;
+			productName = RainPulseUITests;
+			productReference = 56EECD7DCD09E1E0229225DC;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -540,6 +599,10 @@
 					};
 					6776322B233F0114143F504D = {
 						CreatedOnToolsVersion = 26.0;
+					};
+					CAC76ABB5AA82B61B93C98DF = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = A32F0A336DCDA35685488ACF;
 					};
 				};
 			};
@@ -558,11 +621,19 @@
 			targets = (
 				A32F0A336DCDA35685488ACF,
 				6776322B233F0114143F504D,
+				CAC76ABB5AA82B61B93C98DF,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		34DE728E3D936384ADE8D90B = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C785E63824C066DD95A72E13 = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -620,9 +691,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		52A55347EDC39F1347E3C030 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4138546C5B7123C01C25A071,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		46A93FD6E6EACD312C30331C = {
+			isa = PBXTargetDependency;
+			target = A32F0A336DCDA35685488ACF;
+			targetProxy = A2F7AE35CA1A19D04789AEDC;
+		};
 		7F8F626740F7BE8D847F6FB9 = {
 			isa = PBXTargetDependency;
 			target = 6776322B233F0114143F504D;
@@ -656,6 +740,18 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1B55A3DB8D3C1725CF737D67 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_BASE).uitests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_TARGET_NAME = RainPulse;
 			};
 			name = Release;
 		};
@@ -774,6 +870,18 @@
 			};
 			name = Release;
 		};
+		DC441C62347DEA9232733CDB = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_BASE).uitests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_TARGET_NAME = RainPulse;
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -782,6 +890,15 @@
 			buildConfigurations = (
 				64709C05FD3E8D2FCB9AC2AD,
 				03E09CFA6F3B6CA7574DF724,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB41172D582A5F39BD12B08C = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC441C62347DEA9232733CDB,
+				1B55A3DB8D3C1725CF737D67,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

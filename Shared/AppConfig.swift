@@ -22,6 +22,26 @@ enum AppConfig {
         return URL(string: "https://example.com/privacy")!
     }
 
+    /// True only in Debug builds launched by the UI tests.
+    static var isUITest: Bool {
+        #if DEBUG
+        return CommandLine.arguments.contains("-UITestMode")
+        #else
+        return false
+        #endif
+    }
+
+    /// UI tests can force a tier with "-UITestTier pro|essential|free".
+    static var uiTestTier: Tier? {
+        guard isUITest, let i = CommandLine.arguments.firstIndex(of: "-UITestTier"),
+              i + 1 < CommandLine.arguments.count else { return nil }
+        switch CommandLine.arguments[i + 1] {
+        case "pro": return .pro
+        case "essential": return .essential
+        default: return .free
+        }
+    }
+
     static var sharedDefaults: UserDefaults {
         UserDefaults(suiteName: appGroupID) ?? .standard
     }

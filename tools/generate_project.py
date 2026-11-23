@@ -10,7 +10,7 @@ import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJ = os.path.join(ROOT, "RainPulse.xcodeproj")
-APP, WIDGET = "RainPulse", "RainPulseWidget"
+APP, WIDGET, UITESTS = "RainPulse", "RainPulseWidget", "RainPulseUITests"
 
 
 def oid(*parts):
@@ -54,13 +54,14 @@ def add(id_, isa, **fields):
 shared_swift = files_in("Shared", {".swift"})
 app_swift = files_in(APP, {".swift"})
 widget_swift = files_in(WIDGET, {".swift"})
+uitest_swift = files_in(UITESTS, {".swift"})
 other_files = [
     f"{APP}/Info.plist", f"{APP}/{APP}.entitlements", f"{APP}/PrivacyInfo.xcprivacy", f"{APP}/Assets.xcassets",
     f"{WIDGET}/Info.plist", f"{WIDGET}/{WIDGET}.entitlements", f"{WIDGET}/PrivacyInfo.xcprivacy",
     "Config/Base.xcconfig", "Config/Secrets.example.xcconfig", "Products.storekit", "README.md",
     "ci_scripts/ci_post_clone.sh",
 ]
-all_files = shared_swift + app_swift + widget_swift + [f for f in other_files if os.path.exists(os.path.join(ROOT, f))]
+all_files = shared_swift + app_swift + widget_swift + uitest_swift + [f for f in other_files if os.path.exists(os.path.join(ROOT, f))]
 
 fileref = {}
 for path in all_files:
@@ -101,9 +102,11 @@ for path in all_files:
     else:
         root_files.append(fileref[path])
 
-products_group = add(oid("group", "Products"), "PBXGroup", children=[app_product, widget_product],
+uitest_product = add(oid("product", UITESTS), "PBXFileReference", explicitFileType="wrapper.cfbundle",
+                     includeInIndex="0", path=f"{UITESTS}.xctest", sourceTree="BUILT_PRODUCTS_DIR")
+products_group = add(oid("group", "Products"), "PBXGroup", children=[app_product, widget_product, uitest_product],
                      name="Products", sourceTree="<group>")
-order = ["Shared", APP, WIDGET, "Config", "ci_scripts"]
+order = ["Shared", APP, WIDGET, UITESTS, "Config", "ci_scripts"]
 top_children.sort(key=lambda g: next((i for i, n in enumerate(order) if groups.get(n) == g), 99))
 main_group = add(oid("group", "main"), "PBXGroup", children=root_files + top_children + [products_group],
                  sourceTree="<group>")
@@ -134,6 +137,13 @@ w_resources = add(oid("phase", WIDGET, "res"), "PBXResourcesBuildPhase", buildAc
                   runOnlyForDeploymentPostprocessing="0")
 w_frameworks = add(oid("phase", WIDGET, "fw"), "PBXFrameworksBuildPhase", buildActionMask="2147483647",
                    files=[], runOnlyForDeploymentPostprocessing="0")
+
+t_sources = add(oid("phase", UITESTS, "sources"), "PBXSourcesBuildPhase", buildActionMask="2147483647",
+                files=build_files(UITESTS, uitest_swift, "src"), runOnlyForDeploymentPostprocessing="0")
+t_frameworks = add(oid("phase", UITESTS, "fw"), "PBXFrameworksBuildPhase", buildActionMask="2147483647",
+                   files=[], runOnlyForDeploymentPostprocessing="0")
+t_resources = add(oid("phase", UITESTS, "res"), "PBXResourcesBuildPhase", buildActionMask="2147483647",
+                  files=[], runOnlyForDeploymentPostprocessing="0")
 
 # ---------- build configurations ----------
 base_xcconfig = fileref["Config/Base.xcconfig"]
@@ -174,6 +184,13 @@ widget_settings = {
 }
 
 
+uitest_settings = {
+    "CODE_SIGN_STYLE": "Automatic", "GENERATE_INFOPLIST_FILE": "YES",
+    "PRODUCT_BUNDLE_IDENTIFIER": "$(BUNDLE_ID_BASE).uitests", "PRODUCT_NAME": "$(TARGET_NAME)",
+    "SWIFT_EMIT_LOC_STRINGS": "NO", "TEST_TARGET_NAME": APP,
+}
+
+
 def config_list(owner, debug, release, base=None):
     ids = []
     for name, settings in (("Debug", debug), ("Release", release)):
@@ -188,6 +205,7 @@ def config_list(owner, debug, release, base=None):
 project_cfg = config_list("project", project_debug, project_release, base_xcconfig)
 app_cfg = config_list(APP, app_settings, app_settings)
 widget_cfg = config_list(WIDGET, widget_settings, widget_settings)
+uitest_cfg = config_list(UITESTS, uitest_settings, uitest_settings)
 
 # ---------- targets ----------
 project_id = oid("project")
@@ -203,13 +221,22 @@ app_target = add(oid("target", APP), "PBXNativeTarget", buildConfigurationList=a
                  dependencies=[dep], name=APP, productName=APP, productReference=app_product,
                  productType="com.apple.product-type.application")
 
+t_proxy = add(oid("proxy", UITESTS), "PBXContainerItemProxy", containerPortal=project_id, proxyType="1",
+              remoteGlobalIDString=app_target, remoteInfo=APP)
+t_dep = add(oid("dep", UITESTS), "PBXTargetDependency", target=app_target, targetProxy=t_proxy)
+uitest_target = add(oid("target", UITESTS), "PBXNativeTarget", buildConfigurationList=uitest_cfg,
+                    buildPhases=[t_sources, t_frameworks, t_resources], buildRules=[], dependencies=[t_dep],
+                    name=UITESTS, productName=UITESTS, productReference=uitest_product,
+                    productType="com.apple.product-type.bundle.ui-testing")
+
 add(project_id, "PBXProject",
     attributes={"BuildIndependentTargetsInParallel": "1", "LastSwiftUpdateCheck": "2600", "LastUpgradeCheck": "2600",
                 "TargetAttributes": {app_target: {"CreatedOnToolsVersion": "26.0"},
-                                     widget_target: {"CreatedOnToolsVersion": "26.0"}}},
+                                     widget_target: {"CreatedOnToolsVersion": "26.0"},
+                                     uitest_target: {"CreatedOnToolsVersion": "26.0", "TestTargetID": app_target}}},
     buildConfigurationList=project_cfg, compatibilityVersion="Xcode 14.0", developmentRegion="en",
     hasScannedForEncodings="0", knownRegions=["en", "Base"], mainGroup=main_group,
-    productRefGroup=products_group, projectDirPath="", projectRoot="", targets=[app_target, widget_target])
+    productRefGroup=products_group, projectDirPath="", projectRoot="", targets=[app_target, widget_target, uitest_target])
 
 
 # ---------- serialize ----------
@@ -261,6 +288,17 @@ scheme = f'''<?xml version="1.0" encoding="UTF-8"?>
       </BuildActionEntries>
    </BuildAction>
    <TestAction buildConfiguration = "Debug" selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB" selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB" shouldUseLaunchSchemeArgsEnv = "YES">
+      <Testables>
+         <TestableReference skipped = "NO" parallelizable = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "{uitest_target}"
+               BuildableName = "{UITESTS}.xctest"
+               BlueprintName = "{UITESTS}"
+               ReferencedContainer = "container:{APP}.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction buildConfiguration = "Debug" selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB" selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB" launchStyle = "0" useCustomWorkingDirectory = "NO" ignoresPersistentStateOnLaunch = "NO" debugDocumentVersioning = "YES" debugServiceExtension = "internal" allowLocationSimulation = "YES">
       <BuildableProductRunnable runnableDebuggingMode = "0">
