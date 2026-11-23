@@ -200,8 +200,8 @@ struct RadarMapView: UIViewRepresentable {
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             if let cone = overlay as? ConePolygon {
                 let r = MKPolygonRenderer(polygon: cone)
-                r.fillColor = UIColor.white.withAlphaComponent(0.18)
-                r.strokeColor = UIColor.white.withAlphaComponent(0.7)
+                r.fillColor = UIColor.systemOrange.withAlphaComponent(0.15)
+                r.strokeColor = UIColor.systemOrange.withAlphaComponent(0.8)
                 r.lineWidth = 1
                 r.lineDashPattern = [4, 4]
                 return r

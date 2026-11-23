@@ -136,7 +136,14 @@ final class WindFlowView: UIView {
             let speed = (wind.u * wind.u + wind.v * wind.v).squareRoot()
             let nx = p.x + CGFloat(wind.u) * pixelsPerSpeed
             let ny = p.y - CGFloat(wind.v) * pixelsPerSpeed
+            // Thin dark outline keeps light streaks readable on light map styles.
+            ctx.setStrokeColor(UIColor(white: 0, alpha: 0.28).cgColor)
+            ctx.setLineWidth(2.6)
+            ctx.move(to: CGPoint(x: p.x, y: p.y))
+            ctx.addLine(to: CGPoint(x: nx, y: ny))
+            ctx.strokePath()
             ctx.setStrokeColor(Self.color(forSpeed: speed))
+            ctx.setLineWidth(1.4)
             ctx.move(to: CGPoint(x: p.x, y: p.y))
             ctx.addLine(to: CGPoint(x: nx, y: ny))
             ctx.strokePath()
