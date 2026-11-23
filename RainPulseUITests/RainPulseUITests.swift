@@ -15,13 +15,19 @@ final class RainPulseUITests: XCTestCase {
     }
 
     /// Dismisses simulator popups (e.g. "Enable Dictation?") that can cover the app.
-    private func dismissSystemPopups(_ app: XCUIApplication) {
+    /// The keyboard shows that prompt a moment after typing starts, so wait for it.
+    private func dismissSystemPopups(_ app: XCUIApplication, wait: TimeInterval = 4) {
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
-        for label in ["Not Now", "Don’t Allow", "Don't Allow", "Cancel"] {
-            for source in [app, springboard] where source.buttons[label].exists {
-                source.buttons[label].tap()
+        let deadline = Date().addingTimeInterval(wait)
+        repeat {
+            for source in [app, springboard] {
+                for label in ["Not Now", "Don’t Allow", "Don't Allow"] {
+                    let button = source.buttons[label]
+                    if button.exists && button.isHittable { button.tap(); return }
+                }
             }
-        }
+            usleep(300_000)
+        } while Date() < deadline
     }
 
     private func snap(_ app: XCUIApplication, _ name: String) {
@@ -63,6 +69,7 @@ final class RainPulseUITests: XCTestCase {
         let search = app.searchFields.firstMatch
         if search.waitForExistence(timeout: 5) {
             search.tap()
+            dismissSystemPopups(app)
             search.typeText("Sydney")
             dismissSystemPopups(app)
             let result = app.cells.staticTexts.matching(NSPredicate(format: "label CONTAINS[c] 'Sydney'")).firstMatch
