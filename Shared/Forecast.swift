@@ -41,8 +41,18 @@ struct Forecast: Codable {
     let daily: [Day]
     let utcOffsetSeconds: Int
     let fetchedAt: Date
+    /// IANA time zone of the place (DST-aware), when known.
+    var timeZoneID: String? = nil
+    /// Which services this forecast came from (drives the attribution shown).
+    var usesAppleWeather: Bool = false
+    var usesOpenMeteo: Bool = true
+    /// True when the 15-minute steps come from real minute-level data.
+    var hasMinuteData: Bool = true
 
-    var timeZone: TimeZone { TimeZone(secondsFromGMT: utcOffsetSeconds) ?? .current }
+    var timeZone: TimeZone {
+        if let id = timeZoneID, let tz = TimeZone(identifier: id) { return tz }
+        return TimeZone(secondsFromGMT: utcOffsetSeconds) ?? .current
+    }
 
     /// Upcoming 15-minute steps, starting with the current one.
     func upcomingSteps(hours: Double = 2, from now: Date = Date()) -> [Step] {
@@ -104,6 +114,28 @@ actor ForecastService {
             return Forecast.sample(latitude: latitude)
         }
 
+        let result: Forecast
+        if var apple = try? await WeatherKitSource.fetch(latitude: latitude, longitude: longitude) {
+            // Apple Weather is the main source (included with the developer membership).
+            // Open-Meteo fills the gaps: 15-minute rain where Apple has no minute data
+            // (e.g. India), and days beyond Apple's 10-day range.
+            let needsNowcast = !apple.hasMinuteData
+            let needsDays = days > apple.daily.count
+            if needsNowcast || needsDays,
+               let extra = try? await openMeteo(latitude: latitude, longitude: longitude,
+                                                days: needsDays ? days : 1) {
+                apple = Forecast.merge(apple, with: extra, useNowcast: needsNowcast)
+            }
+            result = apple
+        } else {
+            result = try await openMeteo(latitude: latitude, longitude: longitude, days: days)
+        }
+        cache[key] = result
+        return result
+    }
+
+    /// Full forecast from Open-Meteo (fallback and gap filler).
+    private func openMeteo(latitude: Double, longitude: Double, days: Int) async throws -> Forecast {
         let commercialKey = AppConfig.openMeteoAPIKey
         var components = URLComponents()
         components.scheme = "https"
@@ -139,10 +171,7 @@ actor ForecastService {
         guard let result, let http = result.1 as? HTTPURLResponse, http.statusCode == 200 else {
             throw ForecastError.badResponse
         }
-        let data = result.0
-        let forecast = try Self.decode(data)
-        cache[key] = forecast
-        return forecast
+        return try Self.decode(result.0)
     }
 
     // MARK: Decoding
@@ -174,6 +203,7 @@ actor ForecastService {
             let precipitation_probability_max: [Int?]?
         }
         let utc_offset_seconds: Int?
+        let timezone: String?
         let current: RawCurrent?
         let minutely_15: RawMinutely?
         let hourly: RawHourly?
@@ -225,14 +255,48 @@ actor ForecastService {
             }
         }
 
-        return Forecast(current: current, nowcast: steps, hourly: hours, daily: days,
-                        utcOffsetSeconds: raw.utc_offset_seconds ?? 0, fetchedAt: Date())
+        var forecast = Forecast(current: current, nowcast: steps, hourly: hours, daily: days,
+                                utcOffsetSeconds: raw.utc_offset_seconds ?? 0, fetchedAt: Date())
+        forecast.timeZoneID = raw.timezone
+        return forecast
     }
 }
 
 extension Array {
     subscript(safe index: Int) -> Element? {
         indices.contains(index) ? self[index] : nil
+    }
+}
+
+// MARK: - Combining sources
+
+extension Forecast {
+    static func merge(_ apple: Forecast, with extra: Forecast, useNowcast: Bool) -> Forecast {
+        var merged = apple
+        merged.usesOpenMeteo = true
+        if useNowcast, !extra.nowcast.isEmpty {
+            merged = Forecast(current: apple.current, nowcast: extra.nowcast, hourly: apple.hourly,
+                              daily: apple.daily, utcOffsetSeconds: apple.utcOffsetSeconds,
+                              fetchedAt: apple.fetchedAt)
+            merged.timeZoneID = apple.timeZoneID ?? extra.timeZoneID
+            merged.usesAppleWeather = true
+            merged.usesOpenMeteo = true
+            merged.hasMinuteData = true
+        }
+        if let lastApple = merged.daily.last?.time {
+            let more = extra.daily.filter { $0.time.timeIntervalSince(lastApple) > 12 * 3600 }
+            if !more.isEmpty {
+                var copy = Forecast(current: merged.current, nowcast: merged.nowcast, hourly: merged.hourly,
+                                    daily: merged.daily + more, utcOffsetSeconds: merged.utcOffsetSeconds,
+                                    fetchedAt: merged.fetchedAt)
+                copy.timeZoneID = merged.timeZoneID
+                copy.usesAppleWeather = true
+                copy.usesOpenMeteo = true
+                copy.hasMinuteData = merged.hasMinuteData
+                merged = copy
+            }
+        }
+        return merged
     }
 }
 

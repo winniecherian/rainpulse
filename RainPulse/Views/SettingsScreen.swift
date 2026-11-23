@@ -76,8 +76,9 @@ struct SettingsScreen: View {
                 Section("About") {
                     Link("Privacy Policy", destination: AppConfig.privacyURL)
                     Link("Terms of Use", destination: AppConfig.termsURL)
-                    Link("Weather data by Open-Meteo.com", destination: URL(string: "https://open-meteo.com/")!)
                     Link("Map data © OpenWeather", destination: URL(string: "https://openweathermap.org/")!)
+                    WeatherAttributionView()
+                        .listRowBackground(Color.clear)
                     HStack {
                         Text("Version")
                         Spacer()

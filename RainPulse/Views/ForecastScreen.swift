@@ -31,8 +31,8 @@ struct ForecastScreen: View {
                         nowcastCard(forecast)
                         hourlyCard(forecast)
                         dailyCard(forecast)
-                        Text("Weather data by Open-Meteo.com")
-                            .font(.caption2).foregroundStyle(.secondary)
+                        WeatherAttributionView(showsAppleWeather: forecast.usesAppleWeather,
+                                               showsOpenMeteo: forecast.usesOpenMeteo)
                     } else if selectedPlace == nil {
                         ContentUnavailableView {
                             Label("No location yet", systemImage: "location.slash")

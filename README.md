@@ -34,7 +34,8 @@ India and other price-sensitive markets (for example ₹149/month, ₹899/year f
 
 | What | Source | Cost |
 |---|---|---|
-| Forecast, 15-min nowcast, alerts | Open-Meteo | Free while testing. **The free API is non-commercial**, so buy the API Standard plan before launch and set `OPEN_METEO_API_KEY` (the app switches to `customer-api.open-meteo.com` automatically). |
+| Current, hourly, 10-day forecast, minute rain (US/UK/JP/AU/IE) | **Apple WeatherKit**: 500,000 calls/month included with the developer membership |
+| 15-min rain where Apple has no minute data (e.g. India), days 11–14, fallback | Open-Meteo | Free while testing. **The free API is non-commercial**, so buy the API Standard plan before launch and set `OPEN_METEO_API_KEY` (the app switches to `customer-api.open-meteo.com` automatically). |
 | Radar tiles (animated) | OpenWeather **Global Precipitation Maps – History & Forecast** (10-min steps, 2 days back, 2 h ahead worldwide) | Ask OpenWeather sales to enable it on your key |
 | Radar tiles (fallback) | OpenWeather Weather Maps 1.0 `precipitation_new` | Free key, current frame only |
 | Pro layers | OpenWeather Weather Maps 1.0 clouds / wind / temp | Free key |

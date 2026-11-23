@@ -98,6 +98,9 @@ struct RainWidgetView: View {
                 .font(.caption2.weight(.medium))
                 .foregroundStyle(entry.forecast?.isRainingNow == true ? Color.blue : Color.secondary)
                 .lineLimit(2)
+            if entry.forecast?.usesAppleWeather == true {
+                Text("\u{F8FF} Weather").font(.system(size: 8)).foregroundStyle(.tertiary)
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
