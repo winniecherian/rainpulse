@@ -1,0 +1,1464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="RainPulse/InfoPlist.xcstrings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.2" build-num="27B52"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>RainPulse</source>
+        <target state="new">RainPulse</target>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>RainPulse</source>
+        <target state="new">RainPulse</target>
+        <note>Bundle name</note>
+      </trans-unit>
+      <trans-unit id="NSFaceIDUsageDescription" xml:space="preserve">
+        <source>Use Face ID to unlock RainPulse when app lock is on.</source>
+        <target state="new">Use Face ID to unlock RainPulse when app lock is on.</target>
+        <note>Privacy - Face ID Usage Description</note>
+      </trans-unit>
+      <trans-unit id="NSLocationWhenInUseUsageDescription" xml:space="preserve">
+        <source>RainPulse uses your location to show the radar, forecast and rain alerts where you are.</source>
+        <target state="new">RainPulse uses your location to show the radar, forecast and rain alerts where you are.</target>
+        <note>Privacy - Location When In Use Usage Description</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Shared/InfoPlist.xcstrings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.2" build-num="27B52"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleDisplayName" xml:space="preserve">
+        <source>RainPulse</source>
+        <target state="new">RainPulse</target>
+        <note>Bundle display name</note>
+      </trans-unit>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>RainPulseWidget</source>
+        <target state="new">RainPulseWidget</target>
+        <note>Bundle name</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="Shared/Localizable.xcstrings" source-language="en" target-language="en" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="27.2" build-num="27B52"/>
+    </header>
+    <body>
+      <trans-unit id="" xml:space="preserve">
+        <source/>
+        <target state="new"/>
+        <note/>
+      </trans-unit>
+      <trans-unit id=" " xml:space="preserve">
+        <source> </source>
+        <target state="new"> </target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%@ per %@. " xml:space="preserve">
+        <source>%1$@ per %2$@. </source>
+        <target state="new">%1$@ per %2$@. </target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%@ rain expected at %@ around %@." xml:space="preserve">
+        <source>%1$@ rain expected at %2$@ around %3$@.</source>
+        <target state="new">%1$@ rain expected at %2$@ around %3$@.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%@ rain expected from %@." xml:space="preserve">
+        <source>%1$@ rain expected from %2$@.</source>
+        <target state="new">%1$@ rain expected from %2$@.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%@ · %lld km/h" xml:space="preserve">
+        <source>%1$@ · %2$lld km/h</source>
+        <target state="new">%1$@ · %2$lld km/h</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%@ · %lld km/h · %lld km away" xml:space="preserve">
+        <source>%1$@ · %2$lld km/h · %3$lld km away</source>
+        <target state="new">%1$@ · %2$lld km/h · %3$lld km away</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%@ · winds up to %lld km/h" xml:space="preserve">
+        <source>%1$@ · winds up to %2$lld km/h</source>
+        <target state="new">%1$@ · winds up to %2$lld km/h</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%@, winds up to %lld km/h, %lld km away. Follow official warnings from your weather service." xml:space="preserve">
+        <source>%1$@, winds up to %2$lld km/h, %3$lld km away. Follow official warnings from your weather service.</source>
+        <target state="new">%1$@, winds up to %2$lld km/h, %3$lld km away. Follow official warnings from your weather service.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%@. %@" xml:space="preserve">
+        <source>%1$@. %2$@</source>
+        <target state="new">%1$@. %2$@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%lld km from %@ now; forecast track passes about %lld km away." xml:space="preserve">
+        <source>%1$lld km from %2$@ now; forecast track passes about %3$lld km away.</source>
+        <target state="new">%1$lld km from %2$@ now; forecast track passes about %3$lld km away.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%lld km from %@." xml:space="preserve">
+        <source>%1$lld km from %2$@.</source>
+        <target state="new">%1$lld km from %2$@.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%lld%%" xml:space="preserve">
+        <source>%lld%%</source>
+        <target state="new">%lld%%</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%lld%% chance in 24 h" xml:space="preserve">
+        <source>%lld%% chance in 24 h</source>
+        <target state="new">%lld%% chance in 24 h</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%lld%% chance today" xml:space="preserve">
+        <source>%lld%% chance today</source>
+        <target state="new">%lld%% chance today</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="%lld-day forecast" xml:space="preserve">
+        <source>%lld-day forecast</source>
+        <target state="new">%lld-day forecast</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="0.5x" xml:space="preserve">
+        <source>0.5x</source>
+        <target state="new">0.5x</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="1 hour before" xml:space="preserve">
+        <source>1 hour before</source>
+        <target state="new">1 hour before</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="1x" xml:space="preserve">
+        <source>1x</source>
+        <target state="new">1x</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="2-hour radar forecast animation" xml:space="preserve">
+        <source>2-hour radar forecast animation</source>
+        <target state="new">2-hour radar forecast animation</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="2-hour radar history" xml:space="preserve">
+        <source>2-hour radar history</source>
+        <target state="new">2-hour radar history</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="2-hour rain chart with Essential" xml:space="preserve">
+        <source>2-hour rain chart with Essential</source>
+        <target state="new">2-hour rain chart with Essential</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="2-hour rain forecast animation" xml:space="preserve">
+        <source>2-hour rain forecast animation</source>
+        <target state="new">2-hour rain forecast animation</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="2-hour rain forecast, alerts for 20 places" xml:space="preserve">
+        <source>2-hour rain forecast, alerts for 20 places</source>
+        <target state="new">2-hour rain forecast, alerts for 20 places</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="2x" xml:space="preserve">
+        <source>2x</source>
+        <target state="new">2x</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="6-hour radar history" xml:space="preserve">
+        <source>6-hour radar history</source>
+        <target state="new">6-hour radar history</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="14-day forecast" xml:space="preserve">
+        <source>14-day forecast</source>
+        <target state="new">14-day forecast</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="14-day forecast and alerts for 20 places" xml:space="preserve">
+        <source>14-day forecast and alerts for 20 places</source>
+        <target state="new">14-day forecast and alerts for 20 places</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="30 min before" xml:space="preserve">
+        <source>30 min before</source>
+        <target state="new">30 min before</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="48-hour radar playback" xml:space="preserve">
+        <source>48-hour radar playback</source>
+        <target state="new">48-hour radar playback</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="AI insights" xml:space="preserve">
+        <source>AI insights</source>
+        <target state="new">AI insights</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="AI insights run on your iPhone" xml:space="preserve">
+        <source>AI insights run on your iPhone</source>
+        <target state="new">AI insights run on your iPhone</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="About" xml:space="preserve">
+        <source>About</source>
+        <target state="new">About</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Air quality" xml:space="preserve">
+        <source>Air quality</source>
+        <target state="new">Air quality</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Alerts" xml:space="preserve">
+        <source>Alerts</source>
+        <target state="new">Alerts</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Alerts before it rains" xml:space="preserve">
+        <source>Alerts before it rains</source>
+        <target state="new">Alerts before it rains</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Alerts cover your current location and every saved place with the bell on. iOS decides exactly when background checks run." xml:space="preserve">
+        <source>Alerts cover your current location and every saved place with the bell on. iOS decides exactly when background checks run.</source>
+        <target state="new">Alerts cover your current location and every saved place with the bell on. iOS decides exactly when background checks run.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="All data erased" xml:space="preserve">
+        <source>All data erased</source>
+        <target state="new">All data erased</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="All widget sizes" xml:space="preserve">
+        <source>All widget sizes</source>
+        <target state="new">All widget sizes</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Allow location" xml:space="preserve">
+        <source>Allow location</source>
+        <target state="new">Allow location</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Allow location access or add a place to see the forecast." xml:space="preserve">
+        <source>Allow location access or add a place to see the forecast.</source>
+        <target state="new">Allow location access or add a place to see the forecast.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Allow location so RainPulse can show the radar and forecast around you." xml:space="preserve">
+        <source>Allow location so RainPulse can show the radar and forecast around you.</source>
+        <target state="new">Allow location so RainPulse can show the radar and forecast around you.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Always follow official warnings from your national weather service." xml:space="preserve">
+        <source>Always follow official warnings from your national weather service.</source>
+        <target state="new">Always follow official warnings from your national weather service.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Always on" xml:space="preserve">
+        <source>Always on</source>
+        <target state="new">Always on</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Any drizzle" xml:space="preserve">
+        <source>Any drizzle</source>
+        <target state="new">Any drizzle</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Apple Weather" xml:space="preserve">
+        <source>Apple Weather</source>
+        <target state="new">Apple Weather</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Apple Weather gives forecasts but no radar maps to apps, so the map uses OpenWeather radar plus NOAA's GFS model for future rain." xml:space="preserve">
+        <source>Apple Weather gives forecasts but no radar maps to apps, so the map uses OpenWeather radar plus NOAA's GFS model for future rain.</source>
+        <target state="new">Apple Weather gives forecasts but no radar maps to apps, so the map uses OpenWeather radar plus NOAA's GFS model for future rain.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="BEST" xml:space="preserve">
+        <source>BEST</source>
+        <target state="new">BEST</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Billing" xml:space="preserve">
+        <source>Billing</source>
+        <target state="new">Billing</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Cancel" xml:space="preserve">
+        <source>Cancel</source>
+        <target state="new">Cancel</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Carry an umbrella — rain is most likely around %@." xml:space="preserve">
+        <source>Carry an umbrella — rain is most likely around %@.</source>
+        <target state="new">Carry an umbrella — rain is most likely around %@.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Category 1 cyclone" xml:space="preserve">
+        <source>Category 1 cyclone</source>
+        <target state="new">Category 1 cyclone</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Category 2 cyclone" xml:space="preserve">
+        <source>Category 2 cyclone</source>
+        <target state="new">Category 2 cyclone</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Category 3 cyclone" xml:space="preserve">
+        <source>Category 3 cyclone</source>
+        <target state="new">Category 3 cyclone</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Category 4 cyclone" xml:space="preserve">
+        <source>Category 4 cyclone</source>
+        <target state="new">Category 4 cyclone</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Category 5 cyclone" xml:space="preserve">
+        <source>Category 5 cyclone</source>
+        <target state="new">Category 5 cyclone</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Choose place" xml:space="preserve">
+        <source>Choose place</source>
+        <target state="new">Choose place</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Clear" xml:space="preserve">
+        <source>Clear</source>
+        <target state="new">Clear</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Close" xml:space="preserve">
+        <source>Close</source>
+        <target state="new">Close</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Clouds" xml:space="preserve">
+        <source>Clouds</source>
+        <target state="new">Clouds</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Clouds, wind and temperature layers" xml:space="preserve">
+        <source>Clouds, wind and temperature layers</source>
+        <target state="new">Clouds, wind and temperature layers</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Clouds, wind and temperature map layers" xml:space="preserve">
+        <source>Clouds, wind and temperature map layers</source>
+        <target state="new">Clouds, wind and temperature map layers</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Cloudy" xml:space="preserve">
+        <source>Cloudy</source>
+        <target state="new">Cloudy</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Conditions now" xml:space="preserve">
+        <source>Conditions now</source>
+        <target state="new">Conditions now</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Continue" xml:space="preserve">
+        <source>Continue</source>
+        <target state="new">Continue</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Couldn't load forecast" xml:space="preserve">
+        <source>Couldn't load forecast</source>
+        <target state="new">Couldn't load forecast</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Current Location" xml:space="preserve">
+        <source>Current Location</source>
+        <target state="new">Current Location</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Current radar only" xml:space="preserve">
+        <source>Current radar only</source>
+        <target state="new">Current radar only</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Current radar · animation unavailable" xml:space="preserve">
+        <source>Current radar · animation unavailable</source>
+        <target state="new">Current radar · animation unavailable</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Current weather and rain for the next 2 hours." xml:space="preserve">
+        <source>Current weather and rain for the next 2 hours.</source>
+        <target state="new">Current weather and rain for the next 2 hours.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Cyclone %@" xml:space="preserve">
+        <source>Cyclone %@</source>
+        <target state="new">Cyclone %@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Cyclone %@ near %@" xml:space="preserve">
+        <source>Cyclone %1$@ near %2$@</source>
+        <target state="new">Cyclone %1$@ near %2$@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Cyclones" xml:space="preserve">
+        <source>Cyclones</source>
+        <target state="new">Cyclones</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Dark (best for rain)" xml:space="preserve">
+        <source>Dark (best for rain)</source>
+        <target state="new">Dark (best for rain)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Data status" xml:space="preserve">
+        <source>Data status</source>
+        <target state="new">Data status</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Day" xml:space="preserve">
+        <source>Day</source>
+        <target state="new">Day</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Details" xml:space="preserve">
+        <source>Details</source>
+        <target state="new">Details</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Dew point" xml:space="preserve">
+        <source>Dew point</source>
+        <target state="new">Dew point</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Drier spell from about %@ — a good time to head out." xml:space="preserve">
+        <source>Drier spell from about %@ — a good time to head out.</source>
+        <target state="new">Drier spell from about %@ — a good time to head out.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Drizzle" xml:space="preserve">
+        <source>Drizzle</source>
+        <target state="new">Drizzle</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Dry" xml:space="preserve">
+        <source>Dry</source>
+        <target state="new">Dry</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Erase all my RainPulse data" xml:space="preserve">
+        <source>Erase all my RainPulse data</source>
+        <target state="new">Erase all my RainPulse data</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Erase everything" xml:space="preserve">
+        <source>Erase everything</source>
+        <target state="new">Erase everything</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Erase saved places, settings, alerts and cached weather on this iPhone?" xml:space="preserve">
+        <source>Erase saved places, settings, alerts and cached weather on this iPhone?</source>
+        <target state="new">Erase saved places, settings, alerts and cached weather on this iPhone?</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Essential" xml:space="preserve">
+        <source>Essential</source>
+        <target state="new">Essential</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Everything in Essential" xml:space="preserve">
+        <source>Everything in Essential</source>
+        <target state="new">Everything in Essential</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Everything in RainPulse is unlocked" xml:space="preserve">
+        <source>Everything in RainPulse is unlocked</source>
+        <target state="new">Everything in RainPulse is unlocked</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Expected to end at %@." xml:space="preserve">
+        <source>Expected to end at %@.</source>
+        <target state="new">Expected to end at %@.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Extreme" xml:space="preserve">
+        <source>Extreme</source>
+        <target state="new">Extreme</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Feels like" xml:space="preserve">
+        <source>Feels like</source>
+        <target state="new">Feels like</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Fog" xml:space="preserve">
+        <source>Fog</source>
+        <target state="new">Fog</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Forecast" xml:space="preserve">
+        <source>Forecast</source>
+        <target state="new">Forecast</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Forecast %@" xml:space="preserve">
+        <source>Forecast %@</source>
+        <target state="new">Forecast %@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Free" xml:space="preserve">
+        <source>Free</source>
+        <target state="new">Free</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Free for %@, then %@ per %@. " xml:space="preserve">
+        <source>Free for %1$@, then %2$@ per %3$@. </source>
+        <target state="new">Free for %1$@, then %2$@ per %3$@. </target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Free: alerts for your current location. Essential and Pro: alerts for all saved places." xml:space="preserve">
+        <source>Free: alerts for your current location. Essential and Pro: alerts for all saved places.</source>
+        <target state="new">Free: alerts for your current location. Essential and Pro: alerts for all saved places.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Freezing drizzle" xml:space="preserve">
+        <source>Freezing drizzle</source>
+        <target state="new">Freezing drizzle</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Freezing rain" xml:space="preserve">
+        <source>Freezing rain</source>
+        <target state="new">Freezing rain</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="From %@" xml:space="preserve">
+        <source>From %@</source>
+        <target state="new">From %@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Get Essential" xml:space="preserve">
+        <source>Get Essential</source>
+        <target state="new">Get Essential</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Get a heads-up before rain reaches you, so you can leave early or wait it out." xml:space="preserve">
+        <source>Get a heads-up before rain reaches you, so you can leave early or wait it out.</source>
+        <target state="new">Get a heads-up before rain reaches you, so you can leave early or wait it out.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Get insight" xml:space="preserve">
+        <source>Get insight</source>
+        <target state="new">Get insight</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Get started" xml:space="preserve">
+        <source>Get started</source>
+        <target state="new">Get started</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Good" xml:space="preserve">
+        <source>Good</source>
+        <target state="new">Good</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Gusts %@" xml:space="preserve">
+        <source>Gusts %@</source>
+        <target state="new">Gusts %@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="H %@  L %@" xml:space="preserve">
+        <source>H %1$@  L %2$@</source>
+        <target state="new">H %1$@  L %2$@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Hazardous" xml:space="preserve">
+        <source>Hazardous</source>
+        <target state="new">Hazardous</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Heavy" xml:space="preserve">
+        <source>Heavy</source>
+        <target state="new">Heavy</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Heavy rain" xml:space="preserve">
+        <source>Heavy rain</source>
+        <target state="new">Heavy rain</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Heavy rain only" xml:space="preserve">
+        <source>Heavy rain only</source>
+        <target state="new">Heavy rain only</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Help &amp; Feedback" xml:space="preserve">
+        <source>Help &amp; Feedback</source>
+        <target state="new">Help &amp; Feedback</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="High" xml:space="preserve">
+        <source>High</source>
+        <target state="new">High</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Hourly" xml:space="preserve">
+        <source>Hourly</source>
+        <target state="new">Hourly</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Humidity" xml:space="preserve">
+        <source>Humidity</source>
+        <target state="new">Humidity</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Hybrid (light)" xml:space="preserve">
+        <source>Hybrid (light)</source>
+        <target state="new">Hybrid (light)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Know exactly when it rains" xml:space="preserve">
+        <source>Know exactly when it rains</source>
+        <target state="new">Know exactly when it rains</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="LIVE" xml:space="preserve">
+        <source>LIVE</source>
+        <target state="new">LIVE</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Light" xml:space="preserve">
+        <source>Light</source>
+        <target state="new">Light</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Light rain" xml:space="preserve">
+        <source>Light rain</source>
+        <target state="new">Light rain</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Live" xml:space="preserve">
+        <source>Live</source>
+        <target state="new">Live</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Live radar now · future rain from forecast model" xml:space="preserve">
+        <source>Live radar now · future rain from forecast model</source>
+        <target state="new">Live radar now · future rain from forecast model</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Live radar, a 2-hour rain forecast and alerts before it starts." xml:space="preserve">
+        <source>Live radar, a 2-hour rain forecast and alerts before it starts.</source>
+        <target state="new">Live radar, a 2-hour rain forecast and alerts before it starts.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Live rain radar" xml:space="preserve">
+        <source>Live rain radar</source>
+        <target state="new">Live rain radar</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Live rain radar for %@ — RainPulse: Live Rain Radar" xml:space="preserve">
+        <source>Live rain radar for %@ — RainPulse: Live Rain Radar</source>
+        <target state="new">Live rain radar for %@ — RainPulse: Live Rain Radar</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Loading prices…" xml:space="preserve">
+        <source>Loading prices…</source>
+        <target state="new">Loading prices…</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Lock with %@" xml:space="preserve">
+        <source>Lock with %@</source>
+        <target state="new">Lock with %@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Low" xml:space="preserve">
+        <source>Low</source>
+        <target state="new">Low</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Manage subscription" xml:space="preserve">
+        <source>Manage subscription</source>
+        <target state="new">Manage subscription</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Map" xml:space="preserve">
+        <source>Map</source>
+        <target state="new">Map</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Map data © OpenWeather" xml:space="preserve">
+        <source>Map data © OpenWeather</source>
+        <target state="new">Map data © OpenWeather</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Map layers" xml:space="preserve">
+        <source>Map layers</source>
+        <target state="new">Map layers</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Map style" xml:space="preserve">
+        <source>Map style</source>
+        <target state="new">Map style</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Minute-by-minute rain chart" xml:space="preserve">
+        <source>Minute-by-minute rain chart</source>
+        <target state="new">Minute-by-minute rain chart</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Minute-level rain data" xml:space="preserve">
+        <source>Minute-level rain data</source>
+        <target state="new">Minute-level rain data</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Model-based rain data" xml:space="preserve">
+        <source>Model-based rain data</source>
+        <target state="new">Model-based rain data</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Moderate" xml:space="preserve">
+        <source>Moderate</source>
+        <target state="new">Moderate</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Moderate rain" xml:space="preserve">
+        <source>Moderate rain</source>
+        <target state="new">Moderate rain</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Monthly" xml:space="preserve">
+        <source>Monthly</source>
+        <target state="new">Monthly</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="More details" xml:space="preserve">
+        <source>More details</source>
+        <target state="new">More details</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Mostly clear" xml:space="preserve">
+        <source>Mostly clear</source>
+        <target state="new">Mostly clear</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="My Location" xml:space="preserve">
+        <source>My Location</source>
+        <target state="new">My Location</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Next 2 hours" xml:space="preserve">
+        <source>Next 2 hours</source>
+        <target state="new">Next 2 hours</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="No account, no ads, no tracking" xml:space="preserve">
+        <source>No account, no ads, no tracking</source>
+        <target state="new">No account, no ads, no tracking</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="No location yet" xml:space="preserve">
+        <source>No location yet</source>
+        <target state="new">No location yet</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="No rain expected in the next 3 hours." xml:space="preserve">
+        <source>No rain expected in the next 3 hours.</source>
+        <target state="new">No rain expected in the next 3 hours.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="No rain for 2 hours" xml:space="preserve">
+        <source>No rain for 2 hours</source>
+        <target state="new">No rain for 2 hours</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="No rain nearby" xml:space="preserve">
+        <source>No rain nearby</source>
+        <target state="new">No rain nearby</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="No saved places" xml:space="preserve">
+        <source>No saved places</source>
+        <target state="new">No saved places</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="None" xml:space="preserve">
+        <source>None</source>
+        <target state="new">None</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Not now" xml:space="preserve">
+        <source>Not now</source>
+        <target state="new">Not now</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Notifications are off" xml:space="preserve">
+        <source>Notifications are off</source>
+        <target state="new">Notifications are off</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Now" xml:space="preserve">
+        <source>Now</source>
+        <target state="new">Now</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Open RainPulse" xml:space="preserve">
+        <source>Open RainPulse</source>
+        <target state="new">Open RainPulse</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Open Settings" xml:space="preserve">
+        <source>Open Settings</source>
+        <target state="new">Open Settings</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Open the app to load" xml:space="preserve">
+        <source>Open the app to load</source>
+        <target state="new">Open the app to load</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Open-Meteo" xml:space="preserve">
+        <source>Open-Meteo</source>
+        <target state="new">Open-Meteo</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Other data sources" xml:space="preserve">
+        <source>Other data sources</source>
+        <target state="new">Other data sources</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Overcast" xml:space="preserve">
+        <source>Overcast</source>
+        <target state="new">Overcast</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Partly cloudy" xml:space="preserve">
+        <source>Partly cloudy</source>
+        <target state="new">Partly cloudy</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Passcode" xml:space="preserve">
+        <source>Passcode</source>
+        <target state="new">Passcode</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Past %@" xml:space="preserve">
+        <source>Past %@</source>
+        <target state="new">Past %@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Pause" xml:space="preserve">
+        <source>Pause</source>
+        <target state="new">Pause</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Places" xml:space="preserve">
+        <source>Places</source>
+        <target state="new">Places</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Plan" xml:space="preserve">
+        <source>Plan</source>
+        <target state="new">Plan</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Play" xml:space="preserve">
+        <source>Play</source>
+        <target state="new">Play</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Playback speed" xml:space="preserve">
+        <source>Playback speed</source>
+        <target state="new">Playback speed</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Precipitation (mm/h)" xml:space="preserve">
+        <source>Precipitation (mm/h)</source>
+        <target state="new">Precipitation (mm/h)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Pressure" xml:space="preserve">
+        <source>Pressure</source>
+        <target state="new">Pressure</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Privacy" xml:space="preserve">
+        <source>Privacy</source>
+        <target state="new">Privacy</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Privacy &amp; Security" xml:space="preserve">
+        <source>Privacy &amp; Security</source>
+        <target state="new">Privacy &amp; Security</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Privacy Policy" xml:space="preserve">
+        <source>Privacy Policy</source>
+        <target state="new">Privacy Policy</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Pro" xml:space="preserve">
+        <source>Pro</source>
+        <target state="new">Pro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Purchases verified with Apple's signed receipts" xml:space="preserve">
+        <source>Purchases verified with Apple's signed receipts</source>
+        <target state="new">Purchases verified with Apple's signed receipts</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Radar" xml:space="preserve">
+        <source>Radar</source>
+        <target state="new">Radar</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Radar data" xml:space="preserve">
+        <source>Radar data</source>
+        <target state="new">Radar data</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Radar key missing" xml:space="preserve">
+        <source>Radar key missing</source>
+        <target state="new">Radar key missing</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Radar legend" xml:space="preserve">
+        <source>Radar legend</source>
+        <target state="new">Radar legend</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Radar opacity" xml:space="preserve">
+        <source>Radar opacity</source>
+        <target state="new">Radar opacity</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Radar updated %lld min ago" xml:space="preserve">
+        <source>Radar updated %lld min ago</source>
+        <target state="new">Radar updated %lld min ago</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Radar updated %lld min ago · delayed" xml:space="preserve">
+        <source>Radar updated %lld min ago · delayed</source>
+        <target state="new">Radar updated %lld min ago · delayed</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Radar updated just now" xml:space="preserve">
+        <source>Radar updated just now</source>
+        <target state="new">Radar updated just now</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Rain" xml:space="preserve">
+        <source>Rain</source>
+        <target state="new">Rain</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Rain Now" xml:space="preserve">
+        <source>Rain Now</source>
+        <target state="new">Rain Now</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Rain alerts" xml:space="preserve">
+        <source>Rain alerts</source>
+        <target state="new">Rain alerts</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Rain alerts always cover your current location." xml:space="preserve">
+        <source>Rain alerts always cover your current location.</source>
+        <target state="new">Rain alerts always cover your current location.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Rain alerts for up to 20 places" xml:space="preserve">
+        <source>Rain alerts for up to 20 places</source>
+        <target state="new">Rain alerts for up to 20 places</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Rain for at least 2 hours" xml:space="preserve">
+        <source>Rain for at least 2 hours</source>
+        <target state="new">Rain for at least 2 hours</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Rain forecast (model) %@" xml:space="preserve">
+        <source>Rain forecast (model) %@</source>
+        <target state="new">Rain forecast (model) %@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Rain in about %lld min" xml:space="preserve">
+        <source>Rain in about %lld min</source>
+        <target state="new">Rain in about %lld min</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Rain intensity" xml:space="preserve">
+        <source>Rain intensity</source>
+        <target state="new">Rain intensity</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Rain on the way" xml:space="preserve">
+        <source>Rain on the way</source>
+        <target state="new">Rain on the way</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Rain showers" xml:space="preserve">
+        <source>Rain showers</source>
+        <target state="new">Rain showers</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Rain stopping in about %lld min" xml:space="preserve">
+        <source>Rain stopping in about %lld min</source>
+        <target state="new">Rain stopping in about %lld min</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Rain where you are" xml:space="preserve">
+        <source>Rain where you are</source>
+        <target state="new">Rain where you are</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="RainPulse is locked" xml:space="preserve">
+        <source>RainPulse is locked</source>
+        <target state="new">RainPulse is locked</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Raining" xml:space="preserve">
+        <source>Raining</source>
+        <target state="new">Raining</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Rate RainPulse" xml:space="preserve">
+        <source>Rate RainPulse</source>
+        <target state="new">Rate RainPulse</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Remove place" xml:space="preserve">
+        <source>Remove place</source>
+        <target state="new">Remove place</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Renews automatically until cancelled. Cancel anytime in Settings &gt; Apple Account &gt; Subscriptions at least 24 hours before renewal." xml:space="preserve">
+        <source>Renews automatically until cancelled. Cancel anytime in Settings &gt; Apple Account &gt; Subscriptions at least 24 hours before renewal.</source>
+        <target state="new">Renews automatically until cancelled. Cancel anytime in Settings &gt; Apple Account &gt; Subscriptions at least 24 hours before renewal.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Restore" xml:space="preserve">
+        <source>Restore</source>
+        <target state="new">Restore</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Restore purchases" xml:space="preserve">
+        <source>Restore purchases</source>
+        <target state="new">Restore purchases</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Results" xml:space="preserve">
+        <source>Results</source>
+        <target state="new">Results</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Satellite" xml:space="preserve">
+        <source>Satellite</source>
+        <target state="new">Satellite</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Satellite with labels" xml:space="preserve">
+        <source>Satellite with labels</source>
+        <target state="new">Satellite with labels</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Saved places (%lld/%lld)" xml:space="preserve">
+        <source>Saved places (%1$lld/%2$lld)</source>
+        <target state="new">Saved places (%1$lld/%2$lld)</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Search above to add home, work or anywhere you travel." xml:space="preserve">
+        <source>Search above to add home, work or anywhere you travel.</source>
+        <target state="new">Search above to add home, work or anywhere you travel.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Search city or address" xml:space="preserve">
+        <source>Search city or address</source>
+        <target state="new">Search city or address</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="See 14 days with Essential" xml:space="preserve">
+        <source>See 14 days with Essential</source>
+        <target state="new">See 14 days with Essential</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="See where it's raining right now, anywhere in the world, and where the rain is heading." xml:space="preserve">
+        <source>See where it's raining right now, anywhere in the world, and where the rain is heading.</source>
+        <target state="new">See where it's raining right now, anywhere in the world, and where the rain is heading.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Send feedback" xml:space="preserve">
+        <source>Send feedback</source>
+        <target state="new">Send feedback</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Sensitivity" xml:space="preserve">
+        <source>Sensitivity</source>
+        <target state="new">Sensitivity</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Settings" xml:space="preserve">
+        <source>Settings</source>
+        <target state="new">Settings</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Show rain forecast in animation" xml:space="preserve">
+        <source>Show rain forecast in animation</source>
+        <target state="new">Show rain forecast in animation</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Snow" xml:space="preserve">
+        <source>Snow</source>
+        <target state="new">Snow</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Snow showers" xml:space="preserve">
+        <source>Snow showers</source>
+        <target state="new">Snow showers</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Snowing" xml:space="preserve">
+        <source>Snowing</source>
+        <target state="new">Snowing</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Source: GDACS / %@" xml:space="preserve">
+        <source>Source: GDACS / %@</source>
+        <target state="new">Source: GDACS / %@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Start %@ free trial" xml:space="preserve">
+        <source>Start %@ free trial</source>
+        <target state="new">Start %@ free trial</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Subscription" xml:space="preserve">
+        <source>Subscription</source>
+        <target state="new">Subscription</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Temperature" xml:space="preserve">
+        <source>Temperature</source>
+        <target state="new">Temperature</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Terms" xml:space="preserve">
+        <source>Terms</source>
+        <target state="new">Terms</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Terms of Use" xml:space="preserve">
+        <source>Terms of Use</source>
+        <target state="new">Terms of Use</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Thunderstorm" xml:space="preserve">
+        <source>Thunderstorm</source>
+        <target state="new">Thunderstorm</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Thunderstorm with hail" xml:space="preserve">
+        <source>Thunderstorm with hail</source>
+        <target state="new">Thunderstorm with hail</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Time" xml:space="preserve">
+        <source>Time</source>
+        <target state="new">Time</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Today" xml:space="preserve">
+        <source>Today</source>
+        <target state="new">Today</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Track up to 20 places with alerts — upgrade" xml:space="preserve">
+        <source>Track up to 20 places with alerts — upgrade</source>
+        <target state="new">Track up to 20 places with alerts — upgrade</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Tropical depression" xml:space="preserve">
+        <source>Tropical depression</source>
+        <target state="new">Tropical depression</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Tropical storm" xml:space="preserve">
+        <source>Tropical storm</source>
+        <target state="new">Tropical storm</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Try Essential yearly free for 14 days" xml:space="preserve">
+        <source>Try Essential yearly free for 14 days</source>
+        <target state="new">Try Essential yearly free for 14 days</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Try Pro" xml:space="preserve">
+        <source>Try Pro</source>
+        <target state="new">Try Pro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Turn on alerts" xml:space="preserve">
+        <source>Turn on alerts</source>
+        <target state="new">Turn on alerts</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Turn on app lock" xml:space="preserve">
+        <source>Turn on app lock</source>
+        <target state="new">Turn on app lock</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Turn on notifications for RainPulse in Settings to get rain alerts." xml:space="preserve">
+        <source>Turn on notifications for RainPulse in Settings to get rain alerts.</source>
+        <target state="new">Turn on notifications for RainPulse in Settings to get rain alerts.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="UV index" xml:space="preserve">
+        <source>UV index</source>
+        <target state="new">UV index</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Unhealthy" xml:space="preserve">
+        <source>Unhealthy</source>
+        <target state="new">Unhealthy</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Unhealthy for sensitive groups" xml:space="preserve">
+        <source>Unhealthy for sensitive groups</source>
+        <target state="new">Unhealthy for sensitive groups</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Unlock 2-hour rain forecast animation" xml:space="preserve">
+        <source>Unlock 2-hour rain forecast animation</source>
+        <target state="new">Unlock 2-hour rain forecast animation</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Unlock AI insights" xml:space="preserve">
+        <source>Unlock AI insights</source>
+        <target state="new">Unlock AI insights</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Unlock RainPulse" xml:space="preserve">
+        <source>Unlock RainPulse</source>
+        <target state="new">Unlock RainPulse</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Unlock chart with Essential" xml:space="preserve">
+        <source>Unlock chart with Essential</source>
+        <target state="new">Unlock chart with Essential</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Unlock with %@" xml:space="preserve">
+        <source>Unlock with %@</source>
+        <target state="new">Unlock with %@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Unlock with Essential" xml:space="preserve">
+        <source>Unlock with Essential</source>
+        <target state="new">Unlock with Essential</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Updated %@" xml:space="preserve">
+        <source>Updated %@</source>
+        <target state="new">Updated %@</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Upgrade" xml:space="preserve">
+        <source>Upgrade</source>
+        <target state="new">Upgrade</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Upgrade to Essential or Pro" xml:space="preserve">
+        <source>Upgrade to Essential or Pro</source>
+        <target state="new">Upgrade to Essential or Pro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Upgrade to Pro" xml:space="preserve">
+        <source>Upgrade to Pro</source>
+        <target state="new">Upgrade to Pro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Use Passcode" xml:space="preserve">
+        <source>Use Passcode</source>
+        <target state="new">Use Passcode</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Use my location" xml:space="preserve">
+        <source>Use my location</source>
+        <target state="new">Use my location</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Version" xml:space="preserve">
+        <source>Version</source>
+        <target state="new">Version</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Very high" xml:space="preserve">
+        <source>Very high</source>
+        <target state="new">Very high</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Very unhealthy" xml:space="preserve">
+        <source>Very unhealthy</source>
+        <target state="new">Very unhealthy</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Violent" xml:space="preserve">
+        <source>Violent</source>
+        <target state="new">Violent</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Violent showers" xml:space="preserve">
+        <source>Violent showers</source>
+        <target state="new">Violent showers</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Visibility" xml:space="preserve">
+        <source>Visibility</source>
+        <target state="new">Visibility</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Warn me" xml:space="preserve">
+        <source>Warn me</source>
+        <target state="new">Warn me</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Weather data by Open-Meteo.com" xml:space="preserve">
+        <source>Weather data by Open-Meteo.com</source>
+        <target state="new">Weather data by Open-Meteo.com</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Weather services get your location rounded to about 1 km" xml:space="preserve">
+        <source>Weather services get your location rounded to about 1 km</source>
+        <target state="new">Weather services get your location rounded to about 1 km</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Will last more than 1 hour, expected to end at %@." xml:space="preserve">
+        <source>Will last more than 1 hour, expected to end at %@.</source>
+        <target state="new">Will last more than 1 hour, expected to end at %@.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Will last more than 3 hours." xml:space="preserve">
+        <source>Will last more than 3 hours.</source>
+        <target state="new">Will last more than 3 hours.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Wind" xml:space="preserve">
+        <source>Wind</source>
+        <target state="new">Wind</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Wind flow" xml:space="preserve">
+        <source>Wind flow</source>
+        <target state="new">Wind flow</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Yearly" xml:space="preserve">
+        <source>Yearly</source>
+        <target state="new">Yearly</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="You have Pro" xml:space="preserve">
+        <source>You have Pro</source>
+        <target state="new">You have Pro</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Your plan" xml:space="preserve">
+        <source>Your plan</source>
+        <target state="new">Your plan</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="Your subscription stays with your Apple Account and can be restored any time." xml:space="preserve">
+        <source>Your subscription stays with your Apple Account and can be restored any time.</source>
+        <target state="new">Your subscription stays with your Apple Account and can be restored any time.</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="day" xml:space="preserve">
+        <source>day</source>
+        <target state="new">day</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="days" xml:space="preserve">
+        <source>days</source>
+        <target state="new">days</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="mm/h" xml:space="preserve">
+        <source>mm/h</source>
+        <target state="new">mm/h</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="month" xml:space="preserve">
+        <source>month</source>
+        <target state="new">month</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="months" xml:space="preserve">
+        <source>months</source>
+        <target state="new">months</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="my area" xml:space="preserve">
+        <source>my area</source>
+        <target state="new">my area</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="next 48 h" xml:space="preserve">
+        <source>next 48 h</source>
+        <target state="new">next 48 h</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="now" xml:space="preserve">
+        <source>now</source>
+        <target state="new">now</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="per month" xml:space="preserve">
+        <source>per month</source>
+        <target state="new">per month</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="per year" xml:space="preserve">
+        <source>per year</source>
+        <target state="new">per year</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="week" xml:space="preserve">
+        <source>week</source>
+        <target state="new">week</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="weeks" xml:space="preserve">
+        <source>weeks</source>
+        <target state="new">weeks</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="year" xml:space="preserve">
+        <source>year</source>
+        <target state="new">year</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id="years" xml:space="preserve">
+        <source>years</source>
+        <target state="new">years</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id=" Weather" xml:space="preserve">
+        <source> Weather</source>
+        <target state="new"> Weather</target>
+        <note/>
+      </trans-unit>
+      <trans-unit id=" Weather · Other data sources" xml:space="preserve">
+        <source> Weather · Other data sources</source>
+        <target state="new"> Weather · Other data sources</target>
+        <note/>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

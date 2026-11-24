@@ -1,0 +1,950 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    " " : {
+
+    },
+    "%@ · %lld km/h" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · %2$lld km/h"
+          }
+        }
+      }
+    },
+    "%@ · %lld km/h · %lld km away" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · %2$lld km/h · %3$lld km away"
+          }
+        }
+      }
+    },
+    "%@ · winds up to %lld km/h" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · winds up to %2$lld km/h"
+          }
+        }
+      }
+    },
+    "%@ per %@. " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ per %2$@. "
+          }
+        }
+      }
+    },
+    "%@ rain expected at %@ around %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ rain expected at %2$@ around %3$@."
+          }
+        }
+      }
+    },
+    "%@ rain expected from %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ rain expected from %2$@."
+          }
+        }
+      }
+    },
+    "%@, winds up to %lld km/h, %lld km away. Follow official warnings from your weather service." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, winds up to %2$lld km/h, %3$lld km away. Follow official warnings from your weather service."
+          }
+        }
+      }
+    },
+    "%@. %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@. %2$@"
+          }
+        }
+      }
+    },
+    "%lld km from %@ now; forecast track passes about %lld km away." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld km from %2$@ now; forecast track passes about %3$lld km away."
+          }
+        }
+      }
+    },
+    "%lld km from %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld km from %2$@."
+          }
+        }
+      }
+    },
+    "%lld-day forecast" : {
+
+    },
+    "%lld%%" : {
+
+    },
+    "%lld%% chance in 24 h" : {
+
+    },
+    "%lld%% chance today" : {
+
+    },
+    "0.5x" : {
+
+    },
+    "1 hour before" : {
+
+    },
+    "1x" : {
+
+    },
+    "2-hour radar forecast animation" : {
+
+    },
+    "2-hour radar history" : {
+
+    },
+    "2-hour rain chart with Essential" : {
+
+    },
+    "2-hour rain forecast animation" : {
+
+    },
+    "2-hour rain forecast, alerts for 20 places" : {
+
+    },
+    "2x" : {
+
+    },
+    "6-hour radar history" : {
+
+    },
+    "14-day forecast" : {
+
+    },
+    "14-day forecast and alerts for 20 places" : {
+
+    },
+    "30 min before" : {
+
+    },
+    "48-hour radar playback" : {
+
+    },
+    "About" : {
+
+    },
+    "AI insights" : {
+
+    },
+    "AI insights run on your iPhone" : {
+
+    },
+    "Air quality" : {
+
+    },
+    "Alerts" : {
+
+    },
+    "Alerts before it rains" : {
+
+    },
+    "Alerts cover your current location and every saved place with the bell on. iOS decides exactly when background checks run." : {
+
+    },
+    "All data erased" : {
+
+    },
+    "All widget sizes" : {
+
+    },
+    "Allow location" : {
+
+    },
+    "Allow location access or add a place to see the forecast." : {
+
+    },
+    "Allow location so RainPulse can show the radar and forecast around you." : {
+
+    },
+    "Always follow official warnings from your national weather service." : {
+
+    },
+    "Always on" : {
+
+    },
+    "Any drizzle" : {
+
+    },
+    "Apple Weather" : {
+
+    },
+    "Apple Weather gives forecasts but no radar maps to apps, so the map uses OpenWeather radar plus NOAA's GFS model for future rain." : {
+
+    },
+    "BEST" : {
+
+    },
+    "Billing" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Carry an umbrella — rain is most likely around %@." : {
+
+    },
+    "Category 1 cyclone" : {
+
+    },
+    "Category 2 cyclone" : {
+
+    },
+    "Category 3 cyclone" : {
+
+    },
+    "Category 4 cyclone" : {
+
+    },
+    "Category 5 cyclone" : {
+
+    },
+    "Choose place" : {
+
+    },
+    "Clear" : {
+
+    },
+    "Close" : {
+
+    },
+    "Clouds" : {
+
+    },
+    "Clouds, wind and temperature layers" : {
+
+    },
+    "Clouds, wind and temperature map layers" : {
+
+    },
+    "Cloudy" : {
+
+    },
+    "Conditions now" : {
+
+    },
+    "Continue" : {
+
+    },
+    "Couldn't load forecast" : {
+
+    },
+    "Current Location" : {
+
+    },
+    "Current radar · animation unavailable" : {
+
+    },
+    "Current radar only" : {
+
+    },
+    "Current weather and rain for the next 2 hours." : {
+
+    },
+    "Cyclone %@" : {
+
+    },
+    "Cyclone %@ near %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cyclone %1$@ near %2$@"
+          }
+        }
+      }
+    },
+    "Cyclones" : {
+
+    },
+    "Dark (best for rain)" : {
+
+    },
+    "Data status" : {
+
+    },
+    "day" : {
+
+    },
+    "Day" : {
+
+    },
+    "days" : {
+
+    },
+    "Details" : {
+
+    },
+    "Dew point" : {
+
+    },
+    "Drier spell from about %@ — a good time to head out." : {
+
+    },
+    "Drizzle" : {
+
+    },
+    "Dry" : {
+
+    },
+    "Erase all my RainPulse data" : {
+
+    },
+    "Erase everything" : {
+
+    },
+    "Erase saved places, settings, alerts and cached weather on this iPhone?" : {
+
+    },
+    "Essential" : {
+
+    },
+    "Everything in Essential" : {
+
+    },
+    "Everything in RainPulse is unlocked" : {
+
+    },
+    "Expected to end at %@." : {
+
+    },
+    "Extreme" : {
+
+    },
+    "Feels like" : {
+
+    },
+    "Fog" : {
+
+    },
+    "Forecast" : {
+
+    },
+    "Forecast %@" : {
+
+    },
+    "Free" : {
+
+    },
+    "Free for %@, then %@ per %@. " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Free for %1$@, then %2$@ per %3$@. "
+          }
+        }
+      }
+    },
+    "Free: alerts for your current location. Essential and Pro: alerts for all saved places." : {
+
+    },
+    "Freezing drizzle" : {
+
+    },
+    "Freezing rain" : {
+
+    },
+    "From %@" : {
+
+    },
+    "Get a heads-up before rain reaches you, so you can leave early or wait it out." : {
+
+    },
+    "Get Essential" : {
+
+    },
+    "Get insight" : {
+
+    },
+    "Get started" : {
+
+    },
+    "Good" : {
+
+    },
+    "Gusts %@" : {
+
+    },
+    "H %@  L %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "H %1$@  L %2$@"
+          }
+        }
+      }
+    },
+    "Hazardous" : {
+
+    },
+    "Heavy" : {
+
+    },
+    "Heavy rain" : {
+
+    },
+    "Heavy rain only" : {
+
+    },
+    "Help & Feedback" : {
+
+    },
+    "High" : {
+
+    },
+    "Hourly" : {
+
+    },
+    "Humidity" : {
+
+    },
+    "Hybrid (light)" : {
+
+    },
+    "Know exactly when it rains" : {
+
+    },
+    "Light" : {
+
+    },
+    "Light rain" : {
+
+    },
+    "Live" : {
+
+    },
+    "LIVE" : {
+
+    },
+    "Live radar now · future rain from forecast model" : {
+
+    },
+    "Live radar, a 2-hour rain forecast and alerts before it starts." : {
+
+    },
+    "Live rain radar" : {
+
+    },
+    "Live rain radar for %@ — RainPulse: Live Rain Radar" : {
+
+    },
+    "Loading prices…" : {
+
+    },
+    "Lock with %@" : {
+
+    },
+    "Low" : {
+
+    },
+    "Manage subscription" : {
+
+    },
+    "Map" : {
+
+    },
+    "Map data © OpenWeather" : {
+
+    },
+    "Map layers" : {
+
+    },
+    "Map style" : {
+
+    },
+    "Minute-by-minute rain chart" : {
+
+    },
+    "Minute-level rain data" : {
+
+    },
+    "mm/h" : {
+
+    },
+    "Model-based rain data" : {
+
+    },
+    "Moderate" : {
+
+    },
+    "Moderate rain" : {
+
+    },
+    "month" : {
+
+    },
+    "Monthly" : {
+
+    },
+    "months" : {
+
+    },
+    "More details" : {
+
+    },
+    "Mostly clear" : {
+
+    },
+    "my area" : {
+
+    },
+    "My Location" : {
+
+    },
+    "Next 2 hours" : {
+
+    },
+    "next 48 h" : {
+
+    },
+    "No account, no ads, no tracking" : {
+
+    },
+    "No location yet" : {
+
+    },
+    "No rain expected in the next 3 hours." : {
+
+    },
+    "No rain for 2 hours" : {
+
+    },
+    "No rain nearby" : {
+
+    },
+    "No saved places" : {
+
+    },
+    "None" : {
+
+    },
+    "Not now" : {
+
+    },
+    "Notifications are off" : {
+
+    },
+    "now" : {
+
+    },
+    "Now" : {
+
+    },
+    "Open RainPulse" : {
+
+    },
+    "Open Settings" : {
+
+    },
+    "Open the app to load" : {
+
+    },
+    "Open-Meteo" : {
+
+    },
+    "Other data sources" : {
+
+    },
+    "Overcast" : {
+
+    },
+    "Partly cloudy" : {
+
+    },
+    "Passcode" : {
+
+    },
+    "Past %@" : {
+
+    },
+    "Pause" : {
+
+    },
+    "per month" : {
+
+    },
+    "per year" : {
+
+    },
+    "Places" : {
+
+    },
+    "Plan" : {
+
+    },
+    "Play" : {
+
+    },
+    "Playback speed" : {
+
+    },
+    "Precipitation (mm/h)" : {
+
+    },
+    "Pressure" : {
+
+    },
+    "Privacy" : {
+
+    },
+    "Privacy & Security" : {
+
+    },
+    "Privacy Policy" : {
+
+    },
+    "Pro" : {
+
+    },
+    "Purchases verified with Apple's signed receipts" : {
+
+    },
+    "Radar" : {
+
+    },
+    "Radar data" : {
+
+    },
+    "Radar key missing" : {
+
+    },
+    "Radar legend" : {
+
+    },
+    "Radar opacity" : {
+
+    },
+    "Radar updated %lld min ago" : {
+
+    },
+    "Radar updated %lld min ago · delayed" : {
+
+    },
+    "Radar updated just now" : {
+
+    },
+    "Rain" : {
+
+    },
+    "Rain alerts" : {
+
+    },
+    "Rain alerts always cover your current location." : {
+
+    },
+    "Rain alerts for up to 20 places" : {
+
+    },
+    "Rain for at least 2 hours" : {
+
+    },
+    "Rain forecast (model) %@" : {
+
+    },
+    "Rain in about %lld min" : {
+
+    },
+    "Rain intensity" : {
+
+    },
+    "Rain Now" : {
+
+    },
+    "Rain on the way" : {
+
+    },
+    "Rain showers" : {
+
+    },
+    "Rain stopping in about %lld min" : {
+
+    },
+    "Rain where you are" : {
+
+    },
+    "Raining" : {
+
+    },
+    "RainPulse is locked" : {
+
+    },
+    "Rate RainPulse" : {
+
+    },
+    "Remove place" : {
+
+    },
+    "Renews automatically until cancelled. Cancel anytime in Settings > Apple Account > Subscriptions at least 24 hours before renewal." : {
+
+    },
+    "Restore" : {
+
+    },
+    "Restore purchases" : {
+
+    },
+    "Results" : {
+
+    },
+    "Satellite" : {
+
+    },
+    "Satellite with labels" : {
+
+    },
+    "Saved places (%lld/%lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Saved places (%1$lld/%2$lld)"
+          }
+        }
+      }
+    },
+    "Search above to add home, work or anywhere you travel." : {
+
+    },
+    "Search city or address" : {
+
+    },
+    "See 14 days with Essential" : {
+
+    },
+    "See where it's raining right now, anywhere in the world, and where the rain is heading." : {
+
+    },
+    "Send feedback" : {
+
+    },
+    "Sensitivity" : {
+
+    },
+    "Settings" : {
+
+    },
+    "Show rain forecast in animation" : {
+
+    },
+    "Snow" : {
+
+    },
+    "Snow showers" : {
+
+    },
+    "Snowing" : {
+
+    },
+    "Source: GDACS / %@" : {
+
+    },
+    "Start %@ free trial" : {
+
+    },
+    "Subscription" : {
+
+    },
+    "Temperature" : {
+
+    },
+    "Terms" : {
+
+    },
+    "Terms of Use" : {
+
+    },
+    "Thunderstorm" : {
+
+    },
+    "Thunderstorm with hail" : {
+
+    },
+    "Time" : {
+
+    },
+    "Today" : {
+
+    },
+    "Track up to 20 places with alerts — upgrade" : {
+
+    },
+    "Tropical depression" : {
+
+    },
+    "Tropical storm" : {
+
+    },
+    "Try Essential yearly free for 14 days" : {
+
+    },
+    "Try Pro" : {
+
+    },
+    "Turn on alerts" : {
+
+    },
+    "Turn on app lock" : {
+
+    },
+    "Turn on notifications for RainPulse in Settings to get rain alerts." : {
+
+    },
+    "Unhealthy" : {
+
+    },
+    "Unhealthy for sensitive groups" : {
+
+    },
+    "Unlock 2-hour rain forecast animation" : {
+
+    },
+    "Unlock AI insights" : {
+
+    },
+    "Unlock chart with Essential" : {
+
+    },
+    "Unlock RainPulse" : {
+
+    },
+    "Unlock with %@" : {
+
+    },
+    "Unlock with Essential" : {
+
+    },
+    "Updated %@" : {
+
+    },
+    "Upgrade" : {
+
+    },
+    "Upgrade to Essential or Pro" : {
+
+    },
+    "Upgrade to Pro" : {
+
+    },
+    "Use my location" : {
+
+    },
+    "Use Passcode" : {
+
+    },
+    "UV index" : {
+
+    },
+    "Version" : {
+
+    },
+    "Very high" : {
+
+    },
+    "Very unhealthy" : {
+
+    },
+    "Violent" : {
+
+    },
+    "Violent showers" : {
+
+    },
+    "Visibility" : {
+
+    },
+    "Warn me" : {
+
+    },
+    "Weather data by Open-Meteo.com" : {
+
+    },
+    "Weather services get your location rounded to about 1 km" : {
+
+    },
+    "week" : {
+
+    },
+    "weeks" : {
+
+    },
+    "Will last more than 1 hour, expected to end at %@." : {
+
+    },
+    "Will last more than 3 hours." : {
+
+    },
+    "Wind" : {
+
+    },
+    "Wind flow" : {
+
+    },
+    "year" : {
+
+    },
+    "Yearly" : {
+
+    },
+    "years" : {
+
+    },
+    "You have Pro" : {
+
+    },
+    "Your plan" : {
+
+    },
+    "Your subscription stays with your Apple Account and can be restored any time." : {
+
+    },
+    " Weather" : {
+
+    },
+    " Weather · Other data sources" : {
+
+    }
+  },
+  "version" : "1.0"
+}
