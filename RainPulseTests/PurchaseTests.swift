@@ -85,10 +85,10 @@ final class PurchaseTests: XCTestCase {
         session.failTransactionsEnabled = false
     }
 
-    func testRestoreFindsExistingSubscription() async throws {
+    /// A subscription bought earlier (e.g. on another device) is found on launch.
+    func testExistingSubscriptionIsFoundOnLaunch() async throws {
         _ = try await session.buyProduct(identifier: StoreManager.ID.essentialYearly)
         let store = await makeStore()
-        await store.restore()
         XCTAssertEqual(store.tier, .essential)
     }
 }

@@ -74,7 +74,8 @@ jobs:
             -only-testing:RainPulseUITests/MatrixUITests \
             -testLanguage ${{ matrix.lang }} -testRegion ${{ matrix.region }} \
             -resultBundlePath "$RUNNER_TEMP/m.xcresult" \
-            CODE_SIGNING_ALLOWED=NO test 2>&1 | tee test.log | grep -E "Test Case|error:|TEST (SUCCEEDED|FAILED)" || true
+            -test-timeouts-enabled YES -default-test-execution-time-allowance 300 \
+            CODE_SIGNING_ALLOWED=NO test 2>&1 | tee test.log | grep --line-buffered -E "Test Case|error:|TEST (SUCCEEDED|FAILED)" || true
           grep -q "TEST SUCCEEDED" test.log
       - name: Publish screenshots
         if: always()
