@@ -1,0 +1,14 @@
+name: Data sources check
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 2 * * *"   # daily, 07:47 India time; GitHub emails the owner if it fails
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q requests pillow
+      - run: python3 tools/check_sources.py
+        env:
+          OWM_API_KEY: ${{ secrets.OWM_API_KEY }}
