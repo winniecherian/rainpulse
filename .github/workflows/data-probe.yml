@@ -1,0 +1,21 @@
+name: Data probe
+on:
+  push:
+    paths: [".github/workflows/data-probe.yml"]
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          set +e
+          curl -sL -m 60 "https://coastwatch.pfeg.noaa.gov/erddap/info/NCEP_Global_Best/index.json" -o info.json -w "info HTTP %{http_code}\n"
+          python3 - <<'PY'
+          import json
+          d = json.load(open("info.json"))
+          for r in d["table"]["rows"]:
+              if r[0] == "variable" or (r[0]=="attribute" and r[2] in ("long_name","units") and r[1] in ("pratesfc","prate","apcpsfc","time")) or (r[1]=="time" and r[2] in ("actual_range","time_coverage_end")):
+                  print(r)
+          PY
+          T0=$(date -u -d '+0 hours' +%Y-%m-%dT%H:00:00Z); T1=$(date -u -d '+24 hours' +%Y-%m-%dT%H:00:00Z)
+          curl -sL -m 60 "https://coastwatch.pfeg.noaa.gov/erddap/griddap/NCEP_Global_Best.json?pratesfc%5B($T0):1:($T1)%5D%5B(8):2:(16)%5D%5B(76):2:(84)%5D" -o p.json -w "prate HTTP %{http_code} %{size_download}B %{time_total}s\n"
+          head -c 1200 p.json; echo
