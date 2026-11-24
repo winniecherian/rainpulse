@@ -20,7 +20,7 @@
           "adHocOffers": [],
           "codeOffers": [],
           "displayPrice": "34.99",
-          "familyShareable": true,
+          "familyShareable": false,
           "groupNumber": 1,
           "internalID": "31000001",
           "introductoryOffer": {
@@ -45,10 +45,9 @@
           "adHocOffers": [],
           "codeOffers": [],
           "displayPrice": "5.99",
-          "familyShareable": true,
+          "familyShareable": false,
           "groupNumber": 1,
           "internalID": "31000002",
-          "introductoryOffer": null,
           "localizations": [
             {
               "description": "Everything in Essential plus 48-hour radar and extra map layers",
@@ -66,7 +65,7 @@
           "adHocOffers": [],
           "codeOffers": [],
           "displayPrice": "19.99",
-          "familyShareable": true,
+          "familyShareable": false,
           "groupNumber": 2,
           "internalID": "31000003",
           "introductoryOffer": {
@@ -91,10 +90,9 @@
           "adHocOffers": [],
           "codeOffers": [],
           "displayPrice": "2.99",
-          "familyShareable": true,
+          "familyShareable": false,
           "groupNumber": 2,
           "internalID": "31000004",
-          "introductoryOffer": null,
           "localizations": [
             {
               "description": "2-hour rain forecast, alerts, 14-day forecast",

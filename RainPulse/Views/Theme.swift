@@ -158,6 +158,7 @@ struct RainClock: View {
             }
         }
         .frame(width: size, height: size)
+        .environment(\.layoutDirection, .leftToRight)   // clocks run clockwise in every language
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("\(headline). \(detail)")
         .onAppear { withAnimation(.easeOut(duration: 1.1)) { reveal = 1 } }

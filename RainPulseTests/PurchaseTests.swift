@@ -62,6 +62,11 @@ final class StoreCatalogTests: XCTestCase {
         XCTAssertEqual(price(StoreManager.ID.essentialYearly), Decimal(string: "19.99"))
         XCTAssertEqual(price(StoreManager.ID.proMonthly), Decimal(string: "5.99"))
         XCTAssertEqual(price(StoreManager.ID.proYearly), Decimal(string: "34.99"))
+        let intro = { (id: String) in products.first { $0.id == id }?.subscription?.introductoryOffer }
+        XCTAssertNil(intro(StoreManager.ID.essentialMonthly), "no trial on monthly")
+        XCTAssertNil(intro(StoreManager.ID.proMonthly), "no trial on monthly")
+        XCTAssertEqual(intro(StoreManager.ID.essentialYearly)?.paymentMode, .freeTrial)
+        XCTAssertEqual(intro(StoreManager.ID.proYearly)?.paymentMode, .freeTrial)
         XCTAssertTrue(products.allSatisfy { $0.subscription?.subscriptionGroupID == products[0].subscription?.subscriptionGroupID },
                       "all plans must share one group so upgrades and downgrades work")
     }
