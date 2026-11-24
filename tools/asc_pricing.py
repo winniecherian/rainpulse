@@ -112,12 +112,45 @@ def main(mode):
         print(f"{pid}: bands US-equivalent {[bands[k]['US'] for k in (1.0, 0.60, 0.38)]}, set {ok}, failed {fail}")
         for e in errors: print("   ", e)
         results[pid] = {k: bands[k]["US"] for k in bands}
+    # Free trial on yearly plans only: remove monthly intro offers.
+    for s in subs:
+        pid = s["attributes"]["productId"]
+        if not pid.endswith(".monthly"): continue
+        offers = get_all(f"/v1/subscriptions/{s['id']}/introductoryOffers", {"limit": 200})
+        gone = sum(1 for o in offers if call("DELETE", f"/v1/subscriptionIntroductoryOffers/{o['id']}").status_code in (200, 204))
+        print(f"{pid}: removed {gone} of {len(offers)} trial offers")
     # Spot check a few territories
     for s in subs:
         pid = s["attributes"]["productId"]
         if pid not in TARGET: continue
         prices = get_all(f"/v1/subscriptions/{s['id']}/prices", {"include": "subscriptionPricePoint,territory", "limit": 200})
-        print(pid, "now has", len(prices), "price records")
+        by_t = {}
+        for p in prices:
+            t = p["relationships"]["territory"]["data"]["id"]
+            by_t.setdefault(t, []).append(p)
+        inc = {i["id"]: i for i in []}
+        print(pid, "price records:", len(prices))
+    # Show customer prices for sample territories
+    for s in subs:
+        pid = s["attributes"]["productId"]
+        if pid not in TARGET: continue
+        r = call("GET", f"/v1/subscriptions/{s['id']}/prices", params={"include": "subscriptionPricePoint,territory", "limit": 200,
+                 "filter[territory]": "USA,GBR,DEU,JPN,BRA,IDN,MEX,POL,ZAF,IND"})
+        j = r.json()
+        pts = {i["id"]: i for i in j.get("included", []) if i["type"] == "subscriptionPricePoints"}
+        terr = {i["id"]: i for i in j.get("included", []) if i["type"] == "territories"}
+        latest = {}
+        for p in j.get("data", []):
+            t = p["relationships"]["territory"]["data"]["id"]
+            sd = p["attributes"].get("startDate") or ""
+            if t not in latest or sd >= (latest[t]["attributes"].get("startDate") or ""):
+                latest[t] = p
+        row = []
+        for t, p in sorted(latest.items()):
+            pp = pts.get(p["relationships"]["subscriptionPricePoint"]["data"]["id"])
+            cur = terr.get(t, {}).get("attributes", {}).get("currency", "")
+            row.append(f"{t} {pp['attributes']['customerPrice'] if pp else '?'} {cur}")
+        print(pid, " | ".join(row))
 
 if __name__ == "__main__":
     main(sys.argv[1] if len(sys.argv) > 1 else "inspect")
