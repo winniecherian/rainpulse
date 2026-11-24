@@ -57,9 +57,14 @@ final class MatrixUITests: XCTestCase {
             XCTAssertTrue(app.staticTexts["hero.temperature"].waitForExistence(timeout: 30), "forecast hero")
             sleep(2)
             snap(app, "m2-forecast")
-            for _ in 0..<2 { app.swipeUp() }
-            XCTAssertTrue(app.descendants(matching: .any)["tile.cloud.rain.fill"].exists, "rain tile")
-            XCTAssertTrue(app.descendants(matching: .any)["tile.aqi.medium"].exists, "air quality tile")
+            let rainTile = app.descendants(matching: .any)["tile.cloud.rain.fill"]
+            let aqiTile = app.descendants(matching: .any)["tile.aqi.medium"]
+            var s = 0
+            while !(rainTile.exists && rainTile.isHittable) && s < 6 { app.swipeUp(); s += 1 }
+            XCTAssertTrue(rainTile.exists, "rain tile")
+            var t = 0
+            while !(aqiTile.exists && aqiTile.isHittable) && t < 4 { app.swipeUp(); t += 1 }
+            XCTAssertTrue(aqiTile.exists, "air quality tile")
             snap(app, "m3-forecast-tiles")
             let more = app.buttons["forecast.more"]
             var n = 0

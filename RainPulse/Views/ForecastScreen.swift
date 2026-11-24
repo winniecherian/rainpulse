@@ -52,9 +52,14 @@ struct ForecastScreen: View {
                         } description: {
                             Text("Allow location access or add a place to see the forecast.")
                         } actions: {
-                            Button("Use my location") { location.request() }
-                                .buttonStyle(.borderedProminent)
-                                .accessibilityIdentifier("forecast.useLocation")
+                            Button { location.request() } label: {
+                                Label("Use my location", systemImage: "location.fill")
+                                    .font(.headline)
+                                    .padding(.horizontal, 22).padding(.vertical, 12)
+                                    .background(.white, in: Capsule())
+                                    .foregroundStyle(Color.accentColor)
+                            }
+                            .accessibilityIdentifier("forecast.useLocation")
                         }
                         .padding(.top, 60)
                     } else if let errorText {
@@ -387,7 +392,7 @@ struct ForecastScreen: View {
                                 .frame(height: 24)
                             Text(Fmt.temperature(hour.temperature)).font(.subheadline.weight(.medium))
                             Text(hour.precipitationProbability.map { "\($0)%" } ?? " ")
-                                .font(.caption2).foregroundStyle(.blue)
+                                .font(.caption2).foregroundStyle(Color(red: 0.62, green: 0.88, blue: 1.0))
                         }
                     }
                 }
@@ -410,7 +415,7 @@ struct ForecastScreen: View {
                         Image(systemName: WeatherCode.symbol(day.weatherCode))
                             .symbolRenderingMode(.multicolor).frame(width: 30)
                         Text(day.precipitationProbabilityMax.map { "\($0)%" } ?? "")
-                            .font(.caption).foregroundStyle(.blue).frame(width: 38)
+                            .font(.caption).foregroundStyle(Color(red: 0.62, green: 0.88, blue: 1.0)).frame(width: 38)
                         Text(Fmt.temperature(day.minTemperature)).foregroundStyle(.secondary).frame(width: 40)
                         TemperatureBar(low: low, high: high, dayLow: day.minTemperature, dayHigh: day.maxTemperature)
                         Text(Fmt.temperature(day.maxTemperature)).frame(width: 40)

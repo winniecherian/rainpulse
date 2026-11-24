@@ -64,6 +64,10 @@ jobs:
           fi
           echo "Simulator: $DEVICE"
           echo "device=$DEVICE" >> "$GITHUB_OUTPUT"
+          # Boot and wait until fully ready, so the first app launch isn't slowed by boot work.
+          xcrun simctl boot "$DEVICE" || true
+          xcrun simctl bootstatus "$DEVICE" -b
+          sleep 20
       - name: Run matrix UI test
         env:
           TEST_RUNNER_RP_CONFIG: ${{ matrix.config }}
