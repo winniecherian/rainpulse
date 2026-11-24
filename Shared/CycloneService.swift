@@ -60,7 +60,7 @@ struct Cyclone: Identifiable, Codable {
         let p = Coordinate(lat: c.latitude - 3, lon: c.longitude + 3)
         func pt(_ dLat: Double, _ dLon: Double) -> Coordinate { Coordinate(lat: p.lat + dLat, lon: p.lon + dLon) }
         return Cyclone(
-            id: 1, name: "SAMPLE", alertLevel: "Orange", maxWindKmh: 120,
+            id: 1, name: "ARIA", alertLevel: "Orange", maxWindKmh: 120,
             strengthText: "Tropical Storm (maximum wind speed of 120 km/h)", position: p, updated: Date(),
             segments: [
                 Segment(points: [pt(-3, 2), pt(-1.5, 1)], isForecast: false, category: "TS"),

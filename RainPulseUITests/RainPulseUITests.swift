@@ -57,7 +57,7 @@ final class RainPulseUITests: XCTestCase {
         if app.buttons["Pause"].exists { app.buttons["Pause"].tap() }
 
         // Cyclone chip focuses the storm; then turn on wind flow (Pro).
-        let chip = app.buttons["Cyclone SAMPLE"]
+        let chip = app.buttons["Cyclone ARIA"]
         XCTAssertTrue(chip.waitForExistence(timeout: 10), "Cyclone chip should show on radar")
         chip.tap()
         sleep(3)
@@ -73,10 +73,12 @@ final class RainPulseUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Snow"].waitForExistence(timeout: 30), "Key conditions should load")
         XCTAssertTrue(app.staticTexts["Air quality"].exists, "AQI tile should show")
         XCTAssertFalse(app.buttons["Unlock with Essential"].exists, "Pro should not see the lock")
-        XCTAssertTrue(app.staticTexts["Cyclone SAMPLE"].waitForExistence(timeout: 10), "Cyclone card should show")
+        XCTAssertTrue(app.staticTexts["Cyclone ARIA"].waitForExistence(timeout: 10), "Cyclone card should show")
         sleep(2)
         snap(app, "02-Forecast")
         app.swipeUp()
+        sleep(1)
+        snap(app, "03-KeyConditions")
         let more = app.buttons["More details"]
         XCTAssertTrue(more.waitForExistence(timeout: 5), "More details should be offered")
         more.tap()
@@ -85,7 +87,7 @@ final class RainPulseUITests: XCTestCase {
         while !app.staticTexts["Humidity"].exists && tries < 4 { app.swipeUp(); tries += 1 }
         XCTAssertTrue(app.staticTexts["Humidity"].waitForExistence(timeout: 5), "Conditions card should show")
         sleep(1)
-        snap(app, "03-Forecast-Daily")
+        snap(app, "03b-MoreDetails")
 
         // Places
         tabs.buttons["Places"].tap()
@@ -103,6 +105,11 @@ final class RainPulseUITests: XCTestCase {
         tabs.buttons["Settings"].tap()
         XCTAssertTrue(app.staticTexts["Pro"].waitForExistence(timeout: 5), "Plan should show Pro")
         snap(app, "05-Settings")
+        // Privacy & Security section for the store screenshot
+        var swipes = 0
+        while !app.staticTexts["Privacy & Security"].isHittable && swipes < 6 { app.swipeUp(); swipes += 1 }
+        sleep(1)
+        snap(app, "05b-Privacy")
     }
 
     /// Free user: locks and the paywall work.

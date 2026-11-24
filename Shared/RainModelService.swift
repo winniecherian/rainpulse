@@ -81,18 +81,27 @@ struct RainModelFrames {
     }
 
     static func sample(around c: CLLocationCoordinate2D, hours: Int) -> RainModelFrames {
-        let lats = stride(from: c.latitude - 8, through: c.latitude + 8, by: 1.0).map { $0 }
-        let lons = stride(from: c.longitude - 10, through: c.longitude + 10, by: 1.0).map { $0 }
+        // Scattered showers drifting east: a few small cells of different strength.
+        let lats = stride(from: c.latitude - 8, through: c.latitude + 8, by: 0.5).map { $0 }
+        let lons = stride(from: c.longitude - 10, through: c.longitude + 10, by: 0.5).map { $0 }
+        let cells: [(Double, Double, Double, Double)] = [   // dLat, dLon, peak mm/h, radius°
+            (1.2, -4.0, 6, 0.9), (-0.8, -2.5, 2.5, 0.7), (2.6, -1.0, 14, 0.6),
+            (-2.4, 1.5, 1.2, 1.1), (0.4, 3.2, 4, 0.8), (-1.6, -6.0, 9, 0.5)]
         var values: [[Float]] = []
         var dates: [Date] = []
         let steps = max(2, hours / 3)
         for s in 1...steps {
             dates.append(Date().addingTimeInterval(Double(s) * 3 * 3600))
+            let shift = Double(s) * 0.6
             var g: [Float] = []
             for la in lats {
                 for lo in lons {
-                    let dx = lo - (c.longitude - 6 + Double(s) * 1.5), dy = la - (c.latitude - 2)
-                    g.append(Float(max(0, 12 * exp(-(dx * dx + dy * dy) / 6))))
+                    var v = 0.0
+                    for (dy, dx, peak, r) in cells {
+                        let x = lo - (c.longitude + dx + shift), y = la - (c.latitude + dy)
+                        v += peak * exp(-(x * x + y * y) / (2 * r * r))
+                    }
+                    g.append(Float(v))
                 }
             }
             values.append(g)
