@@ -7,18 +7,29 @@ import MapKit
 private func forecast(rain: [Double], now: Date, code: Int = 2, currentRain: Double? = nil,
                       tz: String = "Asia/Kolkata", days: Int = 3) -> Forecast {
     let base = floor(now.timeIntervalSince1970 / 900) * 900
-    let steps = rain.enumerated().map { Forecast.Step(time: Date(timeIntervalSince1970: base + Double($0) * 900), precipitation: $1) }
-    let hours = (0..<48).map { i in
-        Forecast.Hour(time: Date(timeIntervalSince1970: floor(now.timeIntervalSince1970 / 3600) * 3600 + Double(i) * 3600),
-                      temperature: 28, precipitationProbability: i == 5 ? 70 : 10, precipitation: i == 5 ? 1.2 : 0,
-                      weatherCode: i == 30 ? 71 : 2)
+    var steps: [Forecast.Step] = []
+    for (i, mm) in rain.enumerated() {
+        steps.append(Forecast.Step(time: Date(timeIntervalSince1970: base + Double(i) * 900), precipitation: mm))
     }
-    let daily = (0..<days).map { i in
-        Forecast.Day(time: Date(timeIntervalSince1970: floor(now.timeIntervalSince1970 / 86400) * 86400 + Double(i) * 86400),
-                     weatherCode: 2, maxTemperature: 31, minTemperature: 24, precipitationSum: 1, precipitationProbabilityMax: 40)
+    let hourStart: Double = floor(now.timeIntervalSince1970 / 3600) * 3600
+    var hours: [Forecast.Hour] = []
+    for i in 0..<48 {
+        let t = Date(timeIntervalSince1970: hourStart + Double(i) * 3600)
+        let wet = (i == 5)
+        let hourCode = (i == 30) ? 71 : 2
+        hours.append(Forecast.Hour(time: t, temperature: 28, precipitationProbability: wet ? 70 : 10,
+                                   precipitation: wet ? 1.2 : 0, weatherCode: hourCode))
     }
-    var f = Forecast(current: .init(time: now, temperature: 28, weatherCode: code, precipitation: currentRain ?? rain.first ?? 0),
-                     nowcast: steps, hourly: hours, daily: daily, utcOffsetSeconds: 19800, fetchedAt: now)
+    let dayStart: Double = floor(now.timeIntervalSince1970 / 86400) * 86400
+    var daily: [Forecast.Day] = []
+    for i in 0..<days {
+        let t = Date(timeIntervalSince1970: dayStart + Double(i) * 86400)
+        daily.append(Forecast.Day(time: t, weatherCode: 2, maxTemperature: 31, minTemperature: 24,
+                                  precipitationSum: 1, precipitationProbabilityMax: 40))
+    }
+    let currentPrecip: Double = currentRain ?? rain.first ?? 0
+    let current = Forecast.Current(time: now, temperature: 28, weatherCode: code, precipitation: currentPrecip)
+    var f = Forecast(current: current, nowcast: steps, hourly: hours, daily: daily, utcOffsetSeconds: 19800, fetchedAt: now)
     f.timeZoneID = tz
     return f
 }
