@@ -63,8 +63,15 @@ final class StoreCatalogTests: XCTestCase {
         XCTAssertEqual(price(StoreManager.ID.proMonthly), Decimal(string: "5.99"))
         XCTAssertEqual(price(StoreManager.ID.proYearly), Decimal(string: "34.99"))
         let intro = { (id: String) in products.first { $0.id == id }?.subscription?.introductoryOffer }
-        XCTAssertNil(intro(StoreManager.ID.essentialMonthly), "no trial on monthly")
-        XCTAssertNil(intro(StoreManager.ID.proMonthly), "no trial on monthly")
+        // Xcode's StoreKit simulator can report a phantom trial on a monthly plan, so check the
+        // configuration itself. Live offers are audited against App Store Connect (tools/asc_offers.py).
+        let url = try XCTUnwrap(Bundle(for: Self.self).url(forResource: "Products", withExtension: "storekit"))
+        let json = try XCTUnwrap(JSONSerialization.jsonObject(with: Data(contentsOf: url)) as? [String: Any])
+        let groups = try XCTUnwrap(json["subscriptionGroups"] as? [[String: Any]])
+        for sub in groups.flatMap({ ($0["subscriptions"] as? [[String: Any]]) ?? [] }) {
+            let id = sub["productID"] as? String ?? ""
+            if id.hasSuffix(".monthly") { XCTAssertNil(sub["introductoryOffer"], "no trial on \(id)") }
+        }
         XCTAssertEqual(intro(StoreManager.ID.essentialYearly)?.paymentMode, .freeTrial)
         XCTAssertEqual(intro(StoreManager.ID.proYearly)?.paymentMode, .freeTrial)
         XCTAssertTrue(products.allSatisfy { $0.subscription?.subscriptionGroupID == products[0].subscription?.subscriptionGroupID },
