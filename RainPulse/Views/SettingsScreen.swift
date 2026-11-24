@@ -132,7 +132,7 @@ struct SettingsScreen: View {
                     } label: {
                         Label("Rate RainPulse", systemImage: "star")
                     }
-                    Link(destination: URL(string: "mailto:support@neuralorbitx.com?subject=RainPulse%20feedback")!) {
+                    Link(destination: URL(string: "https://winniecherian.github.io/rainpulse/support.html")!) {
                         Label("Send feedback", systemImage: "envelope")
                     }
                 }
