@@ -372,6 +372,9 @@ struct RadarScreen: View {
     }
     private var freshnessIsStale: Bool { radarAgeMinutes > 30 }
     private var freshnessText: String {
+        if modelFrames != nil && (fellBackToCurrent || frames.count <= 1) {
+            return String(localized: "Live radar now · future rain from forecast model")
+        }
         if fellBackToCurrent { return String(localized: "Current radar · animation unavailable") }
         let age = radarAgeMinutes
         if age <= 1 { return String(localized: "Radar updated just now") }

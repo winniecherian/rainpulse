@@ -19,7 +19,12 @@ struct RainModelFrames {
 
     /// Colour for a rain rate, matching the radar legend (cyan → purple).
     static func rgba(mmPerHour v: Float) -> (UInt8, UInt8, UInt8, UInt8) {
-        guard v >= 0.1 else { return (0, 0, 0, 0) }
+        // Soft edge between 0.03 and 0.1 mm/h so rain areas don't look blocky.
+        if v < 0.03 { return (0, 0, 0, 0) }
+        if v < 0.1 {
+            let a = Double((v - 0.03) / 0.07) * 150, k = a / 255
+            return (0, UInt8(200 * k), UInt8(255 * k), UInt8(a))
+        }
         // log scale: 0.1 mm/h → 0, 50 mm/h → 1
         let t = Double(min(1, max(0, log10(Double(v) / 0.1) / log10(500))))
         let stops: [(Double, (Double, Double, Double))] = [
@@ -38,8 +43,10 @@ struct RainModelFrames {
     }
 
     /// Smooth image for one frame, laid out in Web-Mercator rows so it lines up with the map.
-    func image(frame i: Int, scale: Int = 6) -> CGImage? {
+    func image(frame i: Int) -> CGImage? {
         guard values.indices.contains(i), lats.count > 1, lons.count > 1 else { return nil }
+        // ~640 px across for smooth edges.
+        let scale = max(6, min(48, 640 / max(1, lons.count - 1)))
         let grid = values[i]
         let w = (lons.count - 1) * scale + 1, h = (lats.count - 1) * scale + 1
         let rect = boundingMapRect
