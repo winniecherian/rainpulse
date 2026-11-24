@@ -81,6 +81,8 @@ final class RainPulseUITests: XCTestCase {
         XCTAssertTrue(more.waitForExistence(timeout: 5), "More details should be offered")
         more.tap()
         XCTAssertTrue(app.staticTexts["Next 2 hours"].waitForExistence(timeout: 5), "Rain chart inside More details")
+        var tries = 0
+        while !app.staticTexts["Humidity"].exists && tries < 4 { app.swipeUp(); tries += 1 }
         XCTAssertTrue(app.staticTexts["Humidity"].waitForExistence(timeout: 5), "Conditions card should show")
         sleep(1)
         snap(app, "03-Forecast-Daily")
