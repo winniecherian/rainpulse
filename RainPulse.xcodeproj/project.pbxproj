@@ -188,6 +188,10 @@
 			isa = PBXBuildFile;
 			fileRef = 69FCE32EEDC846DBAC3A9F62;
 		};
+		DCCC75C0F00EF6E4DB1B4339 = {
+			isa = PBXBuildFile;
+			fileRef = D2CF2AA108001617E701A72D;
+		};
 		E1DFFE5F2D7464E0E1A9CC21 = {
 			isa = PBXBuildFile;
 			fileRef = EFB910B3717BE2C3F249B191;
@@ -199,6 +203,10 @@
 		E87C21BE16805F18B24F49CD = {
 			isa = PBXBuildFile;
 			fileRef = 9AE15B7E306640932D1D4A7D;
+		};
+		EFDDDCBC410AE4E365C34B76 = {
+			isa = PBXBuildFile;
+			fileRef = A17F5F51F28B7EA98279CAE8;
 		};
 		FD04DC6F53C3200D1F3CECE3 = {
 			isa = PBXBuildFile;
@@ -378,6 +386,12 @@
 			path = WeatherAttributionView.swift;
 			sourceTree = "<group>";
 		};
+		A17F5F51F28B7EA98279CAE8 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = ReviewPrompt.swift;
+			sourceTree = "<group>";
+		};
 		A2E5F6E8509D52DC44FA5800 = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.plist.entitlements;
@@ -424,6 +438,12 @@
 			isa = PBXFileReference;
 			lastKnownFileType = net.daringfireball.markdown;
 			path = README.md;
+			sourceTree = "<group>";
+		};
+		D2CF2AA108001617E701A72D = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.json.xcstrings;
+			path = InfoPlist.xcstrings;
 			sourceTree = "<group>";
 		};
 		D3F239A2183B5C4FB578B394 = {
@@ -655,6 +675,7 @@
 				83897A82C22C2F9D4C5D9D73,
 				A4EC6CEDCC2D9A1AEA1EB23A,
 				EFB910B3717BE2C3F249B191,
+				A17F5F51F28B7EA98279CAE8,
 				D493F296D30D881FF864BAF8,
 			);
 			path = Services;
@@ -671,6 +692,7 @@
 				A2E5F6E8509D52DC44FA5800,
 				247DDE3C444A86B04451503B,
 				3EB0B57579FE0A2711B447A1,
+				D2CF2AA108001617E701A72D,
 			);
 			path = RainPulse;
 			sourceTree = "<group>";
@@ -822,6 +844,7 @@
 				C53C4C1C96E50FB276DB5FB2,
 				E3E33B43EFDCAF1D6EBEDBE5,
 				A4D203D5EE6ACF829F8D5696,
+				DCCC75C0F00EF6E4DB1B4339,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,6 +903,7 @@
 				1C635455E7FA5965A7C43672,
 				D43D7529BF308FCECD330112,
 				E1DFFE5F2D7464E0E1A9CC21,
+				EFDDDCBC410AE4E365C34B76,
 				7CE8FBD07EF56A63C41497E4,
 				BA68CF9678F6374FA03D3E32,
 				53B6D53188922C95A422F1BF,

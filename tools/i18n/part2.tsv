@@ -1,0 +1,91 @@
+# idx	es	pt-BR	hi	id	ja	de	fr	ar	ta	vi
+91	Lluvia helada	Chuva congelante	जमा देने वाली बारिश	Hujan beku	着氷性の雨	Gefrierender Regen	Pluie verglaçante	مطر متجمد	உறையும் மழை	Mưa băng giá
+92	Desde las %@	A partir das %@	%@ से	Mulai %@	%@から	Ab %@	Dès %@	من %@	%@ முதல்	Từ %@
+93	Obtener Essential	Assinar Essential	Essential लें	Dapatkan Essential	Essential にする	Essential holen	Passer à Essential	احصل على Essential	Essential பெறுக	Nâng cấp Essential
+94	Recibe un aviso antes de que llegue la lluvia para salir antes o esperar a que pase.	Receba um aviso antes de a chuva chegar, para sair antes ou esperar passar.	बारिश पहुँचने से पहले अलर्ट पाएँ, ताकि आप जल्दी निकल सकें या रुक सकें।	Dapatkan peringatan sebelum hujan tiba, agar bisa berangkat lebih awal atau menunggu reda.	雨が来る前に通知。早めに出発するか、やむまで待つか決められます。	Erhalte eine Warnung, bevor der Regen dich erreicht – so kannst du früher los oder abwarten.	Soyez prévenu avant l'arrivée de la pluie pour partir plus tôt ou attendre qu'elle passe.	احصل على تنبيه قبل وصول المطر، لتخرج مبكرًا أو تنتظر حتى يمر.	மழை வருவதற்கு முன் எச்சரிக்கை பெறுங்கள்; சீக்கிரம் கிளம்பலாம் அல்லது காத்திருக்கலாம்.	Nhận cảnh báo trước khi mưa đến để đi sớm hoặc chờ mưa tạnh.
+95	Ver consejo	Ver dica	सुझाव पाएँ	Dapatkan wawasan	インサイトを表示	Tipp anzeigen	Obtenir un conseil	احصل على رؤية	பரிந்துரை பெறு	Xem gợi ý
+96	Empezar	Começar	शुरू करें	Mulai	はじめる	Los geht's	Commencer	ابدأ	தொடங்கு	Bắt đầu
+97	Buena	Boa	अच्छी	Baik	良好	Gut	Bonne	جيدة	நல்லது	Tốt
+98	Ráfagas %@	Rajadas %@	झोंके %@	Hembusan %@	突風 %@	Böen %@	Rafales %@	هبّات %@	வேகக்காற்று %@	Gió giật %@
+99	Máx %@  Mín %@	Máx %@  Mín %@	अधिकतम %@  न्यूनतम %@	T %@  R %@	最高 %@  最低 %@	H %@  T %@	Max %@  Min %@	العظمى %@  الصغرى %@	அதி %@  குறை %@	Cao %@  Thấp %@
+100	Peligrosa	Perigosa	खतरनाक	Berbahaya	危険	Gefährlich	Dangereuse	خطرة	ஆபத்தானது	Nguy hại
+101	Fuerte	Forte	तेज़	Lebat	強い	Stark	Forte	غزير	கனமழை	Nặng hạt
+102	Lluvia fuerte	Chuva forte	भारी बारिश	Hujan lebat	強い雨	Starkregen	Forte pluie	مطر غزير	கனமழை	Mưa to
+103	Solo lluvia fuerte	Só chuva forte	सिर्फ़ भारी बारिश	Hanya hujan lebat	強い雨のみ	Nur Starkregen	Forte pluie uniquement	المطر الغزير فقط	கனமழை மட்டும்	Chỉ mưa to
+104	Ayuda y comentarios	Ajuda e feedback	मदद और फ़ीडबैक	Bantuan & masukan	ヘルプとフィードバック	Hilfe & Feedback	Aide et avis	المساعدة والملاحظات	உதவி & கருத்து	Trợ giúp & góp ý
+105	Alto	Alto	ऊँचा	Tinggi	高い	Hoch	Élevé	مرتفع	அதிகம்	Cao
+106	Por horas	Por hora	घंटेवार	Per jam	1時間ごと	Stündlich	Heure par heure	كل ساعة	மணிநேரம்	Theo giờ
+107	Humedad	Umidade	नमी	Kelembapan	湿度	Luftfeuchtigkeit	Humidité	الرطوبة	ஈரப்பதம்	Độ ẩm
+108	Híbrido (claro)	Híbrido (claro)	हाइब्रिड (हल्का)	Hibrida (terang)	ハイブリッド（ライト）	Hybrid (hell)	Hybride (clair)	مختلط (فاتح)	ஹைப்ரிட் (வெளிர்)	Kết hợp (sáng)
+109	Sabe exactamente cuándo llueve	Saiba exatamente quando vai chover	जानिए ठीक कब बारिश होगी	Tahu persis kapan hujan	雨のタイミングが正確にわかる	Wisse genau, wann es regnet	Sachez exactement quand il pleut	اعرف بالضبط متى يهطل المطر	மழை எப்போது என்று துல்லியமாக அறியுங்கள்	Biết chính xác khi nào mưa
+110	Débil	Fraca	हल्की	Ringan	弱い	Leicht	Faible	خفيف	லேசான	Nhẹ
+111	Lluvia débil	Chuva fraca	हल्की बारिश	Hujan ringan	弱い雨	Leichter Regen	Pluie faible	مطر خفيف	லேசான மழை	Mưa nhỏ
+112	En vivo	Ao vivo	लाइव	Langsung	ライブ	Live	Direct	مباشر	நேரலை	Trực tiếp
+113	Radar en vivo ahora · lluvia futura del modelo de pronóstico	Radar ao vivo agora · chuva futura do modelo de previsão	अभी लाइव रडार · आगे की बारिश पूर्वानुमान मॉडल से	Radar langsung sekarang · hujan mendatang dari model prakiraan	現在はライブレーダー・この先の雨は予報モデル	Jetzt Live-Radar · künftiger Regen aus Vorhersagemodell	Radar en direct · pluie à venir selon le modèle de prévision	رادار مباشر الآن · المطر القادم من نموذج التوقعات	இப்போது நேரலை ரேடார் · எதிர்கால மழை முன்னறிவிப்பு மாதிரியிலிருந்து	Radar trực tiếp · mưa sắp tới theo mô hình dự báo
+114	Radar en vivo, pronóstico de lluvia de 2 horas y avisos antes de que empiece.	Radar ao vivo, previsão de chuva de 2 horas e alertas antes de começar.	लाइव रडार, 2 घंटे का बारिश पूर्वानुमान और शुरू होने से पहले अलर्ट।	Radar langsung, prakiraan hujan 2 jam, dan peringatan sebelum hujan.	ライブレーダー、2時間の降水予報、降り出す前の通知。	Live-Radar, 2-Stunden-Regenvorhersage und Warnung, bevor es losgeht.	Radar en direct, prévisions de pluie sur 2 heures et alertes avant qu'elle commence.	رادار مباشر وتوقعات المطر لساعتين وتنبيهات قبل بدئه.	நேரலை ரேடார், 2 மணி நேர மழை முன்னறிவிப்பு, தொடங்கும் முன் எச்சரிக்கை.	Radar trực tiếp, dự báo mưa 2 giờ và cảnh báo trước khi mưa.
+115	Radar de lluvia en vivo	Radar de chuva ao vivo	लाइव बारिश रडार	Radar hujan langsung	ライブ雨雲レーダー	Live-Regenradar	Radar de pluie en direct	رادار المطر المباشر	நேரலை மழை ரேடார்	Radar mưa trực tiếp
+116	Radar de lluvia en vivo para %@ — RainPulse	Radar de chuva ao vivo para %@ — RainPulse	%@ के लिए लाइव बारिश रडार — RainPulse	Radar hujan langsung untuk %@ — RainPulse	%@ のライブ雨雲レーダー — RainPulse	Live-Regenradar für %@ — RainPulse	Radar de pluie en direct pour %@ — RainPulse	رادار المطر المباشر لـ %@ — RainPulse	%@ க்கான நேரலை மழை ரேடார் — RainPulse	Radar mưa trực tiếp cho %@ — RainPulse
+117	Cargando precios…	Carregando preços…	कीमतें लोड हो रही हैं…	Memuat harga…	価格を読み込み中…	Preise werden geladen …	Chargement des prix…	جارٍ تحميل الأسعار…	விலைகள் ஏற்றப்படுகின்றன…	Đang tải giá…
+118	Bloquear con %@	Bloquear com %@	%@ से लॉक करें	Kunci dengan %@	%@ でロック	Mit %@ sperren	Verrouiller avec %@	القفل باستخدام %@	%@ மூலம் பூட்டு	Khóa bằng %@
+119	Bajo	Baixo	कम	Rendah	低い	Niedrig	Faible	منخفض	குறைவு	Thấp
+120	Gestionar suscripción	Gerenciar assinatura	सदस्यता प्रबंधित करें	Kelola langganan	サブスクリプションを管理	Abo verwalten	Gérer l'abonnement	إدارة الاشتراك	சந்தாவை நிர்வகி	Quản lý gói đăng ký
+121	Mapa	Mapa	मैप	Peta	地図	Karte	Carte	الخريطة	வரைபடம்	Bản đồ
+122	Datos del mapa © OpenWeather	Dados do mapa © OpenWeather	मैप डेटा © OpenWeather	Data peta © OpenWeather	地図データ © OpenWeather	Kartendaten © OpenWeather	Données carte © OpenWeather	بيانات الخريطة © OpenWeather	வரைபடத் தரவு © OpenWeather	Dữ liệu bản đồ © OpenWeather
+123	Capas del mapa	Camadas do mapa	मैप परतें	Lapisan peta	地図レイヤー	Kartenebenen	Calques de carte	طبقات الخريطة	வரைபட அடுக்குகள்	Lớp bản đồ
+124	Estilo del mapa	Estilo do mapa	मैप स्टाइल	Gaya peta	地図のスタイル	Kartenstil	Style de carte	نمط الخريطة	வரைபட பாணி	Kiểu bản đồ
+125	Gráfico de lluvia minuto a minuto	Gráfico de chuva minuto a minuto	मिनट-दर-मिनट बारिश चार्ट	Grafik hujan menit demi menit	1分ごとの降水グラフ	Minutengenaues Regendiagramm	Graphique de pluie minute par minute	مخطط المطر دقيقة بدقيقة	நிமிடத்துக்கு நிமிடம் மழை வரைபடம்	Biểu đồ mưa từng phút
+126	Datos de lluvia por minuto	Dados de chuva por minuto	मिनट-स्तर का बारिश डेटा	Data hujan per menit	1分単位の降水データ	Minutengenaue Regendaten	Données de pluie à la minute	بيانات المطر بالدقيقة	நிமிட அளவு மழைத் தரவு	Dữ liệu mưa theo phút
+127	Datos de lluvia de modelo	Dados de chuva de modelo	मॉडल आधारित बारिश डेटा	Data hujan berbasis model	モデルによる降水データ	Modellbasierte Regendaten	Données de pluie issues du modèle	بيانات مطر من النموذج	மாதிரி அடிப்படையிலான மழைத் தரவு	Dữ liệu mưa theo mô hình
+128	Moderada	Moderada	मध्यम	Sedang	中程度	Mäßig	Modérée	معتدلة	மிதமான	Trung bình
+129	Lluvia moderada	Chuva moderada	मध्यम बारिश	Hujan sedang	並の雨	Mäßiger Regen	Pluie modérée	مطر معتدل	மிதமான மழை	Mưa vừa
+130	Mensual	Mensal	मासिक	Bulanan	月額	Monatlich	Mensuel	شهري	மாதாந்திர	Hàng tháng
+131	Más detalles	Mais detalhes	और विवरण	Detail lainnya	詳細をもっと見る	Weitere Details	Plus de détails	مزيد من التفاصيل	மேலும் விவரங்கள்	Thêm chi tiết
+132	Mayormente despejado	Predominantemente limpo	ज़्यादातर साफ़	Sebagian besar cerah	おおむね晴れ	Überwiegend klar	Plutôt dégagé	صافٍ غالبًا	பெரும்பாலும் தெளிவு	Phần lớn quang đãng
+133	Mi ubicación	Minha localização	मेरी लोकेशन	Lokasi saya	現在地	Mein Standort	Ma position	موقعي	என் இருப்பிடம்	Vị trí của tôi
+134	Próximas 2 horas	Próximas 2 horas	अगले 2 घंटे	2 jam ke depan	この先2時間	Nächste 2 Stunden	2 prochaines heures	الساعتان القادمتان	அடுத்த 2 மணி நேரம்	2 giờ tới
+135	Sin cuenta, sin anuncios, sin rastreo	Sem conta, sem anúncios, sem rastreamento	कोई अकाउंट नहीं, विज्ञापन नहीं, ट्रैकिंग नहीं	Tanpa akun, iklan, atau pelacakan	アカウント不要・広告なし・トラッキングなし	Kein Konto, keine Werbung, kein Tracking	Ni compte, ni pub, ni pistage	بلا حساب ولا إعلانات ولا تتبع	கணக்கு, விளம்பரம், கண்காணிப்பு எதுவும் இல்லை	Không tài khoản, không quảng cáo, không theo dõi
+136	Aún sin ubicación	Ainda sem localização	अभी कोई लोकेशन नहीं	Belum ada lokasi	位置情報がありません	Noch kein Standort	Pas encore de position	لا يوجد موقع بعد	இன்னும் இருப்பிடம் இல்லை	Chưa có vị trí
+137	No se espera lluvia en las próximas 3 horas.	Sem previsão de chuva nas próximas 3 horas.	अगले 3 घंटे में बारिश की संभावना नहीं।	Tidak ada hujan dalam 3 jam ke depan.	この先3時間は雨の予報はありません。	In den nächsten 3 Stunden kein Regen erwartet.	Pas de pluie prévue dans les 3 prochaines heures.	لا يُتوقع مطر خلال الساعات الثلاث القادمة.	அடுத்த 3 மணி நேரத்தில் மழை எதிர்பார்க்கப்படவில்லை.	Không có mưa trong 3 giờ tới.
+138	Sin lluvia durante 2 horas	Sem chuva por 2 horas	2 घंटे तक बारिश नहीं	Tidak hujan selama 2 jam	2時間は雨なし	2 Stunden kein Regen	Pas de pluie pendant 2 heures	لا مطر لمدة ساعتين	2 மணி நேரம் மழை இல்லை	Không mưa trong 2 giờ
+139	Sin lluvia cerca	Sem chuva por perto	आसपास बारिश नहीं	Tidak ada hujan di sekitar	近くに雨なし	Kein Regen in der Nähe	Pas de pluie à proximité	لا مطر قريب	அருகில் மழை இல்லை	Không có mưa gần đây
+140	Sin lugares guardados	Nenhum lugar salvo	कोई सेव जगह नहीं	Belum ada tempat tersimpan	保存した場所はありません	Keine gespeicherten Orte	Aucun lieu enregistré	لا توجد أماكن محفوظة	சேமித்த இடங்கள் இல்லை	Chưa lưu địa điểm nào
+141	Ninguna	Nenhuma	कोई नहीं	Tidak ada	なし	Keiner	Aucune	لا شيء	இல்லை	Không có
+142	Ahora no	Agora não	अभी नहीं	Nanti saja	今はしない	Nicht jetzt	Pas maintenant	ليس الآن	இப்போது வேண்டாம்	Để sau
+143	Las notificaciones están desactivadas	As notificações estão desativadas	सूचनाएँ बंद हैं	Notifikasi nonaktif	通知がオフです	Mitteilungen sind aus	Les notifications sont désactivées	الإشعارات متوقفة	அறிவிப்புகள் முடக்கப்பட்டுள்ளன	Thông báo đang tắt
+144	Ahora	Agora	अभी	Sekarang	今	Jetzt	Maintenant	الآن	இப்போது	Bây giờ
+145	Abrir RainPulse	Abrir RainPulse	RainPulse खोलें	Buka RainPulse	RainPulse を開く	RainPulse öffnen	Ouvrir RainPulse	فتح RainPulse	RainPulse-ஐத் திற	Mở RainPulse
+146	Abrir Ajustes	Abrir Ajustes	सेटिंग्स खोलें	Buka Pengaturan	設定を開く	Einstellungen öffnen	Ouvrir Réglages	فتح الإعدادات	அமைப்புகளைத் திற	Mở Cài đặt
+147	Abre la app para cargar	Abra o app para carregar	लोड करने के लिए ऐप खोलें	Buka aplikasi untuk memuat	アプリを開いて読み込み	App öffnen zum Laden	Ouvrez l'app pour charger	افتح التطبيق للتحميل	ஏற்ற செயலியைத் திறக்கவும்	Mở ứng dụng để tải
+148	Otras fuentes de datos	Outras fontes de dados	अन्य डेटा स्रोत	Sumber data lain	その他のデータソース	Weitere Datenquellen	Autres sources de données	مصادر بيانات أخرى	பிற தரவு மூலங்கள்	Nguồn dữ liệu khác
+149	Cubierto	Encoberto	घने बादल	Mendung	曇天	Bedeckt	Couvert	ملبد بالغيوم	முழு மேகமூட்டம்	U ám
+150	Parcialmente nublado	Parcialmente nublado	आंशिक बादल	Berawan sebagian	晴れ時々くもり	Teilweise bewölkt	Partiellement nuageux	غائم جزئيًا	பகுதி மேகமூட்டம்	Có mây rải rác
+151	Código	Código	पासकोड	Kode sandi	パスコード	Code	Code	رمز الدخول	கடவுக்குறியீடு	Mật mã
+152	Pasado %@	Passado %@	पिछला %@	Lalu %@	過去 %@	Vorher %@	Passé %@	السابق %@	முந்தைய %@	Trước %@
+153	Pausa	Pausar	रोकें	Jeda	一時停止	Pause	Pause	إيقاف مؤقت	இடைநிறுத்து	Tạm dừng
+154	Lugares	Lugares	जगहें	Tempat	場所	Orte	Lieux	الأماكن	இடங்கள்	Địa điểm
+155	Plan	Plano	प्लान	Paket	プラン	Abo	Formule	الخطة	திட்டம்	Gói
+156	Reproducir	Reproduzir	चलाएँ	Putar	再生	Abspielen	Lecture	تشغيل	இயக்கு	Phát
+157	Velocidad de reproducción	Velocidade de reprodução	प्लेबैक गति	Kecepatan putar	再生速度	Wiedergabetempo	Vitesse de lecture	سرعة التشغيل	இயக்க வேகம்	Tốc độ phát
+158	Precipitación (mm/h)	Precipitação (mm/h)	वर्षा (मिमी/घंटा)	Curah hujan (mm/jam)	降水量（mm/h）	Niederschlag (mm/h)	Précipitations (mm/h)	الهطول (مم/س)	மழையளவு (மி.மீ/ம)	Lượng mưa (mm/h)
+159	Presión	Pressão	वायुदाब	Tekanan	気圧	Luftdruck	Pression	الضغط	காற்றழுத்தம்	Áp suất
+160	Privacidad	Privacidade	गोपनीयता	Privasi	プライバシー	Datenschutz	Confidentialité	الخصوصية	தனியுரிமை	Quyền riêng tư
+161	Privacidad y seguridad	Privacidade e segurança	गोपनीयता और सुरक्षा	Privasi & keamanan	プライバシーとセキュリティ	Datenschutz & Sicherheit	Confidentialité et sécurité	الخصوصية والأمان	தனியுரிமை & பாதுகாப்பு	Quyền riêng tư & bảo mật
+162	Política de privacidad	Política de privacidade	गोपनीयता नीति	Kebijakan privasi	プライバシーポリシー	Datenschutzerklärung	Politique de confidentialité	سياسة الخصوصية	தனியுரிமைக் கொள்கை	Chính sách quyền riêng tư
+163	Compras verificadas con los recibos firmados de Apple	Compras verificadas com os recibos assinados da Apple	खरीदारी Apple की साइन की गई रसीदों से सत्यापित	Pembelian diverifikasi dengan tanda terima resmi Apple	購入は Apple の署名付きレシートで検証	Käufe mit Apples signierten Belegen geprüft	Achats vérifiés par les reçus signés d'Apple	المشتريات موثقة بإيصالات Apple الموقّعة	வாங்குதல்கள் Apple கையொப்ப ரசீதுகளால் சரிபார்க்கப்படுகின்றன	Giao dịch được xác minh bằng biên nhận có chữ ký của Apple
+164	Radar	Radar	रडार	Radar	レーダー	Radar	Radar	الرادار	ரேடார்	Radar
+165	Datos de radar	Dados de radar	रडार डेटा	Data radar	レーダーデータ	Radardaten	Données radar	بيانات الرادار	ரேடார் தரவு	Dữ liệu radar
+166	Falta la clave del radar	Chave do radar ausente	रडार कुंजी नहीं मिली	Kunci radar tidak ada	レーダーキーがありません	Radar-Schlüssel fehlt	Clé radar manquante	مفتاح الرادار مفقود	ரேடார் விசை இல்லை	Thiếu khóa radar
+167	Leyenda del radar	Legenda do radar	रडार संकेत	Keterangan radar	レーダーの凡例	Radarlegende	Légende du radar	مفتاح ألوان الرادار	ரேடார் குறியீடு	Chú giải radar
+168	Opacidad del radar	Opacidade do radar	रडार अपारदर्शिता	Opasitas radar	レーダーの不透明度	Radar-Deckkraft	Opacité du radar	شفافية الرادار	ரேடார் ஒளிபுகாமை	Độ mờ radar
+169	Radar actualizado hace %lld min	Radar atualizado há %lld min	रडार %lld मिनट पहले अपडेट हुआ	Radar diperbarui %lld menit lalu	レーダー更新：%lld分前	Radar vor %lld Min. aktualisiert	Radar mis à jour il y a %lld min	تم تحديث الرادار قبل %lld دقيقة	ரேடார் %lld நிமிடம் முன் புதுப்பிக்கப்பட்டது	Radar cập nhật %lld phút trước
+170	Radar actualizado hace %lld min · retrasado	Radar atualizado há %lld min · atrasado	रडार %lld मिनट पहले अपडेट हुआ · देरी	Radar diperbarui %lld menit lalu · tertunda	レーダー更新：%lld分前・遅延	Radar vor %lld Min. aktualisiert · verzögert	Radar mis à jour il y a %lld min · en retard	تم تحديث الرادار قبل %lld دقيقة · متأخر	ரேடார் %lld நிமிடம் முன் புதுப்பிக்கப்பட்டது · தாமதம்	Radar cập nhật %lld phút trước · chậm
+171	Radar actualizado ahora mismo	Radar atualizado agora	रडार अभी अपडेट हुआ	Radar baru saja diperbarui	レーダーはたった今更新	Radar gerade aktualisiert	Radar mis à jour à l'instant	تم تحديث الرادار الآن	ரேடார் இப்போதுதான் புதுப்பிக்கப்பட்டது	Radar vừa cập nhật
+172	Lluvia	Chuva	बारिश	Hujan	雨	Regen	Pluie	المطر	மழை	Mưa
+173	Lluvia ahora	Chuva agora	अभी बारिश	Hujan sekarang	今の雨	Regen jetzt	Pluie maintenant	المطر الآن	இப்போது மழை	Mưa hiện tại
+174	Alertas de lluvia	Alertas de chuva	बारिश अलर्ट	Peringatan hujan	雨の通知	Regenwarnungen	Alertes pluie	تنبيهات المطر	மழை எச்சரிக்கைகள்	Cảnh báo mưa
+175	Las alertas de lluvia siempre cubren tu ubicación actual.	Os alertas de chuva sempre cobrem sua localização atual.	बारिश अलर्ट हमेशा आपकी मौजूदा लोकेशन के लिए चालू रहते हैं।	Peringatan hujan selalu mencakup lokasi Anda saat ini.	雨の通知は常に現在地が対象です。	Regenwarnungen gelten immer für deinen aktuellen Standort.	Les alertes pluie couvrent toujours votre position actuelle.	تشمل تنبيهات المطر دائمًا موقعك الحالي.	மழை எச்சரிக்கைகள் எப்போதும் உங்கள் தற்போதைய இருப்பிடத்தை உள்ளடக்கும்.	Cảnh báo mưa luôn áp dụng cho vị trí hiện tại của bạn.
+176	Alertas de lluvia para hasta 20 lugares	Alertas de chuva para até 20 lugares	20 जगहों तक बारिश अलर्ट	Peringatan hujan untuk hingga 20 tempat	最大20か所の雨の通知	Regenwarnungen für bis zu 20 Orte	Alertes pluie pour 20 lieux	تنبيهات المطر حتى 20 مكانًا	20 இடங்கள் வரை மழை எச்சரிக்கை	Cảnh báo mưa cho tối đa 20 địa điểm
+177	Lluvia durante al menos 2 horas	Chuva por pelo menos 2 horas	कम से कम 2 घंटे बारिश	Hujan setidaknya 2 jam	2時間以上の雨	Regen für mindestens 2 Stunden	Pluie pendant au moins 2 heures	مطر لمدة ساعتين على الأقل	குறைந்தது 2 மணி நேரம் மழை	Mưa ít nhất 2 giờ
+178	Pronóstico de lluvia (modelo) %@	Previsão de chuva (modelo) %@	बारिश पूर्वानुमान (मॉडल) %@	Prakiraan hujan (model) %@	降水予報（モデル）%@	Regenvorhersage (Modell) %@	Prévision de pluie (modèle) %@	توقعات المطر (نموذج) %@	மழை முன்னறிவிப்பு (மாதிரி) %@	Dự báo mưa (mô hình) %@
+179	Lluvia en unos %lld min	Chuva em cerca de %lld min	लगभग %lld मिनट में बारिश	Hujan dalam sekitar %lld menit	約%lld分後に雨	Regen in etwa %lld Min.	Pluie dans environ %lld min	مطر خلال نحو %lld دقيقة	சுமார் %lld நிமிடத்தில் மழை	Mưa trong khoảng %lld phút
+180	Intensidad de la lluvia	Intensidade da chuva	बारिश की तीव्रता	Intensitas hujan	雨の強さ	Regenintensität	Intensité de la pluie	شدة المطر	மழையின் தீவிரம்	Cường độ mưa

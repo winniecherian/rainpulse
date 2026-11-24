@@ -1,0 +1,134 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "NSFaceIDUsageDescription": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "استخدم Face ID لفتح RainPulse عند تفعيل قفل التطبيق."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit Face ID RainPulse entsperren, wenn die App-Sperre aktiv ist."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Usa Face ID para desbloquear RainPulse cuando el bloqueo está activado."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Utilisez Face ID pour déverrouiller RainPulse lorsque le verrouillage est activé."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ऐप लॉक चालू होने पर RainPulse अनलॉक करने के लिए Face ID इस्तेमाल करें।"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gunakan Face ID untuk membuka RainPulse saat kunci aplikasi aktif."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アプリロックがオンのとき、Face ID で RainPulse のロックを解除します。"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use o Face ID para desbloquear o RainPulse quando o bloqueio estiver ativado."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "செயலிப் பூட்டு இயக்கத்தில் இருக்கும்போது RainPulse-ஐத் திறக்க Face ID-ஐப் பயன்படுத்துங்கள்."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dùng Face ID để mở khóa RainPulse khi bật khóa ứng dụng."
+          }
+        }
+      }
+    },
+    "NSLocationWhenInUseUsageDescription": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يستخدم RainPulse موقعك لعرض الرادار والتوقعات وتنبيهات المطر حيث أنت."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RainPulse nutzt deinen Standort, um Radar, Vorhersage und Regenwarnungen für deinen Ort zu zeigen."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RainPulse usa tu ubicación para mostrar el radar, el pronóstico y las alertas de lluvia donde estés."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RainPulse utilise votre position pour afficher le radar, les prévisions et les alertes pluie là où vous êtes."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RainPulse आपकी लोकेशन का इस्तेमाल आपके यहाँ का रडार, पूर्वानुमान और बारिश अलर्ट दिखाने के लिए करता है।"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RainPulse menggunakan lokasi Anda untuk menampilkan radar, prakiraan, dan peringatan hujan di tempat Anda."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RainPulse は現在地のレーダー、予報、雨の通知を表示するために位置情報を使用します。"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O RainPulse usa sua localização para mostrar o radar, a previsão e os alertas de chuva onde você estiver."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "நீங்கள் இருக்கும் இடத்தின் ரேடார், முன்னறிவிப்பு, மழை எச்சரிக்கைகளைக் காட்ட RainPulse உங்கள் இருப்பிடத்தைப் பயன்படுத்துகிறது."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RainPulse dùng vị trí của bạn để hiển thị radar, dự báo và cảnh báo mưa nơi bạn ở."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

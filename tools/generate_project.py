@@ -59,7 +59,7 @@ other_files = [
     f"{APP}/Info.plist", f"{APP}/{APP}.entitlements", f"{APP}/PrivacyInfo.xcprivacy", f"{APP}/Assets.xcassets",
     f"{WIDGET}/Info.plist", f"{WIDGET}/{WIDGET}.entitlements", f"{WIDGET}/PrivacyInfo.xcprivacy",
     "Config/Base.xcconfig", "Config/Secrets.example.xcconfig", "Products.storekit", "README.md",
-    "ci_scripts/ci_post_clone.sh", "Shared/Localizable.xcstrings",
+    "ci_scripts/ci_post_clone.sh", "Shared/Localizable.xcstrings", f"{APP}/InfoPlist.xcstrings",
 ]
 all_files = shared_swift + app_swift + widget_swift + uitest_swift + [f for f in other_files if os.path.exists(os.path.join(ROOT, f))]
 
@@ -120,7 +120,7 @@ def build_files(target, paths, phase):
 app_sources = add(oid("phase", APP, "sources"), "PBXSourcesBuildPhase", buildActionMask="2147483647",
                   files=build_files(APP, shared_swift + app_swift, "src"), runOnlyForDeploymentPostprocessing="0")
 app_resources = add(oid("phase", APP, "res"), "PBXResourcesBuildPhase", buildActionMask="2147483647",
-                    files=build_files(APP, [f"{APP}/Assets.xcassets", f"{APP}/PrivacyInfo.xcprivacy", "Shared/Localizable.xcstrings"], "res"),
+                    files=build_files(APP, [f"{APP}/Assets.xcassets", f"{APP}/PrivacyInfo.xcprivacy", "Shared/Localizable.xcstrings", f"{APP}/InfoPlist.xcstrings"], "res"),
                     runOnlyForDeploymentPostprocessing="0")
 app_frameworks = add(oid("phase", APP, "fw"), "PBXFrameworksBuildPhase", buildActionMask="2147483647",
                      files=[], runOnlyForDeploymentPostprocessing="0")

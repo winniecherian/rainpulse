@@ -1,4 +1,5 @@
 import SwiftUI
+import StoreKit
 import Charts
 import MapKit
 
@@ -18,6 +19,7 @@ struct ForecastScreen: View {
     @State private var loadingInsight = false
     @State private var airQuality: AirQuality?
     @State private var nearbyStorms: [Cyclone] = []
+    @Environment(\.requestReview) private var requestReview
 
     private var selectedPlace: Place? {
         if let id = selectedID, let place = places.places.first(where: { $0.id == id }) { return place }
@@ -115,6 +117,11 @@ struct ForecastScreen: View {
                 days: store.tier.forecastDays, maxAge: force ? 0 : 900)
             forecast = f
             errorText = nil
+            ReviewPrompt.recordUseToday()
+            if ReviewPrompt.shouldAsk() {
+                try? await Task.sleep(for: .seconds(2))
+                requestReview()
+            }
             dayIndex = 0
             insight = nil
             airQuality = await AirQualityService.shared.airQuality(latitude: place.latitude, longitude: place.longitude)
