@@ -1,0 +1,31 @@
+name: Unit tests
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "-only-testing target or class"
+        default: "RainPulseTests"
+jobs:
+  unit:
+    runs-on: xcode-27
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: |
+          XC=$(ls -d /Applications/Xcode_27*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$XC/Contents/Developer"
+          printf 'OWM_API_KEY = %s\n' "${{ secrets.OWM_API_KEY }}" > Config/Secrets.xcconfig
+      - name: Build for testing
+        run: |
+          DEVICE=$(xcrun simctl list devices available | grep -E "iPhone [0-9]+ Pro Max" | sed -E 's/^ *([^(]+) \(.*/\1/' | xargs -L1 | sort -V | tail -1)
+          echo "DEVICE=$DEVICE" >> $GITHUB_ENV
+          xcodebuild -project RainPulse.xcodeproj -scheme RainPulse -configuration Debug \
+            -destination "platform=iOS Simulator,name=$DEVICE" CODE_SIGNING_ALLOWED=NO build-for-testing 2>&1 | tail -5
+      - name: Run
+        timeout-minutes: 15
+        run: |
+          xcodebuild -project RainPulse.xcodeproj -scheme RainPulse -configuration Debug \
+            -destination "platform=iOS Simulator,name=$DEVICE" -only-testing:${{ inputs.only }} \
+            -test-timeouts-enabled YES -default-test-execution-time-allowance 60 -maximum-test-execution-time-allowance 120 \
+            CODE_SIGNING_ALLOWED=NO test-without-building 2>&1 | grep --line-buffered -vE "^\s*$" | tail -150
