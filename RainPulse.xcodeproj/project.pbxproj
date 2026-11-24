@@ -112,6 +112,10 @@
 			isa = PBXBuildFile;
 			fileRef = 60704820272D9DA1B6EA7D0B;
 		};
+		907E783BBA18A0E407DC96CB = {
+			isa = PBXBuildFile;
+			fileRef = F4441E1F361E0658D43BA0D9;
+		};
 		911CE54FB39779EA3040DE8A = {
 			isa = PBXBuildFile;
 			fileRef = AFE8D4616B856A33797AA5DA;
@@ -180,6 +184,10 @@
 			isa = PBXBuildFile;
 			fileRef = A4EC6CEDCC2D9A1AEA1EB23A;
 		};
+		D567EAA6F4E6B08A5849E8AE = {
+			isa = PBXBuildFile;
+			fileRef = D6087B688C36A06A9A5701C6;
+		};
 		D7E96C8CA83841C25EE812EE = {
 			isa = PBXBuildFile;
 			fileRef = E30D5B3010161161B0C31307;
@@ -187,6 +195,14 @@
 		D7F9FFB1CDF56622005B5107 = {
 			isa = PBXBuildFile;
 			fileRef = 69FCE32EEDC846DBAC3A9F62;
+		};
+		D85E2BC1636DDCCCF2BD0633 = {
+			isa = PBXBuildFile;
+			fileRef = A85714789790D6F02985AA76;
+		};
+		D940A1C0B4C794645F5A6441 = {
+			isa = PBXBuildFile;
+			fileRef = BEFB70019C362D50E26007B1;
 		};
 		DCCC75C0F00EF6E4DB1B4339 = {
 			isa = PBXBuildFile;
@@ -228,6 +244,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 6776322B233F0114143F504D;
 			remoteInfo = RainPulseWidget;
+		};
+		E4EC74A1DA29481F7640711C = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46F86FAA6BBF9AC94A7E4595;
+			proxyType = 1;
+			remoteGlobalIDString = A32F0A336DCDA35685488ACF;
+			remoteInfo = RainPulse;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -386,6 +409,13 @@
 			path = WeatherAttributionView.swift;
 			sourceTree = "<group>";
 		};
+		9EC6E8437F7E15F53600183D = {
+			isa = PBXFileReference;
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			path = RainPulseTests.xctest;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		A17F5F51F28B7EA98279CAE8 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
@@ -404,6 +434,12 @@
 			path = PlacesModel.swift;
 			sourceTree = "<group>";
 		};
+		A85714789790D6F02985AA76 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = PurchaseTests.swift;
+			sourceTree = "<group>";
+		};
 		AFE8D4616B856A33797AA5DA = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
@@ -420,6 +456,12 @@
 			isa = PBXFileReference;
 			lastKnownFileType = text.plist.xml;
 			path = Info.plist;
+			sourceTree = "<group>";
+		};
+		BEFB70019C362D50E26007B1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = WeatherLogicTests.swift;
 			sourceTree = "<group>";
 		};
 		BF3759827DDD247530CF0BC1 = {
@@ -536,6 +578,12 @@
 			path = OnboardingView.swift;
 			sourceTree = "<group>";
 		};
+		F4441E1F361E0658D43BA0D9 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = MatrixUITests.swift;
+			sourceTree = "<group>";
+		};
 		F6EF9B153B2AD2D095D8623B = {
 			isa = PBXFileReference;
 			explicitFileType = "wrapper.app-extension";
@@ -552,6 +600,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3B20DCB267677C746D9DE1E2 = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DF2FEFD93B89D05505E68BF = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -584,6 +639,15 @@
 			path = ci_scripts;
 			sourceTree = "<group>";
 		};
+		67D5182772CDBCC789FDD343 = {
+			isa = PBXGroup;
+			children = (
+				A85714789790D6F02985AA76,
+				BEFB70019C362D50E26007B1,
+			);
+			path = RainPulseTests;
+			sourceTree = "<group>";
+		};
 		708844DF4706134F211FB87D = {
 			isa = PBXGroup;
 			children = (
@@ -596,6 +660,7 @@
 		72AF68774ECB156F97644CE9 = {
 			isa = PBXGroup;
 			children = (
+				F4441E1F361E0658D43BA0D9,
 				6FEC92B1ED66485E1830F27A,
 			);
 			path = RainPulseUITests;
@@ -615,6 +680,7 @@
 				76815C417A840F6DB6E0AD1A,
 				F6EF9B153B2AD2D095D8623B,
 				56EECD7DCD09E1E0229225DC,
+				9EC6E8437F7E15F53600183D,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -642,6 +708,7 @@
 				C64F91A36BC1DFFBFBF7BCE4,
 				DB091868A0DA53B05A14655F,
 				FE7E8835FCF847CB9ED9A649,
+				67D5182772CDBCC789FDD343,
 				72AF68774ECB156F97644CE9,
 				708844DF4706134F211FB87D,
 				208E27C3258478B88C3535B9,
@@ -759,6 +826,24 @@
 			productReference = 76815C417A840F6DB6E0AD1A;
 			productType = "com.apple.product-type.application";
 		};
+		A93E27FDBD9842605FB0FE29 = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6197EF3C252D588460BEEEBC;
+			buildPhases = (
+				79666D6B7C96BA9B0712EC51,
+				3B20DCB267677C746D9DE1E2,
+				039A1693323966DF162B15B3,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				709EC545A3B70A33C86FD833,
+			);
+			name = RainPulseTests;
+			productName = RainPulseTests;
+			productReference = 9EC6E8437F7E15F53600183D;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		CAC76ABB5AA82B61B93C98DF = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CB41172D582A5F39BD12B08C;
@@ -797,6 +882,10 @@
 						CreatedOnToolsVersion = 26.0;
 						TestTargetID = A32F0A336DCDA35685488ACF;
 					};
+					A93E27FDBD9842605FB0FE29 = {
+						CreatedOnToolsVersion = 26.0;
+						TestTargetID = A32F0A336DCDA35685488ACF;
+					};
 				};
 			};
 			buildConfigurationList = AC4D63F12EBBDCB32DFBA89F;
@@ -824,12 +913,21 @@
 			targets = (
 				A32F0A336DCDA35685488ACF,
 				6776322B233F0114143F504D,
+				A93E27FDBD9842605FB0FE29,
 				CAC76ABB5AA82B61B93C98DF,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		039A1693323966DF162B15B3 = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D567EAA6F4E6B08A5849E8AE,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		34DE728E3D936384ADE8D90B = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -920,7 +1018,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				907E783BBA18A0E407DC96CB,
 				4138546C5B7123C01C25A071,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79666D6B7C96BA9B0712EC51 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D85E2BC1636DDCCCF2BD0633,
+				D940A1C0B4C794645F5A6441,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -931,6 +1039,11 @@
 			isa = PBXTargetDependency;
 			target = A32F0A336DCDA35685488ACF;
 			targetProxy = A2F7AE35CA1A19D04789AEDC;
+		};
+		709EC545A3B70A33C86FD833 = {
+			isa = PBXTargetDependency;
+			target = A32F0A336DCDA35685488ACF;
+			targetProxy = E4EC74A1DA29481F7640711C;
 		};
 		7F8F626740F7BE8D847F6FB9 = {
 			isa = PBXTargetDependency;
@@ -1095,6 +1208,32 @@
 			};
 			name = Release;
 		};
+		A6500B7E0F438D06E7685A59 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_BASE).tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RainPulse.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RainPulse";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+			};
+			name = Debug;
+		};
+		C7BEAE29D58AD790F46669BD = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_ID_BASE).tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RainPulse.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RainPulse";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+			};
+			name = Release;
+		};
 		DC441C62347DEA9232733CDB = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1110,6 +1249,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6197EF3C252D588460BEEEBC = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6500B7E0F438D06E7685A59,
+				C7BEAE29D58AD790F46669BD,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AC4D63F12EBBDCB32DFBA89F = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

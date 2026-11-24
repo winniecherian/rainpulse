@@ -68,18 +68,25 @@ enum RainAlertService {
         SharedStore.defaults.set(Array(notified.suffix(200)), forKey: cycloneNotifiedKey)
     }
 
+    /// Pure decision: should we alert, and when does rain start? (Unit-tested.)
+    static func alertDecision(_ forecast: Forecast, now: Date, lead: Int, threshold: Double,
+                              lastNotified: Date?) -> (start: Date, minutes: Int)? {
+        guard !forecast.isRaining(at: now),
+              let start = forecast.rainStart(within: lead, threshold: threshold, from: now) else { return nil }
+        // Don't repeat an alert for the same place within 2 hours.
+        if let last = lastNotified, now.timeIntervalSince(last) < 2 * 3600 { return nil }
+        return (start, max(5, Int(start.timeIntervalSince(now) / 60)))
+    }
+
     private static func evaluate(_ forecast: Forecast, for place: Place) async {
         let threshold = AlertSettings.thresholdMM
         let lead = AlertSettings.leadMinutes
-        guard !forecast.isRainingNow,
-              let start = forecast.rainStart(within: lead, threshold: threshold) else { return }
-
-        // Don't repeat an alert for the same place within 2 hours.
         let key = place.isCurrentLocation ? "current" : place.id.uuidString
         var log = SharedStore.defaults.dictionary(forKey: lastNotifiedKey) as? [String: Double] ?? [:]
-        if let last = log[key], Date().timeIntervalSince1970 - last < 2 * 3600 { return }
-
-        let minutes = max(5, Int(start.timeIntervalSinceNow / 60))
+        guard let decision = alertDecision(forecast, now: Date(), lead: lead, threshold: threshold,
+                                           lastNotified: log[key].map { Date(timeIntervalSince1970: $0) })
+        else { return }
+        let start = decision.start, minutes = decision.minutes
         let peak = forecast.upcomingSteps(hours: Double(lead) / 60 + 0.5).map(\.precipitation).max() ?? threshold
 
         let content = UNMutableNotificationContent()

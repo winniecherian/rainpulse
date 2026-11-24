@@ -94,6 +94,7 @@ struct PaywallView: View {
 
                     HStack(spacing: 18) {
                         Button("Restore") { Task { await store.restore(); if store.tier > .free { dismiss() } } }
+                            .accessibilityIdentifier("paywall.restore")
                         Link("Terms", destination: AppConfig.termsURL)
                         Link("Privacy", destination: AppConfig.privacyURL)
                     }

@@ -18,6 +18,15 @@
          <TestableReference skipped = "NO" parallelizable = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A93E27FDBD9842605FB0FE29"
+               BuildableName = "RainPulseTests.xctest"
+               BlueprintName = "RainPulseTests"
+               ReferencedContainer = "container:RainPulse.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference skipped = "NO" parallelizable = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "CAC76ABB5AA82B61B93C98DF"
                BuildableName = "RainPulseUITests.xctest"
                BlueprintName = "RainPulseUITests"

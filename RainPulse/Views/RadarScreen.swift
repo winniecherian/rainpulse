@@ -46,7 +46,8 @@ struct RadarScreen: View {
     @State private var tick = 0
     @State private var showPaywall = false
     @State private var showLegend = false
-    @State private var fellBackToCurrent = false
+    @State private var fellBackToCurrent = Date().timeIntervalSince1970 - UserDefaults.standard.double(forKey: "radar.animatedRefusedAt") < 86400
+
     @State private var recenterToken = 0
     @State private var controlsExpanded = false
 
@@ -74,7 +75,12 @@ struct RadarScreen: View {
                          center: location.location?.coordinate,
                          places: places.places,
                          recenterToken: recenterToken,
-                         onAuthFailure: { if source == .owmGlobalPrecip { fellBackToCurrent = true } },
+                         onAuthFailure: {
+                             if source == .owmGlobalPrecip {
+                                 fellBackToCurrent = true
+                                 UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "radar.animatedRefusedAt")
+                             }
+                         },
                          mapStyle: mapStyle,
                          showWindFlow: windFlow && store.tier.hasExtraLayers,
                          cyclones: showCyclones ? cyclones : [],
@@ -101,7 +107,11 @@ struct RadarScreen: View {
         .sheet(isPresented: $showLegend) { LegendSheet().presentationDetents([.height(320)]) }
         .onAppear(perform: rebuildFrames)
         .onChange(of: store.tier) { _, _ in rebuildFrames() }
-        .onChange(of: sourceRaw) { _, _ in fellBackToCurrent = false; rebuildFrames() }
+        .onChange(of: sourceRaw) { _, _ in
+            fellBackToCurrent = false
+            UserDefaults.standard.removeObject(forKey: "radar.animatedRefusedAt")
+            rebuildFrames()
+        }
         .onChange(of: fellBackToCurrent) { _, _ in rebuildFrames() }
         .onChange(of: layer) { _, _ in rebuildFrames(); reloadModel() }
         .onChange(of: pastRaw) { _, _ in rebuildFrames() }
@@ -303,6 +313,7 @@ struct RadarScreen: View {
                         .frame(width: 44, height: 44)
                 }
                 .accessibilityLabel(isPlaying ? "Pause" : "Play")
+                .accessibilityIdentifier("radar.play")
                 .disabled(allFrames.count < 2)
 
                 VStack(alignment: .leading, spacing: 2) {

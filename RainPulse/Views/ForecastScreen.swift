@@ -54,6 +54,7 @@ struct ForecastScreen: View {
                         } actions: {
                             Button("Use my location") { location.request() }
                                 .buttonStyle(.borderedProminent)
+                                .accessibilityIdentifier("forecast.useLocation")
                         }
                         .padding(.top, 60)
                     } else if let errorText {
@@ -168,6 +169,7 @@ struct ForecastScreen: View {
                 }
                 .foregroundStyle(.white)
                 Text(Fmt.temperature(f.current.temperature))
+                    .accessibilityIdentifier("hero.temperature")
                     .font(.system(size: 84, weight: .thin, design: .rounded))
                     .foregroundStyle(.white)
                     .contentTransition(.numericText())
@@ -193,6 +195,7 @@ struct ForecastScreen: View {
             if !store.tier.hasMinuteChart {
                 Button { showPaywall = true } label: {
                     Label("Unlock with Essential", systemImage: "lock.fill")
+                        .accessibilityIdentifier("forecast.unlock")
                         .font(.subheadline.weight(.semibold))
                         .padding(.horizontal, 16).padding(.vertical, 9)
                         .background(.white.opacity(0.18), in: Capsule())
@@ -222,6 +225,7 @@ struct ForecastScreen: View {
                 .glassCard(padding: 14)
             }
             .buttonStyle(.plain)
+            .accessibilityIdentifier("forecast.more")
             if showMore {
                 rainCard(f, place: place)
                 insightCard(f, place: place)
@@ -664,5 +668,6 @@ struct KeyConditions: View {
         }
         .glassCard(padding: 14)
         .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("tile.\(symbol)")
     }
 }

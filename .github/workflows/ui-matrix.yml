@@ -1,0 +1,90 @@
+name: UI matrix
+on:
+  workflow_dispatch:
+jobs:
+  ui:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: arabic-rtl-pro
+            lang: ar
+            region: SA
+            config: "tier=pro"
+            device: large
+          - name: hindi-free
+            lang: hi
+            region: IN
+            config: "tier=free"
+            device: large
+          - name: tamil-small-phone
+            lang: ta
+            region: IN
+            config: "tier=essential"
+            device: small
+          - name: japanese-pro
+            lang: ja
+            region: JP
+            config: "tier=pro"
+            device: large
+          - name: english-huge-text-small-phone
+            lang: en
+            region: US
+            config: "tier=free;bigtext=1"
+            device: small
+          - name: english-empty-phone
+            lang: en
+            region: GB
+            config: "tier=free;empty=1"
+            device: large
+          - name: german-essential
+            lang: de
+            region: DE
+            config: "tier=essential"
+            device: large
+    name: ${{ matrix.name }}
+    runs-on: xcode-27
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: |
+          XC=$(ls -d /Applications/Xcode_27*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$XC/Contents/Developer"
+          touch Config/Secrets.xcconfig
+          printf 'OWM_API_KEY = %s\n' "${{ secrets.OWM_API_KEY }}" > Config/Secrets.xcconfig
+      - name: Pick simulator
+        id: sim
+        run: |
+          if [ "${{ matrix.device }}" = small ]; then
+            DEVICE=$(xcrun simctl list devices available | grep -E "iPhone (SE|[0-9]+e)" | sed -E 's/^ *([^(]+) \(.*/\1/' | xargs -L1 | sort -V | tail -1)
+            [ -z "$DEVICE" ] && DEVICE=$(xcrun simctl list devices available | grep -E "iPhone [0-9]+ \(" | sed -E 's/^ *([^(]+) \(.*/\1/' | xargs -L1 | sort -V | head -1)
+          else
+            DEVICE=$(xcrun simctl list devices available | grep -E "iPhone [0-9]+ Pro Max" | sed -E 's/^ *([^(]+) \(.*/\1/' | xargs -L1 | sort -V | tail -1)
+          fi
+          echo "Simulator: $DEVICE"
+          echo "device=$DEVICE" >> "$GITHUB_OUTPUT"
+      - name: Run matrix UI test
+        env:
+          TEST_RUNNER_RP_CONFIG: ${{ matrix.config }}
+        run: |
+          set -o pipefail
+          xcodebuild -project RainPulse.xcodeproj -scheme RainPulse -configuration Debug \
+            -destination "platform=iOS Simulator,name=${{ steps.sim.outputs.device }}" \
+            -only-testing:RainPulseUITests/MatrixUITests \
+            -testLanguage ${{ matrix.lang }} -testRegion ${{ matrix.region }} \
+            -resultBundlePath "$RUNNER_TEMP/m.xcresult" \
+            CODE_SIGNING_ALLOWED=NO test 2>&1 | tee test.log | grep -E "Test Case|error:|TEST (SUCCEEDED|FAILED)" || true
+          grep -q "TEST SUCCEEDED" test.log
+      - name: Publish screenshots
+        if: always()
+        run: |
+          mkdir -p shots && xcrun xcresulttool export attachments --path "$RUNNER_TEMP/m.xcresult" --output-path shots || true
+          grep -E "Test Case|error:" test.log > shots/test-results.txt || true
+          echo "${{ steps.sim.outputs.device }}" > shots/device.txt
+          rm -rf /tmp/pub && mkdir /tmp/pub && cp -r shots/. /tmp/pub/ && cd /tmp/pub
+          git init -q -b "matrix-${{ matrix.name }}" && git config user.name ci && git config user.email ci@example.com
+          git add -A && git commit -qm "matrix ${{ matrix.name }}"
+          git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "matrix-${{ matrix.name }}"
+    permissions:
+      contents: write

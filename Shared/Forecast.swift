@@ -77,15 +77,18 @@ struct Forecast: Codable {
             .time
     }
 
-    var isRainingNow: Bool {
-        if current.precipitation >= 0.1 { return true }
-        return upcomingSteps(hours: 0.25).first.map { $0.precipitation >= 0.1 } ?? false
+    var isRainingNow: Bool { isRaining(at: Date()) }
+
+    /// Raining at `now`: current reading, or the 15-minute step covering `now`.
+    func isRaining(at now: Date) -> Bool {
+        if abs(current.time.timeIntervalSince(now)) < 1800, current.precipitation >= 0.1 { return true }
+        return upcomingSteps(hours: 0.25, from: now).first.map { $0.precipitation >= 0.1 } ?? false
     }
 
     /// Short human summary such as "Rain in 25 min" or "No rain for 2 hours".
     func nowcastSummary(from now: Date = Date()) -> String {
         let steps = upcomingSteps(hours: 2, from: now)
-        if isRainingNow {
+        if isRaining(at: now) {
             if let stop = steps.first(where: { $0.precipitation < 0.1 && $0.time > now }) {
                 let mins = max(5, Int(stop.time.timeIntervalSince(now) / 60))
                 return String(localized: "Rain stopping in about \(mins) min")
@@ -105,7 +108,7 @@ struct Forecast: Codable {
 extension Forecast {
     /// Short title for the rain card.
     func rainHeadline(from now: Date = Date()) -> String {
-        if isRainingNow {
+        if isRaining(at: now) {
             let rainyCodes: Set<Int> = [51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82, 95, 96, 99]
             return rainyCodes.contains(current.weatherCode) ? WeatherCode.description(current.weatherCode)
                                                              : String(localized: "Rain")
@@ -117,7 +120,7 @@ extension Forecast {
     /// One-line detail with start or end time, in the place's local time.
     func rainDetail(from now: Date = Date()) -> String {
         let steps = upcomingSteps(hours: 3, from: now)
-        if isRainingNow {
+        if isRaining(at: now) {
             if let stop = steps.first(where: { $0.precipitation < 0.1 && $0.time > now }) {
                 let mins = Int(stop.time.timeIntervalSince(now) / 60)
                 let at = Fmt.time(stop.time, in: timeZone)

@@ -75,5 +75,10 @@ enum TestData {
             Place(name: "São Paulo", latitude: -23.5505, longitude: -46.6333)
         ])
         if let tier = AppConfig.uiTestTier { SharedStore.tier = tier }
+        if CommandLine.arguments.contains("-UITestEmpty") {
+            // A brand-new phone: no location permission and no saved places.
+            SharedStore.lastLocation = nil
+            SharedStore.savePlaces([])
+        }
     }
 }
