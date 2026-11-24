@@ -197,7 +197,7 @@ struct ForecastScreen: View {
                     .font(.title2)
                     .foregroundStyle(.white)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Try Essential free for 14 days").font(.headline).foregroundStyle(.white)
+                    Text("Try Essential yearly free for 14 days").font(.headline).foregroundStyle(.white)
                     Text("2-hour rain forecast, alerts for 20 places").font(.caption).foregroundStyle(.white.opacity(0.85))
                 }
                 Spacer()
