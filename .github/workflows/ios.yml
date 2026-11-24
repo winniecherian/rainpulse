@@ -106,6 +106,14 @@ jobs:
           mkdir -p ~/.appstoreconnect/private_keys
           echo "$ASC_KEY_P8" > ~/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8
 
+      - name: Remember existing certificates
+        if: env.ASC_KEY_ID != '' && (github.event_name == 'workflow_dispatch' && inputs.upload)
+        env:
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          python3 -m pip install -q --break-system-packages pyjwt cryptography requests || python3 -m pip install -q --user pyjwt cryptography requests
+          python3 tools/asc_certs.py snapshot "$RUNNER_TEMP/certs.json"
+
       - name: Archive (cloud-managed signing)
         if: env.ASC_KEY_ID != '' && (github.event_name == 'workflow_dispatch' && inputs.upload)
         run: |
@@ -116,7 +124,6 @@ jobs:
             -allowProvisioningUpdates \
             -authenticationKeyPath ~/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8 \
             -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
-            CODE_SIGN_IDENTITY="Apple Distribution" \
             CURRENT_PROJECT_VERSION=${{ github.run_number }} 2>&1 | tee archive.log | grep -E "error:|ARCHIVE (SUCCEEDED|FAILED)"
 
       - name: Show signed entitlements
@@ -145,6 +152,12 @@ jobs:
             -allowProvisioningUpdates \
             -authenticationKeyPath ~/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8 \
             -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID"
+
+      - name: Revoke this run's throwaway development certificate
+        if: always() && env.ASC_KEY_ID != '' && (github.event_name == 'workflow_dispatch' && inputs.upload)
+        env:
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: '[ -f "$RUNNER_TEMP/certs.json" ] && python3 tools/asc_certs.py revoke-new "$RUNNER_TEMP/certs.json" || true'
 
       - uses: actions/upload-artifact@v4
         if: always()
