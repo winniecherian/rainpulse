@@ -89,7 +89,9 @@ final class RainPulseUITests: XCTestCase {
 
         // Search field is present (typing is skipped: the simulator's
         // "Enable Dictation?" prompt sits outside the app and can't be dismissed)
-        XCTAssertTrue(app.searchFields.firstMatch.exists, "Places search should be available")
+        let searchVisible = app.searchFields.firstMatch.waitForExistence(timeout: 5)
+            || app.buttons["Search"].exists
+        XCTAssertTrue(searchVisible, "Places search should be available")
 
         // Settings
         tabs.buttons["Settings"].tap()

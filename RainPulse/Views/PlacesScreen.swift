@@ -58,7 +58,7 @@ struct PlacesScreen: View {
                 }
             }
             .navigationTitle("Places")
-            .searchable(text: $search.query, prompt: "Search city or address")
+            .searchable(text: $search.query, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search city or address")
             .toolbar { EditButton() }
             .sheet(isPresented: $showPaywall) { PaywallView() }
             .overlay {
