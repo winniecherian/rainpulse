@@ -77,23 +77,35 @@ final class StoreManager: ObservableObject {
         await refreshEntitlements()
     }
 
+    /// A verified purchase the user currently holds.
+    struct Owned { let productID: String; let revoked: Bool; let expires: Date? }
+
+    /// Pure plan decision (unit-tested): refunded or expired items never unlock anything.
+    nonisolated static func tier(for owned: [Owned], now: Date = Date()) -> Tier {
+        var best: Tier = .free
+        for item in owned where !item.revoked && (item.expires.map { $0 > now } ?? true) {
+            switch item.productID {
+            case ID.proMonthly, ID.proYearly: best = .pro
+            case ID.essentialMonthly, ID.essentialYearly: if best < .essential { best = .essential }
+            default: break
+            }
+        }
+        return best
+    }
+
     func refreshEntitlements() async {
         if let forced = AppConfig.uiTestTier {
             tier = forced
             SharedStore.tier = forced
             return
         }
-        var best: Tier = .free
+        var owned: [Owned] = []
         for await entitlement in Transaction.currentEntitlements {
-            guard case .verified(let transaction) = entitlement,
-                  transaction.revocationDate == nil else { continue }
-            if transaction.productID == ID.proMonthly || transaction.productID == ID.proYearly {
-                best = .pro
-            } else if transaction.productID == ID.essentialMonthly || transaction.productID == ID.essentialYearly,
-                      best < .essential {
-                best = .essential
-            }
+            guard case .verified(let transaction) = entitlement else { continue }   // unverified = ignored
+            owned.append(Owned(productID: transaction.productID, revoked: transaction.revocationDate != nil,
+                               expires: transaction.expirationDate))
         }
+        let best = Self.tier(for: owned)
         if best != tier || SharedStore.tier != best {
             tier = best
             SharedStore.tier = best
