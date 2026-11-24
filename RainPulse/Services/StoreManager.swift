@@ -80,10 +80,12 @@ final class StoreManager: ObservableObject {
     /// A verified purchase the user currently holds.
     struct Owned { let productID: String; let revoked: Bool; let expires: Date? }
 
-    /// Pure plan decision (unit-tested): refunded or expired items never unlock anything.
+    /// Pure plan decision (unit-tested). Input is Apple's current entitlements, which already
+    /// drop expired subscriptions but KEEP ones in a billing grace period, so we must not
+    /// second-guess expiry dates here. Refunded/revoked items never unlock anything.
     nonisolated static func tier(for owned: [Owned], now: Date = Date()) -> Tier {
         var best: Tier = .free
-        for item in owned where !item.revoked && (item.expires.map { $0 > now } ?? true) {
+        for item in owned where !item.revoked {
             switch item.productID {
             case ID.proMonthly, ID.proYearly: best = .pro
             case ID.essentialMonthly, ID.essentialYearly: if best < .essential { best = .essential }

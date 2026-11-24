@@ -28,11 +28,14 @@ final class PlanDecisionTests: XCTestCase {
         XCTAssertEqual(StoreManager.tier(for: [O(productID: StoreManager.ID.proYearly, revoked: true, expires: now + 3600)], now: now), .free)
     }
 
-    func testExpiredSubscriptionUnlocksNothing() {
-        XCTAssertEqual(StoreManager.tier(for: [O(productID: StoreManager.ID.proYearly, revoked: false, expires: now - 60)], now: now), .free)
-        let mixed = [O(productID: StoreManager.ID.proYearly, revoked: false, expires: now - 60),
-                     O(productID: StoreManager.ID.essentialMonthly, revoked: false, expires: now + 600)]
-        XCTAssertEqual(StoreManager.tier(for: mixed, now: now), .essential, "downgrade after Pro lapses")
+    func testBillingGracePeriodKeepsAccess() {
+        // Apple still lists a subscription in grace period (date passed, payment being retried).
+        XCTAssertEqual(StoreManager.tier(for: [O(productID: StoreManager.ID.proYearly, revoked: false, expires: now - 3600)], now: now), .pro)
+    }
+
+    func testDowngradeWhenOnlyEssentialRemains() {
+        // After Pro lapses, Apple's list only contains the remaining Essential plan.
+        XCTAssertEqual(StoreManager.tier(for: [O(productID: StoreManager.ID.essentialMonthly, revoked: false, expires: now + 600)], now: now), .essential)
     }
 
     func testUnknownProductIgnored() {
