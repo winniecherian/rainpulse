@@ -91,6 +91,10 @@
 			isa = PBXBuildFile;
 			fileRef = D493F296D30D881FF864BAF8;
 		};
+		7E090C85AC6177C18FC30EA8 = {
+			isa = PBXBuildFile;
+			fileRef = D3F239A2183B5C4FB578B394;
+		};
 		8287B453BF684ECE9B4AA126 = {
 			isa = PBXBuildFile;
 			fileRef = E30D5B3010161161B0C31307;
@@ -115,6 +119,10 @@
 		95DB2F31B6813A1AE89CFC26 = {
 			isa = PBXBuildFile;
 			fileRef = D7E9143D539BBCCA7C731603;
+		};
+		A4D203D5EE6ACF829F8D5696 = {
+			isa = PBXBuildFile;
+			fileRef = D3F239A2183B5C4FB578B394;
 		};
 		A6FD7061BA839C239EDCF0F6 = {
 			isa = PBXBuildFile;
@@ -418,6 +426,12 @@
 			path = README.md;
 			sourceTree = "<group>";
 		};
+		D3F239A2183B5C4FB578B394 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.json.xcstrings;
+			path = Localizable.xcstrings;
+			sourceTree = "<group>";
+		};
 		D493F296D30D881FF864BAF8 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
@@ -628,6 +642,7 @@
 				AFE8D4616B856A33797AA5DA,
 				721ACFFBF5B51D11ECC4AD6F,
 				2B29E92D0FAA5FB872DE3F63,
+				D3F239A2183B5C4FB578B394,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -769,6 +784,16 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
+				"pt-BR",
+				hi,
+				id,
+				ja,
+				de,
+				fr,
+				ar,
+				ta,
+				vi,
 			);
 			mainGroup = A2772EB5676ED2B691193947;
 			productRefGroup = 8241ED42B56CC1DA7F726566;
@@ -796,6 +821,7 @@
 			files = (
 				C53C4C1C96E50FB276DB5FB2,
 				E3E33B43EFDCAF1D6EBEDBE5,
+				A4D203D5EE6ACF829F8D5696,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,6 +830,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19E40B784C115FBD66308D32,
+				7E090C85AC6177C18FC30EA8,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -38,7 +38,7 @@ def files_in(folder, exts):
 
 FILETYPES = {
     ".swift": "sourcecode.swift", ".plist": "text.plist.xml", ".entitlements": "text.plist.entitlements",
-    ".xcassets": "folder.assetcatalog", ".xcprivacy": "text.xml", ".xcconfig": "text.xcconfig",
+    ".xcassets": "folder.assetcatalog", ".xcprivacy": "text.xml", ".xcstrings": "text.json.xcstrings", ".xcconfig": "text.xcconfig",
     ".storekit": "text.json", ".md": "net.daringfireball.markdown", ".sh": "text.script.sh",
 }
 
@@ -59,7 +59,7 @@ other_files = [
     f"{APP}/Info.plist", f"{APP}/{APP}.entitlements", f"{APP}/PrivacyInfo.xcprivacy", f"{APP}/Assets.xcassets",
     f"{WIDGET}/Info.plist", f"{WIDGET}/{WIDGET}.entitlements", f"{WIDGET}/PrivacyInfo.xcprivacy",
     "Config/Base.xcconfig", "Config/Secrets.example.xcconfig", "Products.storekit", "README.md",
-    "ci_scripts/ci_post_clone.sh",
+    "ci_scripts/ci_post_clone.sh", "Shared/Localizable.xcstrings",
 ]
 all_files = shared_swift + app_swift + widget_swift + uitest_swift + [f for f in other_files if os.path.exists(os.path.join(ROOT, f))]
 
@@ -120,7 +120,7 @@ def build_files(target, paths, phase):
 app_sources = add(oid("phase", APP, "sources"), "PBXSourcesBuildPhase", buildActionMask="2147483647",
                   files=build_files(APP, shared_swift + app_swift, "src"), runOnlyForDeploymentPostprocessing="0")
 app_resources = add(oid("phase", APP, "res"), "PBXResourcesBuildPhase", buildActionMask="2147483647",
-                    files=build_files(APP, [f"{APP}/Assets.xcassets", f"{APP}/PrivacyInfo.xcprivacy"], "res"),
+                    files=build_files(APP, [f"{APP}/Assets.xcassets", f"{APP}/PrivacyInfo.xcprivacy", "Shared/Localizable.xcstrings"], "res"),
                     runOnlyForDeploymentPostprocessing="0")
 app_frameworks = add(oid("phase", APP, "fw"), "PBXFrameworksBuildPhase", buildActionMask="2147483647",
                      files=[], runOnlyForDeploymentPostprocessing="0")
@@ -133,7 +133,7 @@ app_embed = add(oid("phase", APP, "embed"), "PBXCopyFilesBuildPhase", buildActio
 w_sources = add(oid("phase", WIDGET, "sources"), "PBXSourcesBuildPhase", buildActionMask="2147483647",
                 files=build_files(WIDGET, shared_swift + widget_swift, "src"), runOnlyForDeploymentPostprocessing="0")
 w_resources = add(oid("phase", WIDGET, "res"), "PBXResourcesBuildPhase", buildActionMask="2147483647",
-                  files=build_files(WIDGET, [f"{WIDGET}/PrivacyInfo.xcprivacy"], "res"),
+                  files=build_files(WIDGET, [f"{WIDGET}/PrivacyInfo.xcprivacy", "Shared/Localizable.xcstrings"], "res"),
                   runOnlyForDeploymentPostprocessing="0")
 w_frameworks = add(oid("phase", WIDGET, "fw"), "PBXFrameworksBuildPhase", buildActionMask="2147483647",
                    files=[], runOnlyForDeploymentPostprocessing="0")
@@ -235,7 +235,7 @@ add(project_id, "PBXProject",
                                      widget_target: {"CreatedOnToolsVersion": "26.0"},
                                      uitest_target: {"CreatedOnToolsVersion": "26.0", "TestTargetID": app_target}}},
     buildConfigurationList=project_cfg, compatibilityVersion="Xcode 14.0", developmentRegion="en",
-    hasScannedForEncodings="0", knownRegions=["en", "Base"], mainGroup=main_group,
+    hasScannedForEncodings="0", knownRegions=["en", "Base", "es", "pt-BR", "hi", "id", "ja", "de", "fr", "ar", "ta", "vi"], mainGroup=main_group,
     productRefGroup=products_group, projectDirPath="", projectRoot="", targets=[app_target, widget_target, uitest_target])
 
 

@@ -1,0 +1,24 @@
+name: Export strings
+on:
+  workflow_dispatch:
+jobs:
+  export:
+    runs-on: xcode-27
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode 27
+        run: |
+          XC=$(ls -d /Applications/Xcode_27*.app | grep -v -i beta | sort -V | tail -1)
+          sudo xcode-select -s "$XC/Contents/Developer"
+      - name: Export
+        run: |
+          cp Config/Secrets.example.xcconfig Config/Secrets.xcconfig 2>/dev/null || touch Config/Secrets.xcconfig
+          xcodebuild -exportLocalizations -project RainPulse.xcodeproj -localizationPath out -exportLanguage en \
+            CODE_SIGNING_ALLOWED=NO 2>&1 | tail -20
+          find out -name "*.xliff" | head
+          mkdir -p /tmp/pub && cp $(find out -name "en.xliff" | head -1) /tmp/pub/en.xliff
+          find out -name "*.xcstrings" -exec cp {} /tmp/pub/ \; || true
+          cd /tmp/pub && git init -q -b strings-export && git config user.name ci && git config user.email ci@example.com
+          git add -A && git commit -qm strings && git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" strings-export
