@@ -10,7 +10,7 @@ struct SettingsScreen: View {
     @AppStorage(AlertSettings.thresholdKey, store: AppConfig.sharedDefaults) private var threshold = 0.1
     @AppStorage("radar.opacity") private var opacity = 0.75
     @AppStorage("radar.source") private var sourceRaw = RadarSource.owmGlobalPrecip.rawValue
-    @AppStorage("map.style") private var mapStyle = 0
+    @AppStorage("map.style.v2") private var mapStyle = 3
     @AppStorage("radar.speed") private var speed = 1.0
     @AppStorage("radar.showFuture") private var showFuture = true
     @Environment(\.requestReview) private var requestReview
@@ -78,9 +78,11 @@ struct SettingsScreen: View {
                         Slider(value: $opacity, in: 0.3...1)
                     }
                     Picker("Map style", selection: $mapStyle) {
-                        Text("Standard").tag(0)
-                        Text("Hybrid").tag(1)
+                        Text("Dark (best for rain)").tag(3)
+                        Text("Light").tag(0)
                         Text("Satellite").tag(2)
+                        Text("Satellite with labels").tag(4)
+                        Text("Hybrid (light)").tag(1)
                     }
                     Picker("Playback speed", selection: $speed) {
                         Text("0.5x").tag(0.5)
@@ -89,8 +91,12 @@ struct SettingsScreen: View {
                     }
                     Toggle("Show rain forecast in animation", isOn: $showFuture)
                     Picker("Radar data", selection: $sourceRaw) {
-                        ForEach(RadarSource.allCases) { Text($0.displayName).tag($0.rawValue) }
+                        ForEach(RadarSource.allCases.filter { $0 != .tomorrow || !AppConfig.tomorrowAPIKey.isEmpty }) {
+                            Text($0.displayName).tag($0.rawValue)
+                        }
                     }
+                    Text("Apple Weather gives forecasts but no radar maps to apps, so the map uses OpenWeather radar plus NOAA's GFS model for future rain.")
+                        .font(.footnote).foregroundStyle(.secondary)
                 }
 
                 Section("Help & Feedback") {

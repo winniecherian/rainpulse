@@ -97,12 +97,17 @@ actor WindService {
         for (l0, l1) in boxes {
             let sel = "[(\(time))][(\(latMin)):\(stride):(\(latMax))][(\(l0)):\(stride):(\(l1))]"
             let query = "ugrd10m\(sel),vgrd10m\(sel)"
-            guard let encoded = query.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(CharacterSet(charactersIn: ".-:,_"))),
-                  let url = URL(string: "https://coastwatch.pfeg.noaa.gov/erddap/griddap/NCEP_Global_Best.json?\(encoded)") else { return nil }
-            var req = URLRequest(url: url)
-            req.timeoutInterval = 25
-            guard let (data, resp) = try? await URLSession.shared.data(for: req),
-                  (resp as? HTTPURLResponse)?.statusCode == 200,
+            guard let encoded = query.addingPercentEncoding(withAllowedCharacters: .alphanumerics.union(CharacterSet(charactersIn: ".-:,_"))) else { return nil }
+            var payload: Data?
+            for base in ["https://pae-paha.pacioos.hawaii.edu/erddap/griddap/ncep_global",
+                         "https://coastwatch.pfeg.noaa.gov/erddap/griddap/NCEP_Global_Best"] {
+                guard let url = URL(string: "\(base).json?\(encoded)") else { continue }
+                var req = URLRequest(url: url)
+                req.timeoutInterval = 20
+                if let (d, resp) = try? await URLSession.shared.data(for: req),
+                   (resp as? HTTPURLResponse)?.statusCode == 200 { payload = d; break }
+            }
+            guard let data = payload,
                   let root = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
                   let table = root["table"] as? [String: Any],
                   let raw = table["rows"] as? [[Any]] else { return nil }

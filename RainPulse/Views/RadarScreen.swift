@@ -28,12 +28,15 @@ struct RadarScreen: View {
     @AppStorage("radar.speed") private var speed = 1.0
     @AppStorage("radar.past") private var pastRaw = PastRange.m30.rawValue
     @AppStorage("radar.showFuture") private var showFuture = true
-    @AppStorage("map.style") private var mapStyle = 0
+    @AppStorage("map.style.v2") private var mapStyle = 3
     @AppStorage("map.windFlow") private var windFlow = false
     @AppStorage("map.cyclones") private var showCyclones = true
     @State private var cyclones: [Cyclone] = []
     @State private var focus: CLLocationCoordinate2D?
     @State private var focusToken = 0
+    @State private var modelFrames: RainModelFrames?
+    @State private var lastRegion: MKCoordinateRegion?
+    @State private var modelTask: Task<Void, Never>?
 
     @State private var layer: MapLayer = .radar
     @State private var frames: [RadarFrame] = []
@@ -65,7 +68,7 @@ struct RadarScreen: View {
             RadarMapView(provider: provider,
                          layer: layer,
                          frames: frames,
-                         currentIndex: index,
+                         currentIndex: min(index, max(0, frames.count - 1)),
                          opacity: opacity,
                          center: location.location?.coordinate,
                          places: places.places,
@@ -75,7 +78,10 @@ struct RadarScreen: View {
                          showWindFlow: windFlow && store.tier.hasExtraLayers,
                          cyclones: showCyclones ? cyclones : [],
                          focus: focus,
-                         focusToken: focusToken)
+                         focusToken: focusToken,
+                         modelFrames: modelFrames,
+                         modelIndex: modelIndex,
+                         onRegionChange: handleRegion)
                 .ignoresSafeArea(edges: .top)
 
             VStack(spacing: 0) {
@@ -96,14 +102,15 @@ struct RadarScreen: View {
         .onChange(of: store.tier) { _, _ in rebuildFrames() }
         .onChange(of: sourceRaw) { _, _ in fellBackToCurrent = false; rebuildFrames() }
         .onChange(of: fellBackToCurrent) { _, _ in rebuildFrames() }
-        .onChange(of: layer) { _, _ in rebuildFrames() }
+        .onChange(of: layer) { _, _ in rebuildFrames(); reloadModel() }
         .onChange(of: pastRaw) { _, _ in rebuildFrames() }
-        .onChange(of: showFuture) { _, _ in rebuildFrames() }
+        .onChange(of: showFuture) { _, _ in rebuildFrames(); reloadModel() }
+        .onChange(of: store.tier) { _, _ in reloadModel() }
         .onReceive(playTimer) { _ in
-            guard isPlaying, frames.count > 1 else { return }
+            guard isPlaying, allFrames.count > 1 else { return }
             tick += 1
             let every = speed >= 2 ? 1 : (speed >= 1 ? 2 : 4)
-            if tick % every == 0 { index = (index + 1) % frames.count }
+            if tick % every == 0 { index = (index + 1) % allFrames.count }
         }
         .onReceive(refreshTimer) { _ in rebuildFrames(); Task { await loadCyclones() } }
         .task { await loadCyclones() }
@@ -206,6 +213,7 @@ struct RadarScreen: View {
     private var attributionText: String {
         var parts = [provider.source.attribution]
         if windFlow && store.tier.hasExtraLayers { parts.append("Wind © NOAA GFS") }
+        if modelFrames != nil && layer == .radar { parts.append("Rain forecast © NOAA GFS") }
         if showCyclones && !cyclones.isEmpty { parts.append("Cyclones © GDACS") }
         return parts.joined(separator: " · ")
     }
@@ -237,7 +245,7 @@ struct RadarScreen: View {
 
     private var timeline: some View {
         VStack(spacing: 10) {
-            if controlsExpanded && frames.count > 1 {
+            if controlsExpanded && allFrames.count > 1 {
                 HStack(spacing: 8) {
                     controlChip(systemImage: "gauge.with.dots.needle.33percent",
                                 text: speed == 0.5 ? "0.5x" : (speed >= 2 ? "2x" : "1x")) {
@@ -267,7 +275,8 @@ struct RadarScreen: View {
                         .font(.title3)
                         .frame(width: 44, height: 44)
                 }
-                .disabled(frames.count < 2)
+                .accessibilityLabel(isPlaying ? "Pause" : "Play")
+                .disabled(allFrames.count < 2)
 
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 6) {
@@ -287,13 +296,13 @@ struct RadarScreen: View {
                     Image(systemName: controlsExpanded ? "chevron.down" : "chevron.up")
                         .frame(width: 32, height: 32)
                 }
-                .opacity(frames.count > 1 ? 1 : 0)
+                .opacity(allFrames.count > 1 ? 1 : 0)
             }
 
-            if frames.count > 1 {
+            if allFrames.count > 1 {
                 Slider(value: Binding(get: { Double(index) },
                                       set: { index = Int($0.rounded()); isPlaying = false }),
-                       in: 0...Double(frames.count - 1), step: 1)
+                       in: 0...Double(allFrames.count - 1), step: 1)
                 HStack {
                     Text("−" + pastRange.label).font(.caption2).foregroundStyle(.secondary)
                     Spacer()
@@ -332,25 +341,26 @@ struct RadarScreen: View {
     }
 
     private var futureLabel: String {
-        let mins = Int(store.tier.radarFuture / 60)
+        let mins = max(Int(store.tier.radarFuture / 60), modelFrames == nil ? 0 : modelHours * 60)
         return mins >= 60 ? "\(mins / 60)h" : "\(mins)m"
     }
 
-    private var currentFrame: RadarFrame? { frames.indices.contains(index) ? frames[index] : nil }
-    private var isAtNow: Bool { frames.count <= 1 || index == RadarProvider.nowIndex(in: frames) }
+    private var currentFrame: RadarFrame? { allFrames.indices.contains(index) ? allFrames[index] : nil }
+    private var isAtNow: Bool { allFrames.count <= 1 || index == RadarProvider.nowIndex(in: allFrames) }
 
     private var frameLabel: String {
-        guard let frame = currentFrame, frames.count > 1 else { return String(localized: "Live") }
+        guard let frame = currentFrame, allFrames.count > 1 else { return String(localized: "Live") }
         return Fmt.time(frame.date)
     }
 
     private var frameSubLabel: String {
-        guard let frame = currentFrame, frames.count > 1 else {
+        guard let frame = currentFrame, allFrames.count > 1 else {
             return fellBackToCurrent ? String(localized: "Current radar only") : layer.displayName
         }
-        let mins = Int((frame.date.timeIntervalSince(frames[RadarProvider.nowIndex(in: frames)].date)) / 60)
+        let mins = Int((frame.date.timeIntervalSince(allFrames[RadarProvider.nowIndex(in: allFrames)].date)) / 60)
         if mins == 0 { return String(localized: "Now") }
         let rel = mins > 0 ? "+\(Self.duration(mins))" : "−\(Self.duration(-mins))"
+        if index >= frames.count { return String(localized: "Rain forecast (model) \(rel)") }
         return frame.isForecast ? String(localized: "Forecast \(rel)") : String(localized: "Past \(rel)")
     }
 
@@ -373,13 +383,70 @@ struct RadarScreen: View {
         minutes < 60 ? "\(minutes) min" : (minutes % 60 == 0 ? "\(minutes / 60) h" : "\(minutes / 60) h \(minutes % 60) min")
     }
 
+    /// GFS forecast window by plan (free gets a short taste so playback always works).
+    private var modelHours: Int {
+        guard layer == .radar, showFuture else { return 0 }
+        switch store.tier {
+        case .free: return 6
+        case .essential: return 24
+        case .pro: return 48
+        }
+    }
+
+    /// Model frames that come after the last radar frame.
+    private var modelStart: Int {
+        guard let m = modelFrames else { return 0 }
+        let last = frames.last?.date ?? Date()
+        return m.dates.firstIndex(where: { $0 > last.addingTimeInterval(60) }) ?? m.dates.count
+    }
+
+    /// Radar frames followed by model forecast frames.
+    private var allFrames: [RadarFrame] {
+        guard let m = modelFrames, modelStart < m.dates.count else { return frames }
+        return frames + m.dates[modelStart...].map { RadarFrame(date: $0, isForecast: true) }
+    }
+
+    private var modelIndex: Int? {
+        guard modelFrames != nil, index >= frames.count else { return nil }
+        return modelStart + (index - frames.count)
+    }
+
+    private func handleRegion(_ region: MKCoordinateRegion) {
+        lastRegion = region
+        reloadModel(delay: 0.6)
+    }
+
+    private func reloadModel(delay: Double = 0) {
+        modelTask?.cancel()
+        let hours = modelHours
+        guard hours > 0, let region = lastRegion ?? location.location.map({
+            MKCoordinateRegion(center: $0.coordinate, span: MKCoordinateSpan(latitudeDelta: 6, longitudeDelta: 6))
+        }) else {
+            modelFrames = nil
+            if index >= frames.count { index = RadarProvider.nowIndex(in: frames) }
+            return
+        }
+        modelTask = Task {
+            if delay > 0 { try? await Task.sleep(for: .seconds(delay)) }
+            guard !Task.isCancelled else { return }
+            let result = await RainModelService.shared.frames(for: region, hours: hours)
+            guard !Task.isCancelled else { return }
+            await MainActor.run {
+                if result != nil || modelFrames == nil {
+                    modelFrames = result
+                }
+                if index >= allFrames.count { index = RadarProvider.nowIndex(in: allFrames) }
+            }
+        }
+    }
+
     private func rebuildFrames() {
         let future = showFuture ? store.tier.radarFuture : 0
         let newFrames = provider.frames(past: TimeInterval(pastRange.rawValue), future: future, layer: layer)
         let wasPlaying = isPlaying
         frames = newFrames
         index = RadarProvider.nowIndex(in: newFrames)
-        isPlaying = wasPlaying && newFrames.count > 1
+        isPlaying = wasPlaying && allFrames.count > 1
     }
 }
 

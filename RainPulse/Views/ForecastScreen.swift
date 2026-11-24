@@ -7,7 +7,7 @@ struct ForecastScreen: View {
     @EnvironmentObject private var places: PlacesModel
     @EnvironmentObject private var location: LocationManager
 
-    @AppStorage("map.style") private var mapStyle = 0
+    @AppStorage("map.style.v2") private var mapStyle = 3
 
     @State private var selectedID: UUID?          // nil = current location
     @State private var forecast: Forecast?

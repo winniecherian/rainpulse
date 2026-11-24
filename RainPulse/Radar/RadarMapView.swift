@@ -16,11 +16,15 @@ struct RadarMapView: UIViewRepresentable {
     var interactive: Bool = true
     var span: Double = 6
     /// 0 = standard (muted), 1 = hybrid, 2 = satellite
-    var mapStyle: Int = 0
+    var mapStyle: Int = 3
     var showWindFlow: Bool = false
     var cyclones: [Cyclone] = []
     var focus: CLLocationCoordinate2D? = nil
     var focusToken: Int = 0
+    /// Model (GFS) rain forecast frames, and which one to show instead of the radar tiles.
+    var modelFrames: RainModelFrames? = nil
+    var modelIndex: Int? = nil
+    var onRegionChange: (MKCoordinateRegion) -> Void = { _ in }
 
     func makeCoordinator() -> Coordinator { Coordinator() }
 
@@ -32,6 +36,7 @@ struct RadarMapView: UIViewRepresentable {
         map.isUserInteractionEnabled = interactive
         map.pointOfInterestFilter = .excludingAll
         map.preferredConfiguration = Coordinator.configuration(for: mapStyle)
+        map.overrideUserInterfaceStyle = Coordinator.interfaceStyle(for: mapStyle)
         context.coordinator.mapStyle = mapStyle
         map.setRegion(MKCoordinateRegion(center: center ?? CLLocationCoordinate2D(latitude: 20, longitude: 0),
                                          span: MKCoordinateSpan(latitudeDelta: center == nil ? 120 : span,
@@ -67,11 +72,26 @@ struct RadarMapView: UIViewRepresentable {
         private var cycloneAnnotations: [CycloneAnnotation] = []
         private var cycloneKey = ""
         private var lastFocusToken = 0
+        var hideTiles = false
+        var onRegionChange: (MKCoordinateRegion) -> Void = { _ in }
+        private var modelOverlay: RainModelOverlay?
+        private var modelKey = ""
+        private var modelImages: [Int: CGImage] = [:]
+        private var shownModelIndex: Int?
+        private weak var mapRef: MKMapView?
+        private var currentModelFrames: RainModelFrames?
+        private var desiredModelIndex: Int?
+
+        /// 3 = Dark (muted standard map in dark mode): rain and clouds stand out most.
+        static func interfaceStyle(for style: Int) -> UIUserInterfaceStyle {
+            style == 3 || style == 4 ? .dark : .unspecified
+        }
 
         static func configuration(for style: Int) -> MKMapConfiguration {
             switch style {
             case 1: return MKHybridMapConfiguration()
             case 2: return MKImageryMapConfiguration()
+            case 4: return MKHybridMapConfiguration()   // shown dark
             default: return MKStandardMapConfiguration(emphasisStyle: .muted)
             }
         }
@@ -82,6 +102,7 @@ struct RadarMapView: UIViewRepresentable {
             if view.mapStyle != mapStyle {
                 mapStyle = view.mapStyle
                 map.preferredConfiguration = Self.configuration(for: mapStyle)
+                map.overrideUserInterfaceStyle = Self.interfaceStyle(for: mapStyle)
             }
 
             // Rebuild overlays only when source/layer/frames change.
@@ -99,7 +120,11 @@ struct RadarMapView: UIViewRepresentable {
                 map.addOverlays(overlays, level: .aboveRoads)
                 overlayKey = key
             }
+            onRegionChange = view.onRegionChange
+            mapRef = map
+            hideTiles = view.modelIndex != nil && view.modelFrames != nil
             applyAlpha()
+            syncModel(map: map, frames: view.modelFrames, index: view.modelIndex)
 
             // Center once when location becomes available, or on demand.
             if let center = view.center, !didCenter || view.recenterToken != lastRecenterToken {
@@ -168,12 +193,46 @@ struct RadarMapView: UIViewRepresentable {
         }
 
         private func applyAlpha() {
-            let visible = overlays.count == 1 ? 0 : currentIndex
+            let visible = hideTiles ? -1 : (overlays.count == 1 ? 0 : currentIndex)
             for (i, overlay) in overlays.enumerated() {
                 guard let renderer = renderers[ObjectIdentifier(overlay)] else { continue }
                 let alpha = i == visible ? opacity : 0
                 if renderer.alpha != alpha { renderer.alpha = alpha }
             }
+        }
+
+        /// Shows one GFS rain frame as an image overlay (rendered once per frame, then cached).
+        private func syncModel(map: MKMapView, frames: RainModelFrames?, index: Int?) {
+            let key = frames.map { "\($0.dates.first?.timeIntervalSince1970 ?? 0)|\($0.lats.first ?? 0)|\($0.lons.first ?? 0)|\($0.lats.count)x\($0.lons.count)" } ?? ""
+            if key != modelKey {
+                modelImages.removeAll()
+                if let old = modelOverlay { map.removeOverlay(old) }
+                modelOverlay = nil
+                shownModelIndex = nil
+                modelKey = key
+                if let frames {
+                    let o = RainModelOverlay(rect: frames.boundingMapRect)
+                    map.addOverlay(o, level: .aboveRoads)
+                    modelOverlay = o
+                }
+            }
+            currentModelFrames = frames
+            desiredModelIndex = index
+            guard let frames, let overlay = modelOverlay,
+                  let renderer = map.renderer(for: overlay) as? RainModelRenderer else {
+                return   // renderer not created yet; rendererFor fills it in
+            }
+            guard let index, frames.dates.indices.contains(index) else {
+                if renderer.image != nil { renderer.image = nil; renderer.setNeedsDisplay() }
+                shownModelIndex = nil
+                return
+            }
+            renderer.alpha = opacity
+            guard index != shownModelIndex else { return }
+            if modelImages[index] == nil { modelImages[index] = frames.image(frame: index) }
+            renderer.image = modelImages[index]
+            renderer.setNeedsDisplay()
+            shownModelIndex = index
         }
 
         private func refreshWind(_ map: MKMapView) {
@@ -192,12 +251,25 @@ struct RadarMapView: UIViewRepresentable {
         }
 
         func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+            onRegionChange(mapView.region)
             guard showWind else { return }
             windView?.setPaused(false)
             refreshWind(mapView)
         }
 
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            if let model = overlay as? RainModelOverlay {
+                let r = RainModelRenderer(overlay: model)
+                r.alpha = opacity
+                if let frames = currentModelFrames, let i = desiredModelIndex, frames.dates.indices.contains(i) {
+                    if modelImages[i] == nil { modelImages[i] = frames.image(frame: i) }
+                    r.image = modelImages[i]
+                    shownModelIndex = i
+                } else {
+                    shownModelIndex = nil
+                }
+                return r
+            }
             if let cone = overlay as? ConePolygon {
                 let r = MKPolygonRenderer(polygon: cone)
                 r.fillColor = UIColor.systemOrange.withAlphaComponent(0.15)
@@ -268,4 +340,26 @@ final class TrackPolyline: MKPolyline {
 }
 final class CycloneAnnotation: MKPointAnnotation {
     var alertLevel = "Green"
+}
+
+/// Image overlay covering the GFS grid area.
+final class RainModelOverlay: NSObject, MKOverlay {
+    let boundingMapRect: MKMapRect
+    var coordinate: CLLocationCoordinate2D { MKMapPoint(x: boundingMapRect.midX, y: boundingMapRect.midY).coordinate }
+    init(rect: MKMapRect) { boundingMapRect = rect }
+}
+
+final class RainModelRenderer: MKOverlayRenderer {
+    var image: CGImage?
+    override func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in context: CGContext) {
+        guard let image else { return }
+        let r = rect(for: overlay.boundingMapRect)
+        context.saveGState()
+        context.interpolationQuality = .high
+        // Map renderers use a top-left origin; CGImage draws bottom-up, so flip.
+        context.translateBy(x: r.minX, y: r.maxY)
+        context.scaleBy(x: 1, y: -1)
+        context.draw(image, in: CGRect(x: 0, y: 0, width: r.width, height: r.height))
+        context.restoreGState()
+    }
 }

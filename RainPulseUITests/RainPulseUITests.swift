@@ -46,7 +46,15 @@ final class RainPulseUITests: XCTestCase {
         // Radar
         XCTAssertTrue(app.buttons["play.fill"].exists || app.staticTexts["Live"].exists || app.buttons.count > 0)
         sleep(6)
+        let play = app.buttons["Play"]
+        XCTAssertTrue(play.waitForExistence(timeout: 10), "Play button should exist")
+        let deadline = Date().addingTimeInterval(15)
+        while !play.isEnabled && Date() < deadline { sleep(1) }
+        XCTAssertTrue(play.isEnabled, "Play should work with model rain forecast frames")
+        play.tap()
+        sleep(3)
         snap(app, "01-Radar")
+        if app.buttons["Pause"].exists { app.buttons["Pause"].tap() }
 
         // Cyclone chip focuses the storm; then turn on wind flow (Pro).
         let chip = app.buttons["Cyclone SAMPLE"]
