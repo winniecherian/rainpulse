@@ -35,15 +35,13 @@ struct ForecastScreen: View {
                 VStack(spacing: 16) {
                     if let forecast, let place = selectedPlace {
                         hero(forecast, place: place)
-                        if store.tier == .free { trialBanner }
                         ForEach(nearbyStorms) { storm in
                             CycloneCard(storm: storm, place: place)
                         }
-                        rainCard(forecast, place: place)
-                        insightCard(forecast, place: place)
-                        DetailsCard(current: forecast.current, airQuality: airQuality)
+                        KeyConditions(forecast: forecast, airQuality: airQuality)
                         hourlyCard(forecast)
                         dailyCard(forecast)
+                        moreDetails(forecast, place: place)
                         WeatherAttributionView(showsAppleWeather: forecast.usesAppleWeather,
                                                showsOpenMeteo: forecast.usesOpenMeteo)
                     } else if selectedPlace == nil {
@@ -185,9 +183,45 @@ struct ForecastScreen: View {
                           locked: !store.tier.hasMinuteChart)
             }
             .buttonStyle(.plain)
+            if !store.tier.hasMinuteChart {
+                Button { showPaywall = true } label: {
+                    Label("Unlock with Essential", systemImage: "lock.fill")
+                        .font(.subheadline.weight(.semibold))
+                        .padding(.horizontal, 16).padding(.vertical, 9)
+                        .background(.white.opacity(0.18), in: Capsule())
+                        .foregroundStyle(.white)
+                }
+            }
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 8)
+    }
+
+    @State private var showMore = false
+
+    /// Everything beyond the essentials, folded away until asked for.
+    private func moreDetails(_ f: Forecast, place: Place) -> some View {
+        VStack(spacing: 16) {
+            Button {
+                withAnimation(.snappy) { showMore.toggle() }
+            } label: {
+                HStack {
+                    Label("More details", systemImage: "square.grid.2x2")
+                    Spacer()
+                    Image(systemName: "chevron.down").rotationEffect(.degrees(showMore ? 180 : 0))
+                }
+                .font(.headline)
+                .foregroundStyle(.white)
+                .glassCard(padding: 14)
+            }
+            .buttonStyle(.plain)
+            if showMore {
+                rainCard(f, place: place)
+                insightCard(f, place: place)
+                DetailsCard(current: f.current, airQuality: nil)
+                if store.tier == .free { trialBanner }
+            }
+        }
     }
 
     private var trialBanner: some View {
@@ -236,7 +270,7 @@ struct ForecastScreen: View {
 
                 if !store.tier.hasMinuteChart {
                     Button { showPaywall = true } label: {
-                        Label("Unlock with Essential", systemImage: "lock.fill")
+                        Label("Unlock chart with Essential", systemImage: "lock.fill")
                             .font(.subheadline.weight(.semibold))
                     }
                     .buttonStyle(.borderedProminent)
@@ -460,11 +494,6 @@ struct DetailsCard: View {
         if let v = current.uvIndex {
             list.append(.init(title: String(localized: "UV index"), value: "\(v)", symbol: "sun.max", note: Self.uvLabel(v)))
         }
-        if let v = current.windSpeed {
-            let dir = current.windDirection.map { " " + Self.compass($0) } ?? ""
-            list.append(.init(title: String(localized: "Wind"), value: Self.measure(v, UnitSpeed.kilometersPerHour) + dir, symbol: "wind",
-                              note: current.windGust.map { String(localized: "Gusts \(Self.measure($0, UnitSpeed.kilometersPerHour))") }))
-        }
         if let v = current.pressure {
             list.append(.init(title: String(localized: "Pressure"), value: "\(Int(v.rounded())) hPa", symbol: "gauge.with.dots.needle.67percent", note: nil))
         }
@@ -543,5 +572,90 @@ struct CycloneCard: View {
         .padding()
         .background(tint.opacity(0.12), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
         .overlay(RoundedRectangle(cornerRadius: 18, style: .continuous).stroke(tint.opacity(0.5), lineWidth: 1))
+    }
+}
+
+
+/// The four things people check most: rain, snow, wind, air quality.
+struct KeyConditions: View {
+    let forecast: Forecast
+    let airQuality: AirQuality?
+
+    private static let snowCodes: Set<Int> = [71, 73, 75, 77, 85, 86]
+
+    private var rain: (String, String) {
+        let tz = forecast.timeZone
+        let next24 = forecast.hourly.filter { $0.time > Date() && $0.time < Date().addingTimeInterval(86400) }
+        let chance = next24.compactMap(\.precipitationProbability).max() ?? 0
+        if forecast.isRainingNow { return (String(localized: "Raining"), String(localized: "\(chance)% chance today")) }
+        if let h = next24.first(where: { ($0.precipitationProbability ?? 0) >= 50 || $0.precipitation >= 0.5 }) {
+            return (String(localized: "From \(Fmt.hour(h.time, in: tz))"), String(localized: "\(chance)% chance in 24 h"))
+        }
+        return (String(localized: "Dry"), String(localized: "\(chance)% chance in 24 h"))
+    }
+
+    private var snow: (String, String) {
+        let tz = forecast.timeZone
+        if Self.snowCodes.contains(forecast.current.weatherCode) { return (String(localized: "Snowing"), String(localized: "now")) }
+        if let h = forecast.hourly.first(where: { $0.time > Date() && $0.time < Date().addingTimeInterval(48 * 3600) && Self.snowCodes.contains($0.weatherCode) }) {
+            return (String(localized: "From \(Fmt.hour(h.time, in: tz))"), Fmt.weekday(h.time, in: tz))
+        }
+        return (String(localized: "None"), String(localized: "next 48 h"))
+    }
+
+    private var wind: (String, String, Double?) {
+        guard let v = forecast.current.windSpeed else { return ("–", "", nil) }
+        let speed = Measurement(value: v, unit: UnitSpeed.kilometersPerHour)
+            .formatted(.measurement(width: .abbreviated, usage: .general, numberFormatStyle: .number.precision(.fractionLength(0))))
+        let gust = forecast.current.windGust.map {
+            String(localized: "Gusts \(Measurement(value: $0, unit: UnitSpeed.kilometersPerHour).formatted(.measurement(width: .abbreviated, usage: .general, numberFormatStyle: .number.precision(.fractionLength(0)))))")
+        } ?? ""
+        return (speed, gust, forecast.current.windDirection)
+    }
+
+    private var aqiColor: Color {
+        guard let a = airQuality?.usAQI else { return .white.opacity(0.5) }
+        switch a {
+        case ..<51: return .green
+        case ..<101: return .yellow
+        case ..<151: return .orange
+        case ..<201: return .red
+        default: return .purple
+        }
+    }
+
+    var body: some View {
+        LazyVGrid(columns: [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)], spacing: 12) {
+            tile(String(localized: "Rain"), "cloud.rain.fill", rain.0, rain.1, .cyan)
+            tile(String(localized: "Snow"), "snowflake", snow.0, snow.1, .white)
+            tile(String(localized: "Wind"), "wind", wind.0, wind.1, .mint, arrow: wind.2)
+            tile(String(localized: "Air quality"), "aqi.medium",
+                 airQuality.map { "\($0.usAQI)" } ?? "–", airQuality?.category ?? "", aqiColor)
+        }
+    }
+
+    private func tile(_ title: String, _ symbol: String, _ value: String, _ note: String, _ tint: Color, arrow: Double? = nil) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Label(title, systemImage: symbol)
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(tint)
+            HStack(alignment: .firstTextBaseline, spacing: 6) {
+                Text(value)
+                    .font(.system(size: 26, weight: .semibold, design: .rounded))
+                    .foregroundStyle(.white)
+                    .lineLimit(1).minimumScaleFactor(0.6)
+                if let arrow {
+                    // Wind comes FROM `arrow` degrees; point where it blows to.
+                    Image(systemName: "location.north.fill")
+                        .font(.footnote)
+                        .rotationEffect(.degrees(arrow + 180))
+                        .foregroundStyle(.white.opacity(0.8))
+                }
+            }
+            Text(note.isEmpty ? " " : note)
+                .font(.caption).foregroundStyle(.white.opacity(0.7)).lineLimit(1)
+        }
+        .glassCard(padding: 14)
+        .accessibilityElement(children: .combine)
     }
 }

@@ -48,7 +48,7 @@ struct RadarScreen: View {
     @State private var showLegend = false
     @State private var fellBackToCurrent = false
     @State private var recenterToken = 0
-    @State private var controlsExpanded = true
+    @State private var controlsExpanded = false
 
     private let playTimer = Timer.publish(every: 0.3, on: .main, in: .common).autoconnect()
     private let refreshTimer = Timer.publish(every: 300, on: .main, in: .common).autoconnect()

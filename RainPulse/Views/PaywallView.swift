@@ -5,7 +5,7 @@ struct PaywallView: View {
     @EnvironmentObject private var store: StoreManager
     @Environment(\.dismiss) private var dismiss
 
-    @State private var yearly = true
+    @State private var yearly = false   // open on monthly
     @State private var selectedTier: Tier = .essential
     @State private var purchasing = false
 

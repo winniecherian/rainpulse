@@ -70,13 +70,17 @@ final class RainPulseUITests: XCTestCase {
 
         // Forecast
         tabs.buttons["Forecast"].tap()
-        let nextTwo = app.staticTexts["Next 2 hours"]
-        XCTAssertTrue(nextTwo.waitForExistence(timeout: 30), "Forecast should load from Open-Meteo")
+        XCTAssertTrue(app.staticTexts["Snow"].waitForExistence(timeout: 30), "Key conditions should load")
+        XCTAssertTrue(app.staticTexts["Air quality"].exists, "AQI tile should show")
         XCTAssertFalse(app.buttons["Unlock with Essential"].exists, "Pro should not see the lock")
         XCTAssertTrue(app.staticTexts["Cyclone SAMPLE"].waitForExistence(timeout: 10), "Cyclone card should show")
         sleep(2)
         snap(app, "02-Forecast")
         app.swipeUp()
+        let more = app.buttons["More details"]
+        XCTAssertTrue(more.waitForExistence(timeout: 5), "More details should be offered")
+        more.tap()
+        XCTAssertTrue(app.staticTexts["Next 2 hours"].waitForExistence(timeout: 5), "Rain chart inside More details")
         XCTAssertTrue(app.staticTexts["Humidity"].waitForExistence(timeout: 5), "Conditions card should show")
         sleep(1)
         snap(app, "03-Forecast-Daily")
