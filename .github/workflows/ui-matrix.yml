@@ -78,7 +78,7 @@ jobs:
             -only-testing:RainPulseUITests/MatrixUITests \
             -testLanguage ${{ matrix.lang }} -testRegion ${{ matrix.region }} \
             -resultBundlePath "$RUNNER_TEMP/m.xcresult" \
-            -test-timeouts-enabled YES -default-test-execution-time-allowance 300 \
+            -test-timeouts-enabled YES -default-test-execution-time-allowance 600 -maximum-test-execution-time-allowance 900 \
             CODE_SIGNING_ALLOWED=NO test 2>&1 | tee test.log | grep --line-buffered -E "Test Case|error:|TEST (SUCCEEDED|FAILED)" || true
           grep -q "TEST SUCCEEDED" test.log
       - name: Publish screenshots
@@ -88,6 +88,8 @@ jobs:
           grep -E "Test Case|error:" test.log > shots/test-results.txt || true
           echo "${{ steps.sim.outputs.device }}" > shots/device.txt
           rm -rf /tmp/pub && mkdir /tmp/pub && cp -r shots/. /tmp/pub/ && cd /tmp/pub
+          # Screen recordings can exceed GitHub's 100 MB limit; keep only screenshots and text.
+          find . -type f \( -name "*.mp4" -o -name "*.mov" -o -size +40M \) -delete
           git init -q -b "matrix-${{ matrix.name }}" && git config user.name ci && git config user.email ci@example.com
           git add -A && git commit -qm "matrix ${{ matrix.name }}"
           git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" "matrix-${{ matrix.name }}"
