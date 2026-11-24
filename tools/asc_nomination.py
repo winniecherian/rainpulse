@@ -18,7 +18,7 @@ body = {"data": {"type": "nominations", "attributes": {
                     "no ads, no tracking, optional Face ID lock. Timely for Bay of Bengal cyclone season and the Southern "
                     "Hemisphere summer storm season."),
     "submitted": False,
-    "publishStartDate": "2026-12-22",
+    "publishStartDate": "2026-12-22T00:00:00Z",
     "deviceFamilies": ["IPHONE"],
     "locales": ["en-US", "en-GB", "en-AU", "es-ES", "es-MX", "pt-BR", "de-DE", "fr-FR", "hi", "id", "ja", "ar-SA", "ta-IN", "vi"],
     "hasInAppEvents": False,
