@@ -20,6 +20,21 @@ final class PurchaseTests: XCTestCase {
         session.clearTransactions()
     }
 
+    /// Simulated App Store purchase (no confirmation sheet).
+    private func buy(_ id: String) async throws {
+        _ = try await session.buyProduct(identifier: id)
+    }
+
+    /// StoreKit applies refunds/expiry asynchronously; poll briefly.
+    private func waitForTier(_ store: StoreManager, _ expected: Tier, seconds: Double = 10) async {
+        let end = Date().addingTimeInterval(seconds)
+        while Date() < end {
+            await store.refreshEntitlements()
+            if store.tier == expected { return }
+            try? await Task.sleep(for: .milliseconds(500))
+        }
+    }
+
     private func makeStore() async -> StoreManager {
         let store = StoreManager()
         await store.loadProducts()
@@ -46,41 +61,41 @@ final class PurchaseTests: XCTestCase {
 
     func testBuyingEssentialUnlocksEssential() async throws {
         let store = await makeStore()
-        let product = try XCTUnwrap(store.product(StoreManager.ID.essentialMonthly))
-        let ok = await store.purchase(product)
-        XCTAssertTrue(ok)
+        try await buy(StoreManager.ID.essentialMonthly)
+        await waitForTier(store, .essential)
         XCTAssertEqual(store.tier, .essential)
         XCTAssertEqual(SharedStore.tier, .essential, "widget must see the same plan")
     }
 
     func testUpgradeToProThenExpire() async throws {
         let store = await makeStore()
-        _ = await store.purchase(try XCTUnwrap(store.product(StoreManager.ID.essentialMonthly)))
-        _ = await store.purchase(try XCTUnwrap(store.product(StoreManager.ID.proYearly)))
-        await store.refreshEntitlements()
+        try await buy(StoreManager.ID.essentialMonthly)
+        try await buy(StoreManager.ID.proYearly)
+        await waitForTier(store, .pro)
         XCTAssertEqual(store.tier, .pro)
 
         try session.expireSubscription(productIdentifier: StoreManager.ID.proYearly)
         try? session.expireSubscription(productIdentifier: StoreManager.ID.essentialMonthly)
-        await store.refreshEntitlements()
+        await waitForTier(store, .free)
         XCTAssertEqual(store.tier, .free, "expired subscriptions must lock features again")
     }
 
     func testRefundRemovesAccess() async throws {
         let store = await makeStore()
-        _ = await store.purchase(try XCTUnwrap(store.product(StoreManager.ID.proMonthly)))
+        try await buy(StoreManager.ID.proMonthly)
+        await waitForTier(store, .pro)
         XCTAssertEqual(store.tier, .pro)
         let txn = try XCTUnwrap(session.allTransactions().first { $0.productIdentifier == StoreManager.ID.proMonthly })
         try session.refundTransaction(identifier: UInt(txn.identifier))
-        await store.refreshEntitlements()
-        XCTAssertEqual(store.tier, .free)
+        await waitForTier(store, .free)
+        XCTAssertEqual(store.tier, .free, "refunded purchase must lock features again")
     }
 
     func testFailedPurchaseKeepsFreeAndShowsError() async throws {
         let store = await makeStore()
         session.failTransactionsEnabled = true
-        let ok = await store.purchase(try XCTUnwrap(store.product(StoreManager.ID.essentialYearly)))
-        XCTAssertFalse(ok)
+        do { try await buy(StoreManager.ID.essentialYearly); XCTFail("purchase should fail") } catch {}
+        await store.refreshEntitlements()
         XCTAssertEqual(store.tier, .free)
         session.failTransactionsEnabled = false
     }
