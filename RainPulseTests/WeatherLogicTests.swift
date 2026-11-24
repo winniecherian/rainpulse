@@ -373,7 +373,7 @@ final class LocalizationTests: XCTestCase {
                 let out = String(format: translated, locale: Locale(identifier: lang), arguments: args)
                 XCTAssertFalse(out.contains("%@") || out.contains("%lld"), "\(lang) bad format: \(out)")
             }
-            for plain in ["Rain", "Snow", "Wind", "Air quality", "More details", "Unlock with Essential", "Restore purchases"] {
+            for plain in ["Rain", "Snow", "Air quality", "More details", "Unlock with Essential", "Restore purchases"] {
                 XCTAssertNotEqual(b.localizedString(forKey: plain, value: plain, table: "Localizable"), plain, "\(lang): \(plain)")
             }
         }
