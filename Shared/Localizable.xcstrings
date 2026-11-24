@@ -543,7 +543,7 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "अभी %@ से %lld किमी दूर; अनुमानित रास्ता लगभग %lld किमी दूर से गुज़रेगा।"
+            "value": "अभी %lld किमी दूर (%@ से); अनुमानित रास्ता लगभग %lld किमी दूर से गुज़रेगा।"
           }
         },
         "id": {
@@ -555,7 +555,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "現在%2$@から%1$lld km。予想進路は約%3$lld kmまで接近します。"
+            "value": "現在%lld km（%@から）。予想進路は約%lld kmまで接近します。"
           }
         },
         "pt-BR": {
@@ -567,13 +567,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "இப்போது %2$@ இலிருந்து %1$lld கி.மீ; முன்னறிவிப்பு பாதை சுமார் %3$lld கி.மீ தொலைவில் செல்லும்."
+            "value": "இப்போது %lld கி.மீ தொலைவில் (%@ இலிருந்து); முன்னறிவிப்பு பாதை சுமார் %lld கி.மீ தொலைவில் செல்லும்."
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cách %@ %lld km; đường đi dự báo qua cách khoảng %lld km."
+            "value": "Cách %lld km (từ %@); đường đi dự báo qua cách khoảng %lld km."
           }
         }
       }
@@ -607,7 +607,7 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ से %lld किमी दूर।"
+            "value": "%lld किमी दूर (%@ से)।"
           }
         },
         "id": {
@@ -619,7 +619,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "%2$@から%1$lld km。"
+            "value": "%lld km（%@から）。"
           }
         },
         "pt-BR": {
@@ -631,13 +631,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%2$@ இலிருந்து %1$lld கி.மீ."
+            "value": "%lld கி.மீ (%@ இலிருந்து)."
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cách %@ %lld km."
+            "value": "Cách %lld km (từ %@)."
           }
         }
       }
@@ -4128,7 +4128,7 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "%2$@ के पास चक्रवात %1$@"
+            "value": "चक्रवात %@, %@ के पास"
           }
         },
         "id": {
@@ -4140,7 +4140,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "サイクロン %1$@ が %2$@ に接近"
+            "value": "サイクロン %@、%@ 付近"
           }
         },
         "pt-BR": {
@@ -4152,7 +4152,7 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "%2$@ அருகே புயல் %1$@"
+            "value": "புயல் %@, %@ அருகே"
           }
         },
         "vi": {

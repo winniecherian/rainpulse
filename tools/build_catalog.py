@@ -20,7 +20,10 @@ for i, k in enumerate(keys):
     if i in rows:
         loc = {}
         for lang, val in zip(LANGS, rows[i]):
-            if specs(val) != specs(k) or val.count("%%") != k.count("%%"):
+            # Same placeholders, in the SAME ORDER, and no positional (%1$@) forms: iOS 27's
+            # strict format checking rejects reordered arguments at runtime.
+            order = lambda x: re.findall(r'%(?:lld|@)', x)
+            if order(val) != order(k) or "$" in val or val.count("%%") != k.count("%%"):
                 print("PLACEHOLDER MISMATCH", i, lang, repr(k), repr(val)); bad += 1; continue
             loc[lang] = {"stringUnit": {"state": "translated", "value": val}}
         entry["localizations"] = loc
