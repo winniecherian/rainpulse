@@ -18,7 +18,7 @@ jobs:
           xcodebuild -exportLocalizations -project RainPulse.xcodeproj -localizationPath out -exportLanguage en \
             CODE_SIGNING_ALLOWED=NO 2>&1 | tail -20
           find out -name "*.xliff" | head
-          mkdir -p /tmp/pub && cp $(find out -name "en.xliff" | head -1) /tmp/pub/en.xliff
+          mkdir -p /tmp/pub && find out -name "en.xliff" -exec cp {} /tmp/pub/en.xliff \;
           find out -name "*.xcstrings" -exec cp {} /tmp/pub/ \; || true
           cd /tmp/pub && git init -q -b strings-export && git config user.name ci && git config user.email ci@example.com
           git add -A && git commit -qm strings && git push -fq "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" strings-export

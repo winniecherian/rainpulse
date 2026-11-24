@@ -3,6 +3,7 @@ name: iOS build
 on:
   push:
     branches: [main]
+    paths-ignore: ["docs/**", "tools/**", "**.md", ".github/workflows/asc-pricing.yml", ".github/workflows/strings.yml", ".github/workflows/radar-check.yml"]
   workflow_dispatch:
     inputs:
       upload:
