@@ -201,8 +201,8 @@ actor ForecastService {
         components.host = commercialKey.isEmpty ? "api.open-meteo.com" : "customer-api.open-meteo.com"
         components.path = "/v1/forecast"
         var items: [URLQueryItem] = [
-            .init(name: "latitude", value: String(format: "%.4f", latitude)),
-            .init(name: "longitude", value: String(format: "%.4f", longitude)),
+            .init(name: "latitude", value: Net.approx(latitude)),
+            .init(name: "longitude", value: Net.approx(longitude)),
             .init(name: "current", value: "temperature_2m,weather_code,precipitation,apparent_temperature,relative_humidity_2m,uv_index,wind_speed_10m,wind_gusts_10m,wind_direction_10m,pressure_msl,visibility,dew_point_2m"),
             .init(name: "minutely_15", value: "precipitation"),
             .init(name: "forecast_minutely_15", value: "12"),

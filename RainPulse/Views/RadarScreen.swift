@@ -37,6 +37,7 @@ struct RadarScreen: View {
     @State private var modelFrames: RainModelFrames?
     @State private var lastRegion: MKCoordinateRegion?
     @State private var modelTask: Task<Void, Never>?
+    @State private var nowForecast: Forecast?
 
     @State private var layer: MapLayer = .radar
     @State private var frames: [RadarFrame] = []
@@ -114,6 +115,8 @@ struct RadarScreen: View {
         }
         .onReceive(refreshTimer) { _ in rebuildFrames(); Task { await loadCyclones() } }
         .task { await loadCyclones() }
+        .task(id: location.location?.coordinate.latitude) { await loadNow() }
+        .onChange(of: index) { _, _ in if !isPlaying { Haptics.tick() } }
     }
 
     // MARK: - Top bar
@@ -130,6 +133,8 @@ struct RadarScreen: View {
             }
             .accessibilityLabel("Radar legend")
 
+            Spacer(minLength: 8)
+            if let f = nowForecast { nowPill(f) }
             if AppConfig.owmAPIKey.isEmpty && source != .tomorrow {
                 Label("Radar key missing", systemImage: "key.fill")
                     .font(.caption)
@@ -206,6 +211,28 @@ struct RadarScreen: View {
         .accessibilityLabel("Cyclone \(storm.name)")
     }
 
+    /// Compact "right now" status floating over the map.
+    private func nowPill(_ f: Forecast) -> some View {
+        HStack(spacing: 8) {
+            Image(systemName: WeatherCode.symbol(f.current.weatherCode))
+                .symbolRenderingMode(.multicolor)
+            Text(Fmt.temperature(f.current.temperature)).font(.subheadline.weight(.semibold).monospacedDigit())
+            Text(f.rainHeadline()).font(.subheadline).lineLimit(1)
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 10)
+        .background(.ultraThinMaterial, in: Capsule())
+        .overlay(Capsule().strokeBorder(.white.opacity(0.3), lineWidth: 1))
+        .shadow(color: .black.opacity(0.15), radius: 10, y: 4)
+        .accessibilityElement(children: .combine)
+    }
+
+    private func loadNow() async {
+        guard let c = location.location?.coordinate ?? places.places.first?.coordinate else { return }
+        nowForecast = try? await ForecastService.shared.forecast(latitude: c.latitude, longitude: c.longitude,
+                                                                 days: store.tier.forecastDays)
+    }
+
     private func loadCyclones() async {
         cyclones = await CycloneService.shared.activeCyclones(sampleNear: location.location?.coordinate ?? places.places.first?.coordinate)
     }
@@ -270,7 +297,7 @@ struct RadarScreen: View {
             }
 
             HStack {
-                Button { isPlaying.toggle() } label: {
+                Button { isPlaying.toggle(); Haptics.tap() } label: {
                     Image(systemName: isPlaying ? "pause.fill" : "play.fill")
                         .font(.title3)
                         .frame(width: 44, height: 44)
@@ -321,8 +348,7 @@ struct RadarScreen: View {
                 Text(attributionText).font(.caption2).foregroundStyle(.secondary).lineLimit(1).minimumScaleFactor(0.7)
             }
         }
-        .padding(14)
-        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .glassCard(padding: 14)
         .padding(.horizontal, 12)
         .padding(.bottom, 8)
     }

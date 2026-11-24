@@ -183,7 +183,7 @@ actor RainModelService {
               let url = URL(string: "\(base).json?\(enc)") else { return nil }
         var req = URLRequest(url: url)
         req.timeoutInterval = 30
-        guard let (data, resp) = try? await URLSession.shared.data(for: req),
+        guard let (data, resp) = try? await Net.session.data(for: req),
               (resp as? HTTPURLResponse)?.statusCode == 200,
               let root = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
               let table = root["table"] as? [String: Any] else { return nil }

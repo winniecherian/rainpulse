@@ -34,7 +34,7 @@ struct ForecastScreen: View {
             ScrollView {
                 VStack(spacing: 16) {
                     if let forecast, let place = selectedPlace {
-                        titleBlock(place)
+                        hero(forecast, place: place)
                         if store.tier == .free { trialBanner }
                         ForEach(nearbyStorms) { storm in
                             CycloneCard(storm: storm, place: place)
@@ -66,7 +66,9 @@ struct ForecastScreen: View {
                 }
                 .padding()
             }
-            .background(Color(.systemGroupedBackground))
+            .background(SkyBackground(colors: skyColors))
+            .environment(\.colorScheme, .dark)
+            .toolbarBackground(.hidden, for: .navigationBar)
             .toolbar { toolbarContent }
             .refreshable { await load(force: true) }
             .task(id: taskKey) { await load(force: false) }
@@ -144,6 +146,50 @@ struct ForecastScreen: View {
         }
     }
 
+    private var skyColors: [Color] {
+        guard let f = forecast else { return Theme.sky(code: 0, isNight: false) }
+        return Theme.sky(code: f.current.weatherCode, isNight: Theme.isNight(in: f.timeZone))
+    }
+
+    /// Hero: place, temperature and the Rain Clock.
+    private func hero(_ f: Forecast, place: Place) -> some View {
+        VStack(spacing: 14) {
+            VStack(spacing: 2) {
+                HStack(spacing: 6) {
+                    if place.isCurrentLocation {
+                        Image(systemName: "location.fill").font(.subheadline)
+                    }
+                    Text(place.name).font(.title2.weight(.semibold)).lineLimit(1).minimumScaleFactor(0.6)
+                }
+                .foregroundStyle(.white)
+                Text(Fmt.temperature(f.current.temperature))
+                    .font(.system(size: 84, weight: .thin, design: .rounded))
+                    .foregroundStyle(.white)
+                    .contentTransition(.numericText())
+                HStack(spacing: 10) {
+                    Text(WeatherCode.description(f.current.weatherCode))
+                    if let today = f.daily.first {
+                        Text("H \(Fmt.temperature(today.maxTemperature))  L \(Fmt.temperature(today.minTemperature))")
+                    }
+                }
+                .font(.headline)
+                .foregroundStyle(.white.opacity(0.85))
+            }
+            Button {
+                if !store.tier.hasMinuteChart { showPaywall = true }
+            } label: {
+                RainClock(steps: f.upcomingSteps(hours: 2),
+                          headline: f.rainHeadline(),
+                          detail: f.rainDetail(),
+                          size: 250,
+                          locked: !store.tier.hasMinuteChart)
+            }
+            .buttonStyle(.plain)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 8)
+    }
+
     private var trialBanner: some View {
         Button { showPaywall = true } label: {
             HStack(spacing: 12) {
@@ -168,21 +214,6 @@ struct ForecastScreen: View {
 
     private func rainCard(_ f: Forecast, place: Place) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(f.rainHeadline()).font(.title3.bold())
-                    Text(f.rainDetail()).font(.subheadline).foregroundStyle(.secondary)
-                }
-                Spacer()
-                HStack(spacing: 6) {
-                    Image(systemName: WeatherCode.symbol(f.current.weatherCode))
-                        .symbolRenderingMode(.multicolor)
-                        .font(.system(size: 34))
-                    Text(Fmt.temperature(f.current.temperature))
-                        .font(.system(size: 40, weight: .semibold, design: .rounded))
-                }
-            }
-
             Text("Next 2 hours").font(.caption.weight(.semibold)).foregroundStyle(.secondary)
             let steps = f.upcomingSteps(hours: 2)
             ZStack {
@@ -236,8 +267,7 @@ struct ForecastScreen: View {
                     .font(.caption2).foregroundStyle(.secondary)
             }
         }
-        .padding()
-        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .glassCard()
     }
 
     // MARK: - AI insights
@@ -256,9 +286,7 @@ struct ForecastScreen: View {
                         Button("Get insight") { Task { await loadInsight(f, place: place) } }
                     }
                 }
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+                .glassCard()
             } else {
                 Button { showPaywall = true } label: {
                     Label("Unlock AI insights", systemImage: "sparkles")
@@ -386,9 +414,7 @@ struct Card<Content: View>: View {
                 .foregroundStyle(.secondary)
             content
         }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+        .glassCard()
     }
 }
 
@@ -469,7 +495,7 @@ struct DetailsCard: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(10)
-                        .background(Color(.tertiarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        .background(.white.opacity(0.08), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
                     }
                 }
             }

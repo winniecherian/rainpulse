@@ -36,8 +36,8 @@ actor AirQualityService {
         c.host = commercialKey.isEmpty ? "air-quality-api.open-meteo.com" : "customer-air-quality-api.open-meteo.com"
         c.path = "/v1/air-quality"
         c.queryItems = [
-            .init(name: "latitude", value: String(latitude)),
-            .init(name: "longitude", value: String(longitude)),
+            .init(name: "latitude", value: Net.approx(latitude)),
+            .init(name: "longitude", value: Net.approx(longitude)),
             .init(name: "current", value: "us_aqi,pm2_5,pm10")
         ]
         if !commercialKey.isEmpty { c.queryItems?.append(.init(name: "apikey", value: commercialKey)) }
@@ -49,7 +49,7 @@ actor AirQualityService {
         }
         var request = URLRequest(url: url)
         request.timeoutInterval = 20
-        guard let (data, _) = try? await URLSession.shared.data(for: request),
+        guard let (data, _) = try? await Net.session.data(for: request),
               let raw = try? JSONDecoder().decode(Raw.self, from: data),
               let aqi = raw.current?.us_aqi else { return nil }
         let result = AirQuality(usAQI: Int(aqi.rounded()), pm25: raw.current?.pm2_5, pm10: raw.current?.pm10, fetchedAt: Date())

@@ -104,7 +104,7 @@ actor WindService {
                 guard let url = URL(string: "\(base).json?\(encoded)") else { continue }
                 var req = URLRequest(url: url)
                 req.timeoutInterval = 20
-                if let (d, resp) = try? await URLSession.shared.data(for: req),
+                if let (d, resp) = try? await Net.session.data(for: req),
                    (resp as? HTTPURLResponse)?.statusCode == 200 { payload = d; break }
             }
             guard let data = payload,
@@ -163,7 +163,7 @@ actor WindService {
             .init(name: "current", value: "wind_speed_10m,wind_direction_10m"),
             .init(name: "wind_speed_unit", value: "ms")
         ]
-        guard let url = c.url, let (data, _) = try? await URLSession.shared.data(from: url),
+        guard let url = c.url, let (data, _) = try? await Net.session.data(from: url),
               let arr = try? JSONSerialization.jsonObject(with: data) as? [[String: Any]], arr.count == n * n else { return nil }
         var rows: [(Double, Double, Float, Float)] = []
         for (k, item) in arr.enumerated() {

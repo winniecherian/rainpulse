@@ -155,7 +155,7 @@ actor CycloneService {
     private func get(_ url: URL) async -> Data? {
         var req = URLRequest(url: url)
         req.timeoutInterval = 25
-        guard let (data, response) = try? await URLSession.shared.data(for: req),
+        guard let (data, response) = try? await Net.session.data(for: req),
               (response as? HTTPURLResponse)?.statusCode == 200 else { return nil }
         return data
     }

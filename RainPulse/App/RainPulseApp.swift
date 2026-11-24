@@ -3,6 +3,7 @@ import SwiftUI
 @main
 struct RainPulseApp: App {
     @StateObject private var store = StoreManager()
+    @StateObject private var lock = AppLock()
     @StateObject private var places = PlacesModel()
     @StateObject private var location = LocationManager()
     @Environment(\.scenePhase) private var scenePhase
@@ -13,13 +14,22 @@ struct RainPulseApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootView()
-                .environmentObject(store)
-                .environmentObject(places)
-                .environmentObject(location)
-                .tint(Color("AccentColor"))
+            ZStack {
+                RootView()
+                    .environmentObject(store)
+                    .environmentObject(places)
+                    .environmentObject(location)
+                    .environmentObject(lock)
+                    .tint(Color("AccentColor"))
+                if lock.isLocked || lock.isObscured {
+                    LockScreen(lock: lock).transition(.opacity)
+                }
+            }
+            .animation(.easeInOut(duration: 0.2), value: lock.isLocked || lock.isObscured)
+            .onAppear { lock.lockNowIfEnabled() }
         }
         .onChange(of: scenePhase) { _, phase in
+            lock.sceneChanged(to: phase)
             switch phase {
             case .active: if !AppConfig.isUITest { location.request() }
             case .background: RainAlertService.schedule()

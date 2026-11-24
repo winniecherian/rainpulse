@@ -1,3 +1,5 @@
+import WidgetKit
+import UserNotifications
 import SwiftUI
 import UIKit
 import StoreKit
@@ -14,6 +16,10 @@ struct SettingsScreen: View {
     @AppStorage("radar.speed") private var speed = 1.0
     @AppStorage("radar.showFuture") private var showFuture = true
     @Environment(\.requestReview) private var requestReview
+    @EnvironmentObject private var lock: AppLock
+    @EnvironmentObject private var places: PlacesModel
+    @State private var confirmErase = false
+    @State private var erased = false
 
     @State private var showPaywall = false
     @State private var showManage = false
@@ -97,6 +103,27 @@ struct SettingsScreen: View {
                     }
                     Text("Apple Weather gives forecasts but no radar maps to apps, so the map uses OpenWeather radar plus NOAA's GFS model for future rain.")
                         .font(.footnote).foregroundStyle(.secondary)
+                }
+
+                Section {
+                    Toggle(isOn: Binding(get: { lock.enabled }, set: { lock.setEnabled($0) })) {
+                        Label("Lock with \(lock.biometryName)", systemImage: "faceid")
+                    }
+                    Label("No account, no ads, no tracking", systemImage: "hand.raised.fill")
+                    Label("Weather services get your location rounded to about 1 km", systemImage: "location.slash")
+                    Label("AI insights run on your iPhone", systemImage: "cpu")
+                    Label("Purchases verified with Apple's signed receipts", systemImage: "checkmark.seal")
+                    Button(role: .destructive) { confirmErase = true } label: {
+                        Label(erased ? "All data erased" : "Erase all my RainPulse data", systemImage: "trash")
+                    }
+                    .confirmationDialog("Erase saved places, settings, alerts and cached weather on this iPhone?",
+                                        isPresented: $confirmErase, titleVisibility: .visible) {
+                        Button("Erase everything", role: .destructive) { eraseAll() }
+                    }
+                } header: {
+                    Text("Privacy & Security")
+                } footer: {
+                    Text("Your subscription stays with your Apple Account and can be restored any time.")
                 }
 
                 Section("Help & Feedback") {
@@ -194,5 +221,21 @@ struct CurrentPlanCard: View {
         .padding()
         .background(LinearGradient(colors: [Color.accentColor, .indigo], startPoint: .topLeading, endPoint: .bottomTrailing),
                     in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+    }
+}
+
+
+extension SettingsScreen {
+    func eraseAll() {
+        SharedStore.savePlaces([])
+        places.places = []
+        let groupDefaults = SharedStore.defaults
+        for key in groupDefaults.dictionaryRepresentation().keys { groupDefaults.removeObject(forKey: key) }
+        if let bundle = Bundle.main.bundleIdentifier { UserDefaults.standard.removePersistentDomain(forName: bundle) }
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+        URLCache.shared.removeAllCachedResponses()
+        WidgetCenter.shared.reloadAllTimelines()
+        erased = true
     }
 }
