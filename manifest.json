@@ -1,0 +1,80 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "0DBB4567-E426-4BE6-8E14-5A3691DC6DFD.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m8-settings-lower_0_06E45032-63D6-47E0-9E60-D1248C956586.png",
+        "timestamp" : 1795608260.138
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "67F1924F-0637-49B2-80DF-3F677DF7FE29.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m7-settings_0_7B9BEBC8-2463-4011-86D1-FD43288C0898.png",
+        "timestamp" : 1795608252.843
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "F066B68C-367E-4844-9657-B436DCFB51DA.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m6-places_0_01F30C4F-D2C4-45E1-AE97-A86BBED890D0.png",
+        "timestamp" : 1795608246.851
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "7452A460-8599-435F-8E1D-29939B7EB584.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m9-report-sheet_0_138B56F9-3287-4E59-B96C-D5F929974E16.png",
+        "timestamp" : 1795608238.58
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "E8AEBC14-1521-49E0-AE11-286D976F7904.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m4-more-details_0_4B90B76D-7C5D-4A36-ACCF-32C19F151164.png",
+        "timestamp" : 1795608212.111
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "60F1A7C3-823A-41B7-B37F-B5D9672EA4ED.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m3-forecast-tiles_0_7CACF891-CEB1-4D23-B25F-3DCAF9835C07.png",
+        "timestamp" : 1795608200.344
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "85D0A871-D244-4B64-8832-075F5ACFD427.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m2-forecast_0_A3E46E21-DBD1-4D39-B124-C989901151A8.png",
+        "timestamp" : 1795608191.717
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "6C233621-4DB1-4BBA-A3B2-817930A914B3.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m1-radar_0_F88B4D5C-1E68-4341-9BBC-9542F67C8D31.png",
+        "timestamp" : 1795608182.674
+      }
+    ],
+    "testIdentifier" : "MatrixUITests/testWalkEveryScreen()",
+    "testIdentifierURL" : "test://com.apple.xcode/RainPulse/RainPulseUITests/MatrixUITests/testWalkEveryScreen"
+  }
+]
