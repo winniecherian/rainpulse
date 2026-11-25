@@ -84,8 +84,7 @@ final class RainPulseUITests: XCTestCase {
 
         // Forecast
         tabs.buttons["Forecast"].tap()
-        XCTAssertTrue(app.staticTexts["Snow"].waitForExistence(timeout: 30), "Key conditions should load")
-        XCTAssertTrue(app.staticTexts["Air quality"].exists, "AQI tile should show")
+        XCTAssertTrue(app.staticTexts["hero.temperature"].waitForExistence(timeout: 30), "Forecast should load")
         XCTAssertFalse(app.buttons["Unlock with Essential"].exists, "Pro should not see the lock")
         XCTAssertTrue(app.staticTexts["Cyclone ARIA"].waitForExistence(timeout: 10), "Cyclone card should show")
         sleep(2)
@@ -99,7 +98,10 @@ final class RainPulseUITests: XCTestCase {
         XCTAssertTrue(app.descendants(matching: .any)["crowd.card"].exists, "Rain Truth card should show")
         sleep(1)
         snap(app, "02b-LeaveNow-RainTruth")
-        app.swipeUp()
+        var k = 0
+        while !(app.staticTexts["Snow"].exists && app.staticTexts["Snow"].isHittable) && k < 6 { app.swipeUp(); k += 1 }
+        XCTAssertTrue(app.staticTexts["Snow"].waitForExistence(timeout: 10), "Key conditions should load")
+        XCTAssertTrue(app.staticTexts["Air quality"].exists, "AQI tile should show")
         sleep(1)
         snap(app, "03-KeyConditions")
         let more = app.buttons["More details"]
@@ -147,8 +149,9 @@ final class RainPulseUITests: XCTestCase {
                       "Free radar should show the upgrade chip")
 
         tabs.buttons["Forecast"].tap()
-        let lock = app.buttons["Unlock with Essential"]
+        let lock = app.buttons["forecast.unlock"]
         XCTAssertTrue(lock.waitForExistence(timeout: 30), "Free forecast chart should be locked")
+        XCTAssertTrue(app.descendants(matching: .any)["leave.card"].exists, "Leave-now card shows (locked) for free users")
         lock.tap()
 
         XCTAssertTrue(app.staticTexts["Know exactly when it rains"].waitForExistence(timeout: 10), "Paywall should open")
