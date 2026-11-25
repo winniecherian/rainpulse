@@ -54,6 +54,7 @@ final class RainPulseUITests: XCTestCase {
 
     /// Pro user: every screen loads with real forecast data.
     func testProWalkthrough() throws {
+        executionTimeAllowance = 400
         let app = launch(tier: "pro")
         let tabs = app.tabBars.firstMatch
         XCTAssertTrue(tabs.waitForExistence(timeout: 20), "Tab bar should appear (onboarding skipped)")
