@@ -92,6 +92,8 @@ jobs:
           # (never the workspace, which holds Secrets.xcconfig).
           rm -rf /tmp/pub && mkdir /tmp/pub && cp -r shots/. /tmp/pub/
           cd /tmp/pub
+          # Screen recordings can exceed GitHub's 100 MB limit; keep only screenshots and text.
+          find . -type f \( -name "*.mp4" -o -name "*.mov" -o -size +40M \) -delete
           git init -q -b screenshots
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"

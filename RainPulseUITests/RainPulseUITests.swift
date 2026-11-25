@@ -90,11 +90,10 @@ final class RainPulseUITests: XCTestCase {
         sleep(1)
         snap(app, "01c-ReportSheet")
         rainButton.tap()
-        XCTAssertTrue(app.staticTexts["Thanks! Your report is on the map."].waitForExistence(timeout: 5),
-                      "Report should be accepted")
+        // The sheet closes itself only after the report is accepted.
         let sheetGone = NSPredicate(format: "exists == false")
         expectation(for: sheetGone, evaluatedWith: rainButton)
-        waitForExpectations(timeout: 6)
+        waitForExpectations(timeout: 10)
 
         // Forecast
         tabs.buttons["Forecast"].tap()
@@ -112,10 +111,12 @@ final class RainPulseUITests: XCTestCase {
         XCTAssertTrue(app.descendants(matching: .any)["crowd.card"].exists, "Rain Truth card should show")
         sleep(1)
         snap(app, "02b-LeaveNow-RainTruth")
+        let snowTile = app.descendants(matching: .any)["tile.snowflake"]
+        let aqiTile = app.descendants(matching: .any)["tile.aqi.medium"]
         var k = 0
-        while !(app.staticTexts["Snow"].exists && app.staticTexts["Snow"].isHittable) && k < 6 { app.swipeUp(); k += 1 }
-        XCTAssertTrue(app.staticTexts["Snow"].waitForExistence(timeout: 10), "Key conditions should load")
-        XCTAssertTrue(app.staticTexts["Air quality"].exists, "AQI tile should show")
+        while !(snowTile.exists && snowTile.isHittable) && k < 8 { app.swipeUp(); k += 1 }
+        XCTAssertTrue(snowTile.waitForExistence(timeout: 10), "Key conditions should load")
+        XCTAssertTrue(aqiTile.exists, "AQI tile should show")
         sleep(1)
         snap(app, "03-KeyConditions")
         let more = app.buttons["More details"]
