@@ -1,0 +1,2 @@
+Test Case '-[RainPulseUITests.MatrixUITests testWalkEveryScreen]' started.
+Test Case '-[RainPulseUITests.MatrixUITests testWalkEveryScreen]' passed (159.314 seconds).

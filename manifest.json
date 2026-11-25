@@ -1,0 +1,89 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "E7C90123-29B0-4E07-9522-15B7E0583746.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m8-settings-lower_0_846F181D-B9BC-448E-AF8A-D75596EBFFEC.png",
+        "timestamp" : 1795608939.82
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "137B5BAF-E83B-445A-89D4-F8FED4CADE09.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m7-settings_0_061AF30B-9166-49F0-8EA8-1BC64666DBC9.png",
+        "timestamp" : 1795608931.855
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "5103AE5A-443C-48CA-AC90-A35D8DE81E7E.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m6-places_0_FEC3A41C-164B-423A-ADE1-A14CC9FAA009.png",
+        "timestamp" : 1795608924.947
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "2F0F72EB-D62F-4B26-826E-D51F0919B496.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m9-report-sheet_0_9F8D246D-A110-4CEE-A1F6-194F6A00D4AB.png",
+        "timestamp" : 1795608915.573
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "16C4850D-35D1-4A8F-A692-15D4099AC7EA.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m5-paywall_0_6491B7B6-BD08-42FC-9796-077373106FE1.png",
+        "timestamp" : 1795608903.775
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "CAFB9842-9340-4C55-82A9-D8ECCACC2104.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m4-more-details_0_5ECB0937-0004-46FD-AFED-551E3F390E00.png",
+        "timestamp" : 1795608877.195
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "5A192D6B-9656-418C-A1AE-E0FD18A409F9.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m3-forecast-tiles_0_AF7FEF19-A5A1-4B5A-B01D-056AD0F56799.png",
+        "timestamp" : 1795608866.974
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "4D20B22D-BB9A-4AB0-9875-46E11D8B51A3.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m2-forecast_0_21DAAFD5-C2F5-41BE-94C7-F2A6CABAE6A8.png",
+        "timestamp" : 1795608860.521
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "CAD4F983-CE4C-41E7-84A5-DFFD6F0CF3CA",
+        "deviceName" : "iPhone 18 Pro Max",
+        "exportedFileName" : "67477D31-E42F-4C3E-BC84-CF0D61E1680D.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "m1-radar_0_EE784BB5-5159-4712-A4BA-5CD4A7E828B4.png",
+        "timestamp" : 1795608850.146
+      }
+    ],
+    "testIdentifier" : "MatrixUITests/testWalkEveryScreen()",
+    "testIdentifierURL" : "test://com.apple.xcode/RainPulse/RainPulseUITests/MatrixUITests/testWalkEveryScreen"
+  }
+]
