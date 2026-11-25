@@ -83,6 +83,11 @@ final class RainPulseUITests: XCTestCase {
         windItem.tap()
         sleep(5)
         snap(app, "01b-WindFlow-Cyclone")
+        // Turn the wind animation off again: a constantly animating map keeps the app from
+        // going idle, which makes every later UI-test step very slow.
+        app.buttons["Map layers"].tap()
+        if app.buttons["Wind flow"].waitForExistence(timeout: 5) { app.buttons["Wind flow"].tap() }
+        sleep(1)
 
         // Rain Truth: nearby reports show as a chip, and a report can be sent in one tap.
         XCTAssertTrue(app.buttons["crowd.chip"].waitForExistence(timeout: 10), "Crowd reports chip should show")

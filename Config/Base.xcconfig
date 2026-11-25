@@ -20,10 +20,10 @@ TARGETED_DEVICE_FAMILY = 1
 CLOUDKIT_ENVIRONMENT = Development
 
 // "Rain Truth" needs the iCloud container iCloud.com.neuralorbitx.rainpulse in the developer
-// account (Xcode's API key can't create it). Until it exists, reports stay off and hidden.
-// After creating it: RP_CLOUD_REPORTS = YES and RP_APP_ENTITLEMENTS = RainPulse-iCloud
-RP_CLOUD_REPORTS = NO
-RP_APP_ENTITLEMENTS = RainPulse
+// account (created 25 Nov 2026). To switch reports off: RP_CLOUD_REPORTS = NO and
+// RP_APP_ENTITLEMENTS = RainPulse
+RP_CLOUD_REPORTS = YES
+RP_APP_ENTITLEMENTS = RainPulse-iCloud
 
 // API keys (overridden by Secrets.xcconfig)
 OWM_API_KEY =
