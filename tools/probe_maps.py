@@ -15,7 +15,7 @@ code, ct, xml = get("https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/1.0.0/WM
 print("GIBS caps", code, len(xml))
 ns = {"w": "http://www.opengis.net/wmts/1.0", "ows": "http://www.opengis.net/ows/1.1"}
 root = ET.fromstring(xml)
-pat = re.compile(sys.argv[2] if len(sys.argv) > 2 else r"Himawari|GOES|Geostationary|VIIRS_(SNPP|NOAA20|NOAA21)_CorrectedReflectance_TrueColor|BlueMarble|MODIS_Terra_CorrectedReflectance_TrueColor|IR_Clouds|Cloud")
+pat = re.compile(sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] != "x" else r"Himawari|GOES|Geostationary|VIIRS_(SNPP|NOAA20|NOAA21)_CorrectedReflectance_TrueColor|BlueMarble|MODIS_Terra_CorrectedReflectance_TrueColor|IR_Clouds|Cloud")
 found = []
 for layer in root.iter("{http://www.opengis.net/wmts/1.0}Layer"):
     ident = layer.find("ows:Identifier", ns).text
