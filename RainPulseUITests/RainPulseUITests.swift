@@ -37,6 +37,20 @@ final class RainPulseUITests: XCTestCase {
         add(shot)
     }
 
+    /// Screenshots of the radar in each map style, over India, for choosing the default.
+    func testMapStyles() throws {
+        for (style, name) in [(3, "dark"), (6, "live-clouds"), (5, "earth"), (7, "city-lights"), (2, "satellite")] {
+            let app = XCUIApplication()
+            app.launchArguments = ["-UITestMode", "-UITestTier", "pro", "-UITestChennai", "-UITestMapStyle", "\(style)"]
+            app.launch()
+            XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 20))
+            sleep(14)   // let map and satellite tiles load
+            snap(app, "style-\(style)-\(name)")
+            XCTAssertEqual(app.state, .runningForeground, "map style \(style) must not crash")
+            app.terminate()
+        }
+    }
+
     /// Pro user: every screen loads with real forecast data.
     func testProWalkthrough() throws {
         let app = launch(tier: "pro")

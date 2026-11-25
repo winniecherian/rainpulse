@@ -75,6 +75,16 @@ enum TestData {
             Place(name: "São Paulo", latitude: -23.5505, longitude: -46.6333)
         ])
         if let tier = AppConfig.uiTestTier { SharedStore.tier = tier }
+        // Map style for screenshots ("-UITestMapStyle 6"); otherwise the default dark style.
+        let args = CommandLine.arguments
+        if let i = args.firstIndex(of: "-UITestMapStyle"), i + 1 < args.count, let style = Int(args[i + 1]) {
+            UserDefaults.standard.set(style, forKey: "map.style.v2")
+        } else {
+            UserDefaults.standard.set(3, forKey: "map.style.v2")
+        }
+        if args.contains("-UITestChennai") {
+            SharedStore.lastLocation = Place(name: "Chennai", latitude: 13.0827, longitude: 80.2707, isCurrentLocation: true)
+        }
         if CommandLine.arguments.contains("-UITestEmpty") {
             // A brand-new phone: no location permission and no saved places.
             SharedStore.lastLocation = nil
