@@ -68,6 +68,20 @@ final class RainPulseUITests: XCTestCase {
         sleep(5)
         snap(app, "01b-WindFlow-Cyclone")
 
+        // Rain Truth: nearby reports show as a chip, and a report can be sent in one tap.
+        XCTAssertTrue(app.buttons["crowd.chip"].waitForExistence(timeout: 10), "Crowd reports chip should show")
+        app.buttons["radar.report"].tap()
+        let rainButton = app.buttons["report.2"]
+        XCTAssertTrue(rainButton.waitForExistence(timeout: 5), "Report sheet should open")
+        sleep(1)
+        snap(app, "01c-ReportSheet")
+        rainButton.tap()
+        XCTAssertTrue(app.staticTexts["Thanks! Your report is on the map."].waitForExistence(timeout: 5),
+                      "Report should be accepted")
+        let sheetGone = NSPredicate(format: "exists == false")
+        expectation(for: sheetGone, evaluatedWith: rainButton)
+        waitForExpectations(timeout: 6)
+
         // Forecast
         tabs.buttons["Forecast"].tap()
         XCTAssertTrue(app.staticTexts["Snow"].waitForExistence(timeout: 30), "Key conditions should load")
@@ -76,15 +90,26 @@ final class RainPulseUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Cyclone ARIA"].waitForExistence(timeout: 10), "Cyclone card should show")
         sleep(2)
         snap(app, "02-Forecast")
+        XCTAssertTrue(app.staticTexts["hero.oneLiner"].exists || app.descendants(matching: .any)["hero.oneLiner"].exists,
+                      "One-line summary under the temperature")
+        let leave = app.descendants(matching: .any)["leave.card"]
+        var l = 0
+        while !(leave.exists && leave.isHittable) && l < 4 { app.swipeUp(); l += 1 }
+        XCTAssertTrue(leave.exists, "Leave-now card should show")
+        XCTAssertTrue(app.descendants(matching: .any)["crowd.card"].exists, "Rain Truth card should show")
+        sleep(1)
+        snap(app, "02b-LeaveNow-RainTruth")
         app.swipeUp()
         sleep(1)
         snap(app, "03-KeyConditions")
         let more = app.buttons["More details"]
         XCTAssertTrue(more.waitForExistence(timeout: 5), "More details should be offered")
+        var m = 0
+        while !more.isHittable && m < 6 { app.swipeUp(); m += 1 }
         more.tap()
         XCTAssertTrue(app.staticTexts["Next 2 hours"].waitForExistence(timeout: 5), "Rain chart inside More details")
         var tries = 0
-        while !app.staticTexts["Humidity"].exists && tries < 4 { app.swipeUp(); tries += 1 }
+        while !app.staticTexts["Humidity"].exists && tries < 6 { app.swipeUp(); tries += 1 }
         XCTAssertTrue(app.staticTexts["Humidity"].waitForExistence(timeout: 5), "Conditions card should show")
         sleep(1)
         snap(app, "03b-MoreDetails")

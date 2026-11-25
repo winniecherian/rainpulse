@@ -25,6 +25,9 @@ struct RadarMapView: UIViewRepresentable {
     var modelFrames: RainModelFrames? = nil
     var modelIndex: Int? = nil
     var onRegionChange: (MKCoordinateRegion) -> Void = { _ in }
+    /// "Rain Truth" crowd reports shown as emoji pins.
+    var reports: [CrowdReport] = []
+    var onSelectReport: (CrowdReport) -> Void = { _ in }
 
     func makeCoordinator() -> Coordinator { Coordinator() }
 
@@ -81,10 +84,15 @@ struct RadarMapView: UIViewRepresentable {
         private weak var mapRef: MKMapView?
         private var currentModelFrames: RainModelFrames?
         private var desiredModelIndex: Int?
+        private var baseOverlays: [BaseTileOverlay] = []
+        private var baseKey = ""
+        private var reportAnnotations: [ReportAnnotation] = []
+        private var reportKey = ""
+        var onSelectReport: (CrowdReport) -> Void = { _ in }
 
         /// 3 = Dark (muted standard map in dark mode): rain and clouds stand out most.
         static func interfaceStyle(for style: Int) -> UIUserInterfaceStyle {
-            style == 3 || style == 4 ? .dark : .unspecified
+            style == 3 || style == 4 || NASAStyle.from(style) != nil ? .dark : .unspecified
         }
 
         static func configuration(for style: Int) -> MKMapConfiguration {
@@ -92,6 +100,7 @@ struct RadarMapView: UIViewRepresentable {
             case 1: return MKHybridMapConfiguration()
             case 2: return MKImageryMapConfiguration()
             case 4: return MKHybridMapConfiguration()   // shown dark
+            case 5, 6, 7: return MKHybridMapConfiguration()   // NASA imagery covers it; Apple labels stay on top
             default: return MKStandardMapConfiguration(emphasisStyle: .muted)
             }
         }
@@ -104,6 +113,10 @@ struct RadarMapView: UIViewRepresentable {
                 map.preferredConfiguration = Self.configuration(for: mapStyle)
                 map.overrideUserInterfaceStyle = Self.interfaceStyle(for: mapStyle)
             }
+
+            syncBase(map: map, style: view.mapStyle)
+            onSelectReport = view.onSelectReport
+            syncReports(map: map, reports: view.reports)
 
             // Rebuild overlays only when source/layer/frames change.
             let key = "\(view.provider.source.rawValue)|\(view.layer.rawValue)|" +
@@ -181,7 +194,7 @@ struct RadarMapView: UIViewRepresentable {
             // Saved places as pins.
             let aKey = view.places.map { "\($0.id)\($0.latitude)\($0.longitude)" }.joined()
             if aKey != annotationKey {
-                map.removeAnnotations(map.annotations.filter { !($0 is MKUserLocation) && !($0 is CycloneAnnotation) })
+                map.removeAnnotations(map.annotations.filter { !($0 is MKUserLocation) && !($0 is CycloneAnnotation) && !($0 is ReportAnnotation) })
                 map.addAnnotations(view.places.map { place in
                     let pin = MKPointAnnotation()
                     pin.coordinate = place.coordinate
@@ -190,6 +203,40 @@ struct RadarMapView: UIViewRepresentable {
                 })
                 annotationKey = aKey
             }
+        }
+
+        /// NASA base imagery under the radar (live clouds refresh every 10 minutes).
+        private func syncBase(map: MKMapView, style: Int) {
+            let nasa = NASAStyle.from(style)
+            let key = nasa.map { "\($0.rawValue)|" + ($0 == .liveClouds ? NASAStyle.cloudTime(Date()) : "") } ?? ""
+            guard key != baseKey else { return }
+            map.removeOverlays(baseOverlays)
+            baseOverlays = nasa?.overlays() ?? []
+            for (i, overlay) in baseOverlays.enumerated() {
+                map.insertOverlay(overlay, at: i, level: .aboveRoads)
+            }
+            baseKey = key
+        }
+
+        private func syncReports(map: MKMapView, reports: [CrowdReport]) {
+            let key = reports.map(\.id).sorted().joined(separator: ",")
+            guard key != reportKey else { return }
+            map.removeAnnotations(reportAnnotations)
+            reportAnnotations = reports.map { r in
+                let pin = ReportAnnotation()
+                pin.report = r
+                pin.coordinate = r.coordinate
+                pin.title = r.condition.label
+                let mins = max(1, Int(Date().timeIntervalSince(r.time) / 60))
+                pin.subtitle = [r.area, String(localized: "\(mins) min ago")].compactMap { $0 }.joined(separator: " · ")
+                return pin
+            }
+            map.addAnnotations(reportAnnotations)
+            reportKey = key
+        }
+
+        func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
+            if let pin = annotation as? ReportAnnotation, let r = pin.report { onSelectReport(r) }
         }
 
         private func applyAlpha() {
@@ -285,6 +332,7 @@ struct RadarMapView: UIViewRepresentable {
                 if line.isForecast { r.lineDashPattern = [6, 5] }
                 return r
             }
+            if let base = overlay as? BaseTileOverlay { return MKTileOverlayRenderer(tileOverlay: base) }
             guard let tile = overlay as? RadarTileOverlay else { return MKOverlayRenderer(overlay: overlay) }
             let renderer = MKTileOverlayRenderer(tileOverlay: tile)
             renderers[ObjectIdentifier(tile)] = renderer
@@ -309,6 +357,14 @@ struct RadarMapView: UIViewRepresentable {
 
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
             guard !(annotation is MKUserLocation) else { return nil }
+            if let cluster = annotation as? MKClusterAnnotation {
+                let v = MKMarkerAnnotationView(annotation: cluster, reuseIdentifier: "reportCluster")
+                let wet = cluster.memberAnnotations.compactMap { ($0 as? ReportAnnotation)?.report }.filter { $0.condition.isWet }.count
+                v.glyphText = "\(cluster.memberAnnotations.count)"
+                v.markerTintColor = wet * 2 >= cluster.memberAnnotations.count ? .systemBlue : .systemYellow
+                v.titleVisibility = .hidden
+                return v
+            }
             if let storm = annotation as? CycloneAnnotation {
                 let id = "cyclone"
                 let v = (mapView.dequeueReusableAnnotationView(withIdentifier: id) as? MKMarkerAnnotationView)
@@ -319,6 +375,20 @@ struct RadarMapView: UIViewRepresentable {
                 v.titleVisibility = .visible
                 v.canShowCallout = true
                 v.displayPriority = .required
+                return v
+            }
+            if let pin = annotation as? ReportAnnotation, let r = pin.report {
+                let id = "report"
+                let v = (mapView.dequeueReusableAnnotationView(withIdentifier: id) as? MKMarkerAnnotationView)
+                    ?? MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: id)
+                v.annotation = annotation
+                v.glyphText = r.condition.emoji
+                v.markerTintColor = r.condition == .waterlogging ? .systemRed
+                    : (r.condition == .dry ? .systemYellow : .systemBlue)
+                v.titleVisibility = .hidden
+                v.canShowCallout = true
+                v.displayPriority = r.condition == .waterlogging ? .required : .defaultHigh
+                v.clusteringIdentifier = r.condition == .waterlogging ? nil : "reports"
                 return v
             }
             let id = "place"
@@ -337,6 +407,9 @@ final class ConePolygon: MKPolygon {}
 final class TrackPolyline: MKPolyline {
     var isForecast = false
     var category = ""
+}
+final class ReportAnnotation: MKPointAnnotation {
+    var report: CrowdReport?
 }
 final class CycloneAnnotation: MKPointAnnotation {
     var alertLevel = "Green"

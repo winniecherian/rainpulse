@@ -14,6 +14,16 @@ enum AppConfig {
     /// Optional Open-Meteo commercial key. Empty = free (non-commercial) endpoint.
     static var openMeteoAPIKey: String { info("OpenMeteoAPIKey") ?? "" }
 
+    /// iCloud container for "Rain Truth" crowd reports.
+    static var cloudContainerID: String { info("CloudContainerID") ?? "iCloud.com.neuralorbitx.rainpulse" }
+
+    /// CloudKit needs the iCloud entitlement, which only signed builds have. Unsigned CI test
+    /// builds set this to NO (Info.plist value follows CODE_SIGNING_ALLOWED), and so do tests.
+    static var cloudReportsEnabled: Bool {
+        guard !isUITest, ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil else { return false }
+        return info("CloudReportsEnabled") == "YES"
+    }
+
     /// Apple's standard EULA. Replace with your own terms page if you write one.
     static let termsURL = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!
 

@@ -89,7 +89,11 @@ struct SettingsScreen: View {
                         Text("Satellite").tag(2)
                         Text("Satellite with labels").tag(4)
                         Text("Hybrid (light)").tag(1)
+                        Text("Earth (NASA Blue Marble)").tag(5)
+                        Text("Live clouds (satellite)").tag(6)
+                        Text("City lights (night)").tag(7)
                     }
+                    .accessibilityIdentifier("settings.mapStyle")
                     Picker("Playback speed", selection: $speed) {
                         Text("0.5x").tag(0.5)
                         Text("1x").tag(1.0)

@@ -6,6 +6,7 @@ import Charts
 struct RainPulseWidgetBundle: WidgetBundle {
     var body: some Widget {
         RainNowWidget()
+        TodayLineWidget()
     }
 }
 
@@ -14,6 +15,7 @@ struct RainEntry: TimelineEntry {
     let placeName: String
     let forecast: Forecast?
     let tier: Tier
+    var airQuality: AirQuality? = nil
 }
 
 struct RainProvider: TimelineProvider {
@@ -43,7 +45,9 @@ struct RainProvider: TimelineProvider {
         let forecast = try? await ForecastService.shared.forecast(latitude: place.latitude,
                                                                    longitude: place.longitude,
                                                                    days: 1, maxAge: 900)
-        return RainEntry(date: Date(), placeName: place.name, forecast: forecast, tier: tier)
+        var aqi = SharedStore.airQuality(for: place)
+        if aqi == nil { aqi = await AirQualityService.shared.airQuality(latitude: place.latitude, longitude: place.longitude) }
+        return RainEntry(date: Date(), placeName: place.name, forecast: forecast, tier: tier, airQuality: aqi)
     }
 }
 
@@ -157,6 +161,51 @@ struct RainBars: View {
                     AxisValueLabel(format: .dateTime.hour().minute())
                 }
             }
+        }
+    }
+}
+
+// MARK: - Today in one line (lock screen)
+
+struct TodayLineWidget: Widget {
+    let kind = "RainPulseTodayLine"
+
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: RainProvider()) { entry in
+            TodayLineView(entry: entry)
+                .containerBackground(for: .widget) { Color.clear }
+        }
+        .configurationDisplayName("Today in one line")
+        .description("Umbrella, heat and air quality advice at a glance.")
+        .supportedFamilies([.accessoryInline, .accessoryRectangular])
+    }
+}
+
+struct TodayLineView: View {
+    @Environment(\.widgetFamily) private var family
+    let entry: RainEntry
+
+    private var line: String {
+        entry.forecast?.oneLiner(airQuality: entry.airQuality, now: entry.date) ?? String(localized: "Open the app to load")
+    }
+
+    var body: some View {
+        if family == .accessoryInline {
+            Label(line, systemImage: "umbrella.fill")
+        } else {
+            VStack(alignment: .leading, spacing: 2) {
+                HStack(spacing: 4) {
+                    Image(systemName: "umbrella.fill")
+                    Text(entry.placeName).lineLimit(1)
+                    if let f = entry.forecast {
+                        Spacer(minLength: 0)
+                        Text(Fmt.temperature(f.current.temperature))
+                    }
+                }
+                .font(.caption.weight(.semibold))
+                Text(line).font(.caption).lineLimit(3)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }

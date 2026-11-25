@@ -8,6 +8,10 @@
 	<array>
 		<string>$(PRODUCT_BUNDLE_IDENTIFIER).refresh</string>
 	</array>
+	<key>CloudContainerID</key>
+	<string>iCloud.$(BUNDLE_ID_BASE)</string>
+	<key>CloudReportsEnabled</key>
+	<string>$(CODE_SIGNING_ALLOWED)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

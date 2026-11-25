@@ -85,6 +85,20 @@ enum SharedStore {
         set { defaults.set(newValue.rawValue, forKey: tierKey) }
     }
 
+    /// Latest air quality per place (lets the widget avoid extra API calls).
+    static func saveAirQuality(_ aqi: AirQuality, for place: Place) {
+        if let data = try? JSONEncoder().encode(aqi) { defaults.set(data, forKey: aqiKey(place)) }
+    }
+
+    static func airQuality(for place: Place, maxAge: TimeInterval = 3 * 3600) -> AirQuality? {
+        guard let data = defaults.data(forKey: aqiKey(place)),
+              let aqi = try? JSONDecoder().decode(AirQuality.self, from: data),
+              Date().timeIntervalSince(aqi.fetchedAt) < maxAge else { return nil }
+        return aqi
+    }
+
+    private static func aqiKey(_ p: Place) -> String { String(format: "aqi.%.2f,%.2f", p.latitude, p.longitude) }
+
     /// Last known device location, saved by the app so the widget and
     /// background rain checks can use it without asking for "Always" location.
     static var lastLocation: Place? {

@@ -40,6 +40,31 @@ enum RainAlertService {
             await evaluate(forecast, for: place)
         }
         await checkCyclones(near: targets)
+        await checkFloods(near: targets)
+    }
+
+    private static let floodNotifiedKey = "alerts.floodsNotified"
+
+    /// "Rain Truth": alert when people report waterlogged streets near a watched place.
+    private static func checkFloods(near targets: [Place]) async {
+        var notified = Set(SharedStore.defaults.stringArray(forKey: floodNotifiedKey) ?? [])
+        for place in targets {
+            if Task.isCancelled { return }
+            let reports = await CrowdReportService.shared.reports(near: place.coordinate, maxAge: 0)
+            let summary = CrowdLogic.summary(reports, near: place.coordinate, now: Date(), radiusKm: 3)
+            guard let alert = CrowdLogic.floodAlert(summary, place: place.name, now: Date(), alreadyNotified: notified)
+            else { continue }
+            let content = UNMutableNotificationContent()
+            content.title = alert.title
+            content.body = alert.body
+            content.sound = .default
+            content.threadIdentifier = "flood"
+            let req = UNNotificationRequest(identifier: "flood-\(alert.id)", content: content, trigger: nil)
+            try? await UNUserNotificationCenter.current().add(req)
+            // Mark every current flood report as seen so one flooded street gives one alert.
+            summary.floods.forEach { notified.insert($0.id) }
+        }
+        SharedStore.defaults.set(Array(notified.suffix(300)), forKey: floodNotifiedKey)
     }
 
     private static let cycloneNotifiedKey = "alerts.cyclonesNotified"

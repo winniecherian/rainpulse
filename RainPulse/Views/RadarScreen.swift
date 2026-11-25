@@ -38,6 +38,9 @@ struct RadarScreen: View {
     @State private var lastRegion: MKCoordinateRegion?
     @State private var modelTask: Task<Void, Never>?
     @State private var nowForecast: Forecast?
+    @State private var reports: [CrowdReport] = []
+    @State private var showReport = false
+    @State private var reportsTask: Task<Void, Never>?
 
     @State private var layer: MapLayer = .radar
     @State private var frames: [RadarFrame] = []
@@ -88,12 +91,15 @@ struct RadarScreen: View {
                          focusToken: focusToken,
                          modelFrames: modelFrames,
                          modelIndex: modelIndex,
-                         onRegionChange: handleRegion)
+                         onRegionChange: handleRegion,
+                         reports: reports)
                 .ignoresSafeArea(edges: .top)
 
             VStack(spacing: 0) {
                 topBar
                 Spacer()
+                CrowdChip(summary: crowdSummary) { recenterToken += 1 }
+                    .padding(.bottom, 8)
                 if showCyclones, let storm = nearestStorm {
                     cycloneChip(storm).padding(.bottom, 8)
                 }
@@ -105,6 +111,12 @@ struct RadarScreen: View {
         }
         .sheet(isPresented: $showPaywall) { PaywallView() }
         .sheet(isPresented: $showLegend) { LegendSheet().presentationDetents([.height(320)]) }
+        .sheet(isPresented: $showReport) {
+            ReportSheet(coordinate: location.location?.coordinate) { report in
+                reports.append(report)
+            }
+            .presentationDetents([.medium, .large])
+        }
         .onAppear(perform: rebuildFrames)
         .onChange(of: store.tier) { _, _ in rebuildFrames() }
         .onChange(of: sourceRaw) { _, _ in
@@ -123,7 +135,8 @@ struct RadarScreen: View {
             let every = speed >= 2 ? 1 : (speed >= 1 ? 2 : 4)
             if tick % every == 0 { index = (index + 1) % allFrames.count }
         }
-        .onReceive(refreshTimer) { _ in rebuildFrames(); Task { await loadCyclones() } }
+        .onReceive(refreshTimer) { _ in rebuildFrames(); Task { await loadCyclones() }; loadReports() }
+        .task(id: location.location?.coordinate.latitude) { loadReports() }
         .task { await loadCyclones() }
         .task(id: location.location?.coordinate.latitude) { await loadNow() }
         .onChange(of: index) { _, _ in if !isPlaying { Haptics.tick() } }
@@ -153,6 +166,11 @@ struct RadarScreen: View {
             }
             Spacer()
             VStack(spacing: 8) {
+                Button { showReport = true } label: {
+                    mapButton(systemImage: "hand.tap.fill")
+                }
+                .accessibilityLabel("Report weather")
+                .accessibilityIdentifier("radar.report")
                 ShareLink(item: shareText) {
                     mapButton(systemImage: "square.and.arrow.up")
                 }
@@ -249,6 +267,8 @@ struct RadarScreen: View {
 
     private var attributionText: String {
         var parts = [provider.source.attribution]
+        if let nasa = NASAStyle.from(mapStyle) { parts.append(nasa.attribution) }
+        if !reports.isEmpty { parts.append(String(localized: "Reports by RainPulse users")) }
         if windFlow && store.tier.hasExtraLayers { parts.append("Wind © NOAA GFS") }
         if modelFrames != nil && layer == .radar { parts.append("Rain forecast © NOAA GFS") }
         if showCyclones && !cyclones.isEmpty { parts.append("Cyclones © GDACS") }
@@ -454,6 +474,30 @@ struct RadarScreen: View {
     private func handleRegion(_ region: MKCoordinateRegion) {
         lastRegion = region
         reloadModel(delay: 0.6)
+        loadReports(delay: 0.8)
+    }
+
+    /// Reports near the map centre when zoomed in to city level, otherwise near the user.
+    private var reportCenter: CLLocationCoordinate2D? {
+        if let r = lastRegion, r.span.latitudeDelta < 1.5 { return r.center }
+        return location.location?.coordinate ?? places.places.first?.coordinate
+    }
+
+    private var crowdSummary: CrowdSummary {
+        guard let here = location.location?.coordinate ?? places.places.first?.coordinate else { return CrowdSummary() }
+        return CrowdLogic.summary(reports, near: here, now: Date())
+    }
+
+    private func loadReports(delay: Double = 0) {
+        reportsTask?.cancel()
+        guard let c = reportCenter else { return }
+        reportsTask = Task {
+            if delay > 0 { try? await Task.sleep(for: .seconds(delay)) }
+            guard !Task.isCancelled else { return }
+            let found = await CrowdReportService.shared.reports(near: c)
+            guard !Task.isCancelled else { return }
+            await MainActor.run { reports = found }
+        }
     }
 
     private func reloadModel(delay: Double = 0) {

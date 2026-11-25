@@ -14,6 +14,11 @@ IPHONEOS_DEPLOYMENT_TARGET = 17.0
 SWIFT_VERSION = 5.0
 TARGETED_DEVICE_FAMILY = 1
 
+// CloudKit environment for "Rain Truth" reports. TestFlight builds use Development so the
+// record type is created automatically. Before App Store release: deploy the schema to
+// Production in the CloudKit Console, then change this to Production.
+CLOUDKIT_ENVIRONMENT = Development
+
 // API keys (overridden by Secrets.xcconfig)
 OWM_API_KEY =
 TOMORROW_API_KEY =

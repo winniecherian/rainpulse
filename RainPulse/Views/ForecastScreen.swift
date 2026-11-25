@@ -19,6 +19,8 @@ struct ForecastScreen: View {
     @State private var loadingInsight = false
     @State private var airQuality: AirQuality?
     @State private var nearbyStorms: [Cyclone] = []
+    @State private var crowd = CrowdSummary()
+    @State private var showReport = false
     @Environment(\.requestReview) private var requestReview
 
     private var selectedPlace: Place? {
@@ -40,6 +42,8 @@ struct ForecastScreen: View {
                         ForEach(nearbyStorms) { storm in
                             CycloneCard(storm: storm, place: place)
                         }
+                        LeaveNowCard(forecast: forecast, locked: !store.tier.hasMinuteChart) { showPaywall = true }
+                        CrowdCard(summary: crowd, canReport: location.location != nil) { showReport = true }
                         KeyConditions(forecast: forecast, airQuality: airQuality)
                         hourlyCard(forecast)
                         dailyCard(forecast)
@@ -79,6 +83,12 @@ struct ForecastScreen: View {
             .refreshable { await load(force: true) }
             .task(id: taskKey) { await load(force: false) }
             .sheet(isPresented: $showPaywall) { PaywallView() }
+            .sheet(isPresented: $showReport) {
+                ReportSheet(coordinate: location.location?.coordinate) { _ in
+                    Task { await loadCrowd(force: true) }
+                }
+                .presentationDetents([.medium, .large])
+            }
         }
     }
 
@@ -131,12 +141,20 @@ struct ForecastScreen: View {
             dayIndex = 0
             insight = nil
             airQuality = await AirQualityService.shared.airQuality(latitude: place.latitude, longitude: place.longitude)
+            if let aqi = airQuality { SharedStore.saveAirQuality(aqi, for: place) }
+            await loadCrowd(force: false)
             nearbyStorms = await CycloneService.shared.activeCyclones(sampleNear: place.coordinate)
                 .filter { $0.closestApproachKm(to: place.coordinate) < 1500 }
             if store.tier == .pro { await loadInsight(f, place: place) }
         } catch {
             errorText = error.localizedDescription
         }
+    }
+
+    private func loadCrowd(force: Bool) async {
+        guard let place = selectedPlace else { return }
+        let found = await CrowdReportService.shared.reports(near: place.coordinate, maxAge: force ? 0 : 120)
+        crowd = CrowdLogic.summary(found, near: place.coordinate, now: Date())
     }
 
     private func loadInsight(_ f: Forecast, place: Place) async {
@@ -186,6 +204,13 @@ struct ForecastScreen: View {
                 }
                 .font(.headline)
                 .foregroundStyle(.white.opacity(0.85))
+                Text(f.oneLiner(airQuality: airQuality))
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(.white.opacity(0.9))
+                    .padding(.horizontal, 12).padding(.vertical, 5)
+                    .background(.white.opacity(0.14), in: Capsule())
+                    .padding(.top, 6)
+                    .accessibilityIdentifier("hero.oneLiner")
             }
             Button {
                 if !store.tier.hasMinuteChart { showPaywall = true }

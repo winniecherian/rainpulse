@@ -60,17 +60,19 @@ final class MatrixUITests: XCTestCase {
             let rainTile = app.descendants(matching: .any)["tile.cloud.rain.fill"]
             let aqiTile = app.descendants(matching: .any)["tile.aqi.medium"]
             var s = 0
-            while !(rainTile.exists && rainTile.isHittable) && s < 6 { app.swipeUp(); s += 1 }
+            while !(rainTile.exists && rainTile.isHittable) && s < 10 { app.swipeUp(); s += 1 }
             XCTAssertTrue(rainTile.exists, "rain tile")
             var t = 0
-            while !(aqiTile.exists && aqiTile.isHittable) && t < 4 { app.swipeUp(); t += 1 }
+            while !(aqiTile.exists && aqiTile.isHittable) && t < 6 { app.swipeUp(); t += 1 }
             XCTAssertTrue(aqiTile.exists, "air quality tile")
             snap(app, "m3-forecast-tiles")
+            XCTAssertTrue(app.descendants(matching: .any)["leave.card"].exists, "leave-now card")
+            XCTAssertTrue(app.descendants(matching: .any)["crowd.card"].exists, "rain truth card")
             let more = app.buttons["forecast.more"]
             var n = 0
-            while !more.isHittable && n < 5 { app.swipeUp(); n += 1 }
+            while !more.isHittable && n < 8 { app.swipeUp(); n += 1 }
             if more.isHittable { more.tap(); sleep(1); app.swipeUp(); snap(app, "m4-more-details") }
-            for _ in 0..<6 { app.swipeDown() }
+            for _ in 0..<10 { app.swipeDown() }
             if config["tier"] == "free" {
                 let unlock = app.buttons["forecast.unlock"]
                 XCTAssertTrue(unlock.waitForExistence(timeout: 5), "free user sees unlock")
@@ -84,6 +86,23 @@ final class MatrixUITests: XCTestCase {
                     app.buttons.matching(NSPredicate(format: "label CONTAINS[c] 'close' OR identifier CONTAINS[c] 'close'")).firstMatch.tap()
                 }
             }
+        }
+
+        // Rain Truth report sheet
+        tab(app, 0)
+        app.buttons["radar.report"].tap()
+        if app.buttons["report.2"].waitForExistence(timeout: 5) {
+            sleep(1)
+            snap(app, "m9-report-sheet")
+            if config["empty"] == "1" {
+                XCTAssertFalse(app.buttons["report.2"].isEnabled, "no location: reporting disabled")
+                app.buttons["report.close"].tap()
+            } else {
+                app.buttons["report.2"].tap()
+            }
+            sleep(2)
+        } else {
+            XCTFail("report sheet")
         }
 
         // Places
