@@ -96,6 +96,30 @@ def owm():
     return "tiles OK: " + ", ".join(done)
 
 
+GIBS = "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best"
+
+
+def nasa_static():
+    for url in [f"{GIBS}/BlueMarble_ShadedRelief_Bathymetry/default/GoogleMapsCompatible_Level8/3/3/5.jpeg",
+                f"{GIBS}/VIIRS_Black_Marble/default/2016-01-01/GoogleMapsCompatible_Level8/3/3/5.png"]:
+        assert Image.open(io.BytesIO(get(url).content)).size == (256, 256)
+    return "Blue Marble and Black Marble OK"
+
+
+def nasa_clouds():
+    # Same time rule as the app: 30 minutes back on a 10-minute step.
+    t = dt.datetime.utcfromtimestamp((int(dt.datetime.utcnow().timestamp()) - 1800) // 600 * 600)
+    out = []
+    for layer, (z, y, x) in [("Himawari_AHI_Band13_Clean_Infrared", (3, 3, 5)),
+                             ("GOES-East_ABI_Band13_Clean_Infrared", (2, 1, 1)),
+                             ("GOES-West_ABI_Band13_Clean_Infrared", (2, 1, 0))]:
+        im = Image.open(io.BytesIO(get(f"{GIBS}/{layer}/default/{iso(t)}/GoogleMapsCompatible_Level6/{z}/{y}/{x}.png").content))
+        visible = sum(1 for p in im.convert("RGBA").getdata() if p[3] > 0)
+        assert visible > 1000, f"{layer} tile empty at {iso(t)}"
+        out.append(layer.split("_")[0])
+    return f"live clouds at {iso(t)}: " + ", ".join(out)
+
+
 check("Open-Meteo forecast", open_meteo)
 check("Open-Meteo air quality", air)
 check("NOAA GFS wind (PacIOOS)", lambda: erddap("ugrd10m"))
@@ -103,5 +127,7 @@ check("NOAA GFS rain (PacIOOS)", lambda: erddap("pratesfc"))
 check("NOAA GFS 48 h rain window", rain_window)
 check("GDACS cyclones", gdacs)
 check("OpenWeather map tiles", owm)
+check("NASA base maps", nasa_static)
+check("NASA live clouds", nasa_clouds)
 print(f"\n{len(OK)} passed, {len(FAIL)} failed")
 sys.exit(1 if FAIL else 0)
