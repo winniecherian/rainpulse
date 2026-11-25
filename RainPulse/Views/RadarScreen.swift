@@ -108,6 +108,9 @@ struct RadarScreen: View {
                 }
                 timeline
             }
+            // Controls float over the map, so cap their text size: at the largest accessibility
+            // sizes they would otherwise overflow the screen and hide the top buttons.
+            .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
         }
         .sheet(isPresented: $showPaywall) { PaywallView() }
         .sheet(isPresented: $showLegend) { LegendSheet().presentationDetents([.height(320)]) }
