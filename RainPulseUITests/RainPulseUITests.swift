@@ -48,7 +48,7 @@ final class RainPulseUITests: XCTestCase {
             sleep(12)   // let map and satellite tiles load
             snap(app, "style-\(style)-\(name)")
             XCTAssertEqual(app.state, .runningForeground, "map style \(style) must not crash")
-            app.terminate()
+            // The next launch() restarts the app; an explicit terminate() is flaky on CI.
         }
     }
 
