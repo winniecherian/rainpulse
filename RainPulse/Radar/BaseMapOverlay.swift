@@ -98,7 +98,7 @@ final class BaseTileOverlay: MKTileOverlay {
             format.scale = 1
             format.opaque = false
             let png = UIGraphicsImageRenderer(size: CGSize(width: outputSide, height: outputSide), format: format).pngData { ctx in
-                ctx.cgContext.interpolationQuality = .medium
+                ctx.cgContext.interpolationQuality = .high
                 UIImage(cgImage: cropped).draw(in: CGRect(x: 0, y: 0, width: outputSide, height: outputSide))
             }
             result(png, nil)

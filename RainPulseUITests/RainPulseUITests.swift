@@ -39,12 +39,13 @@ final class RainPulseUITests: XCTestCase {
 
     /// Screenshots of the radar in each map style, over India, for choosing the default.
     func testMapStyles() throws {
+        executionTimeAllowance = 400
         for (style, name) in [(3, "dark"), (6, "live-clouds"), (5, "earth"), (7, "city-lights"), (2, "satellite")] {
             let app = XCUIApplication()
             app.launchArguments = ["-UITestMode", "-UITestTier", "pro", "-UITestChennai", "-UITestMapStyle", "\(style)"]
             app.launch()
             XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 20))
-            sleep(14)   // let map and satellite tiles load
+            sleep(12)   // let map and satellite tiles load
             snap(app, "style-\(style)-\(name)")
             XCTAssertEqual(app.state, .runningForeground, "map style \(style) must not crash")
             app.terminate()
@@ -106,7 +107,7 @@ final class RainPulseUITests: XCTestCase {
                       "One-line summary under the temperature")
         let leave = app.descendants(matching: .any)["leave.card"]
         var l = 0
-        while !(leave.exists && leave.isHittable) && l < 4 { app.swipeUp(); l += 1 }
+        while !(leave.exists && leave.isHittable) && l < 6 { app.swipeUp(velocity: .slow); l += 1 }
         XCTAssertTrue(leave.exists, "Leave-now card should show")
         XCTAssertTrue(app.descendants(matching: .any)["crowd.card"].exists, "Rain Truth card should show")
         sleep(1)
@@ -114,7 +115,7 @@ final class RainPulseUITests: XCTestCase {
         let snowTile = app.descendants(matching: .any)["tile.snowflake"]
         let aqiTile = app.descendants(matching: .any)["tile.aqi.medium"]
         var k = 0
-        while !(snowTile.exists && snowTile.isHittable) && k < 8 { app.swipeUp(); k += 1 }
+        while !(snowTile.exists && snowTile.isHittable) && k < 12 { app.swipeUp(velocity: .slow); k += 1 }
         XCTAssertTrue(snowTile.waitForExistence(timeout: 10), "Key conditions should load")
         XCTAssertTrue(aqiTile.exists, "AQI tile should show")
         sleep(1)
@@ -122,7 +123,7 @@ final class RainPulseUITests: XCTestCase {
         let more = app.buttons["More details"]
         XCTAssertTrue(more.waitForExistence(timeout: 5), "More details should be offered")
         var m = 0
-        while !more.isHittable && m < 6 { app.swipeUp(); m += 1 }
+        while !more.isHittable && m < 10 { app.swipeUp(velocity: .slow); m += 1 }
         more.tap()
         XCTAssertTrue(app.staticTexts["Next 2 hours"].waitForExistence(timeout: 5), "Rain chart inside More details")
         var tries = 0
