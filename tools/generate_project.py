@@ -58,7 +58,7 @@ widget_swift = files_in(WIDGET, {".swift"})
 uitest_swift = files_in(UITESTS, {".swift"})
 unit_swift = files_in(UNIT, {".swift"})
 other_files = [
-    f"{APP}/Info.plist", f"{APP}/{APP}.entitlements", f"{APP}/PrivacyInfo.xcprivacy", f"{APP}/Assets.xcassets",
+    f"{APP}/Info.plist", f"{APP}/{APP}.entitlements", f"{APP}/{APP}-iCloud.entitlements", f"{APP}/PrivacyInfo.xcprivacy", f"{APP}/Assets.xcassets",
     f"{WIDGET}/Info.plist", f"{WIDGET}/{WIDGET}.entitlements", f"{WIDGET}/PrivacyInfo.xcprivacy",
     "Config/Base.xcconfig", "Config/Secrets.example.xcconfig", "Products.storekit", "README.md",
     "ci_scripts/ci_post_clone.sh", "Shared/Localizable.xcstrings", f"{APP}/InfoPlist.xcstrings",
@@ -179,7 +179,7 @@ project_release = dict(project_common, **{
 
 app_settings = {
     "ASSETCATALOG_COMPILER_APPICON_NAME": "AppIcon", "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "AccentColor",
-    "CODE_SIGN_ENTITLEMENTS": f"{APP}/{APP}.entitlements", "CODE_SIGN_STYLE": "Automatic", "ENABLE_PREVIEWS": "YES",
+    "CODE_SIGN_ENTITLEMENTS": f"{APP}/$(RP_APP_ENTITLEMENTS).entitlements", "CODE_SIGN_STYLE": "Automatic", "ENABLE_PREVIEWS": "YES",
     "GENERATE_INFOPLIST_FILE": "NO", "INFOPLIST_FILE": f"{APP}/Info.plist",
     "LD_RUNPATH_SEARCH_PATHS": ["$(inherited)", "@executable_path/Frameworks"],
     "PRODUCT_BUNDLE_IDENTIFIER": "$(BUNDLE_ID_BASE)", "PRODUCT_NAME": "$(TARGET_NAME)",

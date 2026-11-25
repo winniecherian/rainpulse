@@ -43,7 +43,9 @@ struct ForecastScreen: View {
                             CycloneCard(storm: storm, place: place)
                         }
                         LeaveNowCard(forecast: forecast, locked: !store.tier.hasMinuteChart) { showPaywall = true }
-                        CrowdCard(summary: crowd, canReport: location.location != nil) { showReport = true }
+                        if AppConfig.crowdFeaturesVisible {
+                            CrowdCard(summary: crowd, canReport: location.location != nil) { showReport = true }
+                        }
                         KeyConditions(forecast: forecast, airQuality: airQuality)
                         hourlyCard(forecast)
                         dailyCard(forecast)

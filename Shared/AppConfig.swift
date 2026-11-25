@@ -21,8 +21,11 @@ enum AppConfig {
     /// builds set this to NO (Info.plist value follows CODE_SIGNING_ALLOWED), and so do tests.
     static var cloudReportsEnabled: Bool {
         guard !isUITest, ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil else { return false }
-        return info("CloudReportsEnabled") == "YES"
+        return info("CloudReportsEnabled") == "YES-YES"
     }
+
+    /// Show the Rain Truth UI only when reports can actually be sent (or in UI tests, with samples).
+    static var crowdFeaturesVisible: Bool { cloudReportsEnabled || isUITest }
 
     /// Apple's standard EULA. Replace with your own terms page if you write one.
     static let termsURL = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!

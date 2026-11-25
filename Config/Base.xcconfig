@@ -19,6 +19,12 @@ TARGETED_DEVICE_FAMILY = 1
 // Production in the CloudKit Console, then change this to Production.
 CLOUDKIT_ENVIRONMENT = Development
 
+// "Rain Truth" needs the iCloud container iCloud.com.neuralorbitx.rainpulse in the developer
+// account (Xcode's API key can't create it). Until it exists, reports stay off and hidden.
+// After creating it: RP_CLOUD_REPORTS = YES and RP_APP_ENTITLEMENTS = RainPulse-iCloud
+RP_CLOUD_REPORTS = NO
+RP_APP_ENTITLEMENTS = RainPulse
+
 // API keys (overridden by Secrets.xcconfig)
 OWM_API_KEY =
 TOMORROW_API_KEY =

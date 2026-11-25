@@ -47,6 +47,7 @@ enum RainAlertService {
 
     /// "Rain Truth": alert when people report waterlogged streets near a watched place.
     private static func checkFloods(near targets: [Place]) async {
+        guard CrowdReportService.isEnabled else { return }
         var notified = Set(SharedStore.defaults.stringArray(forKey: floodNotifiedKey) ?? [])
         for place in targets {
             if Task.isCancelled { return }

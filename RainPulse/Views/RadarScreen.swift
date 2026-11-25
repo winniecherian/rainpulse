@@ -98,8 +98,10 @@ struct RadarScreen: View {
             VStack(spacing: 0) {
                 topBar
                 Spacer()
-                CrowdChip(summary: crowdSummary) { recenterToken += 1 }
-                    .padding(.bottom, 8)
+                if AppConfig.crowdFeaturesVisible {
+                    CrowdChip(summary: crowdSummary) { recenterToken += 1 }
+                        .padding(.bottom, 8)
+                }
                 if showCyclones, let storm = nearestStorm {
                     cycloneChip(storm).padding(.bottom, 8)
                 }
@@ -169,11 +171,13 @@ struct RadarScreen: View {
             }
             Spacer()
             VStack(spacing: 8) {
-                Button { showReport = true } label: {
-                    mapButton(systemImage: "hand.tap.fill")
+                if AppConfig.crowdFeaturesVisible {
+                    Button { showReport = true } label: {
+                        mapButton(systemImage: "hand.tap.fill")
+                    }
+                    .accessibilityLabel("Report weather")
+                    .accessibilityIdentifier("radar.report")
                 }
-                .accessibilityLabel("Report weather")
-                .accessibilityIdentifier("radar.report")
                 ShareLink(item: shareText) {
                     mapButton(systemImage: "square.and.arrow.up")
                 }

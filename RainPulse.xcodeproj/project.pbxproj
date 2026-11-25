@@ -441,6 +441,12 @@
 			path = RadarTileOverlay.swift;
 			sourceTree = "<group>";
 		};
+		7D10D3486F6911D01FCFFBC0 = {
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.entitlements;
+			path = "RainPulse-iCloud.entitlements";
+			sourceTree = "<group>";
+		};
 		83897A82C22C2F9D4C5D9D73 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
@@ -830,6 +836,7 @@
 				85BE57C75A57EE0386044820,
 				DE116844E08EEFE6CFD992F2,
 				A2E5F6E8509D52DC44FA5800,
+				7D10D3486F6911D01FCFFBC0,
 				247DDE3C444A86B04451503B,
 				3EB0B57579FE0A2711B447A1,
 				D2CF2AA108001617E701A72D,
@@ -1200,7 +1207,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = RainPulse/RainPulse.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "RainPulse/$(RP_APP_ENTITLEMENTS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
@@ -1275,7 +1282,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = RainPulse/RainPulse.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "RainPulse/$(RP_APP_ENTITLEMENTS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
