@@ -1,11 +1,46 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>RainPulse Support</title><link rel="icon" href="favicon.png"><link rel="stylesheet" href="style.css?v=2"></head><body><div class="wrap">
-<header><a class="brand" href="./"><img src="img/icon-180.png" alt="" width="30" height="30">RainPulse</a><nav><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav></header>
+<header><a class="brand" href="./"><img src="img/icon-180.png" alt="" width="30" height="30">RainPulse</a><nav><a href="./">Home</a><a href="support">Support</a><a href="privacy">Privacy</a></nav></header>
 <main class="doc">
 <h1>Support</h1>
-<p>Questions, bugs or ideas? <a href="https://github.com/winniecherian/rainpulse/issues/new">Open a support request</a> and we usually reply within two working days.</p>
-<h2>Common questions</h2>
+<p>Questions, bugs or ideas? Send us a message and we usually reply within two working days. Many answers are also in the <a href="#common">common questions</a> below.</p>
+<form id="support-form" class="sform" novalidate>
+  <div class="row two">
+    <label>Your name <span class="opt">(optional)</span><input name="name" autocomplete="name" maxlength="100"></label>
+    <label>Email for our reply<input name="email" type="email" autocomplete="email" required maxlength="200"></label>
+  </div>
+  <label>What is it about?
+    <select name="topic">
+      <option>Bug or crash</option><option>Subscription or payment</option><option>Rain alerts or warnings</option>
+      <option>Wrong forecast</option><option>Feature idea</option><option>Privacy or my data</option><option>Other</option>
+    </select>
+  </label>
+  <label>Message<textarea name="message" rows="6" required minlength="10" maxlength="5000" placeholder="What happened, where you were, and what you expected to see."></textarea></label>
+  <div class="row two">
+    <label>iPhone and iOS version <span class="opt">(optional)</span><input name="device" maxlength="200" placeholder="e.g. iPhone 15, iOS 18.2"></label>
+    <label>RainPulse version <span class="opt">(optional)</span><input name="appVersion" maxlength="40" placeholder="Settings → About"></label>
+  </div>
+  <div class="files">
+    <span class="flabel">Screenshots or files <span class="opt">(optional)</span></span>
+    <label class="drop" id="drop">
+      <input type="file" name="files" id="files" multiple accept="image/png,image/jpeg,image/heic,image/heif,image/gif,image/webp,application/pdf,text/plain,video/mp4,video/quicktime">
+      <span>Choose files or drop them here</span>
+      <small>Up to 3 files, 5 MB each and 10 MB in total. Images, PDF, text or short videos.</small>
+    </label>
+    <ul id="file-list" class="file-list" aria-live="polite"></ul>
+  </div>
+  <input name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <p class="err" id="form-error" role="alert"></p>
+  <button type="submit" id="send">Send message</button>
+  <p class="fine">We use your email only to reply to this request.</p>
+</form>
+<div id="sent" class="sent" hidden tabindex="-1">
+  <h2>Message sent</h2>
+  <p>Thanks. Your reference is <b id="ref"></b>. We'll reply to <b id="sent-email"></b>, usually within two working days.</p>
+  <button type="button" id="again">Send another message</button>
+</div>
+<h2 id="common">Common questions</h2>
 <p><b>Why does the map say "Rain forecast (model)"?</b><br>The rain map shows OpenWeather's estimate of rain right now. Future frames come from NOAA's GFS weather model, which shows where rain systems are heading in less detail than radar.</p>
 <p><b>Where do official warnings come from?</b><br>In India, from the government's NDMA SACHET system, which carries warnings from IMD, CWC, INCOIS and state disaster authorities. Elsewhere, from Apple Weather's official alerts where available. They are shown in the agency's own words and are free on every plan. Serious (severe or extreme) warnings also send a notification; turn this off in Settings → Alerts → Official warnings.</p>
 <p><b>What is "Forecast confidence"?</b><br>RainPulse asks four independent weather models (ECMWF, GFS, ICON and GEM) whether it will rain in the next 12 hours, and when. If they agree, confidence is high; if they disagree, the app says so.</p>
@@ -16,4 +51,4 @@
 <p><b>How do I delete my data?</b><br>Settings → Privacy &amp; Security → Erase all my RainPulse data. We keep no data on our servers.</p>
 </main>
 <footer><span>© 2026 NeuralOrbitX</span><span><a href="privacy.html">Privacy Policy</a></span></footer>
-</div></body></html>
+</div><script src="support.js?v=1"></script></body></html>
