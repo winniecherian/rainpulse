@@ -29,7 +29,7 @@ struct PaywallView: View {
                         Text("Know exactly when it rains")
                             .font(.title2.bold())
                             .multilineTextAlignment(.center)
-                        Text("Live radar, a 2-hour rain forecast and alerts before it starts.")
+                        Text("Live rain map, a 2-hour rain forecast and alerts before it starts.")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
@@ -47,8 +47,8 @@ struct PaywallView: View {
                              yearly: yearly,
                              isSelected: selectedTier == .essential,
                              features: [
-                                String(localized: "2-hour radar forecast animation"),
-                                String(localized: "2-hour radar history"),
+                                String(localized: "2-hour rain map forecast animation"),
+                                String(localized: "2-hour rain map history"),
                                 String(localized: "Minute-by-minute rain chart"),
                                 String(localized: "14-day forecast"),
                                 String(localized: "Rain alerts for up to 20 places"),
@@ -62,7 +62,7 @@ struct PaywallView: View {
                              isSelected: selectedTier == .pro,
                              features: [
                                 String(localized: "Everything in Essential"),
-                                String(localized: "48-hour radar playback"),
+                                String(localized: "48-hour rain map playback"),
                                 String(localized: "Clouds, wind and temperature map layers")
                              ])
                         .onTapGesture { selectedTier = .pro }

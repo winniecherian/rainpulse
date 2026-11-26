@@ -357,7 +357,7 @@ final class LocalizationTests: XCTestCase {
     func testKeyStringsAreTranslatedAndFormatSafely() {
         let samples: [(String, [CVarArg])] = [
             ("Rain in about %lld min", [25]),
-            ("Radar updated %lld min ago", [4]),
+            ("Rain map updated %lld min ago", [4]),
             ("Cyclone %@ near %@", ["ARIA", "Chennai"]),
             ("%lld km from %@ now; forecast track passes about %lld km away.", [420, "Chennai", 180]),
             ("Free for %@, then %@ per %@. ", ["14 days", "₹999", "year"]),

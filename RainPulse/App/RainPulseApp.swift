@@ -49,7 +49,7 @@ struct RootView: View {
     var body: some View {
         TabView {
             RadarScreen()
-                .tabItem { Label("Radar", systemImage: "dot.radiowaves.left.and.right") }
+                .tabItem { Label("Map", systemImage: "map") }
             ForecastScreen()
                 .tabItem { Label("Forecast", systemImage: "cloud.sun.rain") }
             PlacesScreen()

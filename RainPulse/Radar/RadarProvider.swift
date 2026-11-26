@@ -14,7 +14,7 @@ enum RadarSource: String, CaseIterable, Identifiable {
 
     var displayName: String {
         switch self {
-        case .owmGlobalPrecip: return "OpenWeather – animated radar"
+        case .owmGlobalPrecip: return "OpenWeather – animated rain map"
         case .owmCurrent: return "OpenWeather – current only (free)"
         case .tomorrow: return "Tomorrow.io"
         }
@@ -32,8 +32,8 @@ enum RadarSource: String, CaseIterable, Identifiable {
 
     var attribution: String {
         switch self {
-        case .owmGlobalPrecip, .owmCurrent: return "Radar © OpenWeather"
-        case .tomorrow: return "Radar © Tomorrow.io"
+        case .owmGlobalPrecip, .owmCurrent: return "Rain map © OpenWeather"
+        case .tomorrow: return "Rain map © Tomorrow.io"
         }
     }
 }
@@ -45,7 +45,7 @@ enum MapLayer: String, CaseIterable, Identifiable {
 
     var displayName: String {
         switch self {
-        case .radar: return String(localized: "Radar")
+        case .radar: return String(localized: "Rain map")
         case .clouds: return String(localized: "Clouds")
         case .wind: return String(localized: "Wind")
         case .temperature: return String(localized: "Temperature")

@@ -1666,134 +1666,6 @@
         }
       }
     },
-    "2-hour radar forecast animation": {
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "رسوم متحركة لتوقعات الرادار لساعتين"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "2-Stunden-Radarvorhersage als Animation"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Animación del pronóstico de radar de 2 horas"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Animation des prévisions radar sur 2 heures"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "2 घंटे का रडार पूर्वानुमान एनिमेशन"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Animasi prakiraan radar 2 jam"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "2時間先までのレーダー予報アニメーション"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Animação da previsão de radar de 2 horas"
-          }
-        },
-        "ta": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "2 மணி நேர ரேடார் முன்னறிவிப்பு அனிமேஷன்"
-          }
-        },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Hoạt ảnh dự báo radar 2 giờ"
-          }
-        }
-      }
-    },
-    "2-hour radar history": {
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "سجل الرادار لساعتين"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "2 Stunden Radarverlauf"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Historial de radar de 2 horas"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Historique radar de 2 heures"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "2 घंटे का रडार इतिहास"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Riwayat radar 2 jam"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "過去2時間のレーダー"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Histórico de radar de 2 horas"
-          }
-        },
-        "ta": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "2 மணி நேர ரேடார் வரலாறு"
-          }
-        },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lịch sử radar 2 giờ"
-          }
-        }
-      }
-    },
     "2-hour rain chart with Essential": {
       "localizations": {
         "ar": {
@@ -1986,6 +1858,134 @@
         }
       }
     },
+    "2-hour rain map forecast animation": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رسوم متحركة لتوقعات خريطة المطر لساعتين"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2-Stunden-Regenkarten-Vorhersage als Animation"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Animación del pronóstico del mapa de lluvia de 2 horas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Animation des prévisions de la carte de pluie sur 2 h"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 घंटे का बारिश मैप पूर्वानुमान एनिमेशन"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Animasi prakiraan peta hujan 2 jam"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2時間の雨雲マップ予報アニメーション"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Animação da previsão do mapa de chuva de 2 horas"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 மணி நேர மழை வரைபட முன்னறிவிப்பு அனிமேஷன்"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hoạt ảnh dự báo bản đồ mưa 2 giờ"
+          }
+        }
+      }
+    },
+    "2-hour rain map history": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سجل خريطة المطر لساعتين"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 Stunden Regenkarten-Verlauf"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Historial del mapa de lluvia de 2 horas"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Historique de la carte de pluie sur 2 h"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 घंटे का बारिश मैप इतिहास"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Riwayat peta hujan 2 jam"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2時間の雨雲マップ履歴"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Histórico do mapa de chuva de 2 horas"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2 மணி நேர மழை வரைபட வரலாறு"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lịch sử bản đồ mưa 2 giờ"
+          }
+        }
+      }
+    },
     "30 min": {
       "localizations": {
         "ar": {
@@ -2114,130 +2114,130 @@
         }
       }
     },
-    "48-hour radar playback": {
+    "48-hour rain map playback": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تشغيل الرادار لمدة 48 ساعة"
+            "value": "تشغيل خريطة المطر لمدة 48 ساعة"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "48-Stunden-Radarwiedergabe"
+            "value": "48-Stunden-Regenkarten-Wiedergabe"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reproducción de radar de 48 horas"
+            "value": "Reproducción del mapa de lluvia de 48 horas"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lecture radar sur 48 heures"
+            "value": "Lecture de la carte de pluie sur 48 h"
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "48 घंटे का रडार प्लेबैक"
+            "value": "48 घंटे का बारिश मैप प्लेबैक"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pemutaran radar 48 jam"
+            "value": "Pemutaran peta hujan 48 jam"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "48時間のレーダー再生"
+            "value": "48時間の雨雲マップ再生"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reprodução de radar de 48 horas"
+            "value": "Reprodução do mapa de chuva de 48 horas"
           }
         },
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "48 மணி நேர ரேடார் பின்னோட்டம்"
+            "value": "48 மணி நேர மழை வரைபடப் பின்னோட்டம்"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Phát lại radar 48 giờ"
+            "value": "Phát lại bản đồ mưa 48 giờ"
           }
         }
       }
     },
-    "6-hour radar history": {
+    "6-hour rain map history": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "سجل الرادار لـ 6 ساعات"
+            "value": "سجل خريطة المطر لست ساعات"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "6 Stunden Radarverlauf"
+            "value": "6 Stunden Regenkarten-Verlauf"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Historial de radar de 6 horas"
+            "value": "Historial del mapa de lluvia de 6 horas"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Historique radar de 6 heures"
+            "value": "Historique de la carte de pluie sur 6 h"
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "6 घंटे का रडार इतिहास"
+            "value": "6 घंटे का बारिश मैप इतिहास"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Riwayat radar 6 jam"
+            "value": "Riwayat peta hujan 6 jam"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "過去6時間のレーダー"
+            "value": "6時間の雨雲マップ履歴"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Histórico de radar de 6 horas"
+            "value": "Histórico do mapa de chuva de 6 horas"
           }
         },
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "6 மணி நேர ரேடார் வரலாறு"
+            "value": "6 மணி நேர மழை வரைபட வரலாறு"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lịch sử radar 6 giờ"
+            "value": "Lịch sử bản đồ mưa 6 giờ"
           }
         }
       }
@@ -3074,66 +3074,66 @@
         }
       }
     },
-    "Allow location so RainPulse can show the radar and forecast around you.": {
+    "Allow location so RainPulse can show the rain map and forecast around you.": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "اسمح بالموقع ليعرض RainPulse الرادار والتوقعات من حولك."
+            "value": "اسمح بالوصول إلى الموقع ليعرض RainPulse خريطة المطر والتوقعات من حولك."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Erlaube den Standort, damit RainPulse Radar und Vorhersage in deiner Nähe zeigen kann."
+            "value": "Erlaube den Standort, damit RainPulse Regenkarte und Vorhersage in deiner Nähe zeigen kann."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Permite la ubicación para que RainPulse muestre el radar y el pronóstico a tu alrededor."
+            "value": "Permite la ubicación para que RainPulse muestre el mapa de lluvia y el pronóstico a tu alrededor."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Autorisez la localisation pour que RainPulse affiche le radar et les prévisions autour de vous."
+            "value": "Autorisez la localisation pour que RainPulse affiche la carte de pluie et les prévisions autour de vous."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "लोकेशन की अनुमति दें ताकि RainPulse आपके आसपास का रडार और पूर्वानुमान दिखा सके।"
+            "value": "लोकेशन की अनुमति दें ताकि RainPulse आपके आसपास का बारिश मैप और पूर्वानुमान दिखा सके।"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Izinkan lokasi agar RainPulse dapat menampilkan radar dan prakiraan di sekitar Anda."
+            "value": "Izinkan lokasi agar RainPulse dapat menampilkan peta hujan dan prakiraan di sekitar Anda."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "位置情報を許可すると、周辺のレーダーと予報を表示できます。"
+            "value": "位置情報を許可すると、RainPulse が周辺の雨雲マップと予報を表示できます。"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Permita a localização para o RainPulse mostrar o radar e a previsão perto de você."
+            "value": "Permita a localização para o RainPulse mostrar o mapa de chuva e a previsão ao seu redor."
           }
         },
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "உங்களைச் சுற்றியுள்ள ரேடார், முன்னறிவிப்பைக் காட்ட RainPulse-க்கு இருப்பிட அனுமதி கொடுங்கள்."
+            "value": "உங்களைச் சுற்றியுள்ள மழை வரைபடம், முன்னறிவிப்பைக் காட்ட RainPulse-க்கு இருப்பிட அனுமதி கொடுங்கள்."
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cho phép vị trí để RainPulse hiển thị radar và dự báo quanh bạn."
+            "value": "Cho phép vị trí để RainPulse hiển thị bản đồ mưa và dự báo quanh bạn."
           }
         }
       }
@@ -3331,66 +3331,66 @@
       }
     },
     "Apple Weather": {},
-    "Apple Weather gives forecasts but no radar maps to apps, so the map uses OpenWeather radar plus NOAA's GFS model for future rain.": {
+    "Apple Weather gives forecasts but no rain maps to apps, so the map uses OpenWeather's rain estimate plus NOAA's GFS model for future rain.": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "يوفر Apple Weather التوقعات ولكن لا يوفر خرائط رادار للتطبيقات، لذلك تستخدم الخريطة رادار OpenWeather ونموذج GFS من NOAA للمطر القادم."
+            "value": "يوفر Apple Weather التوقعات للتطبيقات لكنه لا يوفر خرائط المطر، لذلك تستخدم الخريطة تقدير المطر من OpenWeather ونموذج GFS من NOAA للمطر القادم."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apple Weather liefert Apps Vorhersagen, aber keine Radarkarten. Die Karte nutzt daher das OpenWeather-Radar und für künftigen Regen das GFS-Modell der NOAA."
+            "value": "Apple Weather liefert Apps Vorhersagen, aber keine Regenkarten. Die Karte nutzt daher die Regenschätzung von OpenWeather und für künftigen Regen das GFS-Modell der NOAA."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apple Weather ofrece pronósticos pero no mapas de radar para apps, así que el mapa usa el radar de OpenWeather y el modelo GFS de NOAA para la lluvia futura."
+            "value": "Apple Weather da pronósticos a las apps, pero no mapas de lluvia; por eso el mapa usa la estimación de lluvia de OpenWeather y el modelo GFS de la NOAA para la lluvia futura."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apple Weather fournit des prévisions mais pas de cartes radar aux apps ; la carte utilise donc le radar OpenWeather et le modèle GFS de la NOAA pour la pluie à venir."
+            "value": "Apple Weather fournit des prévisions aux apps, mais pas de cartes de pluie : la carte utilise donc l'estimation de pluie d'OpenWeather et le modèle GFS de la NOAA pour la pluie à venir."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apple Weather ऐप्स को पूर्वानुमान देता है, रडार मैप नहीं; इसलिए मैप OpenWeather रडार और भविष्य की बारिश के लिए NOAA का GFS मॉडल इस्तेमाल करता है।"
+            "value": "Apple Weather ऐप्स को पूर्वानुमान देता है, बारिश मैप नहीं; इसलिए मैप OpenWeather का बारिश अनुमान और भविष्य की बारिश के लिए NOAA का GFS मॉडल इस्तेमाल करता है।"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apple Weather memberi prakiraan tetapi tidak menyediakan peta radar untuk aplikasi, jadi peta memakai radar OpenWeather dan model GFS NOAA untuk hujan mendatang."
+            "value": "Apple Weather memberi prakiraan ke aplikasi, tetapi tidak memberi peta hujan; karena itu peta memakai estimasi hujan OpenWeather dan model GFS NOAA untuk hujan mendatang."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apple Weather はアプリに予報を提供しますがレーダー地図は提供しないため、地図には OpenWeather のレーダーと NOAA の GFS モデル（将来の雨）を使用しています。"
+            "value": "Apple Weather はアプリに予報を提供しますが、雨雲マップは提供しません。そのため、地図には OpenWeather の降水推定と、今後の雨には NOAA の GFS モデルを使っています。"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "O Apple Weather fornece previsões, mas não mapas de radar para apps; por isso o mapa usa o radar da OpenWeather e o modelo GFS da NOAA para a chuva futura."
+            "value": "O Apple Weather fornece previsões aos apps, mas não mapas de chuva; por isso o mapa usa a estimativa de chuva da OpenWeather e o modelo GFS da NOAA para a chuva futura."
           }
         },
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apple Weather செயலிகளுக்கு முன்னறிவிப்பை மட்டுமே தருகிறது, ரேடார் வரைபடங்களைத் தருவதில்லை; எனவே வரைபடம் OpenWeather ரேடாரையும் எதிர்கால மழைக்கு NOAA GFS மாதிரியையும் பயன்படுத்துகிறது."
+            "value": "Apple Weather செயலிகளுக்கு முன்னறிவிப்பை மட்டுமே தருகிறது, மழை வரைபடங்களைத் தருவதில்லை; எனவே வரைபடம் OpenWeather மழை மதிப்பீட்டையும் எதிர்கால மழைக்கு NOAA GFS மாதிரியையும் பயன்படுத்துகிறது."
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apple Weather cung cấp dự báo nhưng không cung cấp bản đồ radar cho ứng dụng, nên bản đồ dùng radar OpenWeather và mô hình GFS của NOAA cho mưa sắp tới."
+            "value": "Apple Weather cung cấp dự báo cho ứng dụng nhưng không có bản đồ mưa, vì vậy bản đồ dùng ước tính mưa của OpenWeather và mô hình GFS của NOAA cho mưa sắp tới."
           }
         }
       }
@@ -4739,130 +4739,130 @@
         }
       }
     },
-    "Current radar only": {
+    "Current rain map only": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الرادار الحالي فقط"
+            "value": "خريطة المطر الحالية فقط"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nur aktuelles Radar"
+            "value": "Nur aktuelle Regenkarte"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Solo radar actual"
+            "value": "Solo el mapa de lluvia actual"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar actuel uniquement"
+            "value": "Carte de pluie actuelle uniquement"
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "सिर्फ़ मौजूदा रडार"
+            "value": "सिर्फ़ मौजूदा बारिश मैप"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hanya radar saat ini"
+            "value": "Hanya peta hujan saat ini"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "現在のレーダーのみ"
+            "value": "現在の雨雲マップのみ"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Somente radar atual"
+            "value": "Apenas o mapa de chuva atual"
           }
         },
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "தற்போதைய ரேடார் மட்டும்"
+            "value": "தற்போதைய மழை வரைபடம் மட்டும்"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Chỉ radar hiện tại"
+            "value": "Chỉ bản đồ mưa hiện tại"
           }
         }
       }
     },
-    "Current radar · animation unavailable": {
+    "Current rain map · animation unavailable": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الرادار الحالي · الرسوم المتحركة غير متاحة"
+            "value": "خريطة المطر الحالية · الرسوم المتحركة غير متاحة"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aktuelles Radar · Animation nicht verfügbar"
+            "value": "Aktuelle Regenkarte · Animation nicht verfügbar"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar actual · animación no disponible"
+            "value": "Mapa de lluvia actual · animación no disponible"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar actuel · animation indisponible"
+            "value": "Carte de pluie actuelle · animation indisponible"
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "मौजूदा रडार · एनिमेशन उपलब्ध नहीं"
+            "value": "मौजूदा बारिश मैप · एनिमेशन उपलब्ध नहीं"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar saat ini · animasi tidak tersedia"
+            "value": "Peta hujan saat ini · animasi tidak tersedia"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "現在のレーダー・アニメーション利用不可"
+            "value": "現在の雨雲マップ · アニメーションは利用できません"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar atual · animação indisponível"
+            "value": "Mapa de chuva atual · animação indisponível"
           }
         },
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "தற்போதைய ரேடார் · அனிமேஷன் இல்லை"
+            "value": "தற்போதைய மழை வரைபடம் · அனிமேஷன் இல்லை"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar hiện tại · không có hoạt ảnh"
+            "value": "Bản đồ mưa hiện tại · không có hoạt ảnh"
           }
         }
       }
@@ -8515,258 +8515,194 @@
         }
       }
     },
-    "Live radar now · future rain from forecast model": {
+    "Live rain map": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "رادار مباشر الآن · المطر القادم من نموذج التوقعات"
+            "value": "خريطة مطر مباشرة"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Jetzt Live-Radar · künftiger Regen aus Vorhersagemodell"
+            "value": "Live-Regenkarte"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar en vivo ahora · lluvia futura del modelo de pronóstico"
+            "value": "Mapa de lluvia en vivo"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar en direct · pluie à venir selon le modèle de prévision"
+            "value": "Carte de pluie en direct"
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "अभी लाइव रडार · आगे की बारिश पूर्वानुमान मॉडल से"
+            "value": "लाइव बारिश मैप"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar langsung sekarang · hujan mendatang dari model prakiraan"
+            "value": "Peta hujan langsung"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "現在はライブレーダー・この先の雨は予報モデル"
+            "value": "ライブ雨雲マップ"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar ao vivo agora · chuva futura do modelo de previsão"
+            "value": "Mapa de chuva ao vivo"
           }
         },
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "இப்போது நேரலை ரேடார் · எதிர்கால மழை முன்னறிவிப்பு மாதிரியிலிருந்து"
+            "value": "நேரலை மழை வரைபடம்"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar trực tiếp · mưa sắp tới theo mô hình dự báo"
+            "value": "Bản đồ mưa trực tiếp"
           }
         }
       }
     },
-    "Live radar, a 2-hour rain forecast and alerts before it starts.": {
+    "Live rain map for %@ — RainPulse: Rain Map & Alerts": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "رادار مباشر وتوقعات المطر لساعتين وتنبيهات قبل بدئه."
+            "value": "خريطة مطر مباشرة لـ %@ — RainPulse"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Live-Radar, 2-Stunden-Regenvorhersage und Warnung, bevor es losgeht."
+            "value": "Live-Regenkarte für %@ — RainPulse"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar en vivo, pronóstico de lluvia de 2 horas y avisos antes de que empiece."
+            "value": "Mapa de lluvia en vivo para %@ — RainPulse"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar en direct, prévisions de pluie sur 2 heures et alertes avant qu'elle commence."
+            "value": "Carte de pluie en direct pour %@ — RainPulse"
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "लाइव रडार, 2 घंटे का बारिश पूर्वानुमान और शुरू होने से पहले अलर्ट।"
+            "value": "%@ के लिए लाइव बारिश मैप — RainPulse"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar langsung, prakiraan hujan 2 jam, dan peringatan sebelum hujan."
+            "value": "Peta hujan langsung untuk %@ — RainPulse"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "ライブレーダー、2時間の降水予報、降り出す前の通知。"
+            "value": "%@ のライブ雨雲マップ — RainPulse"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar ao vivo, previsão de chuva de 2 horas e alertas antes de começar."
+            "value": "Mapa de chuva ao vivo para %@ — RainPulse"
           }
         },
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "நேரலை ரேடார், 2 மணி நேர மழை முன்னறிவிப்பு, தொடங்கும் முன் எச்சரிக்கை."
+            "value": "%@ க்கான நேரலை மழை வரைபடம் — RainPulse"
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar trực tiếp, dự báo mưa 2 giờ và cảnh báo trước khi mưa."
+            "value": "Bản đồ mưa trực tiếp cho %@ — RainPulse"
           }
         }
       }
     },
-    "Live rain radar": {
+    "Live rain map, a 2-hour rain forecast and alerts before it starts.": {
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "رادار المطر المباشر"
+            "value": "خريطة مطر مباشرة، وتوقعات المطر لساعتين، وتنبيهات قبل أن يبدأ."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Live-Regenradar"
+            "value": "Live-Regenkarte, 2-Stunden-Regenvorhersage und Warnung, bevor es losgeht."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar de lluvia en vivo"
+            "value": "Mapa de lluvia en vivo, pronóstico de lluvia de 2 horas y alertas antes de que empiece."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar de pluie en direct"
+            "value": "Carte de pluie en direct, prévisions de pluie sur 2 h et alertes avant qu'elle ne commence."
           }
         },
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "लाइव बारिश रडार"
+            "value": "लाइव बारिश मैप, 2 घंटे का बारिश पूर्वानुमान और शुरू होने से पहले अलर्ट।"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar hujan langsung"
+            "value": "Peta hujan langsung, prakiraan hujan 2 jam, dan peringatan sebelum hujan mulai."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "ライブ雨雲レーダー"
+            "value": "ライブ雨雲マップ、2時間の雨予報、降り出す前の通知。"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar de chuva ao vivo"
+            "value": "Mapa de chuva ao vivo, previsão de chuva de 2 horas e alertas antes de começar."
           }
         },
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "நேரலை மழை ரேடார்"
+            "value": "நேரலை மழை வரைபடம், 2 மணி நேர மழை முன்னறிவிப்பு, தொடங்கும் முன் எச்சரிக்கை."
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Radar mưa trực tiếp"
-          }
-        }
-      }
-    },
-    "Live rain radar for %@ — RainPulse: Live Rain Radar": {
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "رادار المطر المباشر لـ %@ — RainPulse"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Live-Regenradar für %@ — RainPulse"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar de lluvia en vivo para %@ — RainPulse"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar de pluie en direct pour %@ — RainPulse"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ के लिए लाइव बारिश रडार — RainPulse"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar hujan langsung untuk %@ — RainPulse"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ のライブ雨雲レーダー — RainPulse"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar de chuva ao vivo para %@ — RainPulse"
-          }
-        },
-        "ta": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ க்கான நேரலை மழை ரேடார் — RainPulse"
-          }
-        },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar mưa trực tiếp cho %@ — RainPulse"
+            "value": "Bản đồ mưa trực tiếp, dự báo mưa 2 giờ và cảnh báo trước khi mưa."
           }
         }
       }
@@ -12227,518 +12163,6 @@
         }
       }
     },
-    "Radar": {
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "الرادار"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "रडार"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "レーダー"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar"
-          }
-        },
-        "ta": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ரேடார்"
-          }
-        },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar"
-          }
-        }
-      }
-    },
-    "Radar data": {
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "بيانات الرادار"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radardaten"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Datos de radar"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Données radar"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "रडार डेटा"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Data radar"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "レーダーデータ"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dados de radar"
-          }
-        },
-        "ta": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ரேடார் தரவு"
-          }
-        },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dữ liệu radar"
-          }
-        }
-      }
-    },
-    "Radar key missing": {
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "مفتاح الرادار مفقود"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar-Schlüssel fehlt"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Falta la clave del radar"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Clé radar manquante"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "रडार कुंजी नहीं मिली"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kunci radar tidak ada"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "レーダーキーがありません"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chave do radar ausente"
-          }
-        },
-        "ta": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ரேடார் விசை இல்லை"
-          }
-        },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thiếu khóa radar"
-          }
-        }
-      }
-    },
-    "Radar legend": {
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "مفتاح ألوان الرادار"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radarlegende"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Leyenda del radar"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Légende du radar"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "रडार संकेत"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keterangan radar"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "レーダーの凡例"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Legenda do radar"
-          }
-        },
-        "ta": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ரேடார் குறியீடு"
-          }
-        },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Chú giải radar"
-          }
-        }
-      }
-    },
-    "Radar opacity": {
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "شفافية الرادار"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar-Deckkraft"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opacidad del radar"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opacité du radar"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "रडार अपारदर्शिता"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opasitas radar"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "レーダーの不透明度"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opacidade do radar"
-          }
-        },
-        "ta": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ரேடார் ஒளிபுகாமை"
-          }
-        },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Độ mờ radar"
-          }
-        }
-      }
-    },
-    "Radar updated %lld min ago": {
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "تم تحديث الرادار قبل %lld دقيقة"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar vor %lld Min. aktualisiert"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar actualizado hace %lld min"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar mis à jour il y a %lld min"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "रडार %lld मिनट पहले अपडेट हुआ"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar diperbarui %lld menit lalu"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "レーダー更新：%lld分前"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar atualizado há %lld min"
-          }
-        },
-        "ta": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ரேடார் %lld நிமிடம் முன் புதுப்பிக்கப்பட்டது"
-          }
-        },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar cập nhật %lld phút trước"
-          }
-        }
-      }
-    },
-    "Radar updated %lld min ago · delayed": {
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "تم تحديث الرادار قبل %lld دقيقة · متأخر"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar vor %lld Min. aktualisiert · verzögert"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar actualizado hace %lld min · retrasado"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar mis à jour il y a %lld min · en retard"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "रडार %lld मिनट पहले अपडेट हुआ · देरी"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar diperbarui %lld menit lalu · tertunda"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "レーダー更新：%lld分前・遅延"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar atualizado há %lld min · atrasado"
-          }
-        },
-        "ta": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ரேடார் %lld நிமிடம் முன் புதுப்பிக்கப்பட்டது · தாமதம்"
-          }
-        },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar cập nhật %lld phút trước · chậm"
-          }
-        }
-      }
-    },
-    "Radar updated just now": {
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "تم تحديث الرادار الآن"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar gerade aktualisiert"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar actualizado ahora mismo"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar mis à jour à l'instant"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "रडार अभी अपडेट हुआ"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar baru saja diperbarui"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "レーダーはたった今更新"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar atualizado agora"
-          }
-        },
-        "ta": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ரேடார் இப்போதுதான் புதுப்பிக்கப்பட்டது"
-          }
-        },
-        "vi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Radar vừa cập nhật"
-          }
-        }
-      }
-    },
     "Rain": {
       "localizations": {
         "ar": {
@@ -13439,6 +12863,582 @@
           "stringUnit": {
             "state": "translated",
             "value": "Có thể mưa trong 3 giờ tới. Ít mưa nhất: %@–%@."
+          }
+        }
+      }
+    },
+    "Rain map": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خريطة المطر"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regenkarte"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mapa de lluvia"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carte de pluie"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बारिश मैप"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peta hujan"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雨雲マップ"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mapa de chuva"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "மழை வரைபடம்"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bản đồ mưa"
+          }
+        }
+      }
+    },
+    "Rain map data": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بيانات خريطة المطر"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regenkarten-Daten"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datos del mapa de lluvia"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Données de la carte de pluie"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बारिश मैप डेटा"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Data peta hujan"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雨雲マップのデータ"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dados do mapa de chuva"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "மழை வரைபடத் தரவு"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dữ liệu bản đồ mưa"
+          }
+        }
+      }
+    },
+    "Rain map key missing": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مفتاح خريطة المطر مفقود"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regenkarten-Schlüssel fehlt"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Falta la clave del mapa de lluvia"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clé de la carte de pluie manquante"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बारिश मैप कुंजी नहीं मिली"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kunci peta hujan tidak ada"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雨雲マップのキーがありません"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chave do mapa de chuva ausente"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "மழை வரைபட விசை இல்லை"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thiếu khóa bản đồ mưa"
+          }
+        }
+      }
+    },
+    "Rain map legend": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مفتاح خريطة المطر"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regenkarten-Legende"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Leyenda del mapa de lluvia"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Légende de la carte de pluie"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बारिश मैप संकेत"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Legenda peta hujan"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雨雲マップの凡例"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Legenda do mapa de chuva"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "மழை வரைபடக் குறியீடு"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chú giải bản đồ mưa"
+          }
+        }
+      }
+    },
+    "Rain map now · future rain from forecast model": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خريطة المطر الآن · المطر القادم من نموذج التوقعات"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regenkarte jetzt · künftiger Regen aus Vorhersagemodell"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mapa de lluvia ahora · lluvia futura del modelo de pronóstico"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carte de pluie actuelle · pluie à venir selon le modèle de prévision"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "अभी बारिश मैप · आगे की बारिश पूर्वानुमान मॉडल से"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peta hujan sekarang · hujan mendatang dari model prakiraan"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "現在の雨雲マップ · 今後の雨は予報モデルから"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mapa de chuva agora · chuva futura do modelo de previsão"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "இப்போது மழை வரைபடம் · எதிர்கால மழை முன்னறிவிப்பு மாதிரியிலிருந்து"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bản đồ mưa hiện tại · mưa sắp tới từ mô hình dự báo"
+          }
+        }
+      }
+    },
+    "Rain map opacity": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شفافية خريطة المطر"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regenkarten-Deckkraft"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opacidad del mapa de lluvia"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opacité de la carte de pluie"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बारिश मैप अपारदर्शिता"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opasitas peta hujan"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雨雲マップの不透明度"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opacidade do mapa de chuva"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "மழை வரைபட ஒளிபுகாமை"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Độ mờ bản đồ mưa"
+          }
+        }
+      }
+    },
+    "Rain map updated %lld min ago": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم تحديث خريطة المطر قبل %lld د"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regenkarte vor %lld Min. aktualisiert"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mapa de lluvia actualizado hace %lld min"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carte de pluie mise à jour il y a %lld min"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बारिश मैप %lld मिनट पहले अपडेट हुआ"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peta hujan diperbarui %lld mnt lalu"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雨雲マップは%lld分前に更新"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mapa de chuva atualizado há %lld min"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "மழை வரைபடம் %lld நிமிடம் முன் புதுப்பிக்கப்பட்டது"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bản đồ mưa cập nhật %lld phút trước"
+          }
+        }
+      }
+    },
+    "Rain map updated %lld min ago · delayed": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم تحديث خريطة المطر قبل %lld د · متأخرة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regenkarte vor %lld Min. aktualisiert · verzögert"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mapa de lluvia actualizado hace %lld min · con retraso"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carte de pluie mise à jour il y a %lld min · en retard"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बारिश मैप %lld मिनट पहले अपडेट हुआ · देरी"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peta hujan diperbarui %lld mnt lalu · tertunda"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雨雲マップは%lld分前に更新 · 遅延"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mapa de chuva atualizado há %lld min · atrasado"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "மழை வரைபடம் %lld நிமிடம் முன் புதுப்பிக்கப்பட்டது · தாமதம்"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bản đồ mưa cập nhật %lld phút trước · bị trễ"
+          }
+        }
+      }
+    },
+    "Rain map updated just now": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم تحديث خريطة المطر للتو"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regenkarte gerade aktualisiert"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mapa de lluvia actualizado ahora mismo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Carte de pluie mise à jour à l'instant"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बारिश मैप अभी अपडेट हुआ"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peta hujan baru saja diperbarui"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雨雲マップはたった今更新"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mapa de chuva atualizado agora"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "மழை வரைபடம் இப்போதுதான் புதுப்பிக்கப்பட்டது"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bản đồ mưa vừa cập nhật"
           }
         }
       }

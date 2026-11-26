@@ -80,7 +80,7 @@ struct SettingsScreen: View {
 
                 Section("Map") {
                     VStack(alignment: .leading) {
-                        Text("Radar opacity")
+                        Text("Rain map opacity")
                         Slider(value: $opacity, in: 0.3...1)
                     }
                     Picker("Map style", selection: $mapStyle) {
@@ -100,12 +100,12 @@ struct SettingsScreen: View {
                         Text("2x").tag(2.0)
                     }
                     Toggle("Show rain forecast in animation", isOn: $showFuture)
-                    Picker("Radar data", selection: $sourceRaw) {
+                    Picker("Rain map data", selection: $sourceRaw) {
                         ForEach(RadarSource.allCases.filter { $0 != .tomorrow || !AppConfig.tomorrowAPIKey.isEmpty }) {
                             Text($0.displayName).tag($0.rawValue)
                         }
                     }
-                    Text("Apple Weather gives forecasts but no radar maps to apps, so the map uses OpenWeather radar plus NOAA's GFS model for future rain.")
+                    Text("Apple Weather gives forecasts but no rain maps to apps, so the map uses OpenWeather's rain estimate plus NOAA's GFS model for future rain.")
                         .font(.footnote).foregroundStyle(.secondary)
                 }
 
@@ -189,7 +189,7 @@ struct CurrentPlanCard: View {
         case .free: return [String(localized: "2-hour rain forecast animation"),
                             String(localized: "Minute-by-minute rain chart"),
                             String(localized: "14-day forecast and alerts for 20 places")]
-        case .essential: return [String(localized: "6-hour radar history"),
+        case .essential: return [String(localized: "6-hour rain map history"),
                                  String(localized: "Clouds, wind and temperature layers"),
                                  String(localized: "AI insights")]
         case .pro: return [String(localized: "Everything in RainPulse is unlocked")]

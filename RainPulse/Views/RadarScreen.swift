@@ -159,12 +159,12 @@ struct RadarScreen: View {
                     .frame(width: 44, height: 44)
                     .background(.regularMaterial, in: Circle())
             }
-            .accessibilityLabel("Radar legend")
+            .accessibilityLabel("Rain map legend")
 
             Spacer(minLength: 8)
             if let f = nowForecast { nowPill(f) }
             if AppConfig.owmAPIKey.isEmpty && source != .tomorrow {
-                Label("Radar key missing", systemImage: "key.fill")
+                Label("Rain map key missing", systemImage: "key.fill")
                     .font(.caption)
                     .padding(8)
                     .background(.ultraThinMaterial, in: Capsule())
@@ -284,7 +284,7 @@ struct RadarScreen: View {
 
     private var shareText: String {
         let place = location.placeName ?? String(localized: "my area")
-        return String(localized: "Live rain radar for \(place) — RainPulse: Live Rain Radar")
+        return String(localized: "Live rain map for \(place) — RainPulse: Rain Map & Alerts")
     }
 
     private func mapButton(systemImage: String) -> some View {
@@ -419,7 +419,7 @@ struct RadarScreen: View {
 
     private var frameSubLabel: String {
         guard let frame = currentFrame, allFrames.count > 1 else {
-            return fellBackToCurrent ? String(localized: "Current radar only") : layer.displayName
+            return fellBackToCurrent ? String(localized: "Current rain map only") : layer.displayName
         }
         let mins = Int((frame.date.timeIntervalSince(allFrames[RadarProvider.nowIndex(in: allFrames)].date)) / 60)
         if mins == 0 { return String(localized: "Now") }
@@ -437,13 +437,13 @@ struct RadarScreen: View {
     private var freshnessIsStale: Bool { radarAgeMinutes > 30 }
     private var freshnessText: String {
         if modelFrames != nil && (fellBackToCurrent || frames.count <= 1) {
-            return String(localized: "Live radar now · future rain from forecast model")
+            return String(localized: "Rain map now · future rain from forecast model")
         }
-        if fellBackToCurrent { return String(localized: "Current radar · animation unavailable") }
+        if fellBackToCurrent { return String(localized: "Current rain map · animation unavailable") }
         let age = radarAgeMinutes
-        if age <= 1 { return String(localized: "Radar updated just now") }
-        return freshnessIsStale ? String(localized: "Radar updated \(age) min ago · delayed")
-                                : String(localized: "Radar updated \(age) min ago")
+        if age <= 1 { return String(localized: "Rain map updated just now") }
+        return freshnessIsStale ? String(localized: "Rain map updated \(age) min ago · delayed")
+                                : String(localized: "Rain map updated \(age) min ago")
     }
 
     private static func duration(_ minutes: Int) -> String {

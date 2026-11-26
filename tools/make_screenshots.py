@@ -8,7 +8,7 @@ BOLD = "/usr/share/fonts/opentype/inter/InterDisplay-Bold.otf"
 SEMI = "/usr/share/fonts/opentype/inter/InterDisplay-Medium.otf"
 SHOTS = [
     ("02-Forecast", "Know exactly\nwhen it rains", "The Rain Clock shows the next 2 hours", [(10, 40, 90), (40, 90, 170)]),
-    ("01-Radar", "Live radar,\nbold and clear", "Rain forecast animation up to 48 hours", [(5, 10, 30), (25, 40, 90)]),
+    ("01-Radar", "Live rain map,\nbold and clear", "Rain forecast animation up to 48 hours", [(5, 10, 30), (25, 40, 90)]),
     ("01b-WindFlow-Cyclone", "Track cyclones\nand wind", "Storm paths, forecast cones and alerts", [(30, 12, 50), (90, 30, 90)]),
     ("03-KeyConditions", "Rain, snow, wind\nand air quality", "Everything that matters, nothing that doesn't", [(8, 45, 60), (20, 110, 120)]),
     ("05b-Privacy", "Private by design", "No account, no ads, no tracking. Face ID lock", [(15, 15, 25), (50, 50, 75)]),

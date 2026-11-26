@@ -39,7 +39,7 @@
 	<key>NSFaceIDUsageDescription</key>
 	<string>Use Face ID to unlock RainPulse when app lock is on.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>RainPulse uses your location to show the radar, forecast and rain alerts where you are.</string>
+	<string>RainPulse uses your location to show the rain map, forecast and rain alerts where you are.</string>
 	<key>OWMAPIKey</key>
 	<string>$(OWM_API_KEY)</string>
 	<key>OpenMeteoAPIKey</key>

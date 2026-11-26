@@ -11,12 +11,12 @@ struct OnboardingView: View {
         VStack(spacing: 24) {
             TabView(selection: $page) {
                 pageView(symbol: "dot.radiowaves.left.and.right",
-                         title: String(localized: "Live rain radar"),
+                         title: String(localized: "Live rain map"),
                          text: String(localized: "See where it's raining right now, anywhere in the world, and where the rain is heading."))
                     .tag(0)
                 pageView(symbol: "location.fill",
                          title: String(localized: "Rain where you are"),
-                         text: String(localized: "Allow location so RainPulse can show the radar and forecast around you."))
+                         text: String(localized: "Allow location so RainPulse can show the rain map and forecast around you."))
                     .tag(1)
                 pageView(symbol: "bell.badge.fill",
                          title: String(localized: "Alerts before it rains"),

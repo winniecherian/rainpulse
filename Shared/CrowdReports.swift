@@ -224,12 +224,15 @@ extension CrowdReport {
         let offsets: [(Double, Double, ReportCondition, Double)] = [
             (0.010, 0.006, .rain, 4), (-0.008, 0.012, .heavyRain, 7), (0.004, -0.015, .rain, 12),
             (0.018, -0.004, .drizzle, 15), (-0.012, -0.010, .dry, 22), (0.006, 0.020, .waterlogging, 18)]
+        let chennai = CLLocation(latitude: 13.08, longitude: 80.27)
+        let street = CLLocation(latitude: c.latitude, longitude: c.longitude).distance(from: chennai) < 80_000
+            ? "Anna Salai" : "High Street"
         return offsets.enumerated().map { i, o in
             CrowdReport(id: "sample-\(i)", condition: o.2,
                         latitude: ReportKeys.approximate(c.latitude + o.0),
                         longitude: ReportKeys.approximate(c.longitude + o.1),
                         time: now.addingTimeInterval(-o.3 * 60),
-                        area: o.2 == .waterlogging ? "Anna Salai" : nil)
+                        area: o.2 == .waterlogging ? street : nil)
         }
     }
 }
