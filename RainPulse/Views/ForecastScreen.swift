@@ -21,6 +21,9 @@ struct ForecastScreen: View {
     @State private var nearbyStorms: [Cyclone] = []
     @State private var crowd = CrowdSummary()
     @State private var showReport = false
+    @State private var officialAlerts: [OfficialAlert] = []
+    @State private var confidence: ForecastConfidence?
+    @State private var ledger: (score: LedgerScore, recent: [LedgerEntry])?
     @Environment(\.requestReview) private var requestReview
 
     private var selectedPlace: Place? {
@@ -39,12 +42,21 @@ struct ForecastScreen: View {
                 VStack(spacing: 16) {
                     if let forecast, let place = selectedPlace {
                         hero(forecast, place: place)
+                        if !officialAlerts.isEmpty {
+                            OfficialAlertsCard(alerts: officialAlerts, timeZone: forecast.timeZone)
+                        }
                         ForEach(nearbyStorms) { storm in
                             CycloneCard(storm: storm, place: place)
+                        }
+                        if let confidence {
+                            ConfidenceCard(confidence: confidence, timeZone: forecast.timeZone)
                         }
                         LeaveNowCard(forecast: forecast, locked: !store.tier.hasMinuteChart) { showPaywall = true }
                         if AppConfig.crowdFeaturesVisible {
                             CrowdCard(summary: crowd, canReport: location.location != nil) { showReport = true }
+                        }
+                        if let ledger {
+                            LedgerCard(score: ledger.score, recent: ledger.recent)
                         }
                         KeyConditions(forecast: forecast, airQuality: airQuality)
                         hourlyCard(forecast)
@@ -142,6 +154,15 @@ struct ForecastScreen: View {
             }
             dayIndex = 0
             insight = nil
+            async let officialTask = OfficialAlertService.shared.alerts(
+                latitude: place.latitude, longitude: place.longitude, maxAge: force ? 0 : 600)
+            async let confidenceTask = ConfidenceService.shared.confidence(
+                latitude: place.latitude, longitude: place.longitude, timeZone: f.timeZone)
+            await LedgerService.shared.record(f, place: place)
+            await LedgerService.shared.verify(place: place)
+            ledger = await LedgerService.shared.summary(for: place)
+            officialAlerts = await officialTask
+            confidence = await confidenceTask
             airQuality = await AirQualityService.shared.airQuality(latitude: place.latitude, longitude: place.longitude)
             if let aqi = airQuality { SharedStore.saveAirQuality(aqi, for: place) }
             await loadCrowd(force: false)

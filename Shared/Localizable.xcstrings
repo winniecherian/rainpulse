@@ -514,6 +514,70 @@
         }
       }
     },
+    "%lld checks · %lld confirmed by Rain Truth reports": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld عمليات تحقق · %lld مؤكدة ببلاغات Rain Truth"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Prüfungen · %lld durch Rain-Truth-Meldungen bestätigt"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld comprobaciones · %lld confirmadas por reportes de Rain Truth"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld vérifications · %lld confirmées par des signalements Rain Truth"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld जाँच · %lld की पुष्टि Rain Truth रिपोर्ट से"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld pengecekan · %lld dikonfirmasi laporan Rain Truth"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 回の検証 · うち %lld 回は Rain Truth の報告で確認"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld verificações · %lld confirmadas por relatos do Rain Truth"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld சரிபார்ப்புகள் · %lld Rain Truth அறிக்கைகளால் உறுதி"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld lần kiểm tra · %lld được xác nhận bởi báo cáo Rain Truth"
+          }
+        }
+      }
+    },
     "%lld km from %@ now; forecast track passes about %lld km away.": {
       "localizations": {
         "ar": {
@@ -766,6 +830,262 @@
           "stringUnit": {
             "state": "translated",
             "value": "%lld phút trước · cân nhắc đường khác"
+          }
+        }
+      }
+    },
+    "%lld more official warnings": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld تحذيرات رسمية أخرى"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld weitere amtliche Warnungen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld avisos oficiales más"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld autres alertes officielles"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld और आधिकारिक चेतावनियाँ"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld peringatan resmi lainnya"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "公式警報をさらに%lld件"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mais %lld alertas oficiais"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "மேலும் %lld அதிகாரப்பூர்வ எச்சரிக்கைகள்"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thêm %lld cảnh báo chính thức"
+          }
+        }
+      }
+    },
+    "%lld of %lld weather models show no rain in the next 12 hours; %lld show some.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld من %lld نماذج لا تُظهر مطرًا خلال الـ12 ساعة القادمة؛ و%lld تُظهر بعضه."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld von %lld Modellen zeigen keinen Regen in den nächsten 12 Stunden; %lld zeigen etwas."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld de %lld modelos no muestran lluvia en las próximas 12 horas; %lld muestran algo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld modèles sur %lld ne prévoient pas de pluie dans les 12 prochaines heures ; %lld en prévoient un peu."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld में से %lld मॉडल अगले 12 घंटे बारिश नहीं दिखाते; %lld कुछ बारिश दिखाते हैं।"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld dari %lld model tidak menunjukkan hujan dalam 12 jam ke depan; %lld menunjukkan sedikit."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld / %lld のモデルは今後12時間雨なし、%lld つは多少の雨を予想。"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld de %lld modelos não mostram chuva nas próximas 12 horas; %lld mostram alguma."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld / %lld மாதிரிகள் அடுத்த 12 மணி நேரம் மழை இல்லை எனக் காட்டுகின்றன; %lld சிறிது மழை காட்டுகின்றன."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld trên %lld mô hình không thấy mưa trong 12 giờ tới; %lld cho thấy có mưa."
+          }
+        }
+      }
+    },
+    "%lld of %lld weather models show rain, but disagree on timing: between %@ and %@.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld من %lld نماذج تُظهر مطرًا، لكنها تختلف في التوقيت: بين %@ و%@."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld von %lld Modellen zeigen Regen, sind sich beim Zeitpunkt aber uneins: zwischen %@ und %@."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld de %lld modelos muestran lluvia, pero no coinciden en la hora: entre las %@ y las %@."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld modèles sur %lld prévoient de la pluie, mais pas à la même heure : entre %@ et %@."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld में से %lld मॉडल बारिश दिखाते हैं, पर समय पर असहमत: %@ से %@ के बीच।"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld dari %lld model menunjukkan hujan, tetapi berbeda soal waktu: antara %@ dan %@."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld / %lld のモデルが雨を予想。ただし時刻は %@〜%@ と分かれています。"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld de %lld modelos mostram chuva, mas discordam do horário: entre %@ e %@."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld / %lld மாதிரிகள் மழையைக் காட்டுகின்றன, ஆனால் நேரத்தில் வேறுபடுகின்றன: %@ முதல் %@ வரை."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld trên %lld mô hình cho thấy mưa nhưng khác nhau về thời điểm: từ %@ đến %@."
+          }
+        }
+      }
+    },
+    "%lld of %lld weather models show rain, starting around %@.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld من %lld نماذج تُظهر مطرًا يبدأ نحو %@."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld von %lld Modellen zeigen Regen, ab etwa %@."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld de %lld modelos muestran lluvia, empezando hacia las %@."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld modèles sur %lld prévoient de la pluie, à partir d'environ %@."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld में से %lld मॉडल बारिश दिखाते हैं, लगभग %@ से।"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld dari %lld model menunjukkan hujan, mulai sekitar %@."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld / %lld のモデルが雨を予想、%@ ごろから。"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld de %lld modelos mostram chuva, começando por volta das %@."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld / %lld மாதிரிகள் மழையைக் காட்டுகின்றன, சுமார் %@ முதல்."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld trên %lld mô hình cho thấy mưa, bắt đầu khoảng %@."
           }
         }
       }
@@ -2818,6 +3138,134 @@
         }
       }
     },
+    "All %lld weather models agree: no rain in the next 12 hours.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تتفق النماذج الـ%lld كلها: لا مطر خلال الـ12 ساعة القادمة."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle %lld Wettermodelle sind sich einig: kein Regen in den nächsten 12 Stunden."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los %lld modelos coinciden: sin lluvia en las próximas 12 horas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les %lld modèles sont d'accord : pas de pluie dans les 12 prochaines heures."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सभी %lld मौसम मॉडल सहमत: अगले 12 घंटे बारिश नहीं।"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semua %lld model cuaca sepakat: tidak hujan dalam 12 jam ke depan."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld つの予報モデルすべてが一致：今後12時間は雨なし。"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os %lld modelos concordam: sem chuva nas próximas 12 horas."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "அனைத்து %lld வானிலை மாதிரிகளும் ஒப்புக்கொள்கின்றன: அடுத்த 12 மணி நேரம் மழை இல்லை."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cả %lld mô hình đều thống nhất: không mưa trong 12 giờ tới."
+          }
+        }
+      }
+    },
+    "All %lld weather models show rain, starting around %@.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تُظهر النماذج الـ%lld كلها مطرًا يبدأ نحو %@."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle %lld Modelle zeigen Regen, ab etwa %@."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los %lld modelos muestran lluvia, empezando hacia las %@."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les %lld modèles prévoient de la pluie, à partir d'environ %@."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "सभी %lld मॉडल बारिश दिखाते हैं, लगभग %@ से।"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semua %lld model menunjukkan hujan, mulai sekitar %@."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld つのモデルすべてが雨を予想、%@ ごろから。"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os %lld modelos mostram chuva, começando por volta das %@."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "அனைத்து %lld மாதிரிகளும் மழையைக் காட்டுகின்றன, சுமார் %@ முதல்."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cả %lld mô hình đều cho thấy mưa, bắt đầu khoảng %@."
+          }
+        }
+      }
+    },
     "All data erased": {
       "localizations": {
         "ar": {
@@ -3967,6 +4415,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bão cấp 5"
+          }
+        }
+      }
+    },
+    "Checked against Rain Truth reports; when nobody reported, against Open-Meteo's recorded rainfall (a model estimate, not a rain gauge).": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يُتحقق منها ببلاغات Rain Truth؛ وعند غيابها بالأمطار المسجلة لدى Open-Meteo (تقدير نموذج، وليس مقياس مطر)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geprüft mit Rain-Truth-Meldungen; ohne Meldungen mit dem von Open-Meteo erfassten Niederschlag (eine Modellschätzung, kein Regenmesser)."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Comprobado con reportes de Rain Truth; si nadie reportó, con la lluvia registrada por Open-Meteo (una estimación de modelo, no un pluviómetro)."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vérifié avec les signalements Rain Truth ; sans signalement, avec les précipitations enregistrées par Open-Meteo (une estimation de modèle, pas un pluviomètre)."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rain Truth रिपोर्ट से जाँचा गया; किसी ने रिपोर्ट न की हो तो Open-Meteo की दर्ज बारिश से (मॉडल का अनुमान, वर्षामापी नहीं)।"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dicek dengan laporan Rain Truth; jika tidak ada laporan, dengan curah hujan tercatat Open-Meteo (perkiraan model, bukan alat ukur hujan)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rain Truth の報告と照合。報告がない場合は Open-Meteo の記録雨量（モデル推定値で、雨量計ではありません）と照合。"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verificado com relatos do Rain Truth; quando ninguém relatou, com a chuva registrada pelo Open-Meteo (uma estimativa de modelo, não um pluviômetro)."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rain Truth அறிக்கைகளோடு சரிபார்க்கப்பட்டது; யாரும் தெரிவிக்காதபோது Open-Meteo பதிவு செய்த மழையோடு (மாதிரி மதிப்பீடு, மழைமானி அல்ல)."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đối chiếu với báo cáo Rain Truth; nếu không ai báo cáo thì với lượng mưa ghi nhận của Open-Meteo (ước tính mô hình, không phải máy đo mưa)."
           }
         }
       }
@@ -5699,6 +6211,70 @@
         }
       }
     },
+    "ECMWF (Europe)": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ECMWF (أوروبا)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ECMWF (Europa)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ECMWF (Europa)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ECMWF (Europe)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ECMWF (यूरोप)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ECMWF (Eropa)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ECMWF（欧州）"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ECMWF (Europa)"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ECMWF (ஐரோப்பா)"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ECMWF (Châu Âu)"
+          }
+        }
+      }
+    },
     "Earth (NASA Blue Marble)": {
       "localizations": {
         "ar": {
@@ -6531,6 +7107,390 @@
         }
       }
     },
+    "Forecast confidence": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الثقة في التوقعات"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorhersage-Sicherheit"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confianza del pronóstico"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fiabilité de la prévision"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पूर्वानुमान पर भरोसा"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keyakinan prakiraan"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "予報の信頼度"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confiança da previsão"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "முன்னறிவிப்பு நம்பகத்தன்மை"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Độ tin cậy dự báo"
+          }
+        }
+      }
+    },
+    "Forecast vs reality": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التوقعات مقابل الواقع"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorhersage vs. Wirklichkeit"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pronóstico vs. realidad"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prévision vs réalité"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पूर्वानुमान बनाम हकीकत"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prakiraan vs kenyataan"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "予報と実際"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previsão vs. realidade"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "முன்னறிவிப்பு vs உண்மை"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dự báo và thực tế"
+          }
+        }
+      }
+    },
+    "Forecast: dry": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التوقع: جاف"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorhersage: trocken"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pronóstico: seco"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prévision : sec"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पूर्वानुमान: सूखा"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prakiraan: kering"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "予報：雨なし"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previsão: seco"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "முன்னறிவிப்பு: மழை இல்லை"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dự báo: khô ráo"
+          }
+        }
+      }
+    },
+    "Forecast: rain": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التوقع: مطر"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorhersage: Regen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pronóstico: lluvia"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prévision : pluie"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पूर्वानुमान: बारिश"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prakiraan: hujan"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "予報：雨"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previsão: chuva"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "முன்னறிவிப்பு: மழை"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dự báo: mưa"
+          }
+        }
+      }
+    },
+    "Forecast: rain (%@ chance)": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التوقع: مطر (احتمال %@)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorhersage: Regen (%@ Wahrscheinlichkeit)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pronóstico: lluvia (probabilidad %@)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prévision : pluie (%@ de probabilité)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पूर्वानुमान: बारिश (%@ संभावना)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prakiraan: hujan (peluang %@)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "予報：雨（降水確率 %@）"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previsão: chuva (chance de %@)"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "முன்னறிவிப்பு: மழை (%@ வாய்ப்பு)"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dự báo: mưa (khả năng %@)"
+          }
+        }
+      }
+    },
+    "Four independent weather models, next 12 hours. When they agree, the forecast is more reliable.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أربعة نماذج طقس مستقلة، للساعات الـ12 القادمة. عندما تتفق، تكون التوقعات أكثر موثوقية."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vier unabhängige Wettermodelle, nächste 12 Stunden. Wenn sie übereinstimmen, ist die Vorhersage zuverlässiger."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuatro modelos meteorológicos independientes, próximas 12 horas. Cuando coinciden, el pronóstico es más fiable."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quatre modèles météo indépendants, 12 prochaines heures. Quand ils concordent, la prévision est plus fiable."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "चार स्वतंत्र मौसम मॉडल, अगले 12 घंटे। जब वे सहमत हों, तो पूर्वानुमान ज़्यादा भरोसेमंद होता है।"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Empat model cuaca independen, 12 jam ke depan. Jika sepakat, prakiraan lebih dapat diandalkan."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "独立した4つの予報モデル、今後12時間。一致しているほど予報の信頼性が高まります。"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quatro modelos meteorológicos independentes, próximas 12 horas. Quando concordam, a previsão é mais confiável."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "நான்கு தனித்தனி வானிலை மாதிரிகள், அடுத்த 12 மணி நேரம். அவை ஒத்துப்போனால் முன்னறிவிப்பு அதிக நம்பகமானது."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bốn mô hình thời tiết độc lập, 12 giờ tới. Khi chúng thống nhất, dự báo đáng tin cậy hơn."
+          }
+        }
+      }
+    },
     "Free": {
       "localizations": {
         "ar": {
@@ -6911,6 +7871,134 @@
           "stringUnit": {
             "state": "translated",
             "value": "Từ %@"
+          }
+        }
+      }
+    },
+    "GEM (Canada)": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GEM (كندا)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GEM (Kanada)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GEM (Canadá)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GEM (Canada)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GEM (कनाडा)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GEM (Kanada)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GEM（カナダ）"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GEM (Canadá)"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GEM (கனடா)"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GEM (Canada)"
+          }
+        }
+      }
+    },
+    "GFS (USA)": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GFS (الولايات المتحدة)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GFS (USA)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GFS (EE. UU.)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GFS (États-Unis)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GFS (अमेरिका)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GFS (AS)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GFS（米国）"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GFS (EUA)"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GFS (அமெரிக்கா)"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GFS (Mỹ)"
           }
         }
       }
@@ -7811,6 +8899,70 @@
         }
       }
     },
+    "High confidence": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ثقة عالية"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hohe Sicherheit"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confianza alta"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confiance élevée"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "उच्च भरोसा"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keyakinan tinggi"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "信頼度：高"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confiança alta"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "அதிக நம்பகத்தன்மை"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Độ tin cậy cao"
+          }
+        }
+      }
+    },
     "Hourly": {
       "localizations": {
         "ar": {
@@ -8003,6 +9155,70 @@
         }
       }
     },
+    "ICON (Germany)": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ICON (ألمانيا)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ICON (Deutschland)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ICON (Alemania)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ICON (Allemagne)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ICON (जर्मनी)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ICON (Jerman)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ICON（ドイツ）"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ICON (Alemanha)"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ICON (ஜெர்மனி)"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ICON (Đức)"
+          }
+        }
+      }
+    },
     "Is it raining where you are?": {
       "localizations": {
         "ar": {
@@ -8063,6 +9279,134 @@
           "stringUnit": {
             "state": "translated",
             "value": "Chỗ bạn có đang mưa không?"
+          }
+        }
+      }
+    },
+    "Issued by %@ · via Apple Weather": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صادر عن %@ · عبر Apple Weather"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Herausgegeben von %@ · über Apple Weather"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Emitido por %@ · vía Apple Weather"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Émis par %@ · via Apple Weather"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "जारीकर्ता: %@ · Apple Weather के ज़रिए"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dikeluarkan oleh %@ · melalui Apple Weather"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "発表：%@ · Apple Weather 経由"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Emitido por %@ · via Apple Weather"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "வெளியிட்டது: %@ · Apple Weather வழியாக"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phát hành bởi %@ · qua Apple Weather"
+          }
+        }
+      }
+    },
+    "Issued by %@ · via NDMA SACHET": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صادر عن %@ · عبر NDMA SACHET"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Herausgegeben von %@ · über NDMA SACHET"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Emitido por %@ · vía NDMA SACHET"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Émis par %@ · via NDMA SACHET"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "जारीकर्ता: %@ · NDMA SACHET के ज़रिए"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dikeluarkan oleh %@ · melalui NDMA SACHET"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "発表：%@ · NDMA SACHET 経由"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Emitido por %@ · via NDMA SACHET"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "வெளியிட்டது: %@ · NDMA SACHET வழியாக"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Phát hành bởi %@ · qua NDMA SACHET"
           }
         }
       }
@@ -9027,6 +10371,70 @@
         }
       }
     },
+    "Low confidence": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ثقة منخفضة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geringe Sicherheit"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confianza baja"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confiance faible"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कम भरोसा"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keyakinan rendah"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "信頼度：低"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confiança baixa"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "குறைந்த நம்பகத்தன்மை"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Độ tin cậy thấp"
+          }
+        }
+      }
+    },
     "Manage subscription": {
       "localizations": {
         "ar": {
@@ -9343,6 +10751,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "Kiểu bản đồ"
+          }
+        }
+      }
+    },
+    "Medium confidence": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ثقة متوسطة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mittlere Sicherheit"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confianza media"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confiance moyenne"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मध्यम भरोसा"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keyakinan sedang"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "信頼度：中"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confiança média"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "நடுத்தர நம்பகத்தன்மை"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Độ tin cậy trung bình"
           }
         }
       }
@@ -10243,6 +11715,70 @@
         }
       }
     },
+    "No rain": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا مطر"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kein Regen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sin lluvia"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pas de pluie"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बारिश नहीं"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak hujan"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雨なし"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sem chuva"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "மழை இல்லை"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Không mưa"
+          }
+        }
+      }
+    },
     "No rain expected for the next 3 hours.": {
       "localizations": {
         "ar": {
@@ -10943,6 +12479,262 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bây giờ"
+          }
+        }
+      }
+    },
+    "Official warning": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تحذير رسمي"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amtliche Warnung"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aviso oficial"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alerte officielle"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आधिकारिक चेतावनी"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peringatan resmi"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "公式警報"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alerta oficial"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "அதிகாரப்பூர்வ எச்சரிக்கை"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cảnh báo chính thức"
+          }
+        }
+      }
+    },
+    "Official warning: %@": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تحذير رسمي: %@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amtliche Warnung: %@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aviso oficial: %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alerte officielle : %@"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आधिकारिक चेतावनी: %@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peringatan resmi: %@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "公式警報：%@"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alerta oficial: %@"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "அதிகாரப்பூர்வ எச்சரிக்கை: %@"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cảnh báo chính thức: %@"
+          }
+        }
+      }
+    },
+    "Official warnings": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التحذيرات الرسمية"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amtliche Warnungen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avisos oficiales"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alertes officielles"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आधिकारिक चेतावनियाँ"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peringatan resmi"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "公式警報"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alertas oficiais"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "அதிகாரப்பூர்வ எச்சரிக்கைகள்"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cảnh báo chính thức"
+          }
+        }
+      }
+    },
+    "Official warnings come from government weather agencies and are free on every plan.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تأتي التحذيرات الرسمية من وكالات الأرصاد الحكومية وهي مجانية في كل الخطط."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amtliche Warnungen stammen von staatlichen Wetterdiensten und sind in jedem Tarif kostenlos."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los avisos oficiales vienen de agencias meteorológicas del gobierno y son gratis en todos los planes."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les alertes officielles proviennent des services météo gouvernementaux et sont gratuites dans toutes les formules."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "आधिकारिक चेतावनियाँ सरकारी मौसम एजेंसियों से आती हैं और हर प्लान में मुफ़्त हैं।"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peringatan resmi berasal dari badan cuaca pemerintah dan gratis di semua paket."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "公式警報は政府の気象機関が発表するもので、すべてのプランで無料です。"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os alertas oficiais vêm de agências meteorológicas do governo e são grátis em todos os planos."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "அதிகாரப்பூர்வ எச்சரிக்கைகள் அரசு வானிலை நிறுவனங்களிடமிருந்து வருகின்றன, எல்லா திட்டங்களிலும் இலவசம்."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cảnh báo chính thức đến từ cơ quan khí tượng nhà nước và miễn phí ở mọi gói."
           }
         }
       }
@@ -12675,6 +14467,70 @@
         }
       }
     },
+    "Rain from %@": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مطر من %@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regen ab %@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lluvia desde las %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pluie dès %@"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ से बारिश"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hujan mulai %@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@から雨"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chuva a partir das %@"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ முதல் மழை"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mưa từ %@"
+          }
+        }
+      }
+    },
     "Rain in about %lld min": {
       "localizations": {
         "ar": {
@@ -13763,6 +15619,70 @@
         }
       }
     },
+    "RainPulse is keeping score here. Each forecast is checked against what really happened — results appear within a day.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يسجّل RainPulse النتائج هنا. تُقارن كل توقعات بما حدث فعلًا — تظهر النتائج خلال يوم."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RainPulse führt hier Buch. Jede Vorhersage wird mit dem tatsächlichen Wetter verglichen – Ergebnisse erscheinen innerhalb eines Tages."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RainPulse lleva la cuenta aquí. Cada pronóstico se compara con lo que pasó de verdad; los resultados aparecen en un día."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RainPulse tient les comptes ici. Chaque prévision est comparée à ce qui s'est vraiment passé — résultats sous un jour."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RainPulse यहाँ हिसाब रख रहा है। हर पूर्वानुमान की तुलना असल में हुए मौसम से होती है — नतीजे एक दिन में दिखेंगे।"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RainPulse sedang mencatat di sini. Setiap prakiraan dicek dengan kejadian sebenarnya — hasil muncul dalam sehari."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RainPulse がこの地点の成績を記録中です。各予報を実際の天気と照合し、1日以内に結果が表示されます。"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O RainPulse está registrando aqui. Cada previsão é comparada com o que realmente aconteceu — os resultados aparecem em um dia."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RainPulse இங்கே மதிப்பெண் வைத்துக்கொண்டிருக்கிறது. ஒவ்வொரு முன்னறிவிப்பும் உண்மையில் நடந்ததோடு ஒப்பிடப்படுகிறது — முடிவுகள் ஒரு நாளில் தெரியும்."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "RainPulse đang ghi điểm tại đây. Mỗi dự báo được so với thực tế — kết quả hiện trong vòng một ngày."
+          }
+        }
+      }
+    },
     "RainPulse is locked": {
       "localizations": {
         "ar": {
@@ -13951,6 +15871,262 @@
           "stringUnit": {
             "state": "translated",
             "value": "Đánh giá RainPulse"
+          }
+        }
+      }
+    },
+    "Reality: %@ recorded": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الواقع: %@ مسجلة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wirklichkeit: %@ erfasst"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Realidad: %@ registrados"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réalité : %@ enregistrés"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हकीकत: %@ दर्ज"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kenyataan: %@ tercatat"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "実際：%@ を記録"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Realidade: %@ registrados"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "உண்மை: %@ பதிவானது"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thực tế: ghi nhận %@"
+          }
+        }
+      }
+    },
+    "Reality: %lld of %lld Rain Truth reports said dry": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الواقع: %lld من %lld بلاغات Rain Truth قالت جاف"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wirklichkeit: %lld von %lld Rain-Truth-Meldungen sagten trocken"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Realidad: %lld de %lld reportes de Rain Truth dijeron seco"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réalité : %lld signalements Rain Truth sur %lld indiquaient du sec"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हकीकत: %lld में से %lld Rain Truth रिपोर्ट में सूखा"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kenyataan: %lld dari %lld laporan Rain Truth menyebut kering"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "実際：Rain Truth の報告 %lld / %lld 件が雨なし"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Realidade: %lld de %lld relatos do Rain Truth disseram seco"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "உண்மை: %lld / %lld Rain Truth அறிக்கைகள் மழை இல்லை என்றன"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thực tế: %lld trên %lld báo cáo Rain Truth nói khô ráo"
+          }
+        }
+      }
+    },
+    "Reality: %lld of %lld Rain Truth reports said rain": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الواقع: %lld من %lld بلاغات Rain Truth قالت مطر"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wirklichkeit: %lld von %lld Rain-Truth-Meldungen sagten Regen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Realidad: %lld de %lld reportes de Rain Truth dijeron lluvia"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réalité : %lld signalements Rain Truth sur %lld indiquaient de la pluie"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हकीकत: %lld में से %lld Rain Truth रिपोर्ट में बारिश"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kenyataan: %lld dari %lld laporan Rain Truth menyebut hujan"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "実際：Rain Truth の報告 %lld / %lld 件が雨"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Realidade: %lld de %lld relatos do Rain Truth disseram chuva"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "உண்மை: %lld / %lld Rain Truth அறிக்கைகள் மழை என்றன"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thực tế: %lld trên %lld báo cáo Rain Truth nói có mưa"
+          }
+        }
+      }
+    },
+    "Reality: no rain recorded": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الواقع: لم يُسجل مطر"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wirklichkeit: kein Regen erfasst"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Realidad: sin lluvia registrada"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réalité : aucune pluie enregistrée"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हकीकत: कोई बारिश दर्ज नहीं"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kenyataan: tidak ada hujan tercatat"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "実際：雨の記録なし"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Realidade: sem chuva registrada"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "உண்மை: மழை பதிவாகவில்லை"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thực tế: không ghi nhận mưa"
           }
         }
       }
@@ -15235,6 +17411,70 @@
         }
       }
     },
+    "Show fewer": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عرض أقل"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weniger anzeigen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar menos"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afficher moins"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कम दिखाएँ"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tampilkan lebih sedikit"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "表示を減らす"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar menos"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "குறைவாகக் காட்டு"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ẩn bớt"
+          }
+        }
+      }
+    },
     "Show rain forecast in animation": {
       "localizations": {
         "ar": {
@@ -16191,6 +18431,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cảm ơn! Báo cáo của bạn đã có trên bản đồ."
+          }
+        }
+      }
+    },
+    "The agency's own wording. Follow local authorities' instructions.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نص الجهة الأصلي. اتبع تعليمات السلطات المحلية."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Originaltext der Behörde. Folge den Anweisungen der örtlichen Behörden."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Texto original de la agencia. Sigue las indicaciones de las autoridades locales."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Texte original de l'organisme. Suivez les consignes des autorités locales."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "एजेंसी के अपने शब्द। स्थानीय अधिकारियों के निर्देशों का पालन करें।"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kata-kata asli dari lembaga. Ikuti petunjuk otoritas setempat."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "発表機関の原文です。地元当局の指示に従ってください。"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Texto original da agência. Siga as instruções das autoridades locais."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "நிறுவனத்தின் சொந்த வார்த்தைகள். உள்ளூர் அதிகாரிகளின் அறிவுறுத்தல்களைப் பின்பற்றுங்கள்."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nguyên văn của cơ quan ban hành. Hãy làm theo hướng dẫn của chính quyền địa phương."
           }
         }
       }
@@ -17923,6 +20227,70 @@
         }
       }
     },
+    "Until %@": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حتى %@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bis %@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hasta las %@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jusqu'à %@"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ तक"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sampai %@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@まで"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Até %@"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ வரை"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Đến %@"
+          }
+        }
+      }
+    },
     "Updated %@": {
       "localizations": {
         "ar": {
@@ -19203,6 +21571,70 @@
         }
       }
     },
+    "Weather models disagree: %lld of %lld show rain in the next 12 hours.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "النماذج غير متفقة: %lld من %lld تُظهر مطرًا خلال الـ12 ساعة القادمة."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Wettermodelle sind uneins: %lld von %lld zeigen Regen in den nächsten 12 Stunden."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los modelos no coinciden: %lld de %lld muestran lluvia en las próximas 12 horas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les modèles ne sont pas d'accord : %lld sur %lld prévoient de la pluie dans les 12 prochaines heures."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मौसम मॉडल असहमत हैं: %lld में से %lld अगले 12 घंटे में बारिश दिखाते हैं।"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Model cuaca tidak sepakat: %lld dari %lld menunjukkan hujan dalam 12 jam ke depan."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "予報モデルの見解が分かれています：%lld / %lld が今後12時間に雨を予想。"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os modelos discordam: %lld de %lld mostram chuva nas próximas 12 horas."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "வானிலை மாதிரிகள் ஒத்துப்போகவில்லை: %lld / %lld அடுத்த 12 மணி நேரத்தில் மழையைக் காட்டுகின்றன."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Các mô hình không thống nhất: %lld trên %lld cho thấy mưa trong 12 giờ tới."
+          }
+        }
+      }
+    },
     "Weather services get your location rounded to about 1 km": {
       "localizations": {
         "ar": {
@@ -19263,6 +21695,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "Dịch vụ thời tiết chỉ nhận vị trí làm tròn khoảng 1 km"
+          }
+        }
+      }
+    },
+    "What each model says": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ماذا يقول كل نموذج"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Was jedes Modell sagt"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qué dice cada modelo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce que dit chaque modèle"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हर मॉडल क्या कहता है"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kata setiap model"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "各モデルの予想"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O que cada modelo diz"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ஒவ்வொரு மாதிரியும் என்ன சொல்கிறது"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Từng mô hình dự báo gì"
           }
         }
       }
@@ -19647,6 +22143,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "Hàng năm"
+          }
+        }
+      }
+    },
+    "Yesterday": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أمس"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gestern"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayer"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hier"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कल"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kemarin"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "昨日"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ontem"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "நேற்று"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hôm qua"
           }
         }
       }
@@ -20351,6 +22911,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "bây giờ"
+          }
+        }
+      }
+    },
+    "of rain forecasts were right here in the last 7 days": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "من توقعات المطر كانت صحيحة هنا في آخر 7 أيام"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "der Regenvorhersagen lagen hier in den letzten 7 Tagen richtig"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "de los pronósticos de lluvia acertaron aquí en los últimos 7 días"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "des prévisions de pluie étaient justes ici ces 7 derniers jours"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बारिश के पूर्वानुमान यहाँ पिछले 7 दिनों में सही रहे"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "prakiraan hujan tepat di sini dalam 7 hari terakhir"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この地点で過去7日間に的中した雨予報の割合"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "das previsões de chuva acertaram aqui nos últimos 7 dias"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "மழை முன்னறிவிப்புகள் கடந்த 7 நாட்களில் இங்கே சரியாக இருந்தன"
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "dự báo mưa đúng tại đây trong 7 ngày qua"
           }
         }
       }

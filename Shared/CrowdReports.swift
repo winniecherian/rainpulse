@@ -85,6 +85,16 @@ enum ReportKeys {
         return names
     }
 
+    /// Every record name for one cell over a past time window (used to check old forecasts).
+    static func namesIn(cell: String, from start: Date, to end: Date) -> [String] {
+        var names: [String] = []
+        let r0 = bucket(start, size: rainBucket), r1 = bucket(end.addingTimeInterval(-1), size: rainBucket)
+        if r1 >= r0 { for b in r0...r1 { for s in 0..<rainSlots { names.append("r-\(cell)-\(b)-\(s)") } } }
+        let f0 = bucket(start, size: floodBucket), f1 = bucket(end.addingTimeInterval(-1), size: floodBucket)
+        if f1 >= f0 { for b in f0...f1 { for s in 0..<floodSlots { names.append("f-\(cell)-\(b)-\(s)") } } }
+        return names
+    }
+
     /// Rounds a coordinate to 3 decimals (about 100 m) so reports never reveal an exact spot.
     static func approximate(_ v: Double) -> Double { (v * 1000).rounded() / 1000 }
 }

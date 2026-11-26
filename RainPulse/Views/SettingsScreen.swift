@@ -8,6 +8,7 @@ struct SettingsScreen: View {
     @EnvironmentObject private var store: StoreManager
 
     @AppStorage(AlertSettings.enabledKey, store: AppConfig.sharedDefaults) private var alertsEnabled = false
+    @AppStorage(AlertSettings.officialKey, store: AppConfig.sharedDefaults) private var officialEnabled = true
     @AppStorage(AlertSettings.leadMinutesKey, store: AppConfig.sharedDefaults) private var leadMinutes = 30
     @AppStorage(AlertSettings.thresholdKey, store: AppConfig.sharedDefaults) private var threshold = 0.1
     @AppStorage("radar.opacity") private var opacity = 0.75
@@ -70,12 +71,21 @@ struct SettingsScreen: View {
                         Text("Heavy rain only").tag(2.0)
                     }
                     .disabled(!alertsEnabled)
+                    Toggle("Official warnings", isOn: $officialEnabled)
+                        .onChange(of: officialEnabled) { _, on in
+                            guard on else { return }
+                            Task {
+                                if !(await RainAlertService.requestPermission()) { officialEnabled = false; notificationsDenied = true }
+                            }
+                        }
+                        .accessibilityIdentifier("settings.official")
                 } header: {
                     Text("Alerts")
                 } footer: {
                     Text(store.tier == .free
                          ? "Free: alerts for your current location. Essential and Pro: alerts for all saved places."
                          : "Alerts cover your current location and every saved place with the bell on. iOS decides exactly when background checks run.")
+                    + Text(" ") + Text("Official warnings come from government weather agencies and are free on every plan.")
                 }
 
                 Section("Map") {

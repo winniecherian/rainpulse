@@ -125,6 +125,10 @@ enum AlertSettings {
 
     static var enabled: Bool { SharedStore.defaults.bool(forKey: enabledKey) }
 
+    /// Official government warnings (severe and extreme). On by default, on every plan.
+    static let officialKey = "alerts.official"
+    static var officialEnabled: Bool { SharedStore.defaults.object(forKey: officialKey) as? Bool ?? true }
+
     static var leadMinutes: Int {
         let v = SharedStore.defaults.integer(forKey: leadMinutesKey)
         return v == 0 ? 30 : v

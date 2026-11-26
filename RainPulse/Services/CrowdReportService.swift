@@ -74,6 +74,20 @@ actor CrowdReportService {
         return merged(found)
     }
 
+    /// Reports in one cell during a past window (for "forecast vs reality").
+    func reports(inCell cell: String, from start: Date, to end: Date) async -> [CrowdReport] {
+        if AppConfig.isUITest { return [] }
+        let own = mine.filter { $0.time >= start && $0.time < end && Geohash.encode($0.coordinate, precision: ReportKeys.precision) == cell }
+        guard let db = database else { return own }
+        let names = ReportKeys.namesIn(cell: cell, from: start, to: end)
+        var found: [CrowdReport] = []
+        for chunk in stride(from: 0, to: names.count, by: 200).map({ Array(names[$0..<min($0 + 200, names.count)]) }) {
+            found += await fetch(chunk.map { CKRecord.ID(recordName: $0) }, from: db)
+        }
+        let ids = Set(found.map(\.id))
+        return found + own.filter { !ids.contains($0.id) }
+    }
+
     /// Adds the user's own recent reports so they show up immediately.
     private func merged(_ list: [CrowdReport]) -> [CrowdReport] {
         let ids = Set(list.map(\.id))

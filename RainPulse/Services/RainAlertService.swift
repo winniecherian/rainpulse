@@ -23,11 +23,27 @@ enum RainAlertService {
 
     /// Runs a check across all alert places.
     static func checkAll() async {
-        guard AlertSettings.enabled else { return }
         let tier = SharedStore.tier
+        let current = SharedStore.lastLocation
+
+        // Official warnings: free on every plan, current location plus places with the bell on.
+        if AlertSettings.officialEnabled {
+            var official: [Place] = current.map { [$0] } ?? []
+            official += SharedStore.loadPlaces().filter(\.alertsEnabled)
+            await checkOfficial(near: Array(official.prefix(6)))
+        }
+
+        guard AlertSettings.enabled else {
+            // Still keep the "forecast vs reality" record for the current location.
+            if let current, let f = try? await ForecastService.shared.forecast(
+                latitude: current.latitude, longitude: current.longitude, days: 1, maxAge: 900) {
+                await LedgerService.shared.record(f, place: current)
+            }
+            return
+        }
 
         var targets: [Place] = []
-        if let current = SharedStore.lastLocation { targets.append(current) }
+        if let current { targets.append(current) }
         if tier >= .essential {
             targets += SharedStore.loadPlaces().filter(\.alertsEnabled)
         }
@@ -38,9 +54,34 @@ enum RainAlertService {
             guard let forecast = try? await ForecastService.shared.forecast(
                 latitude: place.latitude, longitude: place.longitude, days: 1, maxAge: 300) else { continue }
             await evaluate(forecast, for: place)
+            await LedgerService.shared.record(forecast, place: place)
         }
         await checkCyclones(near: targets)
         await checkFloods(near: targets)
+    }
+
+    private static let officialNotifiedKey = "alerts.officialNotified"
+
+    /// One notification per severe or extreme government warning covering a watched place.
+    private static func checkOfficial(near targets: [Place]) async {
+        var notified = Set(SharedStore.defaults.stringArray(forKey: officialNotifiedKey) ?? [])
+        for place in targets {
+            if Task.isCancelled { break }
+            let alerts = await OfficialAlertService.shared.alerts(latitude: place.latitude, longitude: place.longitude)
+            for alert in alerts where OfficialAlertLogic.shouldNotify(alert, alreadyNotified: notified) {
+                let content = UNMutableNotificationContent()
+                content.title = String(localized: "Official warning: \(alert.event)")
+                content.body = alert.headline
+                content.subtitle = alert.agency
+                content.sound = .default
+                content.interruptionLevel = alert.severity == .extreme ? .timeSensitive : .active
+                content.threadIdentifier = "official"
+                let req = UNNotificationRequest(identifier: "official-\(alert.id)", content: content, trigger: nil)
+                try? await UNUserNotificationCenter.current().add(req)
+                notified.insert(alert.id)
+            }
+        }
+        SharedStore.defaults.set(Array(notified.suffix(300)), forKey: officialNotifiedKey)
     }
 
     private static let floodNotifiedKey = "alerts.floodsNotified"
