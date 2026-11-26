@@ -1,6 +1,7 @@
 import XCTest
 import CoreLocation
 import UIKit
+import CloudKit
 @testable import RainPulse
 
 /// Tests for Rain Truth (crowd reports), the Leave-now window, the one-line summary and NASA map styles.
@@ -221,5 +222,19 @@ final class MapStyleTests: XCTestCase {
         XCTAssertEqual(NASAStyle.cityLights.overlays().count, 1)
         XCTAssertNil(NASAStyle.from(3))
         XCTAssertEqual(RadarMapView.Coordinator.interfaceStyle(for: 6), .dark)
+    }
+}
+
+final class ReportErrorTests: XCTestCase {
+    func testCloudKitErrorsBecomeFriendlyMessages() {
+        XCTAssertEqual(CrowdReportService.describe(CKError(.networkUnavailable)).message,
+                       "No internet connection. Try again in a moment.")
+        XCTAssertEqual(CrowdReportService.describe(CKError(.notAuthenticated)).message,
+                       "Sign in to iCloud in Settings to send reports.")
+        XCTAssertEqual(CrowdReportService.describe(CKError(.requestRateLimited)).message,
+                       "Reports are busy right now. Try again in a minute.")
+        let rejected = CrowdReportService.describe(CKError(.serverRejectedRequest))
+        XCTAssertEqual(rejected.message, "Reports aren't available right now.")
+        XCTAssertFalse(rejected.message.contains("CKRecordID"), "never show raw CloudKit text")
     }
 }

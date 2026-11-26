@@ -9,6 +9,7 @@ struct ReportSheet: View {
     @Environment(\.dismiss) private var dismiss
     @State private var sending: ReportCondition?
     @State private var message: String?
+    @State private var detail: String?
     @State private var sent = false
 
     var body: some View {
@@ -43,6 +44,16 @@ struct ReportSheet: View {
                         .font(.subheadline)
                         .foregroundStyle(sent ? .green : .secondary)
                         .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
+                    if let detail {
+                        // TestFlight only: full technical reason, selectable so it can be copied.
+                        Text(detail)
+                            .font(.caption2.monospaced())
+                            .foregroundStyle(.secondary)
+                            .textSelection(.enabled)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .accessibilityIdentifier("report.detail")
+                    }
                 } else if coordinate == nil {
                     Label("Turn on location to send a report.", systemImage: "location.slash")
                         .font(.subheadline).foregroundStyle(.secondary)
@@ -50,6 +61,7 @@ struct ReportSheet: View {
                 Spacer(minLength: 0)
                 Text("Reports are anonymous and share only an approximate location (about 100 m). They help people nearby see where it's really raining.")
                     .font(.caption).foregroundStyle(.secondary).multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             .padding()
             .navigationTitle("Report weather")
@@ -76,7 +88,9 @@ struct ReportSheet: View {
                 try? await Task.sleep(for: .seconds(1.2))
                 dismiss()
             } catch {
-                message = error.localizedDescription
+                let d = CrowdReportService.describe(error)
+                message = d.message
+                detail = d.detail
             }
             sending = nil
         }

@@ -9,9 +9,11 @@ actor CrowdReportService {
     static let shared = CrowdReportService()
 
     enum SubmitError: LocalizedError {
-        case unavailable, noAccount, tooSoon, full
+        case unavailable, noAccount, tooSoon, full, offline, busy
         var errorDescription: String? {
             switch self {
+            case .offline: return String(localized: "No internet connection. Try again in a moment.")
+            case .busy: return String(localized: "Reports are busy right now. Try again in a minute.")
             case .unavailable: return String(localized: "Reports aren't available right now.")
             case .noAccount: return String(localized: "Sign in to iCloud in Settings to send reports.")
             case .tooSoon: return String(localized: "Thanks! You can send another report in a few minutes.")
@@ -19,6 +21,29 @@ actor CrowdReportService {
             }
         }
     }
+
+    /// Turns a CloudKit error into a friendly message, plus technical detail for TestFlight testers.
+    static func describe(_ error: Error) -> (message: String, detail: String?) {
+        if let e = error as? SubmitError { return (e.localizedDescription, nil) }
+        guard let ck = error as? CKError else {
+            return (SubmitError.unavailable.localizedDescription, isTestFlight ? error.localizedDescription : nil)
+        }
+        let friendly: SubmitError
+        switch ck.code {
+        case .notAuthenticated: friendly = .noAccount
+        case .networkUnavailable, .networkFailure: friendly = .offline
+        case .requestRateLimited, .zoneBusy, .serviceUnavailable, .quotaExceeded: friendly = .busy
+        default: friendly = .unavailable
+        }
+        // CloudKit hides the server's reason in the description after "to server:".
+        var reason = ck.localizedDescription
+        if let r = reason.range(of: "to server:") { reason = String(reason[r.upperBound...]).trimmingCharacters(in: .whitespaces) }
+        let detail = "CKError \(ck.code.rawValue): \(reason)"
+        return (friendly.localizedDescription, isTestFlight ? detail : nil)
+    }
+
+    /// TestFlight builds carry a sandbox receipt.
+    static var isTestFlight: Bool { Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt" }
 
     static let recordType = "Report"
     private static let lastSentKey = "reports.lastSent"

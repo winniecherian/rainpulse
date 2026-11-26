@@ -10179,6 +10179,70 @@
         }
       }
     },
+    "No internet connection. Try again in a moment.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يوجد اتصال بالإنترنت. حاول مرة أخرى بعد قليل."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Internetverbindung. Versuch es gleich noch einmal."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sin conexión a internet. Inténtalo de nuevo en un momento."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pas de connexion Internet. Réessayez dans un instant."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इंटरनेट कनेक्शन नहीं है। थोड़ी देर में फिर कोशिश करें।"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada koneksi internet. Coba lagi sebentar lagi."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "インターネットに接続されていません。しばらくしてから再度お試しください。"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sem conexão com a internet. Tente novamente em instantes."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "இணைய இணைப்பு இல்லை. சிறிது நேரத்தில் மீண்டும் முயலவும்."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Không có kết nối internet. Hãy thử lại sau giây lát."
+          }
+        }
+      }
+    },
     "No location yet": {
       "localizations": {
         "ar": {
@@ -14143,6 +14207,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "Báo cáo là ẩn danh và chỉ chia sẻ vị trí gần đúng (khoảng 100 m). Chúng giúp mọi người gần đó biết nơi nào thực sự đang mưa."
+          }
+        }
+      }
+    },
+    "Reports are busy right now. Try again in a minute.": {
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "البلاغات مشغولة الآن. حاول بعد دقيقة."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meldungen sind gerade ausgelastet. Versuch es in einer Minute."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los reportes están saturados. Inténtalo en un minuto."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les signalements sont saturés. Réessayez dans une minute."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "रिपोर्ट अभी व्यस्त हैं। एक मिनट में फिर कोशिश करें।"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laporan sedang sibuk. Coba lagi dalam semenit."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "現在、報告が混み合っています。1分後にお試しください。"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Os relatos estão ocupados agora. Tente em um minuto."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "அறிக்கைகள் இப்போது பரபரப்பாக உள்ளன. ஒரு நிமிடத்தில் மீண்டும் முயலவும்."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hệ thống báo cáo đang bận. Hãy thử lại sau một phút."
           }
         }
       }
