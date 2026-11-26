@@ -63,9 +63,17 @@
 			isa = PBXBuildFile;
 			fileRef = DFDC7B90C2B1FB719E56EDED;
 		};
+		51A65850F2DE0DF24A766543 = {
+			isa = PBXBuildFile;
+			fileRef = A3E1C01EA5C1D9BFFDC0C166;
+		};
 		53B6D53188922C95A422F1BF = {
 			isa = PBXBuildFile;
 			fileRef = F299ED682B8AF4DB8ED59E17;
+		};
+		551BF6F5275D3BC05A6228F1 = {
+			isa = PBXBuildFile;
+			fileRef = 820FBE9CA22C7A741F29F30E;
 		};
 		55D95B8AC93BB18AA497C1A6 = {
 			isa = PBXBuildFile;
@@ -79,6 +87,10 @@
 			isa = PBXBuildFile;
 			fileRef = AFE8D4616B856A33797AA5DA;
 		};
+		5E9F8379DC6FB9C83C55216A = {
+			isa = PBXBuildFile;
+			fileRef = A3E1C01EA5C1D9BFFDC0C166;
+		};
 		5EA743B5B8FAB3A376A52E73 = {
 			isa = PBXBuildFile;
 			fileRef = D60F40CC0DD24139B8085986;
@@ -87,9 +99,17 @@
 			isa = PBXBuildFile;
 			fileRef = 2D60FBA9057F22BB2A96D7BB;
 		};
+		606E92309CE41DC4C4BBE9BB = {
+			isa = PBXBuildFile;
+			fileRef = 81C4C161812937E01A5F52DF;
+		};
 		61FB6293C73ED386BCED2182 = {
 			isa = PBXBuildFile;
 			fileRef = DCC61033D8E1C2DBAF83E3B6;
+		};
+		637E4E86F4E47080964DBA38 = {
+			isa = PBXBuildFile;
+			fileRef = 2AD2CA07C084B8373F977DD3;
 		};
 		64BBD1BFE6A69547DDB0A9AE = {
 			isa = PBXBuildFile;
@@ -106,6 +126,10 @@
 		6F4281E4C4C85E30AA430688 = {
 			isa = PBXBuildFile;
 			fileRef = 3AAA4A0606300572843478F6;
+		};
+		7C643766F1BE1C5727ED771D = {
+			isa = PBXBuildFile;
+			fileRef = 15DC3DDCEE83D043B0D9CC48;
 		};
 		7CE8FBD07EF56A63C41497E4 = {
 			isa = PBXBuildFile;
@@ -168,6 +192,10 @@
 			isa = PBXBuildFile;
 			fileRef = D7DD1C1D506F49C6325EAB12;
 		};
+		AFF45D84ECD03BC0351E0B43 = {
+			isa = PBXBuildFile;
+			fileRef = B1D1709FC39765237E061CAD;
+		};
 		B0E9005BD998205C5E70ECB5 = {
 			isa = PBXBuildFile;
 			fileRef = 61F9B2A9C2A56ED00AC4F5CD;
@@ -208,6 +236,10 @@
 			isa = PBXBuildFile;
 			fileRef = 2B29E92D0FAA5FB872DE3F63;
 		};
+		C627718D937757E01DE4EE74 = {
+			isa = PBXBuildFile;
+			fileRef = 848D0B42A23F5722B87500CB;
+		};
 		D14E125F82D6FEB44360A026 = {
 			isa = PBXBuildFile;
 			fileRef = 69FCE32EEDC846DBAC3A9F62;
@@ -232,6 +264,10 @@
 			isa = PBXBuildFile;
 			fileRef = A85714789790D6F02985AA76;
 		};
+		D870852EF59CDCB358A2900D = {
+			isa = PBXBuildFile;
+			fileRef = 2AD2CA07C084B8373F977DD3;
+		};
 		D940A1C0B4C794645F5A6441 = {
 			isa = PBXBuildFile;
 			fileRef = BEFB70019C362D50E26007B1;
@@ -255,6 +291,10 @@
 		EFDDDCBC410AE4E365C34B76 = {
 			isa = PBXBuildFile;
 			fileRef = A17F5F51F28B7EA98279CAE8;
+		};
+		FCC5CCD21AEE57FD01B5BE1F = {
+			isa = PBXBuildFile;
+			fileRef = 848D0B42A23F5722B87500CB;
 		};
 		FD04DC6F53C3200D1F3CECE3 = {
 			isa = PBXBuildFile;
@@ -319,6 +359,12 @@
 			path = RadarScreen.swift;
 			sourceTree = "<group>";
 		};
+		15DC3DDCEE83D043B0D9CC48 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = LedgerService.swift;
+			sourceTree = "<group>";
+		};
 		1F92283475BDD017C609F6BC = {
 			isa = PBXFileReference;
 			lastKnownFileType = text.xcconfig;
@@ -341,6 +387,12 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = AppLock.swift;
+			sourceTree = "<group>";
+		};
+		2AD2CA07C084B8373F977DD3 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = ForecastLedger.swift;
 			sourceTree = "<group>";
 		};
 		2B29E92D0FAA5FB872DE3F63 = {
@@ -447,10 +499,28 @@
 			path = "RainPulse-iCloud.entitlements";
 			sourceTree = "<group>";
 		};
+		81C4C161812937E01A5F52DF = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = OfficialAlertService.swift;
+			sourceTree = "<group>";
+		};
+		820FBE9CA22C7A741F29F30E = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = TrustFeatureTests.swift;
+			sourceTree = "<group>";
+		};
 		83897A82C22C2F9D4C5D9D73 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = LocationManager.swift;
+			sourceTree = "<group>";
+		};
+		848D0B42A23F5722B87500CB = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = OfficialAlerts.swift;
 			sourceTree = "<group>";
 		};
 		9AE15B7E306640932D1D4A7D = {
@@ -478,6 +548,12 @@
 			path = RainPulse.entitlements;
 			sourceTree = "<group>";
 		};
+		A3E1C01EA5C1D9BFFDC0C166 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = ForecastConfidence.swift;
+			sourceTree = "<group>";
+		};
 		A4EC6CEDCC2D9A1AEA1EB23A = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
@@ -500,6 +576,12 @@
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.swift;
 			path = RadarRecolor.swift;
+			sourceTree = "<group>";
+		};
+		B1D1709FC39765237E061CAD = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.swift;
+			path = TrustViews.swift;
 			sourceTree = "<group>";
 		};
 		B370332896EFCD2A84746792 = {
@@ -718,6 +800,7 @@
 			children = (
 				066E01376623070F9A62E3E4,
 				A85714789790D6F02985AA76,
+				820FBE9CA22C7A741F29F30E,
 				BEFB70019C362D50E26007B1,
 			);
 			path = RainPulseTests;
@@ -771,6 +854,7 @@
 				0F1183B1E6E47136D14D5B21,
 				D7DD1C1D506F49C6325EAB12,
 				FFA87A678A0C0CD5DFDE3CF4,
+				B1D1709FC39765237E061CAD,
 				9AE15B7E306640932D1D4A7D,
 			);
 			path = Views;
@@ -801,7 +885,10 @@
 				69FCE32EEDC846DBAC3A9F62,
 				DE749D005C5BA42DC184B965,
 				3AAA4A0606300572843478F6,
+				A3E1C01EA5C1D9BFFDC0C166,
+				2AD2CA07C084B8373F977DD3,
 				65173FC8C77756FA1C649590,
+				848D0B42A23F5722B87500CB,
 				E30D5B3010161161B0C31307,
 				DCC61033D8E1C2DBAF83E3B6,
 				AFE8D4616B856A33797AA5DA,
@@ -818,7 +905,9 @@
 				25BD4AA4C2349A22A67623C5,
 				C2C8245725A5E74C0B2F4BB2,
 				D60F40CC0DD24139B8085986,
+				15DC3DDCEE83D043B0D9CC48,
 				83897A82C22C2F9D4C5D9D73,
+				81C4C161812937E01A5F52DF,
 				A4EC6CEDCC2D9A1AEA1EB23A,
 				EFB910B3717BE2C3F249B191,
 				A17F5F51F28B7EA98279CAE8,
@@ -1049,7 +1138,10 @@
 				D14E125F82D6FEB44360A026,
 				00BAEF3E53A3AC7AFF453D73,
 				17E9CCB262BA93C82B617065,
+				51A65850F2DE0DF24A766543,
+				637E4E86F4E47080964DBA38,
 				6781453130FA77FEF97CEB70,
+				C627718D937757E01DE4EE74,
 				D7E96C8CA83841C25EE812EE,
 				C29EF1A753AB592B13C017DA,
 				5C2BF6E02B15748E5A2A6152,
@@ -1069,7 +1161,10 @@
 				D7F9FFB1CDF56622005B5107,
 				A8C35A3BA75633E8DF5E8471,
 				6F4281E4C4C85E30AA430688,
+				5E9F8379DC6FB9C83C55216A,
+				D870852EF59CDCB358A2900D,
 				2B91BEAD96D81B737781EA9B,
+				FCC5CCD21AEE57FD01B5BE1F,
 				8287B453BF684ECE9B4AA126,
 				61FB6293C73ED386BCED2182,
 				911CE54FB39779EA3040DE8A,
@@ -1085,7 +1180,9 @@
 				55D95B8AC93BB18AA497C1A6,
 				1C7918AF6D5BC9794A20D382,
 				5EA743B5B8FAB3A376A52E73,
+				7C643766F1BE1C5727ED771D,
 				1C635455E7FA5965A7C43672,
+				606E92309CE41DC4C4BBE9BB,
 				D43D7529BF308FCECD330112,
 				E1DFFE5F2D7464E0E1A9CC21,
 				EFDDDCBC410AE4E365C34B76,
@@ -1098,6 +1195,7 @@
 				FD04DC6F53C3200D1F3CECE3,
 				A958707FB4814381E3A8CA07,
 				A6FD7061BA839C239EDCF0F6,
+				AFF45D84ECD03BC0351E0B43,
 				E87C21BE16805F18B24F49CD,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1117,6 +1215,7 @@
 			files = (
 				8AA1D22108DCC3B92E890B3A,
 				D85E2BC1636DDCCCF2BD0633,
+				551BF6F5275D3BC05A6228F1,
 				D940A1C0B4C794645F5A6441,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
