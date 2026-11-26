@@ -31,6 +31,6 @@ TOMORROW_API_KEY =
 OPEN_METEO_API_KEY =
 
 // "//" starts a comment in xcconfig files, hence the $() trick.
-PRIVACY_POLICY_URL = https:/$()/winniecherian.github.io/rainpulse/privacy.html
+PRIVACY_POLICY_URL = https:/$()/rainpulse-app.web.app/privacy
 
 #include? "Secrets.xcconfig"

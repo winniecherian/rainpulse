@@ -146,7 +146,7 @@ struct SettingsScreen: View {
                     } label: {
                         Label("Rate RainPulse", systemImage: "star")
                     }
-                    Link(destination: URL(string: "https://winniecherian.github.io/rainpulse/support.html")!) {
+                    Link(destination: URL(string: "https://rainpulse-app.web.app/support")!) {
                         Label("Send feedback", systemImage: "envelope")
                     }
                 }
