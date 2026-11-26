@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>RainPulse: know exactly when it rains — rain map, rain alerts, wind and air quality</title>
-<meta name="description" content="RainPulse tells you when rain starts and stops, minute by minute. Rain Clock, live rain map, rain alerts, flooded-street warnings, cyclone tracking, wind and air quality for every city in the world. For iPhone.">
+<title>RainPulse: Rain Map &amp; Alerts – know exactly when it rains</title>
+<meta name="description" content="Know exactly when it rains, how sure the forecast is, and what's really happening on your street. Live rain map, 2-hour rain forecast, official government warnings, Rain Truth reports and a forecast that keeps score. For iPhone.">
 <meta name="theme-color" content="#0f1c2e">
 <link rel="canonical" href="https://rainpulse-app.web.app/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://rainpulse-app.web.app/">
 <meta property="og:title" content="RainPulse: know exactly when it rains">
-<meta property="og:description" content="A minute-by-minute Rain Clock, live rain map, rain alerts, cyclones, wind and air quality. No account, no ads.">
+<meta property="og:description" content="Live rain map, minute-by-minute rain forecast, official warnings and rain reports from people near you. The rain app that shows its own track record.">
 <meta property="og:image" content="https://rainpulse-app.web.app/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@NeuralOrbitX">
@@ -19,15 +19,16 @@
 <link rel="apple-touch-icon" href="img/icon-180.png">
 <link rel="preload" href="fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="site.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"MobileApplication","name":"RainPulse: Rain Map & Alerts","operatingSystem":"iOS","applicationCategory":"WeatherApplication","author":{"@type":"Organization","name":"NeuralOrbitX"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"MobileApplication","name":"RainPulse: Rain Map & Alerts","operatingSystem":"iOS 17+","applicationCategory":"WeatherApplication","author":{"@type":"Organization","name":"NeuralOrbitX"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="top">
   <a class="brand" href="./"><img src="img/icon-180.png" alt="" width="34" height="34">RainPulse</a>
   <nav aria-label="Main">
+    <a href="#different">Why RainPulse</a>
     <a href="#features">Features</a>
-    <a href="#pricing">Pricing</a>
+    <a href="#pricing">Plans</a>
     <a href="#faq">FAQ</a>
     <a class="store-mini" href="#get" data-store>Get the app</a>
   </nav>
@@ -36,27 +37,34 @@
 <main id="main">
 <section class="hero">
   <div class="hero-copy">
-    <h1>Rain in 18&nbsp;minutes.<br>Dry again by 7:40.</h1>
-    <p class="lede">RainPulse reads the next two hours of rain for where you are, minute by minute, so you know whether to leave now, wait ten minutes, or take the umbrella.</p>
+    <h1>Know exactly when it&nbsp;rains.</h1>
+    <p class="lede">A live rain map, a minute-by-minute 2-hour rain forecast, official government warnings and rain reports from people near you, in one fast, private app.</p>
     <div class="cta-row" id="get">
       <a class="store" href="https://apps.apple.com/app/id6838320608" data-store>
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.5-1-2.5-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>
         <span><small data-store-small>Coming soon on the</small>App Store</span>
       </a>
-      <p class="cta-note">Free to download. iPhone, with Home Screen and Lock Screen widgets.</p>
+      <p class="cta-note">Free for iPhone (iOS 17 or later), with optional Essential and Pro plans.</p>
     </div>
   </div>
 
   <figure class="clock" aria-label="Example Rain Clock showing the next two hours of rain">
-    <svg id="dial" viewBox="0 0 400 400" role="img">
-      <title>Rain Clock: the next 120 minutes of rain around a dial</title>
-      <g id="ticks"></g>
-      <circle cx="200" cy="200" r="118" class="face"/>
-      <line id="hand" x1="200" y1="100" x2="200" y2="74" class="hand"/>
-    </svg>
-    <div class="clock-center" aria-live="polite">
-      <span id="c-head">Rain in 18 min</span>
-      <span id="c-sub">Heavy for 25 min, then easing</span>
+    <div class="dial-wrap">
+      <svg id="dial" viewBox="0 0 400 400" role="img">
+        <title>Rain Clock: the next 120 minutes of rain around a dial</title>
+        <g id="ticks"></g>
+        <circle cx="200" cy="200" r="118" class="face"/>
+        <line id="hand" x1="200" y1="100" x2="200" y2="74" class="hand"/>
+      </svg>
+      <div class="clock-center" aria-live="polite">
+        <span id="c-head">Rain in 18 min</span>
+        <span id="c-sub">Heavy for 25 min, then easing</span>
+      </div>
+      <div class="warn-card" id="warn">
+        <span class="warn-flag">Official warning</span>
+        <strong id="w-title">Heavy rain</strong>
+        <span id="w-meta">India Meteorological Department, for Chennai district, until 9 pm</span>
+      </div>
     </div>
     <figcaption>
       <div class="cities" role="tablist" aria-label="Example cities">
@@ -65,7 +73,7 @@
         <button role="tab" aria-selected="false" data-city="mumbai">Mumbai</button>
         <button role="tab" aria-selected="false" data-city="singapore">Singapore</button>
       </div>
-      <p class="clock-note">An example forecast. Each mark on the ring is one minute; colour shows how hard it rains.</p>
+      <p class="clock-note">The Rain Clock, with example forecasts. Twelve o'clock is now; each mark is one minute, coloured by how hard it rains.</p>
       <ol class="scale" aria-label="Rain intensity colours">
         <li><i style="background:var(--r1)"></i>Drizzle</li>
         <li><i style="background:var(--r2)"></i>Light</li>
@@ -77,107 +85,185 @@
   </figure>
 </section>
 
-<section class="feature split" id="features">
-  <div class="phone"><img src="img/map.webp" alt="RainPulse rain map over England with a cyclone track and the forecast timeline" width="540" height="1170" loading="lazy"></div>
+<section class="band" id="different">
+  <div class="band-head">
+    <h2>The rain app that shows its own track&nbsp;record.</h2>
+    <p>Most weather apps never tell you whether they were right, or how sure they are. RainPulse tells you both, and checks itself against what people on the street actually see.</p>
+  </div>
+
+  <div class="duo">
+    <article class="proof">
+      <h3>Forecast vs reality</h3>
+      <p>RainPulse saves every 3-hour rain forecast before it happens, then checks what actually fell using rain reports from people nearby. When nobody reported, it uses recorded rainfall and labels it as a model estimate.</p>
+      <div class="score" aria-label="Example: 82 percent of rain forecasts were right here in the last 7 days">
+        <p class="score-num">82%</p>
+        <p class="score-label">of rain forecasts were right here in the last 7 days</p>
+        <ul class="marks" aria-hidden="true">
+          <li class="ok">✓</li><li class="ok">✓</li><li class="ok">✓</li><li class="no">✗</li><li class="ok">✓</li><li class="ok">✓</li><li class="ok">✓</li><li class="ok">✓</li><li class="no">✗</li><li class="ok">✓</li><li class="ok">✓</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="proof">
+      <h3>Forecast confidence</h3>
+      <p>RainPulse asks four independent global weather models the same question: will it rain in the next 12 hours, and when? Then it says High, Medium or Low confidence, in plain words. Tap to see what each model says.</p>
+      <div class="models" aria-label="Example: 3 of 4 weather models show rain, but disagree on timing">
+        <p class="conf"><span class="pill med">Medium confidence</span>3 of 4 weather models show rain, but disagree on timing: between 3&nbsp;pm and 9&nbsp;pm.</p>
+        <div class="model"><span>ECMWF <small>Europe</small></span><div class="track"><i style="left:25%;width:25%"></i></div></div>
+        <div class="model"><span>GFS <small>United States</small></span><div class="track"><i style="left:45%;width:30%"></i></div></div>
+        <div class="model"><span>ICON <small>Germany</small></span><div class="track"><i style="left:30%;width:40%"></i></div></div>
+        <div class="model"><span>GEM <small>Canada</small></span><div class="track dry"><em>No rain</em></div></div>
+        <div class="axis" aria-hidden="true"><span>Noon</span><span>3 pm</span><span>6 pm</span><span>9 pm</span><span>Midnight</span></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="trio">
+    <article>
+      <h3>Official warnings, free for everyone</h3>
+      <p>In India, warnings come from the government's NDMA SACHET system, which carries IMD, CWC, INCOIS and state disaster authority alerts. The app finds your district on your phone, so your location is never sent. Elsewhere, official alerts come through Apple Weather where available.</p>
+      <p>Shown in the agency's own words, with who issued it and when it expires, always kept apart from RainPulse's own forecasts. Severe warnings send a notification. Safety information is never behind a paywall.</p>
+    </article>
+    <article>
+      <h3>Rain Truth</h3>
+      <p>One tap to report what it's like outside: Dry, Drizzle, Rain, Heavy rain or Flooded street. See how many people near you reported rain in the last 15 minutes, 30 minutes or hour.</p>
+      <p>Anonymous, approximate location only, no account. Satellites and models estimate. Your neighbours know.</p>
+    </article>
+    <article>
+      <h3>Flooded-street alerts</h3>
+      <p>When people nearby report a waterlogged street, RainPulse warns others in the area. Built for monsoon cities, where the real problem isn't the rain but the flooded road on your way home.</p>
+    </article>
+  </div>
+</section>
+
+<section class="feature split">
+  <div class="phones two">
+    <div class="phone"><img src="img/report.webp" alt="The Rain Truth report sheet: Dry, Drizzle, Raining, Heavy rain and Waterlogged street" width="540" height="1170" loading="lazy"></div>
+    <div class="phone"><img src="img/forecast.webp" alt="The forecast screen with the Rain Clock, a cyclone card and a Medium confidence forecast card" width="540" height="1170" loading="lazy"></div>
+  </div>
   <div class="feature-copy">
-    <h2>Watch the rain move toward you</h2>
-    <p>Bold rain colours on a dark map, so showers stand out at a glance. Press play to see the last few hours and where the rain goes next, up to 48 hours ahead.</p>
+    <h2>Check the forecast against the street</h2>
+    <p>Report the rain in one tap, then see the Rain Clock, the forecast's confidence and what people nearby are reporting on the same screen.</p>
+    <p>With Leave now, tell RainPulse how long your trip is, and it finds the driest window in the next two hours.</p>
+    <p class="quote">"Leave in 25 minutes for a dry 40-minute trip."</p>
+  </div>
+</section>
+
+<section class="feature split flip" id="features">
+  <div class="phone"><img src="img/map.webp" alt="The RainPulse rain map with a waterlogging alert, a cyclone track and the animated timeline" width="540" height="1170" loading="lazy"></div>
+  <div class="feature-copy">
+    <h2>A live rain map you can trust</h2>
+    <p>See current rain around you on a smooth, zoomable map. Press play for the recent past and the next hours; forecast frames are clearly labelled as a model forecast.</p>
     <ul class="ticks">
-      <li>Rain, snow, clouds, wind and temperature layers</li>
-      <li>Your saved places pinned on the map</li>
-      <li>Honest labels: the future rain is a forecast model, and the app says so</li>
+      <li>Adjustable opacity and a clear colour legend</li>
+      <li>Dark, Light, Hybrid, Satellite and Satellite with labels</li>
+      <li>Active cyclones worldwide, with distance from you and alerts when one comes near</li>
     </ul>
+  </div>
+</section>
+
+<section class="nasa">
+  <div class="nasa-head">
+    <h2>Earth, as NASA sees it</h2>
+    <p>Three map styles built on NASA imagery, free on every plan.</p>
+  </div>
+  <div class="nasa-row">
+    <figure><div class="phone"><img src="img/style-clouds.webp" alt="NASA live satellite clouds over Chennai and South India" width="540" height="1170" loading="lazy"></div><figcaption><strong>Live clouds</strong>Real satellite cloud imagery, updated every few minutes.</figcaption></figure>
+    <figure><div class="phone"><img src="img/style-earth.webp" alt="NASA Blue Marble relief of land and sea" width="540" height="1170" loading="lazy"></div><figcaption><strong>Earth</strong>Blue Marble relief of land and sea.</figcaption></figure>
+    <figure><div class="phone"><img src="img/style-lights.webp" alt="NASA Earth at night showing city lights" width="540" height="1170" loading="lazy"></div><figcaption><strong>City lights</strong>Earth at night, from Black Marble.</figcaption></figure>
+  </div>
+</section>
+
+<section class="feature split">
+  <div class="phone"><img src="img/wind.webp" alt="Animated wind flow and a cyclone track on the RainPulse map" width="540" height="1170" loading="lazy"></div>
+  <div class="feature-copy">
+    <h2>Wind you can watch <span class="tier">Pro</span></h2>
+    <p>Global winds move across the map, powered by NOAA's GFS model, with cyclone tracks on top. Pro also adds clouds and temperature layers and 48 hours of rain map playback.</p>
+  </div>
+</section>
+
+<section class="more with-phone">
+  <div class="phone"><img src="img/details.webp" alt="More details: the 2-hour rain chart, an AI insight and current conditions" width="540" height="1170" loading="lazy"></div>
+  <div>
+  <h2>Everything else, kept simple</h2>
+  <dl class="more-list">
+    <div><dt>Forecasts</dt><dd>Temperature, feels like, humidity, UV, wind and air quality. Hourly and daily forecasts: 2 days free, 14 days with a plan.</dd></div>
+    <div><dt>Rain alerts</dt><dd>A notification before rain starts. Choose any drizzle, moderate rain or heavy rain only.</dd></div>
+    <div><dt>Saved places</dt><dd>Home, office, family. 3 free, 20 with a plan, each with its own alerts.</dd></div>
+    <div><dt>Home Screen widget</dt><dd>Current weather and rain for the next two hours.</dd></div>
+    <div><dt>Today in one line</dt><dd>A Lock Screen widget with an umbrella, heat or air-quality tip at a glance.</dd></div>
+    <div><dt>AI insights <span class="tier">Pro</span></dt><dd>A short plain-language summary of the day's weather, generated privately on your iPhone with Apple Intelligence.</dd></div>
+  </dl>
   </div>
 </section>
 
 <section class="feature split flip">
-  <div class="phone"><img src="img/wind.webp" alt="Animated wind flow and a cyclone forecast track on the RainPulse map" width="540" height="1170" loading="lazy"></div>
+  <div class="phone"><img src="img/privacy.webp" alt="RainPulse privacy settings: Face ID lock, no account, no ads, no tracking, approximate location" width="540" height="1170" loading="lazy"></div>
   <div class="feature-copy">
-    <h2>Cyclones and wind, without the clutter</h2>
-    <p>Animated wind flow shows which way the weather is coming from. When a cyclone forms, RainPulse draws its forecast track and cone and tells you how far it is from your places.</p>
-    <ul class="ticks">
-      <li>Storm tracks from official forecast centres</li>
-      <li>Official government weather warnings for your area</li>
-      <li>Gusts and air quality on the same screen</li>
-    </ul>
-  </div>
-</section>
-
-<section class="more">
-  <h2>Made for cities where rain changes plans</h2>
-  <dl class="more-list">
-    <div><dt>Leave-now window</dt><dd>Finds the longest dry gap in the next two hours and tells you when to go.</dd></div>
-    <div><dt>Flooded-street alerts</dt><dd>Warns you when heavy rain is likely to waterlog roads near your saved places.</dd></div>
-    <div><dt>Rain Truth</dt><dd>People nearby report what they actually see, so the map is checked against the street.</dd></div>
-    <div><dt>Forecast confidence</dt><dd>Every rain call shows how sure the forecast is, and the app keeps a record of how often it was right.</dd></div>
-    <div><dt>Lock Screen one-liner</dt><dd>"Dry until 6:15, light rain after" — the answer without opening the app.</dd></div>
-    <div><dt>Rain alerts</dt><dd>A heads-up before rain reaches you or up to 20 places you care about.</dd></div>
-  </dl>
-</section>
-
-<section class="feature split">
-  <div class="phone"><img src="img/conditions.webp" alt="RainPulse conditions: rain from 1 PM, no snow, wind 9 mph, air quality 62, hourly and 14-day forecast" width="540" height="1170" loading="lazy"></div>
-  <div class="feature-copy">
-    <h2>Rain, snow, wind and air quality. That's the screen.</h2>
-    <p>Four answers at the top, then the hourly and 14-day forecast. °C or °F and mm or inches follow your region automatically. Available in 10 languages, including Hindi and Tamil.</p>
-    <ul class="ticks">
-      <li>No account, no ads, no tracking</li>
-      <li>Optional Face ID lock</li>
-      <li>Forecasts from Apple Weather, with Open-Meteo as backup</li>
-    </ul>
+    <h2>Private by design. Made for the world.</h2>
+    <p>No account, no sign-up, no ads, no tracking. Rain Truth uses an approximate location only, and you can lock the app with Face ID.</p>
+    <p>Available worldwide in 11 languages: English, Spanish, Portuguese (Brazil), Hindi, Indonesian, Japanese, German, French, Arabic, Tamil and Vietnamese. Dark mode, large text and VoiceOver are supported.</p>
   </div>
 </section>
 
 <section class="pricing" id="pricing">
-  <h2>Start free. Upgrade when rain matters.</h2>
-  <p class="pricing-lede">The yearly plans come with a 2-week free trial. Prices below are US prices; the App Store shows your local price, which is lower in many countries, including India.</p>
-  <div class="plans">
-    <article class="plan">
-      <h3>Free</h3>
-      <p class="price">$0</p>
-      <ul>
-        <li>Live rain map</li>
-        <li>Current conditions and hourly forecast</li>
-        <li>Wind and air quality</li>
-        <li>Cyclone tracks and official warnings</li>
-      </ul>
-    </article>
-    <article class="plan main">
-      <h3>Essential</h3>
-      <p class="price">$2.99<span>/month</span></p>
-      <p class="alt">or $19.99 a year</p>
-      <ul>
-        <li>2-hour rain map forecast and history</li>
-        <li>Minute-by-minute Rain Clock</li>
-        <li>14-day forecast</li>
-        <li>Rain alerts for up to 20 places</li>
-        <li>All widget sizes</li>
-      </ul>
-    </article>
-    <article class="plan">
-      <h3>Pro</h3>
-      <p class="price">$5.99<span>/month</span></p>
-      <p class="alt">or $34.99 a year</p>
-      <ul>
-        <li>Everything in Essential</li>
-        <li>48-hour rain map playback</li>
-        <li>Clouds, wind and temperature map layers</li>
-      </ul>
-    </article>
+  <h2>Free covers what keeps you safe.</h2>
+  <p class="pricing-lede">The rain map, official warnings, Rain Truth, forecast confidence and forecast vs reality are free for everyone. Yearly plans include a 14-day free trial. Prices are US prices; the App Store shows your local price, which is lower in many countries, including India.</p>
+  <div class="table-wrap">
+  <table class="plans-table">
+    <thead>
+      <tr><th scope="col"><span class="sr">Feature</span></th><th scope="col">Free<span class="pp">$0</span></th><th scope="col" class="hl">Essential<span class="pp">$2.99/month<small>or $19.99/year</small></span></th><th scope="col">Pro<span class="pp">$5.99/month<small>or $34.99/year</small></span></th></tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Live rain map</th><td>✓</td><td class="hl">✓</td><td>✓</td></tr>
+      <tr><th scope="row">Rain map animation</th><td>30 min back and ahead</td><td class="hl">2 h back and ahead</td><td>48 h back, 2 h ahead</td></tr>
+      <tr><th scope="row">Official warnings</th><td>✓</td><td class="hl">✓</td><td>✓</td></tr>
+      <tr><th scope="row">Rain Truth and flooded-street alerts</th><td>✓</td><td class="hl">✓</td><td>✓</td></tr>
+      <tr><th scope="row">Forecast confidence</th><td>✓</td><td class="hl">✓</td><td>✓</td></tr>
+      <tr><th scope="row">Forecast vs reality</th><td>✓</td><td class="hl">✓</td><td>✓</td></tr>
+      <tr><th scope="row">Cyclone tracker</th><td>✓</td><td class="hl">✓</td><td>✓</td></tr>
+      <tr><th scope="row">NASA map styles</th><td>✓</td><td class="hl">✓</td><td>✓</td></tr>
+      <tr><th scope="row">Daily forecast</th><td>2 days</td><td class="hl">14 days</td><td>14 days</td></tr>
+      <tr><th scope="row">2-hour rain chart</th><td class="no">–</td><td class="hl">✓</td><td>✓</td></tr>
+      <tr><th scope="row">Leave now</th><td class="no">–</td><td class="hl">✓</td><td>✓</td></tr>
+      <tr><th scope="row">Saved places</th><td>3</td><td class="hl">20</td><td>20</td></tr>
+      <tr><th scope="row">Rain alerts</th><td>Current location</td><td class="hl">20 places</td><td>20 places</td></tr>
+      <tr><th scope="row">Wind flow and extra map layers</th><td class="no">–</td><td class="hl no">–</td><td>✓</td></tr>
+      <tr><th scope="row">AI insights</th><td class="no">–</td><td class="hl no">–</td><td>✓</td></tr>
+    </tbody>
+  </table>
   </div>
+</section>
+
+<section class="data">
+  <div>
+    <h2>Honest about the data</h2>
+    <p>We tell you where every number comes from. The rain map is an estimate from weather data, not live ground radar, and the app labels it that way.</p>
+  </div>
+  <dl class="sources">
+    <div><dt>Forecasts</dt><dd>Apple Weather, plus Open-Meteo</dd></div>
+    <div><dt>Rain map</dt><dd>OpenWeather's rain estimate, plus NOAA's GFS model for future rain</dd></div>
+    <div><dt>Official warnings</dt><dd>NDMA SACHET in India, Apple Weather elsewhere</dd></div>
+    <div><dt>Confidence</dt><dd>ECMWF, GFS, ICON and GEM models</dd></div>
+    <div><dt>Map imagery</dt><dd>NASA GIBS: Blue Marble, live satellite clouds, Black Marble</dd></div>
+    <div><dt>Cyclones</dt><dd>GDACS, from the European Commission and the United Nations</dd></div>
+    <div><dt>Crowd reports</dt><dd>RainPulse users, through Rain Truth</dd></div>
+  </dl>
 </section>
 
 <section class="faq" id="faq">
   <h2>Questions</h2>
-  <details><summary>Is the rain map real radar?</summary><p>No, and we say so. The map shows a rain estimate built from satellite data and forecast models, which works everywhere in the world, including places with no radar coverage. Rain Truth reports from people nearby help check it against what is actually falling.</p></details>
-  <details><summary>Does it work in my city?</summary><p>Yes. RainPulse covers every city in the world. Rain alerts, the Rain Clock and the 14-day forecast work wherever you are; official warnings appear where a national weather service publishes them.</p></details>
-  <details><summary>What does RainPulse do with my location?</summary><p>It sends approximate coordinates to the weather services to fetch your forecast. There is no account, nothing is sold, and nothing is used for tracking. The full details are in the <a href="privacy.html">privacy policy</a>.</p></details>
+  <details><summary>Is RainPulse free?</summary><p>Yes. The rain map, official warnings, Rain Truth, forecast confidence and forecast vs reality are all free. Essential and Pro add longer forecasts, the 2-hour rain chart, more places, wind flow and AI insights.</p></details>
+  <details><summary>Do I need an account?</summary><p>No. There's no sign-up of any kind.</p></details>
+  <details><summary>Is the map real radar?</summary><p>No. It's a rain estimate from weather data, plus a model forecast for future rain, and RainPulse labels it that way. Rain Truth adds what people on the ground actually see.</p></details>
+  <details><summary>Where do official warnings come from?</summary><p>Government weather agencies only: NDMA SACHET in India, and Apple Weather's official alerts in other countries.</p></details>
+  <details><summary>How does "Forecast vs reality" work?</summary><p>RainPulse saves each forecast, then checks it against Rain Truth reports, or recorded rainfall when nobody reported, and shows how often it was right.</p></details>
+  <details><summary>Does it work outside India?</summary><p>Yes, worldwide. Official warnings and crowd reports are strongest where more people use the app.</p></details>
   <details><summary>How do I cancel a subscription?</summary><p>In your iPhone's Settings, tap your name, then Subscriptions. Subscriptions renew automatically unless you cancel at least 24 hours before the end of the period.</p></details>
-  <details><summary>I need help with something else.</summary><p>Visit the <a href="support.html">support page</a> and we'll get back to you.</p></details>
 </section>
 
 <section class="closer">
-  <p class="closer-line">Next time the sky turns grey, you'll already know.</p>
+  <p class="closer-line">Stop guessing. Know when it rains.</p>
   <a class="store" href="https://apps.apple.com/app/id6838320608" data-store>
     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8-.1 0-2.5-1-2.5-3.9zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.8-1.4z"/></svg>
     <span><small data-store-small>Coming soon on the</small>App Store</span>
@@ -186,8 +272,8 @@
 </main>
 
 <footer class="foot">
-  <p>© 2026 NeuralOrbitX. Weather data from Apple Weather, Open-Meteo, OpenWeather and NASA.</p>
-  <p><a href="privacy.html">Privacy policy</a><a href="support.html">Support</a><a href="https://x.com/NeuralOrbitX">@NeuralOrbitX on X</a></p>
+  <p>© 2026 NeuralOrbitX</p>
+  <p><a href="privacy">Privacy Policy</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a><a href="support">Support</a><a href="https://x.com/NeuralOrbitX">@NeuralOrbitX on X</a></p>
 </footer>
 
 <script src="site.js"></script>

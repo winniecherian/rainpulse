@@ -49,7 +49,9 @@ a{color:var(--r1)}
 #dial .hand{transform-origin:200px 200px;transform-box:view-box;stroke:var(--paper);stroke-width:3;stroke-linecap:round;opacity:.85}
 #dial .pin{fill:var(--paper)}
 #dial .hour{fill:var(--mute);font:500 13px var(--body)}
-.clock-center{position:absolute;top:0;left:0;right:0;aspect-ratio:1;max-width:460px;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;padding:0 27%}
+.dial-wrap{position:relative;width:min(460px,100%)}
+#dial{width:100%}
+.clock-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none;padding:0 27%}
 #c-head{font:800 clamp(24px,2.6vw,32px)/1.02 var(--display);font-variation-settings:"wdth" 82}
 #c-sub{color:var(--mute);font-size:14px;margin-top:8px;line-height:1.35}
 .clock figcaption{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:10px}
@@ -111,7 +113,93 @@ details p{margin:0 0 22px;color:#c3d1e3}
 .foot p{margin:0;display:flex;flex-wrap:wrap;gap:20px}
 .foot a{color:var(--mute)}.foot a:hover{color:var(--paper)}
 
+
+/* official warning card on the clock */
+.warn-card{position:absolute;right:-6%;bottom:2%;width:min(250px,62%);background:#f3e9d2;color:#3a2a10;border-radius:14px;padding:11px 14px 12px;box-shadow:0 18px 40px -16px rgba(0,0,0,.7);display:flex;flex-direction:column;gap:2px;transition:opacity .3s,transform .3s}
+.warn-card.off{opacity:0;transform:translateY(8px);pointer-events:none}
+.warn-flag{font-size:12px;font-weight:600;color:#9a4b00;display:flex;align-items:center;gap:6px}
+.warn-flag::before{content:"";width:8px;height:8px;border-radius:50%;background:#e07800}
+.warn-card strong{font:750 18px/1.15 var(--display);font-stretch:88%}
+.warn-card span:last-child{font-size:12.5px;line-height:1.35;color:#6b5530}
+
+/* what makes it different */
+.band{max-width:1180px;margin:0 auto;padding:96px 28px 40px}
+.band-head{max-width:46em;margin-bottom:48px}
+.band-head p{color:#c3d1e3;font-size:19px;margin:0}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.proof{background:var(--slate);border:1px solid var(--line);border-radius:26px;padding:34px 34px 30px;display:flex;flex-direction:column}
+.proof h3,.trio h3{font:750 26px/1.15 var(--display);font-stretch:85%;margin:0 0 12px}
+.proof>p{color:#c3d1e3;margin:0 0 26px;font-size:16px}
+.score{margin-top:auto;background:var(--ink);border-radius:18px;padding:22px 24px}
+.score-num{font:800 72px/.9 var(--display);font-stretch:78%;margin:0;color:var(--r3)}
+.score-label{margin:8px 0 16px;color:var(--paper)}
+.marks{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0}
+.marks li{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-weight:700;font-size:14px}
+.marks .ok{background:rgba(47,191,113,.16);color:var(--r3)}
+.marks .no{background:rgba(239,90,138,.16);color:var(--r5)}
+.models{margin-top:auto;background:var(--ink);border-radius:18px;padding:20px 22px}
+.conf{margin:0 0 16px;font-size:15px}
+.pill{display:inline-block;font-size:12.5px;font-weight:600;padding:3px 10px;border-radius:999px;margin-right:8px}
+.pill.med{background:rgba(245,198,60,.18);color:var(--r4)}
+.model{display:grid;grid-template-columns:120px 1fr;align-items:center;gap:12px;margin:9px 0}
+.model span{font-weight:600;font-size:14px}
+.model small{display:block;font-weight:400;color:var(--mute);font-size:12px}
+.track{position:relative;height:12px;border-radius:6px;background:#22374f}
+.track i{position:absolute;top:0;bottom:0;border-radius:6px;background:linear-gradient(90deg,var(--r2),var(--r3))}
+.track.dry{background:none;border:1px dashed var(--line);height:22px;display:flex;align-items:center;padding-left:10px}
+.track em{font-style:normal;font-size:12.5px;color:var(--mute)}
+.axis{display:flex;justify-content:space-between;margin-left:132px;font-size:11.5px;color:var(--mute);margin-top:6px}
+.trio{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:48px;margin-top:64px;padding-top:44px;border-top:1px solid var(--line)}
+.trio p{color:var(--mute);font-size:16px;margin:0 0 12px}
+.phones.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.phones.two .phone{border-radius:28px;border-width:6px}
+.split:has(.phones.two){grid-template-columns:minmax(0,460px) 1fr}
+.quote{font:700 24px/1.25 var(--display);font-stretch:88%;color:var(--paper)!important;border-left:3px solid var(--r3);padding-left:16px}
+.tier{font:600 12px/1 var(--body);vertical-align:middle;background:rgba(58,168,240,.18);color:var(--r1);padding:4px 9px;border-radius:999px;letter-spacing:0;margin-left:6px}
+
+/* NASA styles */
+.nasa{max-width:1080px;margin:0 auto;padding:72px 28px}
+.nasa-head{margin-bottom:36px}.nasa-head p{color:var(--mute);margin:0}
+.nasa-row{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.nasa-row figure{margin:0}
+.nasa-row .phone{border-radius:30px;border-width:6px}
+.nasa-row figcaption{margin-top:14px;color:var(--mute);font-size:15px}
+.nasa-row figcaption strong{display:block;color:var(--paper);font:700 19px var(--display);font-stretch:88%}
+
+/* plans table */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:22px}
+.plans-table{width:100%;border-collapse:collapse;font-size:15px;min-width:620px}
+.plans-table th,.plans-table td{padding:12px 16px;text-align:center;border-bottom:1px solid var(--line)}
+.plans-table tbody tr:last-child>*{border-bottom:0}
+.plans-table tbody th{text-align:left;font-weight:500;color:var(--paper)}
+.plans-table thead th{font:750 22px/1.1 var(--display);font-stretch:88%;padding:24px 16px 20px;vertical-align:bottom}
+.pp{display:block;font:600 15px/1.3 var(--body);color:var(--paper);margin-top:8px}
+.pp small{display:block;font-weight:400;color:var(--mute);font-size:13px}
+.plans-table .hl{background:var(--slate)}
+.plans-table thead .hl{box-shadow:inset 0 3px 0 var(--r2)}
+.plans-table td.no{color:#4a6382}
+.plans-table td{color:#c3d1e3}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* data sources */
+.data{max-width:1080px;margin:0 auto;padding:40px 28px 70px;display:grid;grid-template-columns:1fr 1.3fr;gap:60px}
+.data>div p{color:var(--mute)}
+.sources{margin:0;display:grid;gap:0}
+.sources div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.sources dt{font-weight:600}.sources dd{margin:0;color:#c3d1e3}
+
+.more.with-phone{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:70px;align-items:center}
+.more.with-phone .more-list{grid-template-columns:1fr 1fr;gap:34px 40px}
 @media (max-width:900px){
+  .more.with-phone{grid-template-columns:1fr}
+  .more.with-phone .phone{order:2;max-width:300px;margin:0 auto}
+  .duo,.trio,.data{grid-template-columns:1fr}
+  .trio{gap:30px}
+  .split:has(.phones.two){grid-template-columns:1fr}
+  .phones.two{max-width:440px;margin:0 auto;order:2}
+  .nasa-row{grid-template-columns:repeat(3,minmax(200px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+  .nasa-row figure{scroll-snap-align:start}
+  .warn-card{right:0}
   .hero{grid-template-columns:1fr;padding-top:28px;gap:48px}
   .split,.split.flip{grid-template-columns:1fr;gap:44px}
   .split .phone,.split.flip .phone{order:2;max-width:300px;margin:0 auto}
@@ -120,6 +208,17 @@ details p{margin:0 0 22px;color:#c3d1e3}
   .top nav a:not(.store-mini){display:none}
 }
 @media (max-width:560px){
+  .proof{padding:24px 20px}
+  .plans-table{min-width:0;font-size:13px}
+  .plans-table th,.plans-table td{padding:10px 6px}
+  .plans-table tbody th{width:38%;padding-left:12px}
+  .plans-table thead th{font-size:17px;padding:18px 4px 14px}
+  .pp{font-size:12.5px}.pp small{font-size:11px}
+  .warn-card{position:static;width:auto;margin:6px 8px 0}
+  .axis span:nth-child(2),.axis span:nth-child(4){display:none}
+  .model{grid-template-columns:90px 1fr}.axis{margin-left:102px}
+  .sources div{grid-template-columns:1fr;gap:2px}
+  .band{padding-left:22px;padding-right:22px}
   .cities button{padding:7px 10px;font-size:13.5px}
   .cities{gap:2px}
   body{font-size:16px}

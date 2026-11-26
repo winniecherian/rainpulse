@@ -22,11 +22,11 @@ const seg = parts => { const a = []; parts.forEach(([n, v]) => { for (let i = 0;
 const ramp = (from, to) => (i, n) => Math.round(from + (to - from) * (i / Math.max(1, n - 1)));
 
 const CITIES = {
-  chennai:   { head: "Rain in\u00a018\u00a0min", sub: "Heavy for 25 min, then easing. Dry again by 7:40.",
+  chennai:   { warn: ["Heavy rain", "India Meteorological Department, for Chennai district, until 9 pm"], head: "Rain in\u00a018\u00a0min", sub: "Heavy for 25 min, then easing. Dry again by 7:40.",
                data: seg([[18,0],[4,ramp(2,4)],[22,i=>i%7<3?5:4],[16,ramp(4,3)],[14,ramp(2,1)],[46,0]]) },
-  london:    { head: "Drizzle now", sub: "Dry window from 35 to 70 min. Leave then.",
+  london:    { warn: ["Yellow warning: rain", "Met Office, for London, until 6 am"], head: "Drizzle now", sub: "Dry window from 35 to 70 min. Leave then.",
                data: seg([[35,1],[35,0],[10,ramp(1,2)],[40,i=>i%9<4?2:1]]) },
-  mumbai:    { head: "Downpour now", sub: "Easing in about 50 min. Low roads may flood.",
+  mumbai:    { warn: ["Orange alert: very heavy rain", "India Meteorological Department, for Mumbai district, until midnight"], head: "Downpour now", sub: "Easing in about 50 min. Low roads may flood.",
                data: seg([[30,i=>i%6<3?5:4],[20,ramp(5,3)],[25,ramp(3,2)],[45,i=>i%5<2?2:1]]) },
   singapore: { head: "Dry for 75\u00a0min", sub: "Thunderstorm expected after that.",
                data: seg([[75,0],[5,ramp(2,4)],[22,i=>i%5<2?5:4],[18,ramp(3,1)]]) },
@@ -75,6 +75,9 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 function show(name, sweep) {
   const c = CITIES[name];
   head.textContent = c.head;
+  const w = document.getElementById("warn");
+  if (c.warn) { document.getElementById("w-title").textContent = c.warn[0]; document.getElementById("w-meta").textContent = c.warn[1]; w.classList.remove("off"); }
+  else w.classList.add("off");
   sub.textContent = c.sub;
   if (!sweep || reduce) { c.data.forEach((v, i) => setTick(ticks[i], v)); setHand(0); return; }
   // one orchestrated moment: the hand sweeps the next two hours and lays the rain down behind it
