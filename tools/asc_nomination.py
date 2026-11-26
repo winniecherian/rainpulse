@@ -25,7 +25,7 @@ body = {"data": {"type": "nominations", "attributes": {
     "launchInSelectMarketsFirst": False,
     "preOrderEnabled": False,
     "notes": "Indie developer NeuralOrbitX (Chennai, India). Uses Apple Intelligence on-device for AI insights.",
-    "supplementalMaterialsUris": ["https://winniecherian.github.io/rainpulse/"]},
+    "supplementalMaterialsUris": ["https://rainpulse-app.web.app/"]},
     "relationships": {"relatedApps": {"data": [{"type": "apps", "id": app["id"]}]}}}}
 r = call("POST", "/v1/nominations", data=json.dumps(body))
 print("create:", r.status_code, r.text[:600])

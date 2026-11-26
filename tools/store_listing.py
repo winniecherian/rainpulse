@@ -1,8 +1,8 @@
 """App Store listing copy for every language. Used by tools/asc_listing.py."""
 
-PRIVACY = "https://winniecherian.github.io/rainpulse/privacy.html"
-SUPPORT = "https://winniecherian.github.io/rainpulse/support.html"
-MARKETING = "https://winniecherian.github.io/rainpulse/"
+PRIVACY = "https://rainpulse-app.web.app/privacy"
+SUPPORT = "https://rainpulse-app.web.app/support"
+MARKETING = "https://rainpulse-app.web.app/"
 EULA = "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
 COPYRIGHT = "2026 NeuralOrbitX"
 

@@ -32,7 +32,7 @@ enum AppConfig {
 
     static var privacyURL: URL {
         if let s = info("PrivacyPolicyURL"), let url = URL(string: s) { return url }
-        return URL(string: "https://winniecherian.github.io/rainpulse/privacy.html")!
+        return URL(string: "https://rainpulse-app.web.app/privacy")!
     }
 
     /// True only in Debug builds launched by the UI tests.
