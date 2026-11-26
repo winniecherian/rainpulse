@@ -14,10 +14,10 @@ IPHONEOS_DEPLOYMENT_TARGET = 17.0
 SWIFT_VERSION = 5.0
 TARGETED_DEVICE_FAMILY = 1
 
-// CloudKit environment for "Rain Truth" reports. TestFlight builds use Development so the
-// record type is created automatically. Before App Store release: deploy the schema to
-// Production in the CloudKit Console, then change this to Production.
-CLOUDKIT_ENVIRONMENT = Development
+// CloudKit environment for "Rain Truth" reports. TestFlight and App Store builds always use
+// Production; the Report record type was deployed to Production on 26 Nov 2026. Schema changes
+// are made in Development in the CloudKit Console and then deployed to Production.
+CLOUDKIT_ENVIRONMENT = Production
 
 // "Rain Truth" needs the iCloud container iCloud.com.neuralorbitx.rainpulse in the developer
 // account (created 25 Nov 2026). To switch reports off: RP_CLOUD_REPORTS = NO and
