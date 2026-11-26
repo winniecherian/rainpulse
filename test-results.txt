@@ -1,0 +1,169 @@
+2026-11-26 17:28:50.085481+0000 RainPulse[6944:28001] [MKCoreLocationProvider] CLLocationManager(<CLLocationManager: 0x107307b00>) for <MKCoreLocationProvider: 0x1072f7900> did fail with error: Error Domain=kCLErrorDomain Code=1 "(null)"
+Test Case '-[RainPulseTests.AlertDecisionTests testAlertsWhenRainWithinLead]' started.
+Test Case '-[RainPulseTests.AlertDecisionTests testAlertsWhenRainWithinLead]' passed (0.070 seconds).
+Test Case '-[RainPulseTests.AlertDecisionTests testHeavyOnlyThresholdIgnoresDrizzle]' started.
+Test Case '-[RainPulseTests.AlertDecisionTests testHeavyOnlyThresholdIgnoresDrizzle]' passed (0.015 seconds).
+Test Case '-[RainPulseTests.AlertDecisionTests testNoAlertWhenRainBeyondLead]' started.
+Test Case '-[RainPulseTests.AlertDecisionTests testNoAlertWhenRainBeyondLead]' passed (0.013 seconds).
+Test Case '-[RainPulseTests.AlertDecisionTests testNoAlertWhileAlreadyRaining]' started.
+Test Case '-[RainPulseTests.AlertDecisionTests testNoAlertWhileAlreadyRaining]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.AlertDecisionTests testNoRepeatWithinTwoHours]' started.
+Test Case '-[RainPulseTests.AlertDecisionTests testNoRepeatWithinTwoHours]' passed (0.050 seconds).
+Test Case '-[RainPulseTests.ConfidenceTests testAgreeOnRainAndTiming]' started.
+Test Case '-[RainPulseTests.ConfidenceTests testAgreeOnRainAndTiming]' passed (0.009 seconds).
+Test Case '-[RainPulseTests.ConfidenceTests testAllDryIsHigh]' started.
+Test Case '-[RainPulseTests.ConfidenceTests testAllDryIsHigh]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.ConfidenceTests testDecodesOpenMeteoMultiModel]' started.
+Test Case '-[RainPulseTests.ConfidenceTests testDecodesOpenMeteoMultiModel]' passed (0.003 seconds).
+Test Case '-[RainPulseTests.ConfidenceTests testNeedsThreeModels]' started.
+Test Case '-[RainPulseTests.ConfidenceTests testNeedsThreeModels]' passed (1.429 seconds).
+Test Case '-[RainPulseTests.ConfidenceTests testSplitAndTimingDisagreementIsLow]' started.
+Test Case '-[RainPulseTests.ConfidenceTests testSplitAndTimingDisagreementIsLow]' passed (0.003 seconds).
+Test Case '-[RainPulseTests.CrowdReportTests testApproximateLocationIsAbout100m]' started.
+Test Case '-[RainPulseTests.CrowdReportTests testApproximateLocationIsAbout100m]' passed (0.003 seconds).
+Test Case '-[RainPulseTests.CrowdReportTests testBoundsContainPointAndNeighbourhoodHasNineCells]' started.
+Test Case '-[RainPulseTests.CrowdReportTests testBoundsContainPointAndNeighbourhoodHasNineCells]' passed (0.725 seconds).
+Test Case '-[RainPulseTests.CrowdReportTests testFloodAlertOnlyOncePerReport]' started.
+Test Case '-[RainPulseTests.CrowdReportTests testFloodAlertOnlyOncePerReport]' passed (0.014 seconds).
+Test Case '-[RainPulseTests.CrowdReportTests testGeohashKnownValue]' started.
+Test Case '-[RainPulseTests.CrowdReportTests testGeohashKnownValue]' passed (0.003 seconds).
+Test Case '-[RainPulseTests.CrowdReportTests testHeadlines]' started.
+Test Case '-[RainPulseTests.CrowdReportTests testHeadlines]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.CrowdReportTests testNeighbourhoodWrapsDateLine]' started.
+Test Case '-[RainPulseTests.CrowdReportTests testNeighbourhoodWrapsDateLine]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.CrowdReportTests testRecordNamesAreFindable]' started.
+Test Case '-[RainPulseTests.CrowdReportTests testRecordNamesAreFindable]' passed (0.070 seconds).
+Test Case '-[RainPulseTests.CrowdReportTests testSampleReportsAreValid]' started.
+Test Case '-[RainPulseTests.CrowdReportTests testSampleReportsAreValid]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.CrowdReportTests testSummaryCountsRecentNearbyReports]' started.
+Test Case '-[RainPulseTests.CrowdReportTests testSummaryCountsRecentNearbyReports]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.CycloneTests testDistancesAndCategories]' started.
+Test Case '-[RainPulseTests.CycloneTests testDistancesAndCategories]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.CycloneTests testParsesTracksAndCones]' started.
+Test Case '-[RainPulseTests.CycloneTests testParsesTracksAndCones]' passed (0.005 seconds).
+Test Case '-[RainPulseTests.DayPlannerTests testGoNowWhenDry]' started.
+Test Case '-[RainPulseTests.DayPlannerTests testGoNowWhenDry]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.DayPlannerTests testHourlyFillsBeyondNowcastAndHighChanceCountsAsWet]' started.
+Test Case '-[RainPulseTests.DayPlannerTests testHourlyFillsBeyondNowcastAndHighChanceCountsAsWet]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.DayPlannerTests testNoDryWindowPicksLeastWet]' started.
+Test Case '-[RainPulseTests.DayPlannerTests testNoDryWindowPicksLeastWet]' passed (0.194 seconds).
+Test Case '-[RainPulseTests.DayPlannerTests testOneLinerRainAndAirQuality]' started.
+Test Case '-[RainPulseTests.DayPlannerTests testOneLinerRainAndAirQuality]' passed (0.022 seconds).
+Test Case '-[RainPulseTests.DayPlannerTests testShortTripFitsGapLongTripDoesNot]' started.
+Test Case '-[RainPulseTests.DayPlannerTests testShortTripFitsGapLongTripDoesNot]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.DayPlannerTests testWaitWhenRainingNow]' started.
+Test Case '-[RainPulseTests.DayPlannerTests testWaitWhenRainingNow]' passed (0.003 seconds).
+Test Case '-[RainPulseTests.ForecastLogicTests testDryForecast]' started.
+Test Case '-[RainPulseTests.ForecastLogicTests testDryForecast]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.ForecastLogicTests testLongRain]' started.
+Test Case '-[RainPulseTests.ForecastLogicTests testLongRain]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.ForecastLogicTests testMergeUsesOpenMeteoNowcastAndExtraDays]' started.
+Test Case '-[RainPulseTests.ForecastLogicTests testMergeUsesOpenMeteoNowcastAndExtraDays]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.ForecastLogicTests testOldCacheWithoutDetailFieldsStillDecodes]' started.
+Test Case '-[RainPulseTests.ForecastLogicTests testOldCacheWithoutDetailFieldsStillDecodes]' passed (0.020 seconds).
+Test Case '-[RainPulseTests.ForecastLogicTests testRainArrivingIn30Minutes]' started.
+Test Case '-[RainPulseTests.ForecastLogicTests testRainArrivingIn30Minutes]' passed (0.015 seconds).
+Test Case '-[RainPulseTests.ForecastLogicTests testRainingNowAndStopping]' started.
+Test Case '-[RainPulseTests.ForecastLogicTests testRainingNowAndStopping]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.ForecastLogicTests testRainingWithNonRainCodeUsesGenericTitle]' started.
+Test Case '-[RainPulseTests.ForecastLogicTests testRainingWithNonRainCodeUsesGenericTitle]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.ForecastLogicTests testSampleForecastIsSane]' started.
+Test Case '-[RainPulseTests.ForecastLogicTests testSampleForecastIsSane]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.ForecastLogicTests testTimeZoneFallsBackToOffset]' started.
+Test Case '-[RainPulseTests.ForecastLogicTests testTimeZoneFallsBackToOffset]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.ForecastLogicTests testUpcomingStepsWindow]' started.
+Test Case '-[RainPulseTests.ForecastLogicTests testUpcomingStepsWindow]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.LedgerTests testBlocksAreLocalThreeHourWindows]' started.
+Test Case '-[RainPulseTests.LedgerTests testBlocksAreLocalThreeHourWindows]' passed (0.007 seconds).
+Test Case '-[RainPulseTests.LedgerTests testPastWindowRecordNames]' started.
+Test Case '-[RainPulseTests.LedgerTests testPastWindowRecordNames]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.LedgerTests testRecordsOnlyBlocksAnHourAhead]' started.
+Test Case '-[RainPulseTests.LedgerTests testRecordsOnlyBlocksAnHourAhead]' passed (0.483 seconds).
+Test Case '-[RainPulseTests.LedgerTests testScoreNeedsFourChecks]' started.
+Test Case '-[RainPulseTests.LedgerTests testScoreNeedsFourChecks]' passed (0.008 seconds).
+Test Case '-[RainPulseTests.LedgerTests testVerdictFallsBackToRecordedRain]' started.
+Test Case '-[RainPulseTests.LedgerTests testVerdictFallsBackToRecordedRain]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.LedgerTests testVerdictPrefersPeople]' started.
+Test Case '-[RainPulseTests.LedgerTests testVerdictPrefersPeople]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.LocalizationTests testEveryLanguageIsBundled]' started.
+Test Case '-[RainPulseTests.LocalizationTests testEveryLanguageIsBundled]' passed (0.005 seconds).
+Test Case '-[RainPulseTests.LocalizationTests testKeyStringsAreTranslatedAndFormatSafely]' started.
+Test Case '-[RainPulseTests.LocalizationTests testKeyStringsAreTranslatedAndFormatSafely]' passed (0.101 seconds).
+Test Case '-[RainPulseTests.MapDataTests testAirQualityCategories]' started.
+Test Case '-[RainPulseTests.MapDataTests testAirQualityCategories]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.MapDataTests testLocationIsRoundedForThirdParties]' started.
+Test Case '-[RainPulseTests.MapDataTests testLocationIsRoundedForThirdParties]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.MapDataTests testRainModelColours]' started.
+Test Case '-[RainPulseTests.MapDataTests testRainModelColours]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.MapDataTests testRainModelImageAndBounds]' started.
+Test Case '-[RainPulseTests.MapDataTests testRainModelImageAndBounds]' passed (0.205 seconds).
+Test Case '-[RainPulseTests.MapDataTests testWindFieldBilinearAndWrap]' started.
+Test Case '-[RainPulseTests.MapDataTests testWindFieldBilinearAndWrap]' passed (0.016 seconds).
+Test Case '-[RainPulseTests.MapDataTests testWindGridBuilder]' started.
+Test Case '-[RainPulseTests.MapDataTests testWindGridBuilder]' passed (0.003 seconds).
+Test Case '-[RainPulseTests.MapStyleTests testCloudPixelMapping]' started.
+Test Case '-[RainPulseTests.MapStyleTests testCloudPixelMapping]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.MapStyleTests testCloudTimeIsRecentTenMinuteStep]' started.
+Test Case '-[RainPulseTests.MapStyleTests testCloudTimeIsRecentTenMinuteStep]' passed (0.022 seconds).
+Test Case '-[RainPulseTests.MapStyleTests testStylesProduceLayers]' started.
+Test Case '-[RainPulseTests.MapStyleTests testStylesProduceLayers]' passed (0.005 seconds).
+Test Case '-[RainPulseTests.OfficialAlertTests testAreaKeysTolerateSpellings]' started.
+Test Case '-[RainPulseTests.OfficialAlertTests testAreaKeysTolerateSpellings]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.OfficialAlertTests testAreaMatching]' started.
+Test Case '-[RainPulseTests.OfficialAlertTests testAreaMatching]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.OfficialAlertTests testDuplicateCopiesShownOnce]' started.
+Test Case '-[RainPulseTests.OfficialAlertTests testDuplicateCopiesShownOnce]' passed (0.006 seconds).
+Test Case '-[RainPulseTests.OfficialAlertTests testExpiredAndCancelledWarningsAreHidden]' started.
+Test Case '-[RainPulseTests.OfficialAlertTests testExpiredAndCancelledWarningsAreHidden]' passed (0.005 seconds).
+Test Case '-[RainPulseTests.OfficialAlertTests testIndiaBoundingBox]' started.
+Test Case '-[RainPulseTests.OfficialAlertTests testIndiaBoundingBox]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.OfficialAlertTests testMostSevereFirstAndNotifyRule]' started.
+Test Case '-[RainPulseTests.OfficialAlertTests testMostSevereFirstAndNotifyRule]' passed (0.008 seconds).
+Test Case '-[RainPulseTests.OfficialAlertTests testParsesCAPMessage]' started.
+Test Case '-[RainPulseTests.OfficialAlertTests testParsesCAPMessage]' passed (0.006 seconds).
+Test Case '-[RainPulseTests.OfficialAlertTests testParsesSachetFeed]' started.
+Test Case '-[RainPulseTests.OfficialAlertTests testParsesSachetFeed]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.OfficialAlertTests testReferencesAreParsed]' started.
+Test Case '-[RainPulseTests.OfficialAlertTests testReferencesAreParsed]' passed (0.003 seconds).
+Test Case '-[RainPulseTests.PlanAndRadarTests testAnimatedFramesAreCappedOrderedAndHaveNow]' started.
+Test Case '-[RainPulseTests.PlanAndRadarTests testAnimatedFramesAreCappedOrderedAndHaveNow]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.PlanAndRadarTests testLiveOnlySourceHasSingleFrame]' started.
+Test Case '-[RainPulseTests.PlanAndRadarTests testLiveOnlySourceHasSingleFrame]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.PlanAndRadarTests testPastRangeGating]' started.
+Test Case '-[RainPulseTests.PlanAndRadarTests testPastRangeGating]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.PlanAndRadarTests testRecolorLookupTable]' started.
+Test Case '-[RainPulseTests.PlanAndRadarTests testRecolorLookupTable]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.PlanAndRadarTests testRecolorMakesFaintRainVisible]' started.
+Test Case '-[RainPulseTests.PlanAndRadarTests testRecolorMakesFaintRainVisible]' passed (0.013 seconds).
+Test Case '-[RainPulseTests.PlanAndRadarTests testTierLimits]' started.
+Test Case '-[RainPulseTests.PlanAndRadarTests testTierLimits]' passed (0.003 seconds).
+Test Case '-[RainPulseTests.PlanAndRadarTests testTileURLsNeedKeyAndAreHTTPS]' started.
+Test Case '-[RainPulseTests.PlanAndRadarTests testTileURLsNeedKeyAndAreHTTPS]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.PlanDecisionTests testBillingGracePeriodKeepsAccess]' started.
+Test Case '-[RainPulseTests.PlanDecisionTests testBillingGracePeriodKeepsAccess]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.PlanDecisionTests testDowngradeWhenOnlyEssentialRemains]' started.
+Test Case '-[RainPulseTests.PlanDecisionTests testDowngradeWhenOnlyEssentialRemains]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.PlanDecisionTests testEssentialPlans]' started.
+Test Case '-[RainPulseTests.PlanDecisionTests testEssentialPlans]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.PlanDecisionTests testNothingOwnedIsFree]' started.
+Test Case '-[RainPulseTests.PlanDecisionTests testNothingOwnedIsFree]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.PlanDecisionTests testProBeatsEssentialInAnyOrder]' started.
+Test Case '-[RainPulseTests.PlanDecisionTests testProBeatsEssentialInAnyOrder]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.PlanDecisionTests testProductIDsMatchAppStoreConnect]' started.
+Test Case '-[RainPulseTests.PlanDecisionTests testProductIDsMatchAppStoreConnect]' passed (0.002 seconds).
+Test Case '-[RainPulseTests.PlanDecisionTests testRefundedPurchaseUnlocksNothing]' started.
+Test Case '-[RainPulseTests.PlanDecisionTests testRefundedPurchaseUnlocksNothing]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.PlanDecisionTests testUnknownProductIgnored]' started.
+Test Case '-[RainPulseTests.PlanDecisionTests testUnknownProductIgnored]' passed (0.001 seconds).
+Test Case '-[RainPulseTests.ReportErrorTests testCloudKitErrorsBecomeFriendlyMessages]' started.
+Test Case '-[RainPulseTests.ReportErrorTests testCloudKitErrorsBecomeFriendlyMessages]' passed (0.067 seconds).
+Test Case '-[RainPulseTests.StoreCatalogTests testAllFourPlansLoadWithExpectedPrices]' started.
+Test Case '-[RainPulseTests.StoreCatalogTests testAllFourPlansLoadWithExpectedPrices]' passed (0.281 seconds).
+Test Case '-[RainPulseUITests.MatrixUITests testWalkEveryScreen]' started.
+Test Case '-[RainPulseUITests.MatrixUITests testWalkEveryScreen]' skipped (2.311 seconds).
+Test Case '-[RainPulseUITests.RainPulseUITests testFreeUserSeesPaywall]' started.
+Test Case '-[RainPulseUITests.RainPulseUITests testFreeUserSeesPaywall]' passed (43.152 seconds).
+Test Case '-[RainPulseUITests.RainPulseUITests testMapStyles]' started.
+Test Case '-[RainPulseUITests.RainPulseUITests testMapStyles]' passed (165.981 seconds).
+Test Case '-[RainPulseUITests.RainPulseUITests testProWalkthrough]' started.
+Test Case '-[RainPulseUITests.RainPulseUITests testProWalkthrough]' passed (206.245 seconds).
