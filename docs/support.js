@@ -1,6 +1,6 @@
 // Support form: sends to a Google Apps Script web app owned by rainpulse3@gmail.com,
 // which emails the request (with attachments) to that inbox.
-const ENDPOINT = "SCRIPT_URL_HERE";
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbzWPHhuxMY91bJoUvwtZ49pqeCnHPQlM432oCCfZKdhMryyJg5C2ZVePwt_g3yFL58/exec";
 const FALLBACK_EMAIL = "rainpulse3@gmail.com";
 const MAX_FILES = 3, MAX_FILE = 5 * 1024 * 1024, MAX_TOTAL = 10 * 1024 * 1024;
 const TYPES = /^(image\/(png|jpeg|heic|heif|gif|webp)|application\/pdf|text\/plain|video\/(mp4|quicktime))$/;
